@@ -1,0 +1,12 @@
+exports[`Editor renders correctly 1`] = `
+<Editor
+  autofocus={false}
+  lineNumbers={true}
+  lineWrapping={false}
+  mode="javascript"
+  readOnly={false}
+  theme="default"
+  value="var a = 1;">
+  <div />
+</Editor>
+`;

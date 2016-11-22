@@ -1,7 +1,7 @@
 import { configure, setAddon } from '@kadira/storybook';
 import { setOptions } from '@kadira/storybook-addon-options';
 import infoAddon from '@kadira/react-storybook-addon-info';
-import './style.css';
+import '../src/presets.js';
 
 setAddon(infoAddon);
 setOptions({
