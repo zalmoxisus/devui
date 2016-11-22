@@ -16,6 +16,11 @@ const config = {
         include: path.resolve(__dirname, '../'),
       },
       {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        loaders: ['raw', 'sass']
+      },
+      {
         test: /\.json?$/,
         loaders: ['json'],
         include: path.resolve(__dirname, '../'),
