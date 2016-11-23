@@ -1,0 +1,60 @@
+exports[`Tabs renders correctly 1`] = `
+<div
+  class="bFEQDJ">
+  <div>
+    <div>
+      <button
+        data-selected="true">
+        Tab1
+      </button>
+      <button>
+        Tab2
+      </button>
+      <button>
+        Tab3
+      </button>
+    </div>
+    <div />
+  </div>
+  <div>
+    <div
+      style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-size:22px;">
+      Selected Tab1
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Tabs renders with props 1`] = `
+<div
+  class="kCiKhn">
+  <div>
+    <div>
+      <button>
+        Tab1
+      </button>
+      <button
+        data-selected="true">
+        Tab2
+      </button>
+      <button>
+        Tab3
+      </button>
+    </div>
+    <div>
+      <button>
+        Button 1
+      </button>
+      <button>
+        Button 2
+      </button>
+    </div>
+  </div>
+  <div>
+    <div
+      style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-size:22px;">
+      Selected Tab2
+    </div>
+  </div>
+</div>
+`;
