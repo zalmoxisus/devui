@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 import { withKnobs, text, select, boolean } from '@kadira/storybook-addon-knobs';
 import Editor from '../';
+import WithTabs from './WithTabs';
 
 const themes = {
   default: 'default',
@@ -32,6 +33,17 @@ storiesOf('Editor', module)
         lineWrapping={boolean('lineWrapping', false)}
         foldGutter={boolean('foldGutter', true)}
         readOnly={boolean('readOnly', false)}
+        autofocus
+      />
+    )
+  )
+  .addWithInfo(
+    'with tabs',
+    '',
+    () => (
+      <WithTabs
+        value={text('value', value)}
+        lineNumbers={boolean('lineNumbers', true)}
       />
     )
   );

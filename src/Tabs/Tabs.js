@@ -14,6 +14,10 @@ export default class Tabs extends Component {
     }
   }
 
+  onClick = (e) => {
+    this.props.onClick(e.target.innerText);
+  };
+
   updateTabs(props) {
     const tabs = props.tabs;
     const selected = props.selected || tabs[0].name;
@@ -29,7 +33,7 @@ export default class Tabs extends Component {
         <button
           key={tab.name}
           data-selected={isSelected}
-          onClick={props.onClick}
+          onClick={this.onClick}
         >
           {tab.name}
         </button>

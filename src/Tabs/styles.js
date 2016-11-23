@@ -4,11 +4,11 @@ export const TabsContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  height: 100%;
+  overflow-y: hidden;
 
   >div:first-child {
     display: flex;
-    width: 100%;
+    flex: 0 0 3em;
   
     >div:first-child {
      display: flex;
@@ -53,5 +53,6 @@ export const TabsContainer = styled.div`
 
   >div:last-child {
     flex: 1;
+    overflow-y: hidden;
   }
 `;

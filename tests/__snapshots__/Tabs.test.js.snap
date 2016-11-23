@@ -1,6 +1,6 @@
 exports[`Tabs renders correctly 1`] = `
 <div
-  class="bFEQDJ">
+  class="cilFoO">
   <div>
     <div>
       <button
@@ -27,7 +27,7 @@ exports[`Tabs renders correctly 1`] = `
 
 exports[`Tabs renders with props 1`] = `
 <div
-  class="kCiKhn">
+  class="crCjra">
   <div>
     <div>
       <button>

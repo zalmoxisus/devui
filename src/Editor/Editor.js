@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import CodeMirror from 'codemirror';
+import { EditorContainer } from './styles';
 
 export default class Editor extends Component {
   componentDidMount() {
@@ -55,7 +56,7 @@ export default class Editor extends Component {
   };
 
   render() {
-    return <div ref={this.getRef} />;
+    return <EditorContainer innerRef={this.getRef} />;
   }
 }
 
