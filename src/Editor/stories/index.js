@@ -26,10 +26,11 @@ storiesOf('Editor', module)
     '',
     () => (
       <Editor
-        value={text('value', value)}
         theme={select('theme', themes, 'default')}
+        value={text('value', value)}
         lineNumbers={boolean('lineNumbers', true)}
         lineWrapping={boolean('lineWrapping', false)}
+        foldGutter={boolean('foldGutter', true)}
         readOnly={boolean('readOnly', false)}
       />
     )

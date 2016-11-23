@@ -3,7 +3,7 @@ import CodeMirror from 'codemirror';
 
 export default class Editor extends Component {
   componentDidMount() {
-    this.codeMirror = CodeMirror( // eslint-disable-line new-cap
+    this.cm = CodeMirror( // eslint-disable-line new-cap
       this.node,
       {
         value: this.props.value,
@@ -12,6 +12,8 @@ export default class Editor extends Component {
         lineWrapping: this.props.lineWrapping,
         readOnly: this.props.readOnly,
         autofocus: this.props.autofocus,
+        foldGutter: this.props.foldGutter,
+        gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
         theme: this.props.theme
       }
     );
@@ -19,19 +21,22 @@ export default class Editor extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.value !== this.props.value) {
-      this.codeMirror.setValue(nextProps.value);
+      this.cm.setValue(nextProps.value);
     }
     if (nextProps.theme !== this.props.theme) {
-      this.codeMirror.setOption('theme', nextProps.theme);
+      this.cm.setOption('theme', nextProps.theme);
     }
     if (nextProps.readOnly !== this.props.readOnly) {
-      this.codeMirror.setOption('readOnly', nextProps.readOnly);
+      this.cm.setOption('readOnly', nextProps.readOnly);
     }
     if (nextProps.lineNumbers !== this.props.lineNumbers) {
-      this.codeMirror.setOption('lineNumbers', nextProps.lineNumbers);
+      this.cm.setOption('lineNumbers', nextProps.lineNumbers);
     }
     if (nextProps.lineWrapping !== this.props.lineWrapping) {
-      this.codeMirror.setOption('lineWrapping', nextProps.lineWrapping);
+      this.cm.setOption('lineWrapping', nextProps.lineWrapping);
+    }
+    if (nextProps.foldGutter !== this.props.foldGutter) {
+      this.cm.setOption('foldGutter', nextProps.foldGutter);
     }
   }
 
@@ -42,7 +47,7 @@ export default class Editor extends Component {
   componentWillUnmount() {
     const node = this.node;
     node.removeChild(node.children[0]);
-    this.codeMirror = null;
+    this.cm = null;
   }
 
   getRef = node => {
@@ -60,6 +65,7 @@ Editor.propTypes = {
   lineNumbers: PropTypes.bool,
   lineWrapping: PropTypes.bool,
   readOnly: PropTypes.bool,
+  foldGutter: PropTypes.bool,
   autofocus: PropTypes.bool,
   theme: PropTypes.string
 };
@@ -71,5 +77,6 @@ Editor.defaultProps = {
   lineNumbers: true,
   lineWrapping: false,
   readOnly: false,
+  foldGutter: true,
   autofocus: false
 };
