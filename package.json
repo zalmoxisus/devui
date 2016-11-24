@@ -17,6 +17,7 @@
     "lint": "eslint src",
     "lintfix": "eslint src --fix",
     "jest": "jest --no-cache",
+    "test:update": "npm run jest -- -u",
     "test": "npm run lint && npm run jest",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "publish-storybook": "bash .scripts/publish_storybook.sh",
