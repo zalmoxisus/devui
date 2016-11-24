@@ -27,7 +27,7 @@ export default class Tabs extends Component {
       if (tab.name === selected) {
         isSelected = true;
         this.SelectedComponent = tab.component;
-        if (tab.selector) this.selector = tab.selector(tab);
+        if (tab.selector) this.selector = () => tab.selector(tab);
       }
       return (
         <button
@@ -46,7 +46,7 @@ export default class Tabs extends Component {
       <TabsContainer compact={this.props.compact}>
         <TabsHeader tabs={this.tabsHeader} buttons={this.props.buttons} />
         <div>{
-          this.SelectedComponent && <this.SelectedComponent {...this.selector} />
+          this.SelectedComponent && <this.SelectedComponent {...this.selector()} />
         }</div>
       </TabsContainer>
     );
