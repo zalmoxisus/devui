@@ -55,5 +55,6 @@ export const TabsContainer = styled.div`
   >div:last-child {
     flex: 1;
     overflow-y: hidden;
+    position: relative;
   }
 `;
