@@ -7,13 +7,13 @@ export const TabsContainer = styled.div`
   height: 100%;
   overflow-y: hidden;
 
-  >div:first-child {
+  > div:first-child {
     display: flex;
     flex: 0 0 3em;
-  
-    >div:first-child {
-     display: flex;
-      alignItems: flex-end;
+
+    > div:first-child {
+      display: flex;
+      align-items: flex-end;
       flex-wrap: nowrap;
       overflow-x: auto;
 
@@ -25,26 +25,27 @@ export const TabsContainer = styled.div`
         text-align: center;
         overflow: hidden;
         outline: 0;
-        transition: all .5s;
+        transition: all 0.5s;
         color: inherit;
 
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
           background-color: rgba(190, 190, 190, 0.4);
         }
       }
 
-      >[data-selected] {
+      > [data-selected] {
         background-color: transparent;
       }
     }
-  
-    >div:last-child {
+
+    > div:last-child {
       flex: 1;
       display: flex;
       justify-content: flex-end;
       align-items: center;
       padding: 0 1em;
-      background-color: rgba(190, 190 ,190, 0.2);
+      background-color: rgba(190, 190, 190, 0.2);
 
       button {
         margin-left: 0.2em;
@@ -52,7 +53,7 @@ export const TabsContainer = styled.div`
     }
   }
 
-  >div:last-child {
+  > div:last-child {
     flex: 1;
     overflow-y: auto;
     position: relative;

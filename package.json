@@ -16,6 +16,7 @@
     "prepublish": "babel ./src --out-dir ./lib --ignore tests,stories",
     "lint": "eslint src",
     "lintfix": "eslint src --fix",
+    "lint:css": "stylelint './src/**/styles.js'",
     "jest": "jest --no-cache",
     "test:update": "npm run jest -- -u",
     "test": "npm run lint && npm run jest",
@@ -61,7 +62,10 @@
     "react-addons-test-utils": "^15.0.0",
     "react-dom": "^15.0.0",
     "sass-loader": "^4.0.2",
-    "storybook-addon-specifications": "^1.0.15"
+    "storybook-addon-specifications": "^1.0.15",
+    "stylelint": "^7.6.0",
+    "stylelint-config-standard": "^15.0.0",
+    "stylelint-processor-styled-components": "^0.0.4"
   },
   "peerDependencies": {
     "react": "^0.14.7 || ^15.0.0"
