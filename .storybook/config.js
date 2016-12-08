@@ -1,6 +1,8 @@
-import { configure, setAddon } from '@kadira/storybook';
+import { configure, setAddon, addDecorator } from '@kadira/storybook';
 import { setOptions } from '@kadira/storybook-addon-options';
 import infoAddon from '@kadira/react-storybook-addon-info';
+import { withKnobs } from '@kadira/storybook-addon-knobs';
+import { withTheme } from './themeAddon';
 import '../src/presets.js';
 
 setAddon(infoAddon);
@@ -13,6 +15,9 @@ setOptions({
   showSearchBox: false,
   downPanelInRight: true
 });
+
+addDecorator(withTheme);
+addDecorator(withKnobs);
 
 const req = require.context('../src/', true, /stories\/index\.js$/)
 
