@@ -1,6 +1,6 @@
 {
   "name": "remotedev-monitor-components",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Collection of reusable components for building a Remotedev monitor.",
   "files": [
     "lib"
