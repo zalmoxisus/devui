@@ -11,7 +11,7 @@ exports[`Editor renders correctly 1`] = `
   <styled.div
     innerRef={[Function]}>
     <div
-      className="bkguQW" />
+      className="gOruIR" />
   </styled.div>
 </Editor>
 `;
