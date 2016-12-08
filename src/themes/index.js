@@ -38,3 +38,23 @@ export const getTheme = ({ theme: type, scheme }) => {
     ...theme
   };
 };
+
+export const spin = keyframes`
+  to { transform: rotate(1turn); }
+`;
+export const spinner = (theme) => `
+  animation: ${spin} 400ms infinite linear;
+  width: ${theme.spinnerSize}px;
+  height: ${theme.spinnerSize}px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: ${Math.floor(theme.spinnerSize / 8)}px solid ${theme.base05};
+  border-right-color: ${theme.base01};
+  display: inline-block;
+  position: relative;
+`;
+
+export const fadeIn = keyframes`
+  from { opacity: 0; }
+  to { opacity: 1; }
+`;
