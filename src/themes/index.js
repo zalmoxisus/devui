@@ -1,4 +1,6 @@
 import { keyframes } from 'styled-components';
+import invertColors from '../utils/invertColors';
+
 import material from './material';
 
 import * as schemes from 'redux-devtools-themes';
@@ -13,13 +15,14 @@ const themes = {
 
 export const listThemes = () => ['default', Object.keys(themes)];
 
-export const getTheme = ({ theme: type, scheme }) => {
+export const getTheme = ({ theme: type, scheme, invert }) => {
   let theme = {
     inputHeight: 34,
     inputBorderWidth: 1,
     inputBorderRadius: 4
   };
-  const colors = schemes[scheme];
+  let colors = schemes[scheme];
+  if (invert) colors = invertColors(colors);
   if (type !== 'default') {
     theme = {
       ...theme,
