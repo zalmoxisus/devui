@@ -2,8 +2,8 @@ import { keyframes } from 'styled-components';
 import material from './material';
 
 import * as schemes from 'redux-devtools-themes';
-import inspector from 'redux-devtools-inspector/lib/themes/inspector';
-schemes.default = inspector;
+import defaultScheme from 'base16';
+schemes.default = defaultScheme;
 
 export const listSchemes = () => Object.keys(schemes).slice(1);
 
@@ -33,7 +33,7 @@ export const getTheme = ({ theme: type, scheme }) => {
     inputPaddingHorizontal: theme.inputHeight / 3,
     selectArrowWidth: Math.floor(theme.inputHeight / 7),
     inputInternalHeight: theme.inputHeight - theme.inputBorderWidth * 2,
-    inputBorderColor: `${colors.base06} ${colors.base05} ${colors.base04}`,
+    inputBorderColor: colors.base06,
     inputBorderColorFocused: colors.base0D,
     ...theme
   };

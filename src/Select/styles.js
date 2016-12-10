@@ -1,11 +1,9 @@
 import { css } from 'styled-components';
 import { fadeIn, spinner } from '../themes';
-import { lighten, darken } from '../utils/colorHelpers';
 
 export const selectStyle = (theme, openOuterUp, menuMaxHeight) => css`
   &.Select {
     position: relative;
-    width: 100%;
 
     &,
     & div,
@@ -15,7 +13,7 @@ export const selectStyle = (theme, openOuterUp, menuMaxHeight) => css`
     }
 
     &.is-disabled > .Select-control {
-      background-color: ${theme.base06};
+      background-color: ${theme.base05};
 
       &:hover {
         box-shadow: none;
@@ -34,7 +32,7 @@ export const selectStyle = (theme, openOuterUp, menuMaxHeight) => css`
     border-radius: ${theme.inputBorderRadius}px;
     border-style: solid;
     border-width: ${theme.inputBorderWidth}px;
-    color: ${theme.base01};
+    color: ${theme.base00};
     cursor: default;
     display: table;
     border-spacing: 0;
@@ -65,13 +63,6 @@ export const selectStyle = (theme, openOuterUp, menuMaxHeight) => css`
       `0 0 ${theme.inputBorderRadius}px ${theme.inputBorderRadius}px` :
       `${theme.inputBorderRadius}px ${theme.inputBorderRadius}px 0 0`
     };
-    background: ${theme.base07};
-    border-color: ${theme.inputBorderColor};
-
-    > .Select-arrow {
-      border-color: transparent transparent ${theme.base04};
-      border-width: 0 ${theme.selectArrowWidth}px ${theme.selectArrowWidth}px;
-    }
   }
 
   &.is-searchable {
@@ -82,9 +73,6 @@ export const selectStyle = (theme, openOuterUp, menuMaxHeight) => css`
 
   &.is-focused:not(.is-open) > .Select-control {
     border-color: ${theme.inputBorderColorFocused};
-    box-shadow:
-      inset 0 1px 2px rgba(0, 0, 0, 0.1),
-      0 0 5px -1px fade(${theme.base0D}, 50%);
   }
 
   .Select-placeholder,
@@ -107,7 +95,7 @@ export const selectStyle = (theme, openOuterUp, menuMaxHeight) => css`
   &.has-value.Select--single > .Select-control .Select-value,
   &.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value {
     .Select-value-label {
-      color: ${theme.base01};
+      color: ${theme.base00};
     }
 
     a.Select-value-label {
@@ -130,6 +118,7 @@ export const selectStyle = (theme, openOuterUp, menuMaxHeight) => css`
     vertical-align: middle;
 
     > input {
+      color: ${theme.base00}; 
       background: none transparent;
       border: 0 none;
       box-shadow: none;
@@ -238,8 +227,7 @@ export const selectStyle = (theme, openOuterUp, menuMaxHeight) => css`
   }
 
   .Select-menu-outer {
-    background-color: ${theme.base07};
-    border: 1px solid ${theme.base05};
+    border: 1px solid ${theme.base06};
     box-shadow: 0 ${openOuterUp ? '-1px' : '1px'} 0 rgba(0, 0, 0, 0.06);
     box-sizing: border-box;
     /* stylelint-disable declaration-empty-line-before */
@@ -262,30 +250,30 @@ export const selectStyle = (theme, openOuterUp, menuMaxHeight) => css`
   .Select-option {
     box-sizing: border-box;
     background-color: ${theme.base07};
-    color: ${lighten(theme.base01, 0.2)};
+    color: ${theme.base00};
     cursor: pointer;
     display: block;
     padding: ${theme.inputPaddingVertical}px ${theme.inputPaddingVertical}px;
 
     &.is-selected {
-      background-color: ${lighten(theme.base0D, 0.7)};
-      color: ${theme.base01};
+      background-color: ${theme.base06};
+      color: ${theme.base00};
     }
 
     &.is-focused {
-      background-color: ${lighten(theme.base0D, 0.5)};
-      color: ${theme.base01};
+      background-color: ${theme.base05};
+      color: ${theme.base00};
     }
 
     &.is-disabled {
-      color: ${lighten(theme.base01, 0.6)};
+      color: ${theme.base02};
       cursor: default;
     }
   }
 
   .Select-noresults {
     box-sizing: border-box;
-    color: ${lighten(theme.base01, 0.4)};
+    color: ${theme.base01};
     cursor: default;
     display: block;
     padding: ${theme.inputPaddingVertical}px ${theme.inputPaddingVertical}px;
@@ -304,9 +292,9 @@ export const selectStyle = (theme, openOuterUp, menuMaxHeight) => css`
     }
 
     .Select-value {
-      background-color: ${lighten(theme.base06, 0.05)};
+      background-color: ${theme.base07};
       border-radius: ${theme.inputBorderRadius}px;
-      border: 1px solid ${theme.base06};
+      border: 1px solid ${theme.base05};
       color: ${theme.base00};
       display: inline-block;
       font-size: 0.9em;
@@ -342,37 +330,30 @@ export const selectStyle = (theme, openOuterUp, menuMaxHeight) => css`
       cursor: pointer;
       border-bottom-left-radius: ${theme.inputBorderRadius}px;
       border-top-left-radius: ${theme.inputBorderRadius}px;
-      border-right: 1px solid ${darken(theme.base06, 0.1)};
+      border-right: 1px solid ${theme.base05};
       padding: ${theme.inputPaddingVertical / 4}px ${theme.inputPaddingVertical / 2}px;
 
       &:hover,
       &:focus {
-        background-color: ${darken(theme.base06, 0.05)};
-        color: ${darken(theme.base00, 0.05)};
+        background-color: ${theme.base04};
+        color: ${theme.base07};
       }
 
       &:active {
-        background-color: ${darken(theme.base06, 0.1)};
+        background-color: ${theme.base01};
       }
     }
   }
 
   &.Select--multi.is-disabled {
     .Select-value {
-      background-color: ${theme.base06};
-      border: 1px solid ${darken(theme.base06, 0.1)};
-      color: ${theme.base01};
+      background-color: ${theme.base07};
+      border: 1px solid ${theme.base06};
+      color: ${theme.base02};
     }
 
     .Select-value-icon {
       cursor: not-allowed;
-      border-right: 1px solid ${darken(theme.base06, 0.1)};
-
-      &:hover,
-      &:focus,
-      &:active {
-        background-color: ${theme.base06};
-      }
     }
   }
 `;
