@@ -1,8 +1,26 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import addons from '@kadira/storybook-addons';
 import { EVENT_ID_DATA } from './';
 import { getTheme } from '../../src/themes';
+import { lighten } from '../../src/utils/colorHelpers';
+
+export const Container = styled.div`
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background-color: ${props => lighten(props.theme.base07, 0.03)};
+  
+  > div {
+    height: 100%;
+    width: 100%;
+      
+    > div {
+      height: 100%;
+      width: 100%;
+    }
+  }
+`;
 
 const channel = addons.getChannel();
 
@@ -38,6 +56,8 @@ class Theme extends React.Component {
 
 export const withTheme = story => (
   <Theme>
-    {story()}
+    <Container>
+      {story()}
+    </Container>
   </Theme>
 );

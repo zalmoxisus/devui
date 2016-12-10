@@ -4,7 +4,6 @@ import { storiesOf, action } from '@kadira/storybook';
 import { withKnobs, text, number, boolean } from '@kadira/storybook-addon-knobs';
 import Select from '../';
 import { options } from './options';
-import { lighten } from '../../utils/colorHelpers';
 
 export const Container = styled.div`
   display: flex;
@@ -12,7 +11,6 @@ export const Container = styled.div`
   width: 100%;
   justify-content: center;
   align-items: center;
-  background-color: ${props => lighten(props.theme.base07, 0.03)};
   
   > div {
     width: 90%;
