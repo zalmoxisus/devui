@@ -1,8 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
-import { withKnobs, text, select, boolean } from '@kadira/storybook-addon-knobs';
+import { withKnobs, text, boolean } from '@kadira/storybook-addon-knobs';
 import Editor from '../';
-import themes from '../themes';
 import WithTabs from './WithTabs';
 
 const value = `
@@ -17,10 +16,9 @@ storiesOf('Editor', module)
   .addDecorator(withKnobs)
   .addWithInfo(
     'default',
-    '',
+    'Based on [CodeMirror](http://codemirror.net/).',
     () => (
       <Editor
-        theme={select('theme', themes, 'default')}
         value={text('value', value)}
         lineNumbers={boolean('lineNumbers', true)}
         lineWrapping={boolean('lineWrapping', false)}
@@ -35,7 +33,6 @@ storiesOf('Editor', module)
     '',
     () => (
       <WithTabs
-        value={text('value', value)}
         lineNumbers={boolean('lineNumbers', true)}
       />
     )
