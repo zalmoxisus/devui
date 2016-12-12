@@ -1,17 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import styled from 'styled-components';
 import ReactSelect from 'react-select';
-import { selectStyle } from './styles';
+import { getStyles } from '../themes';
+import { style } from './styles';
 
-const SelectContainer = styled(ReactSelect)('',
-  ({ theme, openOuterUp, menuMaxHeight }) => selectStyle(theme, openOuterUp, menuMaxHeight)
-);
-/*
-  Equivalent to
-   const SelectContainer = styled(ReactSelect)`
-   ${({ theme, openOuterUp, menuMaxHeight }) => selectStyle(theme, openOuterUp, menuMaxHeight)}
-   `;
-*/
+const SelectContainer = getStyles(style, ReactSelect);
 
 export default class Select extends Component {
   render() {

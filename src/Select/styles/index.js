@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
-import { fadeIn, spinner } from '../themes';
+import { fadeIn, spinner } from '../../themes';
 
-export const selectStyle = (theme, openOuterUp, menuMaxHeight) => css`
+export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
   &.Select {
     position: relative;
 
@@ -118,7 +118,7 @@ export const selectStyle = (theme, openOuterUp, menuMaxHeight) => css`
     vertical-align: middle;
 
     > input {
-      color: ${theme.base00}; 
+      color: ${theme.base00};
       background: none transparent;
       border: 0 none;
       box-shadow: none;

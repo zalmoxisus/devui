@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import styled from 'styled-components';
 import CodeMirror from 'codemirror';
-import { editorDefaultStyle, editorThemedStyle } from './styles';
+import { defaultStyle, themedStyle } from './styles/';
 
 const EditorContainer = styled.div('',
-  ({ theme }) => (theme.scheme === 'default' ? editorDefaultStyle : editorThemedStyle(theme))
+  ({ theme }) => (theme.scheme === 'default' ? defaultStyle : themedStyle(theme))
 );
 
 export default class Editor extends Component {

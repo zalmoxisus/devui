@@ -3,7 +3,7 @@ import { getStyles } from '../themes';
 import Buttons from './Buttons';
 import * as styles from './styles';
 
-const TabsWrapper = getStyles(styles);
+const TabsWrapper = getStyles(styles, 'div', true);
 
 export default class TabsHeader extends Component {
   shouldComponentUpdate(nextProps) {

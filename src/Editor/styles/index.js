@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export const editorDefaultStyle = `
+export const defaultStyle = `
   height: 100%;
 
   > div {
@@ -9,7 +9,7 @@ export const editorDefaultStyle = `
   }
 `;
 
-export const editorThemedStyle = theme => css`
+export const themedStyle = theme => css`
   height: 100%;
 
   > div {

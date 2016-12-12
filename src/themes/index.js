@@ -44,8 +44,11 @@ export const getTheme = ({ theme: type, scheme, invert }) => {
   };
 };
 
-export const getStyles = styles => styled.div('',
-  props => styles[props.theme && styles[props.theme.type] ? props.theme.type : 'default'](props)
+export const getStyles = (styles, component, multiple) => styled(component || 'div')('',
+  props => (
+    !multiple ? styles :
+      styles[props.theme ? props.theme.type : 'default'] || 'default'
+  )(props)
 );
 /*
  Equivalent to

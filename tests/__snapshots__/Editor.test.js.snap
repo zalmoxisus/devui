@@ -6,12 +6,11 @@ exports[`Editor renders correctly 1`] = `
   lineWrapping={false}
   mode="javascript"
   readOnly={false}
-  theme="default"
   value="var a = 1;">
   <styled.div
     innerRef={[Function]}>
     <div
-      className="gOruIR" />
+      className="eoIyAT" />
   </styled.div>
 </Editor>
 `;
