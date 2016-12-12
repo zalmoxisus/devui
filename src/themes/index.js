@@ -1,4 +1,4 @@
-import { keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import invertColors from '../utils/invertColors';
 
 import material from './material';
@@ -43,6 +43,17 @@ export const getTheme = ({ theme: type, scheme, invert }) => {
     ...theme
   };
 };
+
+export const getStyles = styles => styled.div('',
+  props => styles[props.theme && styles[props.theme.type] ? props.theme.type : 'default'](props)
+);
+/*
+ Equivalent to
+ const SelectContainer = styled(ReactSelect)`
+   ${props => styles[props.theme.type](props)}
+ `;
+*/
+
 
 export const spin = keyframes`
   to { transform: rotate(1turn); }

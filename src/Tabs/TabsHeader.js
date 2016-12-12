@@ -1,5 +1,9 @@
 import React, { Component, PropTypes } from 'react';
+import { getStyles } from '../themes';
 import Buttons from './Buttons';
+import * as styles from './styles';
+
+const TabsWrapper = getStyles(styles);
 
 export default class TabsHeader extends Component {
   shouldComponentUpdate(nextProps) {
@@ -8,10 +12,10 @@ export default class TabsHeader extends Component {
 
   render() {
     return (
-      <div>
+      <TabsWrapper>
         <div>{this.props.tabs}</div>
         <Buttons buttons={this.props.buttons} />
-      </div>
+      </TabsWrapper>
     );
   }
 }

@@ -1,7 +1,8 @@
 exports[`Tabs renders correctly 1`] = `
 <div
-  class="kdLbHO">
-  <div>
+  class="foLpMM">
+  <div
+    class="jLtDvn">
     <div>
       <button
         data-selected="true">
@@ -27,8 +28,9 @@ exports[`Tabs renders correctly 1`] = `
 
 exports[`Tabs renders with props 1`] = `
 <div
-  class="bEZQLe">
-  <div>
+  class="foLpMM">
+  <div
+    class="jLtDvn">
     <div>
       <button>
         Tab1

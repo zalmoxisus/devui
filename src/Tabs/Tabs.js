@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import TabsHeader from './TabsHeader';
-import { TabsContainer } from './styles';
+import { TabsContainer } from './styles/common';
 
 export default class Tabs extends Component {
   constructor(props) {
@@ -43,7 +43,7 @@ export default class Tabs extends Component {
 
   render() {
     return (
-      <TabsContainer compact={this.props.compact}>
+      <TabsContainer>
         <TabsHeader tabs={this.tabsHeader} buttons={this.props.buttons} />
         <div>{
           this.SelectedComponent && <this.SelectedComponent {...this.selector()} />
@@ -57,6 +57,5 @@ Tabs.propTypes = {
   tabs: PropTypes.array.isRequired,
   selected: PropTypes.string,
   onClick: PropTypes.func.isRequired,
-  buttons: PropTypes.array,
-  compact: PropTypes.bool
+  buttons: PropTypes.array
 };
