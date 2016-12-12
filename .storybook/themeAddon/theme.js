@@ -10,7 +10,16 @@ export const Container = styled.div`
   height: 100%;
   width: 100%;
   background-color: ${props => lighten(props.theme.base07, 0.03)};
-  
+  color: ${props => props.theme.base00};
+
+  div, input, textarea, keygen, select, button {
+   font-family: ${props => props.theme.fontFamily};
+ }
+
+ .CodeMirror div {
+   font-family: ${props => props.theme.codeFontFamily || props.theme.fontFamily};
+ }
+
   > div {
     height: 100%;
     width: 100%;
