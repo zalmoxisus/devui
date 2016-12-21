@@ -14,8 +14,12 @@ export default class Tabs extends Component {
     }
   }
 
+  onMouseUp = e => {
+    e.target.blur();
+  };
+
   onClick = (e) => {
-    this.props.onClick(e.target.innerText);
+    this.props.onClick(e.target.value);
   };
 
   updateTabs(props) {
@@ -33,7 +37,9 @@ export default class Tabs extends Component {
         <button
           key={tab.name}
           data-selected={isSelected}
+          onMouseUp={this.onMouseUp}
           onClick={this.onClick}
+          value={tab.name}
         >
           {tab.name}
         </button>
