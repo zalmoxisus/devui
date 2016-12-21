@@ -27,7 +27,6 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
   }
 
   .Select-control {
-    background-color: ${theme.base07};
     border-color: ${theme.inputBorderColor};
     border-radius: ${theme.inputBorderRadius}px;
     border-style: solid;
@@ -72,7 +71,7 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
   }
 
   &.is-focused:not(.is-open) > .Select-control {
-    border-color: ${theme.inputBorderColorFocused};
+    ${theme.inputFocusedStyle}
   }
 
   .Select-placeholder,
@@ -81,8 +80,7 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
     color: ${theme.base04};
     left: 0;
     line-height: ${theme.inputInternalHeight}px;
-    padding-left: ${theme.inputPaddingHorizontal}px;
-    padding-right: ${theme.inputPaddingVertical}px;
+    padding: 0 ${theme.inputPadding}px;
     position: absolute;
     right: 0;
     top: 0;
@@ -113,8 +111,8 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
 
   .Select-input {
     height: ${theme.inputInternalHeight}px;
-    padding-left: ${theme.inputPaddingHorizontal}px;
-    padding-right: ${theme.inputPaddingVertical}px;
+    padding-left: ${theme.inputPadding}px;
+    padding-right: ${theme.inputPadding}px;
     vertical-align: middle;
 
     > input {
@@ -253,7 +251,8 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
     color: ${theme.base00};
     cursor: pointer;
     display: block;
-    padding: ${theme.inputPaddingVertical}px ${theme.inputPaddingVertical}px;
+    padding: ${theme.inputPadding}px;
+    line-height: ${theme.inputInternalHeight / 2}px;
 
     &.is-selected {
       background-color: ${theme.base06};
@@ -274,16 +273,17 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
   .Select-noresults {
     box-sizing: border-box;
     color: ${theme.base01};
+    background-color: ${theme.base07};
     cursor: default;
     display: block;
-    padding: ${theme.inputPaddingVertical}px ${theme.inputPaddingVertical}px;
+    padding: ${theme.inputPadding}px;
   }
 
   &.Select--multi {
     .Select-input {
       display: inline-block;
       vertical-align: middle;
-      margin-left: ${theme.inputPaddingVertical}px;
+      margin-left: ${theme.inputPadding}px;
       padding: 0;
     }
 
@@ -298,8 +298,8 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
       color: ${theme.base00};
       display: inline-block;
       font-size: 0.9em;
-      margin-left: ${theme.inputPaddingHorizontal / 2}px;
-      margin-top: ${(theme.inputInternalHeight - 14) / 2 - theme.inputPaddingVertical / 4}px;
+      margin-left: ${theme.inputPadding / 2}px;
+      margin-top: ${(theme.inputInternalHeight - 14) / 2 - theme.inputPadding / 4}px;
       vertical-align: top;
     }
 
@@ -313,7 +313,7 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
       border-bottom-right-radius: ${theme.inputBorderRadius}px;
       border-top-right-radius: ${theme.inputBorderRadius}px;
       cursor: default;
-      padding: ${theme.inputPaddingVertical / 4}px ${theme.inputPaddingVertical / 2}px;
+      padding: ${theme.inputPadding / 4}px ${theme.inputPadding / 2}px;
     }
 
     a.Select-value-label {
@@ -331,7 +331,7 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
       border-bottom-left-radius: ${theme.inputBorderRadius}px;
       border-top-left-radius: ${theme.inputBorderRadius}px;
       border-right: 1px solid ${theme.base05};
-      padding: ${theme.inputPaddingVertical / 4}px ${theme.inputPaddingVertical / 2}px;
+      padding: ${theme.inputPadding / 4}px ${theme.inputPadding / 2}px;
 
       &:hover,
       &:focus {

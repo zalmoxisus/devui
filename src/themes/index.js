@@ -34,12 +34,11 @@ export const getTheme = ({ theme: type, scheme, invert }) => {
   return {
     ...colors,
     spinnerSize: Math.floor(theme.inputHeight / 2) - 2,
-    inputPaddingVertical: theme.inputHeight / 3,
-    inputPaddingHorizontal: theme.inputHeight / 3,
+    inputPadding: theme.inputHeight / 3,
     selectArrowWidth: Math.floor(theme.inputHeight / 7),
     inputInternalHeight: theme.inputHeight - theme.inputBorderWidth * 2,
-    inputBorderColor: colors.base06,
-    inputBorderColorFocused: colors.base0D,
+    inputBorderColor: colors.base05,
+    inputFocusedStyle: `border-color: ${colors.base0D}`,
     ...theme
   };
 };
@@ -47,7 +46,7 @@ export const getTheme = ({ theme: type, scheme, invert }) => {
 export const getStyles = (styles, component, multiple) => styled(component || 'div')('',
   props => (
     !multiple ? styles :
-      styles[props.theme ? props.theme.type : 'default'] || 'default'
+      styles[props.theme.type] || styles.default
   )(props)
 );
 /*
