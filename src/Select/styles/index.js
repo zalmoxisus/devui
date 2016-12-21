@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { fadeIn, spinner } from '../../themes';
+import { fadeIn, spinner } from '../../utils/effects';
 
 export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
   &.Select {

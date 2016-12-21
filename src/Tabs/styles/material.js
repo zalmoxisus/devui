@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { ripple } from '../../utils/effects';
 
 export const style = ({ theme }) => css`
   display: flex;
@@ -28,6 +29,8 @@ export const style = ({ theme }) => css`
         border-bottom: 2px solid ${theme.base04};
         color: ${theme.base03};
       }
+
+      ${ripple(theme)}
     }
 
     > [data-selected] {
