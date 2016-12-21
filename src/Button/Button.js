@@ -1,27 +1,36 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
+import { getStyles } from '../themes';
+import * as styles from './styles';
 
-const buttonStyles = {
-  border: '1px solid #eee',
-  borderRadius: 3,
-  backgroundColor: '#FFFFFF',
-  cursor: 'pointer',
-  fontSize: 15,
-  padding: '3px 10px',
-};
+const ButtonWrapper = getStyles(styles, 'button', true);
 
-const Button = ({ children, onClick, style = {} }) => (
-  <button
-    style={{ ...buttonStyles, ...style }}
-    onClick={onClick}
-  >
-    {children}
-  </button>
-);
+export default class Button extends Component {
+  shouldComponentUpdate(nextProps) {
+    return nextProps.children !== this.props.children ||
+      nextProps.disabled !== this.props.disabled;
+  }
+
+  onMouseUp = e => {
+    e.target.blur();
+  };
+
+  render() {
+    return (
+      <ButtonWrapper
+        disabled={this.props.disabled}
+        onMouseUp={this.onMouseUp}
+        onClick={this.props.onClick}
+        type={this.props.type}
+      >
+        {this.props.children}
+      </ButtonWrapper>
+    );
+  }
+}
 
 Button.propTypes = {
-  children: React.PropTypes.string.isRequired,
-  onClick: React.PropTypes.func,
-  style: React.PropTypes.object,
+  children: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+  type: PropTypes.string,
+  disabled: PropTypes.bool
 };
-
-export default Button;
