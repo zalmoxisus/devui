@@ -18,7 +18,8 @@ export const listThemes = () => ['default', Object.keys(themes)];
 export const getTheme = ({ theme: type, scheme, invert }) => {
   let theme = {
     type,
-    fontFamily: '\'Source Code Pro\', monospace',
+    fontFamily: '\'Source Sans Pro\', sans-serif',
+    codeFontFamily: '\'Source Code Pro\', monospace',
     inputHeight: 34,
     inputBorderWidth: 1,
     inputBorderRadius: 4
