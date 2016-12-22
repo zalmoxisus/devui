@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { fadeIn } from '../../utils/effects';
 
 const both = {
   top: `
@@ -73,26 +74,29 @@ export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, toolbar }) 
   &:after,
   &:before {
     display: none;
+    opacity: 0;
     position: absolute;
     left: 50%;
-    z-index: 100;
+    z-index: 999;
     ${both[tooltipPosition]}
-    user-select: none; 
+    user-select: none;
   }
 
   &:before {
     ${before[tooltipPosition]}
+    ${theme.type === 'material' ? `animation: ${fadeIn} 500ms;` : ''}
   }
 
   &:after {
     content: "";
     border-style: solid;
     border-width: 10px;
-    ${after(tooltipPosition, theme.base03)}
+    ${after(tooltipPosition, theme.type === 'material' ? 'transparent' : theme.base03)}
   }
 
   &:hover:after,
   &:hover:before {
     display: block;
+    opacity: 1;
   }
 `;
