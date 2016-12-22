@@ -1,23 +1,34 @@
 import { css } from 'styled-components';
 
-export const style = ({ theme, disabled }) => css`
+export const style = ({ theme, disabled, toolbar }) => css`
   box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
   outline: none;
   font-family: inherit;
   font-weight: 600;
   line-height: 16px;
-  min-height: 30px;
   text-decoration: none;
   display: inline-block;
-  margin: 4px 2px;
-  padding: 2px 10px;
   transition: all 0.5s;
+  ${toolbar ? `
+  width: 100%;
+  min-height: 28px;
+  padding: 2px 7px;
+  margin: 0;
+  border: 1px solid ${theme.base07};
+  ` : `
+  min-height: 34px;
+  padding: 2px 12px;
+  margin: 4px 2px;
   border: 1px solid ${theme.base06};
   border-radius: 4px;
+  `}
   ${disabled ? `
   cursor: not-allowed;
   color: ${theme.base03};
   background-color: ${theme.base05};
+  border: 1px solid ${theme.base05};
+  opacity: 0.7;
   ` : `
   cursor: pointer;
   color: ${theme.base02};
