@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import { ripple } from '../../utils/effects';
 
-export const style = ({ theme, disabled, toolbar }) => css`
+export const style = ({ theme, primary, disabled, toolbar }) => css`
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   outline: none;
@@ -19,7 +19,7 @@ export const style = ({ theme, disabled, toolbar }) => css`
   margin: 0;
   ` : `
   min-height: 34px;
-  padding: 2px 12px;
+  padding: 2px 12px 0;
   margin: 4px 2px;
   border-radius: 2px;
   `}
@@ -30,8 +30,8 @@ export const style = ({ theme, disabled, toolbar }) => css`
   opacity: 0.6;
   ` : `
   cursor: pointer;
-  color: ${theme.base02};
-  background-color: ${theme.base06};
+  color: ${primary ? theme.base01 : theme.base02};
+  background-color: ${primary ? theme.base06 : theme.base07};
   `}
   ${!toolbar && !disabled ? `
     box-shadow:

@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export const style = ({ theme, disabled, toolbar }) => css`
+export const style = ({ theme, primary, disabled, toolbar }) => css`
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   outline: none;
@@ -31,8 +31,8 @@ export const style = ({ theme, disabled, toolbar }) => css`
   opacity: 0.7;
   ` : `
   cursor: pointer;
-  color: ${theme.base02};
-  background-color: ${theme.base07};
+  color: ${primary ? theme.base01 : theme.base02};
+  background-color: ${primary ? theme.base06 : theme.base07};
   `}
 
   &:hover,

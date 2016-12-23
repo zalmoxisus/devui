@@ -23,6 +23,7 @@ export default class Button extends Component {
 
     const button = (
       <ButtonWrapper
+        primary={this.props.primary}
         disabled={this.props.disabled}
         onMouseUp={this.onMouseUp}
         onClick={this.props.onClick}
@@ -53,6 +54,7 @@ Button.propTypes = {
   onClick: PropTypes.func,
   type: PropTypes.string,
   disabled: PropTypes.bool,
+  primary: PropTypes.bool,
   toolbar: PropTypes.bool
 };
 
