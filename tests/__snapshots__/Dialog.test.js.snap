@@ -1,0 +1,53 @@
+exports[`Dialog renders correctly 1`] = `
+<div
+  class="iHPiGN">
+  <div />
+  <div>
+    <div>
+      <div />
+      <button>
+        ×
+      </button>
+    </div>
+    <div>
+      <button
+        class="itQmfd">
+        Cancel
+      </button>
+      <button
+        class="itQmfd">
+        Submit
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Dialog renders with props 1`] = `
+<div
+  class="gNAgeE"
+  open="">
+  <div />
+  <div>
+    <div>
+      <div>
+        Dialog Title
+      </div>
+      <button>
+        ×
+      </button>
+    </div>
+    Hello Dialog!
+    <div>
+      <button
+        class="itQmfd">
+        Cancel
+      </button>
+      <button
+        class="itQmfd">
+        Submit
+      </button>
+    </div>
+  </div>
+</div>
+`;
