@@ -16,6 +16,13 @@ export default class Dialog extends PureComponent {
     this.submitButton = node;
   };
 
+  onKeyDown = e => {
+    if (e.keyCode === 27 /* esc */) {
+      e.preventDefault();
+      this.props.onDismiss(false);
+    }
+  };
+
   render() {
     const {
       modal, open, fullWidth, title, children, actions, noHeader, noFooter,
@@ -24,7 +31,7 @@ export default class Dialog extends PureComponent {
     const schema = rest.schema;
 
     return (
-      <DialogWrapper open={open} fullWidth={fullWidth}>
+      <DialogWrapper open={open} fullWidth={fullWidth} onKeyDown={this.onKeyDown}>
         <div onClick={!modal && onDismiss} />
         <div>
           {!noHeader &&
