@@ -41,7 +41,7 @@ export const style = ({ theme, open, fullWidth }) => css`
       0 11px 15px -7px rgba(0, 0, 0, 0.12),
       0 24px 38px 3px rgba(0, 0, 0, 0.2);
 
-    > div:first-child {
+    > div.mc-dialog--header {
       display: flex;
       align-items: center;
       font-weight: 600;
@@ -71,7 +71,7 @@ export const style = ({ theme, open, fullWidth }) => css`
       }
     }
 
-    > div:nth-child(2) {
+    > div.mc-dialog--body {
       overflow: auto;
 
       > form {
@@ -84,11 +84,11 @@ export const style = ({ theme, open, fullWidth }) => css`
           #root__description { margin-top: 0; }
         }
 
-        .hidden { display: none; }
+        .mc-dialog--hidden { display: none; }
       }
     }
 
-    > div:nth-child(3) {
+    > div.mc-dialog--footer {
       min-height: 45px;
       box-sizing: border-box;
       font-size: 12px;

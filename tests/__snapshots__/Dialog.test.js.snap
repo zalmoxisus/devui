@@ -1,16 +1,19 @@
 exports[`Dialog renders correctly 1`] = `
 <div
-  class="iEDbaR">
+  class="kOWdxF">
   <div />
   <div>
-    <div>
+    <div
+      class="mc-dialog--header">
       <div />
       <button>
         ×
       </button>
     </div>
-    <div />
-    <div>
+    <div
+      class="mc-dialog--body" />
+    <div
+      class="mc-dialog--footer">
       <button
         class="itQmfd">
         Cancel
@@ -26,14 +29,17 @@ exports[`Dialog renders correctly 1`] = `
 
 exports[`Dialog renders modal 1`] = `
 <div
-  class="iEDbaR">
+  class="kOWdxF">
   <div />
   <div>
-    <div>
+    <div
+      class="mc-dialog--header">
       <div />
     </div>
-    <div />
-    <div>
+    <div
+      class="mc-dialog--body" />
+    <div
+      class="mc-dialog--footer">
       <button
         class="itQmfd">
         Cancel
@@ -49,11 +55,12 @@ exports[`Dialog renders modal 1`] = `
 
 exports[`Dialog renders with props 1`] = `
 <div
-  class="jmrWOQ"
+  class="eKjffD"
   open="">
   <div />
   <div>
-    <div>
+    <div
+      class="mc-dialog--header">
       <div>
         Dialog Title
       </div>
@@ -61,10 +68,12 @@ exports[`Dialog renders with props 1`] = `
         ×
       </button>
     </div>
-    <div>
+    <div
+      class="mc-dialog--body">
       Hello Dialog!
     </div>
-    <div>
+    <div
+      class="mc-dialog--footer">
       <button
         class="itQmfd">
         Cancel

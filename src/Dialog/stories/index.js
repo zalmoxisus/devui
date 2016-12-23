@@ -15,6 +15,8 @@ storiesOf('Dialog', module)
         children={text('children', 'Hello Dialog!')}
         submitText={text('submitText', 'Submit!')}
         open={boolean('open', true)}
+        noHeader={boolean('noHeader', false)}
+        noFooter={boolean('noFooter', false)}
         modal={boolean('modal', false)}
         fullWidth={boolean('fullWidth', false)}
         onDismiss={action('dialog dismissed')}
@@ -28,6 +30,8 @@ storiesOf('Dialog', module)
     () => (
       <Dialog
         open={boolean('open', true)}
+        noHeader={boolean('noHeader', false)}
+        noFooter={boolean('noFooter', false)}
         fullWidth={boolean('fullWidth', false)}
         submitText={text('submitText', 'Submit!')}
         formData={object('formData', formData)}

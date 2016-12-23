@@ -18,7 +18,8 @@ export default class Dialog extends PureComponent {
 
   render() {
     const {
-      modal, open, fullWidth, title, children, actions, submitText, onDismiss, ...rest
+      modal, open, fullWidth, title, children, actions, noHeader, noFooter,
+      submitText, onDismiss, ...rest
     } = this.props;
     const schema = rest.schema;
 
@@ -26,26 +27,28 @@ export default class Dialog extends PureComponent {
       <DialogWrapper open={open} fullWidth={fullWidth}>
         <div onClick={!modal && onDismiss} />
         <div>
-          <div>
-            <div>{schema ? schema.title || title : title}</div>
-            {!modal && <button onClick={onDismiss}>×</button>}
-          </div>
-          <div>
+          {!noHeader &&
+            <div className="mc-dialog--header">
+              <div>{schema ? schema.title || title : title}</div>
+              {!modal && <button onClick={onDismiss}>×</button>}
+            </div>
+          }
+          <div className="mc-dialog--body">
             {children}
             {schema &&
-              <Form {...rest}>
-                <input type="submit" ref={this.getFormButtonRef} className="hidden" />
-              </Form>
+              <Form {...rest}>{!noFooter &&
+                <input type="submit" ref={this.getFormButtonRef} className="mc-dialog--hidden" />
+              }</Form>
             }
           </div>
-          {actions ? <div>{Children.toArray(actions)}</div> :
-            <div>
+          {!noFooter && (actions ? <div>{Children.toArray(actions)}</div> :
+            <div className="mc-dialog--footer">
               <Button onClick={onDismiss}>Cancel</Button>
               <Button primary onClick={this.onSubmit}>
                 {submitText || 'Submit'}
               </Button>
             </div>
-          }
+          )}
         </div>
       </DialogWrapper>
     );
@@ -59,6 +62,8 @@ Dialog.propTypes = {
   actions: PropTypes.node,
   submitText: PropTypes.string,
   fullWidth: PropTypes.bool,
+  noHeader: PropTypes.bool,
+  noFooter: PropTypes.bool,
   modal: PropTypes.bool,
   onDismiss: PropTypes.func,
   onSubmit: PropTypes.func
