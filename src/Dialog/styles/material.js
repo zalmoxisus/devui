@@ -23,9 +23,12 @@ export const style = ({ theme, open, fullWidth }) => css`
   }
 
   > div:last-child {
+    display: flex;
+    flex-direction: column;
     box-sizing: border-box;
     position: relative;
     z-index: 2;
+    max-height: 100%;
     min-width: 320px;
     ${fullWidth ? 'width: 99%;' : ''}
     padding: 16px;
@@ -65,7 +68,25 @@ export const style = ({ theme, open, fullWidth }) => css`
       }
     }
 
-    > div:last-child {
+    > div:nth-child(2) {
+      overflow: auto;
+
+      > form {
+        padding: 0;
+        
+        > .form-group { margin-bottom: 0; }
+
+        > div > fieldset {
+          legend { display: none; }
+          #root__description { margin-top: 0; }
+        }
+
+        .hidden { display: none; }
+      }
+    }
+
+    > div:nth-child(3) {
+      min-height: 45px;
       box-sizing: border-box;
       font-size: 12px;
       display: flex;

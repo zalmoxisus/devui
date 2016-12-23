@@ -21,7 +21,7 @@ export default class Form extends Component {
 }
 
 Form.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.any,
   schema: PropTypes.object.isRequired,
   widgets: PropTypes.objectOf(PropTypes.oneOfType([
     PropTypes.func,

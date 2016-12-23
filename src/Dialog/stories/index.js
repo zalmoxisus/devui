@@ -1,7 +1,8 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
-import { withKnobs, text, boolean } from '@kadira/storybook-addon-knobs';
+import { withKnobs, text, boolean, object } from '@kadira/storybook-addon-knobs';
 import Dialog from '../';
+import { schema, uiSchema, formData } from '../../Form/stories/schema';
 
 storiesOf('Dialog', module)
   .addDecorator(withKnobs)
@@ -18,6 +19,23 @@ storiesOf('Dialog', module)
         fullWidth={boolean('fullWidth', false)}
         onDismiss={action('dialog dismissed')}
         onSubmit={action('dialog submitted')}
+      />
+    )
+  )
+  .addWithInfo(
+    'with form',
+    '',
+    () => (
+      <Dialog
+        open={boolean('open', true)}
+        fullWidth={boolean('fullWidth', false)}
+        submitText={text('submitText', 'Submit!')}
+        formData={object('formData', formData)}
+        schema={object('schema', schema)}
+        uiSchema={object('uiSchema', uiSchema)}
+        onChange={action('form changed')}
+        onSubmit={action('form submitted')}
+        onDismiss={action('dialog dismissed')}
       />
     )
   );

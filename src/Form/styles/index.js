@@ -105,7 +105,7 @@ textarea.form-control {
 .checkbox-inline {
   position: relative;
   display: inline-block;
-  padding-left: 20px;
+  padding-left: 25px;
   margin-bottom: 0;
   vertical-align: middle;
   font-weight: normal;

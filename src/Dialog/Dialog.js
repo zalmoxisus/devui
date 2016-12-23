@@ -1,36 +1,48 @@
-import React, { Component, PropTypes, Children } from 'react';
+import React, { PureComponent, PropTypes, Children } from 'react';
 import Button from '../Button';
+import Form from '../Form';
 import { getStyles } from '../themes';
 import * as styles from './styles';
 
 const DialogWrapper = getStyles(styles, 'div', true);
 
-export default class Dialog extends Component {
-  shouldComponentUpdate(nextProps) {
-    return nextProps.open !== this.props.open ||
-      nextProps.fullWidth !== this.props.fullWidth ||
-      nextProps.title !== this.props.title ||
-      nextProps.children !== this.props.children ||
-      nextProps.submitText !== this.props.submitText ||
-      nextProps.modal !== this.props.modal;
-  }
+export default class Dialog extends PureComponent {
+  onSubmit = () => {
+    if (this.submitButton) this.submitButton.click();
+    else this.props.onSubmit();
+  };
+
+  getFormButtonRef = node => {
+    this.submitButton = node;
+  };
 
   render() {
-    const { modal, onDismiss } = this.props;
+    const {
+      modal, open, fullWidth, title, children, actions, submitText, onDismiss, ...rest
+    } = this.props;
+    const schema = rest.schema;
+
     return (
-      <DialogWrapper open={this.props.open} fullWidth={this.props.fullWidth}>
+      <DialogWrapper open={open} fullWidth={fullWidth}>
         <div onClick={!modal && onDismiss} />
         <div>
           <div>
-            <div>{this.props.title}</div>
+            <div>{schema ? schema.title || title : title}</div>
             {!modal && <button onClick={onDismiss}>×</button>}
           </div>
-          {this.props.children}
-          {this.props.actions ? <div>{Children.toArray(this.props.actions)}</div> :
+          <div>
+            {children}
+            {schema &&
+              <Form {...rest}>
+                <input type="submit" ref={this.getFormButtonRef} className="hidden" />
+              </Form>
+            }
+          </div>
+          {actions ? <div>{Children.toArray(actions)}</div> :
             <div>
-              <Button onClick={this.props.onDismiss}>Cancel</Button>
-              <Button primary onClick={this.props.onSubmit}>
-                {this.props.submitText || 'Submit'}
+              <Button onClick={onDismiss}>Cancel</Button>
+              <Button primary onClick={this.onSubmit}>
+                {submitText || 'Submit'}
               </Button>
             </div>
           }
