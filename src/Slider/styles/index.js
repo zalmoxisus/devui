@@ -45,11 +45,27 @@ export const style = ({ theme, percent, disabled }) => css`
     border-radius: 999px;
   }
 
+  input::-ms-thumb {
+    width: 24px;
+    height: 24px;
+    background-color: currentcolor;
+    border: 0;
+    border-radius: 999px;
+  }
+
   input:focus:not(:active)::-webkit-slider-thumb {
     box-shadow: 0 0 0 3px ${theme.base0D};
   }
 
   input:focus:not(:active)::-moz-range-thumb {
     box-shadow: 0 0 0 3px ${theme.base0D};
+  }
+
+  input:focus:not(:active)::-ms-thumb {
+    box-shadow: 0 0 0 3px ${theme.base0D};
+  }
+
+  input::-moz-focus-outer {
+    border: 0;
   }
 `;

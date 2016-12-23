@@ -1,6 +1,6 @@
 exports[`Slider renders correctly 1`] = `
 <div
-  class="hrvHrE">
+  class="edMwwj">
   <input
     max="100"
     min="0"
@@ -11,7 +11,7 @@ exports[`Slider renders correctly 1`] = `
 
 exports[`Slider renders with props 1`] = `
 <div
-  class="jFkXQO"
+  class="bnaPlU"
   disabled="">
   <label>
     Hi
