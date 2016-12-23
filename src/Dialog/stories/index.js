@@ -14,6 +14,7 @@ storiesOf('Dialog', module)
         children={text('children', 'Hello Dialog!')}
         submitText={text('submitText', 'Submit!')}
         open={boolean('open', true)}
+        modal={boolean('modal', false)}
         fullWidth={boolean('fullWidth', false)}
         onDismiss={action('dialog dismissed')}
         onSubmit={action('dialog submitted')}

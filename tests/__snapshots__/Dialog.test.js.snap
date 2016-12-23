@@ -23,6 +23,28 @@ exports[`Dialog renders correctly 1`] = `
 </div>
 `;
 
+exports[`Dialog renders modal 1`] = `
+<div
+  class="iHPiGN">
+  <div />
+  <div>
+    <div>
+      <div />
+    </div>
+    <div>
+      <button
+        class="itQmfd">
+        Cancel
+      </button>
+      <button
+        class="itQmfd">
+        Submit
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Dialog renders with props 1`] = `
 <div
   class="gNAgeE"

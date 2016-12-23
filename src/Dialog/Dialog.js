@@ -11,17 +11,19 @@ export default class Dialog extends Component {
       nextProps.fullWidth !== this.props.fullWidth ||
       nextProps.title !== this.props.title ||
       nextProps.children !== this.props.children ||
-      nextProps.submitText !== this.props.submitText;
+      nextProps.submitText !== this.props.submitText ||
+      nextProps.modal !== this.props.modal;
   }
 
   render() {
+    const { modal, onDismiss } = this.props;
     return (
       <DialogWrapper open={this.props.open} fullWidth={this.props.fullWidth}>
-        <div onClick={this.props.onDismiss} />
+        <div onClick={!modal && onDismiss} />
         <div>
           <div>
             <div>{this.props.title}</div>
-            <button onClick={this.props.onDismiss}>×</button>
+            {!modal && <button onClick={onDismiss}>×</button>}
           </div>
           {this.props.children}
           {this.props.actions ? <div>{Children.toArray(this.props.actions)}</div> :
@@ -45,6 +47,7 @@ Dialog.propTypes = {
   actions: PropTypes.node,
   submitText: PropTypes.string,
   fullWidth: PropTypes.bool,
+  modal: PropTypes.bool,
   onDismiss: PropTypes.func,
   onSubmit: PropTypes.func
 };

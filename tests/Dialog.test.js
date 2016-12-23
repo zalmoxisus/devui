@@ -22,6 +22,11 @@ describe('Dialog', function () {
     expect(renderToJson(wrapper)).toMatchSnapshot();
   });
 
+  it('renders modal', () => {
+    const wrapper = render(<Dialog modal />);
+    expect(renderToJson(wrapper)).toMatchSnapshot();
+  });
+
   it('should handle dismiss event', () => {
     const onDismiss = jest.fn();
     const wrapper = mount(<Dialog open onDismiss={onDismiss} />);
