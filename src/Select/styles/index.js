@@ -251,7 +251,7 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
     color: ${theme.base00};
     cursor: pointer;
     display: block;
-    padding: ${theme.inputPadding}px;
+    padding: ${theme.inputHeight / 3}px;
     line-height: ${theme.inputInternalHeight / 2}px;
 
     &.is-selected {
