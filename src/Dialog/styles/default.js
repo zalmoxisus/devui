@@ -45,7 +45,7 @@ export const style = ({ theme, open, fullWidth }) => css`
       display: flex;
       align-items: center;
       font-weight: 600;
-      margin: -17px -17px 16px;
+      margin: -17px -17px 0;
       padding: 16px;
       color: ${theme.base07};
       background-color: ${theme.dark ? theme.base03 : theme.base02};
@@ -88,6 +88,10 @@ export const style = ({ theme, open, fullWidth }) => css`
       }
     }
 
+    > div.mc-dialog--body:not(:empty) {
+      margin: 16px 0;
+    }
+
     > div.mc-dialog--footer {
       min-height: 45px;
       box-sizing: border-box;
@@ -95,7 +99,7 @@ export const style = ({ theme, open, fullWidth }) => css`
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      margin: 16px -16px -16px;
+      margin: 0 -16px -16px;
       padding: 2px 10px;
       border-top: 1px solid ${theme.base04};
     }
