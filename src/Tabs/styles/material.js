@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { ripple } from '../../utils/effects';
+import { ripple } from '../../utils/animations';
 
 export const style = ({ theme }) => css`
   display: flex;

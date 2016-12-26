@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { fadeIn } from '../../utils/effects';
+import { fadeIn } from '../../utils/animations';
 
 const both = {
   top: `

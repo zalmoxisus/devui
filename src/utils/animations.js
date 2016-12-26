@@ -50,3 +50,5 @@ export const ripple = (theme) => `
     transition: 0s;
   }
 `;
+
+export const animationCurve = 'cubic-bezier(0.4, 0, 0.2, 1)';
