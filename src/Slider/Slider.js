@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { getStyles } from '../themes';
-import { style } from './styles';
+import * as styles from './styles';
 
-const SliderWrapper = getStyles(style, 'div');
+const SliderWrapper = getStyles(styles, 'div', true);
 
 export default class Slider extends Component {
   shouldComponentUpdate(nextProps) {
@@ -20,10 +20,11 @@ export default class Slider extends Component {
   render() {
     const { label, ...rest } = this.props;
     const { value, max, min, disabled } = rest;
-    const percent = (value - min) / (max - min) * 100;
+    const absMax = max - min;
+    const percent = (value - min) / absMax * 100;
 
     return (
-      <SliderWrapper percent={percent} disabled={disabled}>
+      <SliderWrapper percent={percent} disabled={disabled || absMax === 0}>
         {label && <label>{label}</label>}
         <input {...rest} onChange={this.onChange} type="range" />
       </SliderWrapper>
