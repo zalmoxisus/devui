@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, mount } from 'enzyme';
 import { renderToJson } from 'enzyme-to-json';
-import Slider from '../src/Slider';
+import { Slider } from '../src';
 
 describe('Slider', function () {
   it('renders correctly', () => {

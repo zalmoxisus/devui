@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { mountToJson } from 'enzyme-to-json';
-import Editor from '../src/Editor';
+import { Editor } from '../src';
 import 'codemirror/mode/javascript/javascript';
 
 describe('Editor', function () {

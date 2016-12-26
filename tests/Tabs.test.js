@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, mount } from 'enzyme';
 import { renderToJson } from 'enzyme-to-json';
-import Tabs from '../src/Tabs';
+import { Tabs } from '../src';
 import { tabs } from '../src/Tabs/stories/data';
 
 describe('Tabs', function () {

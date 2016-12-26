@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, mount } from 'enzyme';
 import { renderToJson, mountToJson } from 'enzyme-to-json';
-import Select from '../src/Select';
+import { Select } from '../src';
 import { options } from '../src/Select/stories/options';
 
 describe('Select', function () {

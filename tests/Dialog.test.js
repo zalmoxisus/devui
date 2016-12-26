@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, mount } from 'enzyme';
 import { renderToJson } from 'enzyme-to-json';
-import Dialog from '../src/Dialog';
+import { Dialog } from '../src';
 
 describe('Dialog', function () {
   it('renders correctly', () => {
