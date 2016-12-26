@@ -9,7 +9,8 @@ export const style = ({ theme, percent, disabled }) => css`
 
   label {
     font-weight: 600;
-    padding: 5px;
+    padding: 0.3em 0.5em;
+    display: block;
   }
 
   input {
@@ -19,21 +20,21 @@ export const style = ({ theme, percent, disabled }) => css`
     display: block;
     width: 100%;
     margin: 0;
-    margin-top: 8px;
     cursor: pointer;
     color: inherit;
     background-color: ${theme.base05};
     background-image:
       linear-gradient(90deg, currentcolor, currentcolor ${percent}%, transparent ${percent}%);
     background-clip: content-box;
-    height: 6px;
+    height: 0.5em;
     border-radius: 999px;
     appearance: none;
+    font-size: 1em;
   }
 
  ${prefixSelectors('input', ['webkit-slider-thumb', 'moz-range-thumb', 'ms-thumb'], `{
-    width: 17px;
-    height: 17px;
+    width: 1.5em;
+    height: 1.5em;
     background-image: none;
     background-color: ${percent === 0 ? theme.base07 : 'currentcolor'};
     border: ${percent === 0 ? `5px solid ${theme.base04}` : 'none'};;

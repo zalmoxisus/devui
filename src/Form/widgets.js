@@ -28,6 +28,7 @@ const RangeWidget = ({
     min={schema.minimum}
     max={schema.maximum}
     step={schema.multipleOf}
+    withValue
   />
 );
 

@@ -24,6 +24,7 @@ storiesOf('Slider', module)
           min={number('min', 0)}
           max={number('max', 100)}
           label={text('label', 'Hello Tooltip')}
+          withValue={boolean('withValue', false)}
           disabled={boolean('disabled', false)}
           onChange={action('slider changed')}
         />

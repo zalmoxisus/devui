@@ -1,8 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { getStyles } from '../themes';
 import * as styles from './styles';
+import { containerStyle } from './styles/common';
 
 const SliderWrapper = getStyles(styles, 'div', true);
+const ContainerWithValue = getStyles(containerStyle, 'div', false);
+
 
 export default class Slider extends Component {
   shouldComponentUpdate(nextProps) {
@@ -10,6 +13,7 @@ export default class Slider extends Component {
       nextProps.value !== this.props.value ||
       nextProps.max !== this.props.max ||
       nextProps.min !== this.props.min ||
+      nextProps.withValue !== this.props.withValue ||
       nextProps.disabled !== this.props.disabled;
   }
 
@@ -18,15 +22,23 @@ export default class Slider extends Component {
   };
 
   render() {
-    const { label, ...rest } = this.props;
+    const { label, withValue, ...rest } = this.props;
     const { value, max, min, disabled } = rest;
     const absMax = max - min;
     const percent = (value - min) / absMax * 100;
+    const slider = (
+      <input {...rest} onChange={this.onChange} type="range" />
+    );
 
     return (
       <SliderWrapper percent={percent} disabled={disabled || absMax === 0}>
         {label && <label>{label}</label>}
-        <input {...rest} onChange={this.onChange} type="range" />
+        {!withValue ? slider :
+          <ContainerWithValue>
+            {slider}
+            <div>{value}</div>
+          </ContainerWithValue>
+        }
       </SliderWrapper>
     );
   }
@@ -37,6 +49,7 @@ Slider.propTypes = {
   min: PropTypes.number,
   max: PropTypes.number,
   label: React.PropTypes.string,
+  withValue: PropTypes.bool,
   disabled: PropTypes.bool,
   onChange: PropTypes.func
 };

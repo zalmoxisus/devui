@@ -1,6 +1,6 @@
 exports[`Dialog renders correctly 1`] = `
 <div
-  class="kOWdxF">
+  class="jLdruW">
   <div />
   <div>
     <div
@@ -29,7 +29,7 @@ exports[`Dialog renders correctly 1`] = `
 
 exports[`Dialog renders modal 1`] = `
 <div
-  class="kOWdxF">
+  class="jLdruW">
   <div />
   <div>
     <div
@@ -55,7 +55,7 @@ exports[`Dialog renders modal 1`] = `
 
 exports[`Dialog renders with props 1`] = `
 <div
-  class="eKjffD"
+  class="cJOwNV"
   open="">
   <div />
   <div>
