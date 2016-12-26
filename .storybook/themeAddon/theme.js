@@ -3,13 +3,13 @@ import styled, { ThemeProvider } from 'styled-components';
 import addons from '@kadira/storybook-addons';
 import { EVENT_ID_DATA } from './';
 import { getTheme } from '../../src/themes';
-import { lighten } from '../../src/utils/colorHelpers';
+import color from '../../src/utils/color';
 
 export const Container = styled.div`
   display: flex;
   height: 100%;
   width: 100%;
-  background-color: ${props => lighten(props.theme.base07, 0.03)};
+  background-color: ${props => color(props.theme.base07, 'lighten', 0.03)};
   color: ${props => props.theme.base00};
 
   div, input, textarea, keygen, select, button {
