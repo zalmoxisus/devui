@@ -1,0 +1,412 @@
+exports[`Select renders correctly 1`] = `
+<div
+  class="Select bcuLgS Select--single is-searchable">
+  <div
+    class="Select-control">
+    <span
+      class="Select-multi-value-wrapper"
+      id="react-select-2--value">
+      <div
+        class="Select-placeholder">
+        Select...
+      </div>
+      <div
+        class="Select-input">
+        <input
+          aria-activedescendant="react-select-2--value"
+          aria-expanded="false"
+          aria-haspopup="false"
+          aria-owns=""
+          class="Select-input"
+          role="combobox"
+          value="" />
+      </div>
+    </span>
+    <span
+      class="Select-arrow-zone">
+      <span
+        class="Select-arrow" />
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Select renders with props 1`] = `
+<div
+  class="Select hbjxPa Select--multi is-disabled is-loading has-value">
+  <div
+    class="Select-control">
+    <span
+      class="Select-multi-value-wrapper"
+      id="react-select-3--value">
+      <div
+        class="Select-value">
+        <span
+          aria-selected="true"
+          class="Select-value-label"
+          id="react-select-3--value-0"
+          role="option">
+          One
+          <span
+            class="Select-aria-only">
+             
+          </span>
+        </span>
+      </div>
+      <div
+        aria-activedescendant="react-select-3--value"
+        aria-expanded="false"
+        aria-owns="react-select-3--value"
+        aria-readonly="true"
+        class="Select-input"
+        role="combobox"
+        style="border:0;width:1px;display:inline-block;"
+        tabindex="0" />
+    </span>
+    <span
+      aria-hidden="true"
+      class="Select-loading-zone">
+      <span
+        class="Select-loading" />
+    </span>
+    <span
+      class="Select-arrow-zone">
+      <span
+        class="Select-arrow" />
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Select should select another option 1`] = `
+<Select
+  autosize={false}
+  clearable={false}
+  menuMaxHeight={200}
+  onChange={[Function]}
+  options={
+    Array [
+      Object {
+        "label": "One",
+        "value": "one",
+      },
+      Object {
+        "label": "Two",
+        "value": "two",
+      },
+      Object {
+        "label": "One hundred",
+        "value": "hundred",
+      },
+    ]
+  }>
+  <Styled(Select)
+    autosize={false}
+    clearable={false}
+    menuMaxHeight={200}
+    onChange={[Function]}
+    options={
+      Array [
+        Object {
+          "label": "One",
+          "value": "one",
+        },
+        Object {
+          "label": "Two",
+          "value": "two",
+        },
+        Object {
+          "label": "One hundred",
+          "value": "hundred",
+        },
+      ]
+    }>
+    <Select
+      addLabelText="Add \"{label}\"?"
+      autosize={false}
+      backspaceRemoves={true}
+      backspaceToRemoveMessage="Press backspace to remove {label}"
+      className="bcuLgS"
+      clearAllText="Clear all"
+      clearValueText="Clear value"
+      clearable={false}
+      delimiter=","
+      disabled={false}
+      escapeClearsValue={true}
+      filterOptions={[Function]}
+      ignoreAccents={true}
+      ignoreCase={true}
+      inputProps={Object {}}
+      isLoading={false}
+      joinValues={false}
+      labelKey="label"
+      matchPos="any"
+      matchProp="any"
+      menuBuffer={0}
+      menuMaxHeight={200}
+      menuRenderer={[Function]}
+      multi={false}
+      noResultsText="No results found"
+      onBlurResetsInput={true}
+      onChange={[Function]}
+      onCloseResetsInput={true}
+      openAfterFocus={false}
+      optionComponent={[Function]}
+      options={
+        Array [
+          Object {
+            "label": "One",
+            "value": "one",
+          },
+          Object {
+            "label": "Two",
+            "value": "two",
+          },
+          Object {
+            "label": "One hundred",
+            "value": "hundred",
+          },
+        ]
+      }
+      pageSize={5}
+      placeholder="Select..."
+      required={false}
+      scrollMenuIntoView={true}
+      searchable={true}
+      simpleValue={false}
+      tabSelectsValue={true}
+      valueComponent={[Function]}
+      valueKey="value">
+      <div
+        className="Select bcuLgS Select--single is-open is-searchable">
+        <div
+          className="Select-control"
+          onKeyDown={[Function]}
+          onMouseDown={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}>
+          <span
+            className="Select-multi-value-wrapper"
+            id="react-select-4--value">
+            <div
+              className="Select-input">
+              <input
+                aria-activedescendant="react-select-4--option-0"
+                aria-expanded="true"
+                aria-haspopup="true"
+                aria-owns="react-select-4--list"
+                className="Select-input"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                required={false}
+                role="combobox"
+                value="two" />
+            </div>
+          </span>
+          <span
+            className="Select-arrow-zone"
+            onMouseDown={[Function]}>
+            <span
+              className="Select-arrow"
+              onMouseDown={[Function]} />
+          </span>
+        </div>
+        <div
+          className="Select-menu-outer">
+          <div
+            className="Select-menu"
+            id="react-select-4--list"
+            onMouseDown={[Function]}
+            onScroll={[Function]}
+            role="listbox">
+            <Option
+              className="Select-option is-focused"
+              instancePrefix="react-select-4-"
+              isFocused={true}
+              isSelected={false}
+              onFocus={[Function]}
+              onSelect={[Function]}
+              option={
+                Object {
+                  "label": "Two",
+                  "value": "two",
+                }
+              }
+              optionIndex={0}>
+              <div
+                className="Select-option is-focused"
+                id="react-select-4--option-0"
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseMove={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role="option">
+                Two
+              </div>
+            </Option>
+          </div>
+        </div>
+      </div>
+    </Select>
+  </Styled(Select)>
+</Select>
+`;
+
+exports[`Select shouldn't find any results 1`] = `
+<Select
+  autosize={false}
+  clearable={false}
+  menuMaxHeight={200}
+  onChange={[Function]}
+  options={
+    Array [
+      Object {
+        "label": "One",
+        "value": "one",
+      },
+      Object {
+        "label": "Two",
+        "value": "two",
+      },
+      Object {
+        "label": "One hundred",
+        "value": "hundred",
+      },
+    ]
+  }>
+  <Styled(Select)
+    autosize={false}
+    clearable={false}
+    menuMaxHeight={200}
+    onChange={[Function]}
+    options={
+      Array [
+        Object {
+          "label": "One",
+          "value": "one",
+        },
+        Object {
+          "label": "Two",
+          "value": "two",
+        },
+        Object {
+          "label": "One hundred",
+          "value": "hundred",
+        },
+      ]
+    }>
+    <Select
+      addLabelText="Add \"{label}\"?"
+      autosize={false}
+      backspaceRemoves={true}
+      backspaceToRemoveMessage="Press backspace to remove {label}"
+      className="bcuLgS"
+      clearAllText="Clear all"
+      clearValueText="Clear value"
+      clearable={false}
+      delimiter=","
+      disabled={false}
+      escapeClearsValue={true}
+      filterOptions={[Function]}
+      ignoreAccents={true}
+      ignoreCase={true}
+      inputProps={Object {}}
+      isLoading={false}
+      joinValues={false}
+      labelKey="label"
+      matchPos="any"
+      matchProp="any"
+      menuBuffer={0}
+      menuMaxHeight={200}
+      menuRenderer={[Function]}
+      multi={false}
+      noResultsText="No results found"
+      onBlurResetsInput={true}
+      onChange={[Function]}
+      onCloseResetsInput={true}
+      openAfterFocus={false}
+      optionComponent={[Function]}
+      options={
+        Array [
+          Object {
+            "label": "One",
+            "value": "one",
+          },
+          Object {
+            "label": "Two",
+            "value": "two",
+          },
+          Object {
+            "label": "One hundred",
+            "value": "hundred",
+          },
+        ]
+      }
+      pageSize={5}
+      placeholder="Select..."
+      required={false}
+      scrollMenuIntoView={true}
+      searchable={true}
+      simpleValue={false}
+      tabSelectsValue={true}
+      valueComponent={[Function]}
+      valueKey="value">
+      <div
+        className="Select bcuLgS Select--single is-open is-searchable">
+        <div
+          className="Select-control"
+          onKeyDown={[Function]}
+          onMouseDown={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}>
+          <span
+            className="Select-multi-value-wrapper"
+            id="react-select-5--value">
+            <div
+              className="Select-input">
+              <input
+                aria-activedescendant="react-select-5--option-null"
+                aria-expanded="true"
+                aria-haspopup="true"
+                aria-owns="react-select-5--list"
+                className="Select-input"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                required={false}
+                role="combobox"
+                value="text" />
+            </div>
+          </span>
+          <span
+            className="Select-arrow-zone"
+            onMouseDown={[Function]}>
+            <span
+              className="Select-arrow"
+              onMouseDown={[Function]} />
+          </span>
+        </div>
+        <div
+          className="Select-menu-outer">
+          <div
+            className="Select-menu"
+            id="react-select-5--list"
+            onMouseDown={[Function]}
+            onScroll={[Function]}
+            role="listbox">
+            <div
+              className="Select-noresults">
+              No results found
+            </div>
+          </div>
+        </div>
+      </div>
+    </Select>
+  </Styled(Select)>
+</Select>
+`;

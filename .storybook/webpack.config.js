@@ -25,6 +25,10 @@ const config = {
         loaders: ['json'],
         include: path.resolve(__dirname, '../'),
       },
+      {
+        test: /\.woff2?(\?\S*)?$/,
+        loader: 'url?limit=65000&mimetype=application/font-woff'
+      }
     ],
   }
 };

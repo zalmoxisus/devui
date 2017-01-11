@@ -1,0 +1,88 @@
+exports[`Dialog renders correctly 1`] = `
+<div
+  class="jLdruW">
+  <div />
+  <div>
+    <div
+      class="mc-dialog--header">
+      <div />
+      <button>
+        ×
+      </button>
+    </div>
+    <div
+      class="mc-dialog--body" />
+    <div
+      class="mc-dialog--footer">
+      <button
+        class="itQmfd">
+        Cancel
+      </button>
+      <button
+        class="itQmfd">
+        Submit
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Dialog renders modal 1`] = `
+<div
+  class="jLdruW">
+  <div />
+  <div>
+    <div
+      class="mc-dialog--header">
+      <div />
+    </div>
+    <div
+      class="mc-dialog--body" />
+    <div
+      class="mc-dialog--footer">
+      <button
+        class="itQmfd">
+        Cancel
+      </button>
+      <button
+        class="itQmfd">
+        Submit
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Dialog renders with props 1`] = `
+<div
+  class="cJOwNV"
+  open="">
+  <div />
+  <div>
+    <div
+      class="mc-dialog--header">
+      <div>
+        Dialog Title
+      </div>
+      <button>
+        ×
+      </button>
+    </div>
+    <div
+      class="mc-dialog--body">
+      Hello Dialog!
+    </div>
+    <div
+      class="mc-dialog--footer">
+      <button
+        class="itQmfd">
+        Cancel
+      </button>
+      <button
+        class="itQmfd">
+        Submit
+      </button>
+    </div>
+  </div>
+</div>
+`;

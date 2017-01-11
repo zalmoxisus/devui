@@ -1,16 +1,20 @@
 exports[`Tabs renders correctly 1`] = `
 <div
-  class="dBOaPE">
-  <div>
+  class="foLpMM">
+  <div
+    class="jLtDvn">
     <div>
       <button
-        data-selected="true">
+        data-selected="true"
+        value="Tab1">
         Tab1
       </button>
-      <button>
+      <button
+        value="Tab2">
         Tab2
       </button>
-      <button>
+      <button
+        value="Tab3">
         Tab3
       </button>
     </div>
@@ -27,17 +31,21 @@ exports[`Tabs renders correctly 1`] = `
 
 exports[`Tabs renders with props 1`] = `
 <div
-  class="sHDhi">
-  <div>
+  class="foLpMM">
+  <div
+    class="jLtDvn">
     <div>
-      <button>
+      <button
+        value="Tab1">
         Tab1
       </button>
       <button
-        data-selected="true">
+        data-selected="true"
+        value="Tab2">
         Tab2
       </button>
-      <button>
+      <button
+        value="Tab3">
         Tab3
       </button>
     </div>

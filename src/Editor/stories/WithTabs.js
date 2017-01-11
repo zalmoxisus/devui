@@ -2,26 +2,34 @@ import React, { Component } from 'react';
 import Editor from '../';
 import Tabs from '../../Tabs';
 
+const value1 = `
+  const func1 = () => {}
+`;
+
+const value2 = `
+  const func2 = () => {}
+`;
+
 /* eslint-disable react/prop-types */
 export default class WithTabs extends Component {
   state = {
-    selected: 'Light'
+    selected: 'Function 1'
   };
 
   render() {
-    const { value, lineNumbers } = this.props;
+    const { lineNumbers } = this.props;
     return (
       <Tabs
         tabs={[
           {
-            name: 'Dark',
+            name: 'Function 1',
             component: Editor,
-            selector: () => ({ theme: 'solarized dark', value, lineNumbers })
+            selector: () => ({ value: value1, lineNumbers })
           },
           {
-            name: 'Light',
+            name: 'Function 2',
             component: Editor,
-            selector: () => ({ theme: 'solarized light', value, lineNumbers })
+            selector: () => ({ value: value2, lineNumbers })
           }
         ]}
         selected={this.state.selected}
