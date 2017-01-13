@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import { ripple } from '../../utils/animations';
 
-export const style = ({ theme, primary, disabled, toolbar }) => css`
+export const style = ({ theme, primary, disabled, toolbar, mark }) => css`
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   outline: none;
@@ -48,6 +48,22 @@ export const style = ({ theme, primary, disabled, toolbar }) => css`
   &:hover {
     ${toolbar ? `background-color: ${theme.base05};` : ''}
   }
+
+  & > svg {
+    font-size: 2em;
+  }
+  ${mark !== '' ? `
+    & > svg {
+      color: ${theme[`base${mark}`]};
+      stroke: ${theme[`base${mark}`]};
+      stroke-width: 10;
+      stroke-opacity: 0.5;
+    }
+    ` : `
+    & > svg:hover, & > svg:focus {
+      color: ${theme.base00};
+    }
+  `}
 
   ${ripple(theme)}
 `;
