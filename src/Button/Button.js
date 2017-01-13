@@ -10,6 +10,7 @@ export default class Button extends Component {
   shouldComponentUpdate(nextProps) {
     return nextProps.children !== this.props.children ||
       nextProps.disabled !== this.props.disabled ||
+      nextProps.mark !== this.props.mark ||
       nextProps.tooltipPosition !== this.props.tooltipPosition ||
       nextProps.title !== this.props.title;
   }
@@ -19,12 +20,12 @@ export default class Button extends Component {
   };
 
   render() {
-    const { title, tooltipPosition, toolbar } = this.props;
-
+    const { title, tooltipPosition, toolbar, mark } = this.props;
     const button = (
       <ButtonWrapper
         primary={this.props.primary}
         disabled={this.props.disabled}
+        mark={mark}
         onMouseUp={this.onMouseUp}
         onClick={this.props.onClick}
         type={this.props.type}
@@ -48,14 +49,15 @@ export default class Button extends Component {
 }
 
 Button.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.any.isRequired,
   title: PropTypes.string,
   tooltipPosition: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
   onClick: PropTypes.func,
   type: PropTypes.string,
   disabled: PropTypes.bool,
   primary: PropTypes.bool,
-  toolbar: PropTypes.bool
+  toolbar: PropTypes.bool,
+  mark: PropTypes.string
 };
 
 Button.defaultProps = {

@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export const style = ({ theme, primary, disabled, toolbar }) => css`
+export const style = ({ theme, primary, disabled, toolbar, mark }) => css`
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   outline: none;
@@ -41,9 +41,24 @@ export const style = ({ theme, primary, disabled, toolbar }) => css`
     background-color: ${theme.base06};
     box-shadow: 1px 1px 2px ${theme.base05};
   }
-
   &:active {
     background-color: ${theme.base05};
     border: 1px solid ${theme.base04};
   }
+
+  & > svg {
+    font-size: 2em;
+  }
+  ${mark !== '' ? `
+    & > svg {
+      color: ${theme[`base${mark}`]};
+      stroke: ${theme[`base${mark}`]};
+      stroke-width: 10;
+      stroke-opacity: 0.5;
+    }
+    ` : `
+    & > svg:hover, & > svg:focus {
+      color: ${theme.base00};
+    }
+  `}
 `;
