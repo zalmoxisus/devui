@@ -3,6 +3,9 @@ import { getStyles } from '../themes';
 import * as styles from './styles';
 import { tooltipStyle } from './styles/common';
 
+const ButtonWrapper = getStyles(styles, 'button', true);
+const TooltipWrapper = getStyles(tooltipStyle, 'div', false);
+
 export default class Button extends Component {
   shouldComponentUpdate(nextProps) {
     return nextProps.children !== this.props.children ||
@@ -17,24 +20,19 @@ export default class Button extends Component {
   };
 
   render() {
-    const { title, tooltipPosition, toolbar, toggle } = this.props;
-    const ButtonWrapper = getStyles(styles, toggle ? 'div' : 'button', true);
-    const TooltipWrapper = getStyles(tooltipStyle, 'div', false);
+    const { title, tooltipPosition, toolbar, mark } = this.props;
     const button = (
-      <span>
-        <ButtonWrapper
-          primary={this.props.primary}
-          disabled={this.props.disabled}
-          mark={this.props.mark}
-          onMouseUp={this.onMouseUp}
-          onClick={this.props.onClick}
-          type={this.props.type}
-          toolbar={toolbar}
-          toggle={toggle}
-        >
-          {this.props.children}
-        </ButtonWrapper>
-      </span>
+      <ButtonWrapper
+        primary={this.props.primary}
+        disabled={this.props.disabled}
+        mark={mark}
+        onMouseUp={this.onMouseUp}
+        onClick={this.props.onClick}
+        type={this.props.type}
+        toolbar={toolbar}
+      >
+        {this.props.children}
+      </ButtonWrapper>
     );
 
     if (!title) return button;
@@ -59,8 +57,7 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   primary: PropTypes.bool,
   toolbar: PropTypes.bool,
-  toggle: PropTypes.bool,
-  mark: PropTypes.bool
+  mark: PropTypes.string
 };
 
 Button.defaultProps = {

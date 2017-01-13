@@ -77,17 +77,17 @@ storiesOf('Button', module)
     )
   )
   .addWithInfo(
-    'toggle',
+    'mark',
     '',
     () => (
       <Container>
         <Button
-          toggle
+          mark
           title={text('Title', 'Hello Tooltip')}
           tooltipPosition={select('tooltipPosition', ['top', 'bottom', 'left', 'right'])}
           disabled={boolean('Disabled', false)}
           onClick={action('button clicked')}
-          mark={boolean('mark', false)}
+          mark={text('mark', '08')}
         >
           <MdFiberManualRecord />
         </Button>
