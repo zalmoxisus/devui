@@ -57,7 +57,8 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   primary: PropTypes.bool,
   toolbar: PropTypes.bool,
-  mark: PropTypes.string
+  mark: PropTypes.oneOf(['01', '02', '03', '04', '05', '06',
+    '07', '08', '09', '0A', '0B', '0C', '0D', '0E', '0F'])
 };
 
 Button.defaultProps = {

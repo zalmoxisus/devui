@@ -49,7 +49,7 @@ export const style = ({ theme, primary, disabled, toolbar, mark }) => css`
   & > svg {
     font-size: 2em;
   }
-  ${mark !== '' && `
+  ${mark && `
     & > svg {
       color: ${theme[`base${mark}`]};
       stroke: ${theme[`base${mark}`]};
