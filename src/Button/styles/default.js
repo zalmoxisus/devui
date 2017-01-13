@@ -49,6 +49,7 @@ export const style = ({ theme, primary, disabled, toolbar, mark }) => css`
   & > svg {
     font-size: 2em;
   }
+
   ${mark && `
     & > svg {
       color: ${theme[`base${mark}`]};
