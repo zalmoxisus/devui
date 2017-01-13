@@ -82,7 +82,6 @@ storiesOf('Button', module)
     () => (
       <Container>
         <Button
-          mark
           title={text('Title', 'Hello Tooltip')}
           tooltipPosition={select('tooltipPosition', ['top', 'bottom', 'left', 'right'])}
           disabled={boolean('Disabled', false)}
