@@ -3,7 +3,8 @@
   "version": "0.0.5",
   "description": "Collection of reusable components for building a Remotedev monitor.",
   "files": [
-    "lib"
+    "lib",
+    "fonts"
   ],
   "repository": {
     "type": "git",
@@ -20,7 +21,7 @@
     "jest": "jest --no-cache",
     "test:update": "npm run jest -- -u",
     "test": "npm run lint && npm run jest",
-    "storybook": "start-storybook -p 9001 -c .storybook -s ./src/fonts",
+    "storybook": "start-storybook -p 9001 -c .storybook -s ./fonts",
     "publish-storybook": "bash .scripts/publish_storybook.sh",
     "postpublish": "npm run publish-storybook"
   },
