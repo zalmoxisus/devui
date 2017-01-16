@@ -3,9 +3,9 @@ import { ThemeProvider } from 'styled-components';
 import { getTheme } from '../themes';
 import { ContainerWrapper } from './styles';
 
-const Container = ({ themeData, children }) => (
+const Container = ({ themeData, className, children }) => (
   <ThemeProvider theme={getTheme(themeData)}>
-    <ContainerWrapper>
+    <ContainerWrapper className={className}>
       {children}
     </ContainerWrapper>
   </ThemeProvider>
@@ -13,7 +13,8 @@ const Container = ({ themeData, children }) => (
 
 Container.propTypes = {
   children: PropTypes.node.isRequired,
-  themeData: PropTypes.object.isRequired
+  themeData: PropTypes.object.isRequired,
+  className: PropTypes.string
 };
 
 export default Container;

@@ -4,9 +4,7 @@ export const style = ({ theme, primary, disabled, toolbar, mark }) => css`
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   outline: none;
-  font-family: inherit;
   font-weight: 600;
-  line-height: 16px;
   text-decoration: none;
   display: inline-block;
   transition: all 0.5s;
@@ -47,15 +45,16 @@ export const style = ({ theme, primary, disabled, toolbar, mark }) => css`
   }
 
   & > svg {
-    font-size: 2em;
+    font-size: 1.5em;
+    overflow: visible;
   }
 
   ${mark && `
     & > svg {
       color: ${theme[`base${mark}`]};
       stroke: ${theme[`base${mark}`]};
-      stroke-width: 10;
-      stroke-opacity: 0.5;
+      stroke-width: 14px;
+      stroke-opacity: 0.3;
     }
   `}
 `;

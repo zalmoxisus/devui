@@ -16,15 +16,4 @@ export const ContainerWrapper = styled.div`
  .CodeMirror div {
    font-family: ${props => props.theme.codeFontFamily || props.theme.fontFamily};
  }
-
-  > div {
-    height: 100%;
-    width: 100%;
-      
-    > div {
-      height: 100%;
-      width: 100%;
-      overflow-y: auto;
-    }
-  }
 `;

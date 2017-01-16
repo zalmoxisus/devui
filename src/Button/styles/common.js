@@ -58,8 +58,14 @@ export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, toolbar }) 
   position: relative;
   ${toolbar ? `
   flex-grow: 1;
-  padding: 2px 1px;
+  padding: 0 1px;
+  width: 100%;
   ` : ''}
+
+  & > button {
+    height: 100%;
+    width: 100%;
+  }
 
   &:before {
     content: "${tooltipTitle}";
