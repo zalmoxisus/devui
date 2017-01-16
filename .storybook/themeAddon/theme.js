@@ -1,36 +1,7 @@
 import React from 'react';
-import styled, { ThemeProvider } from 'styled-components';
 import addons from '@kadira/storybook-addons';
 import { EVENT_ID_DATA } from './';
-import { getTheme } from '../../src/themes';
-import color from '../../src/utils/color';
-
-export const Container = styled.div`
-  display: flex;
-  height: 100%;
-  width: 100%;
-  background-color: ${props => color(props.theme.base07, 'lighten', 0.03)};
-  color: ${props => props.theme.base00};
-
-  div, input, textarea, keygen, select, button {
-   font-family: ${props => props.theme.fontFamily};
- }
-
- .CodeMirror div {
-   font-family: ${props => props.theme.codeFontFamily || props.theme.fontFamily};
- }
-
-  > div {
-    height: 100%;
-    width: 100%;
-      
-    > div {
-      height: 100%;
-      width: 100%;
-      overflow-y: auto;
-    }
-  }
-`;
+import { Container } from '../../src';
 
 const channel = addons.getChannel();
 
@@ -57,17 +28,15 @@ class Theme extends React.Component {
   
   render() {
     return (
-      <ThemeProvider theme={getTheme(this.state)}>
+      <Container themeData={this.state}>
         {this.props.children}
-      </ThemeProvider>
+      </Container>
     );
   }
 }
 
 export const withTheme = story => (
   <Theme>
-    <Container>
-      {story()}
-    </Container>
+    {story()}
   </Theme>
 );
