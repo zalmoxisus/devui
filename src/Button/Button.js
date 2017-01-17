@@ -51,7 +51,8 @@ export default class Button extends Component {
 Button.propTypes = {
   children: PropTypes.any.isRequired,
   title: PropTypes.string,
-  tooltipPosition: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
+  tooltipPosition: PropTypes.oneOf(['top', 'bottom', 'left', 'right',
+    'bottomLeft', 'bottomRight', 'topLeft', 'topRight']),
   onClick: PropTypes.func,
   type: PropTypes.string,
   disabled: PropTypes.bool,

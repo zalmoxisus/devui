@@ -18,6 +18,20 @@ const both = {
   transform: translate(100%, -50%);
   top: 50%;
   left: auto;
+  `,
+  bottomLeft: `
+  transform: translate(-100%, 100%);
+  top: auto;
+  `,
+  bottomRight: `
+  transform: translateY(100%);
+  top: auto;
+  `,
+  topLeft: `
+  transform: translate(-100%, -100%);
+  `,
+  topRight: `
+  transform: translateY(-100%);
   `
 };
 
@@ -25,7 +39,11 @@ const before = {
   top: 'top: -10px;',
   bottom: 'bottom: -10px;',
   left: 'left: -10px;',
-  right: 'right: -10px;'
+  right: 'right: -10px;',
+  bottomLeft: 'bottom: -10px; left: calc(50% + 12px);',
+  bottomRight: 'bottom: -10px; left: calc(50% - 12px);',
+  topLeft: 'top: -10px; left: calc(50% + 12px);',
+  topRight: 'top: -10px; left: calc(50% - 12px);'
 };
 
 const after = (tooltipPosition, color) => {
@@ -44,6 +62,30 @@ const after = (tooltipPosition, color) => {
       return `
       right: 8px;
       border-color: transparent ${color} transparent transparent;
+      `;
+    case 'bottomLeft':
+      return `
+      bottom: 8px;
+      left: calc(50% + 10px);
+      border-color: transparent transparent ${color} transparent;
+      `;
+    case 'bottomRight':
+      return `
+      bottom: 8px;
+      left: calc(50% - 10px);
+      border-color: transparent transparent ${color} transparent;
+      `;
+    case 'topLeft':
+      return `
+      top: 8px;
+      left: calc(50% + 10px);
+      border-color: ${color} transparent transparent transparent;
+      `;
+    case 'topRight':
+      return `
+      top: 8px;
+      left: calc(50% - 10px);
+      border-color: ${color} transparent transparent transparent;
       `;
     default:
       return `

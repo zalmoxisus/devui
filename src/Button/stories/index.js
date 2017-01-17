@@ -30,7 +30,10 @@ storiesOf('Button', module)
       <Container>
         <Button
           title={text('Title', 'Hello Tooltip')}
-          tooltipPosition={select('tooltipPosition', ['top', 'bottom', 'left', 'right'])}
+          tooltipPosition={
+            select('tooltipPosition', ['top', 'bottom', 'left', 'right',
+             'bottomLeft', 'bottomRight', 'topLeft', 'topRight'])
+          }
           disabled={boolean('Disabled', false)}
           onClick={action('button clicked')}
         >
@@ -48,7 +51,10 @@ storiesOf('Button', module)
           <Button
             toolbar
             title={text('Title', 'Hello Tooltip')}
-            tooltipPosition={select('tooltipPosition', ['top', 'bottom', 'left', 'right'])}
+            tooltipPosition={
+              select('tooltipPosition', ['top', 'bottom', 'left', 'right',
+                'bottomLeft', 'bottomRight', 'topLeft', 'topRight'])
+            }
             disabled={boolean('Disabled', false)}
             onClick={action('button clicked')}
           >
@@ -57,7 +63,10 @@ storiesOf('Button', module)
           <Button
             toolbar
             title={text('Title', 'Hello Tooltip')}
-            tooltipPosition={select('tooltipPosition', ['top', 'bottom', 'left', 'right'])}
+            tooltipPosition={
+              select('tooltipPosition', ['top', 'bottom', 'left', 'right',
+                'bottomLeftt', 'bottomRight', 'topLeft', 'topRight'])
+            }
             disabled={boolean('Disabled', false)}
             onClick={action('button clicked')}
           >
@@ -66,7 +75,10 @@ storiesOf('Button', module)
           <Button
             toolbar
             title={text('Title', 'Hello Tooltip')}
-            tooltipPosition={select('tooltipPosition', ['top', 'bottom', 'left', 'right'])}
+            tooltipPosition={
+              select('tooltipPosition', ['top', 'bottom', 'left', 'right',
+                'bottomLeft', 'bottomRight', 'topLeft', 'topRight'])
+            }
             disabled={boolean('Disabled', false)}
             onClick={action('button clicked')}
           >
@@ -83,7 +95,10 @@ storiesOf('Button', module)
       <Container>
         <Button
           title={text('Title', 'Hello Tooltip')}
-          tooltipPosition={select('tooltipPosition', ['top', 'bottom', 'left', 'right'])}
+          tooltipPosition={
+            select('tooltipPosition', ['top', 'bottom', 'left', 'right',
+             'bottomLeft', 'bottomRight', 'topLeft', 'topRight'])
+          }
           disabled={boolean('Disabled', false)}
           onClick={action('button clicked')}
           mark={text('mark', '08')}
