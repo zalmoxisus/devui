@@ -1,49 +1,89 @@
 import { css } from 'styled-components';
 import { fadeIn } from '../../utils/animations';
 
-const both = {
-  top: `
-  transform: translate(-50%, -100%);
-  `,
-  bottom: `
-  transform: translate(-50%, 100%);
-  top: auto;
-  `,
-  left: `
-  transform: translate(-100%, -50%);
-  top: 50%;
-  right: auto;
-  `,
-  right: `
-  transform: translate(100%, -50%);
-  top: 50%;
-  left: auto;
-  `,
-  bottomLeft: `
-  transform: translate(-100%, 100%);
-  top: auto;
-  `,
-  bottomRight: `
-  transform: translateY(100%);
-  top: auto;
-  `,
-  topLeft: `
-  transform: translate(-100%, -100%);
-  `,
-  topRight: `
-  transform: translateY(-100%);
-  `
+const both = (tooltipPosition) => {
+  switch (tooltipPosition) {
+    case 'bottom':
+      return `
+      transform: translate(-50%, 100%);
+      top: auto;
+      `;
+    case 'left':
+      return `
+      transform: translate(-100%, -50%);
+      top: 50%;
+      right: auto;
+      `;
+    case 'right':
+      return `
+      transform: translate(100%, -50%);
+      top: 50%;
+      left: auto;
+      `;
+    case 'bottom-left':
+      return `
+      transform: translate(-100%, 100%);
+      top: auto;
+      `;
+    case 'bottom-right':
+      return `
+      transform: translateY(100%);
+      top: auto;
+      `;
+    case 'top-left':
+      return `
+      transform: translate(-100%, -100%);
+      `;
+    case 'top-right':
+      return `
+      transform: translateY(-100%);
+      `;
+    default:
+      return `
+       transform: translate(-50%, -100%);
+      `;
+  }
 };
 
-const before = {
-  top: 'top: -10px;',
-  bottom: 'bottom: -10px;',
-  left: 'left: -10px;',
-  right: 'right: -10px;',
-  bottomLeft: 'bottom: -10px; left: calc(50% + 12px);',
-  bottomRight: 'bottom: -10px; left: calc(50% - 12px);',
-  topLeft: 'top: -10px; left: calc(50% + 12px);',
-  topRight: 'top: -10px; left: calc(50% - 12px);'
+const before = (tooltipPosition) => {
+  switch (tooltipPosition) {
+    case 'top':
+      return `
+      top: -10px;
+      `;
+    case 'bottom':
+      return `
+      bottom: -10px;'
+      `;
+    case 'left':
+      return `
+      left: -10px;
+      `;
+    case 'right':
+      return `
+      right: -10px;
+      `;
+    case 'bottom-left':
+      return `
+      bottom: -10px; left: calc(50% + 12px);
+      `;
+    case 'bottom-right':
+      return `
+      bottom: -10px; left: calc(50% - 12px);
+      `;
+    case 'top-left':
+      return `
+      top: -10px; left: calc(50% + 12px);
+      `;
+    case 'top-right':
+      return `
+      top: -10px; left: calc(50% - 12px);
+      `;
+    default:
+      return `
+       top: -10px;
+      `;
+  }
 };
 
 const after = (tooltipPosition, color) => {
@@ -63,25 +103,25 @@ const after = (tooltipPosition, color) => {
       right: 8px;
       border-color: transparent ${color} transparent transparent;
       `;
-    case 'bottomLeft':
+    case 'bottom-left':
       return `
       bottom: 8px;
       left: calc(50% + 10px);
       border-color: transparent transparent ${color} transparent;
       `;
-    case 'bottomRight':
+    case 'bottom-right':
       return `
       bottom: 8px;
       left: calc(50% - 10px);
       border-color: transparent transparent ${color} transparent;
       `;
-    case 'topLeft':
+    case 'top-left':
       return `
       top: 8px;
       left: calc(50% + 10px);
       border-color: ${color} transparent transparent transparent;
       `;
-    case 'topRight':
+    case 'top-right':
       return `
       top: 8px;
       left: calc(50% - 10px);
@@ -120,12 +160,12 @@ export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, toolbar }) 
     position: absolute;
     left: 50%;
     z-index: 999;
-    ${both[tooltipPosition]}
+    ${both(tooltipPosition)}
     user-select: none;
   }
 
   &:before {
-    ${before[tooltipPosition]}
+    ${before(tooltipPosition)}
     ${theme.type === 'material' ? `animation: ${fadeIn} 500ms;` : ''}
   }
 

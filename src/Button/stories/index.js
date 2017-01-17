@@ -32,7 +32,7 @@ storiesOf('Button', module)
           title={text('Title', 'Hello Tooltip')}
           tooltipPosition={
             select('tooltipPosition', ['top', 'bottom', 'left', 'right',
-             'bottomLeft', 'bottomRight', 'topLeft', 'topRight'])
+             'bottom-left', 'bottom-right', 'top-left', 'top-right'])
           }
           disabled={boolean('Disabled', false)}
           onClick={action('button clicked')}
@@ -53,7 +53,7 @@ storiesOf('Button', module)
             title={text('Title', 'Hello Tooltip')}
             tooltipPosition={
               select('tooltipPosition', ['top', 'bottom', 'left', 'right',
-                'bottomLeft', 'bottomRight', 'topLeft', 'topRight'])
+                'bottom-left', 'bottom-right', 'top-left', 'top-right'])
             }
             disabled={boolean('Disabled', false)}
             onClick={action('button clicked')}
@@ -65,7 +65,7 @@ storiesOf('Button', module)
             title={text('Title', 'Hello Tooltip')}
             tooltipPosition={
               select('tooltipPosition', ['top', 'bottom', 'left', 'right',
-                'bottomLeftt', 'bottomRight', 'topLeft', 'topRight'])
+                'bottom-left', 'bottom-right', 'top-left', 'top-right'])
             }
             disabled={boolean('Disabled', false)}
             onClick={action('button clicked')}
@@ -77,7 +77,7 @@ storiesOf('Button', module)
             title={text('Title', 'Hello Tooltip')}
             tooltipPosition={
               select('tooltipPosition', ['top', 'bottom', 'left', 'right',
-                'bottomLeft', 'bottomRight', 'topLeft', 'topRight'])
+                'bottom-left', 'bottom-right', 'top-left', 'top-right'])
             }
             disabled={boolean('Disabled', false)}
             onClick={action('button clicked')}
@@ -97,7 +97,7 @@ storiesOf('Button', module)
           title={text('Title', 'Hello Tooltip')}
           tooltipPosition={
             select('tooltipPosition', ['top', 'bottom', 'left', 'right',
-             'bottomLeft', 'bottomRight', 'topLeft', 'topRight'])
+             'bottom-left', 'bottom-right', 'top-left', 'top-right'])
           }
           disabled={boolean('Disabled', false)}
           onClick={action('button clicked')}

@@ -52,7 +52,7 @@ Button.propTypes = {
   children: PropTypes.any.isRequired,
   title: PropTypes.string,
   tooltipPosition: PropTypes.oneOf(['top', 'bottom', 'left', 'right',
-    'bottomLeft', 'bottomRight', 'topLeft', 'topRight']),
+    'bottom-left', 'bottom-right', 'top-left', 'top-right']),
   onClick: PropTypes.func,
   type: PropTypes.string,
   disabled: PropTypes.bool,
