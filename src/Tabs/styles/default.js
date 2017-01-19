@@ -3,7 +3,7 @@ import { css } from 'styled-components';
 export const style = ({ theme }) => css`
   display: flex;
   flex: 0 0 3em;
-  border-top: 1px solid ${theme.base05};
+  border-top: 1px solid ${theme.base02};
 
   > div:first-child {
     display: flex;
@@ -12,8 +12,8 @@ export const style = ({ theme }) => css`
     overflow-x: auto;
 
     button {
-      background-color: ${theme.base06};
-      color: ${theme.base01};
+      background-color: ${theme.base01};
+      color: ${theme.base06};
       padding: 1em 2em;
       border: none;
       cursor: pointer;
@@ -24,14 +24,14 @@ export const style = ({ theme }) => css`
 
       &:hover,
       &:focus {
-        background-color: ${theme.base07};
-        text-shadow: ${theme.base06} 0 1px;
+        background-color: ${theme.base00};
+        text-shadow: ${theme.base01} 0 1px;
       }
     }
 
     > [data-selected] {
       background-color: transparent;
-      color: ${theme.base00};
+      color: ${theme.base07};
       font-weight: 600;
     }
   }
@@ -42,8 +42,8 @@ export const style = ({ theme }) => css`
     justify-content: flex-end;
     align-items: center;
     padding: 0 1em;
-    background-color: ${theme.base05};
-    border-bottom: 1px solid ${theme.base06};
+    background-color: ${theme.base02};
+    border-bottom: 1px solid ${theme.base01};
 
     button {
       margin-left: 0.2em;

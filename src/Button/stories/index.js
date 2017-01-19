@@ -16,7 +16,7 @@ export const Container = styled.div`
     display: flex;
     width: 100%;
     padding: 5px;
-    background-color: ${props => props.theme.base06};
+    background-color: ${props => props.theme.base01};
     text-align: center;
   }
 `;

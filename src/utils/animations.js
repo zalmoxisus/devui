@@ -9,8 +9,8 @@ export const spinner = (theme) => `
   height: ${theme.spinnerSize}px;
   box-sizing: border-box;
   border-radius: 50%;
-  border: ${Math.floor(theme.spinnerSize / 8)}px solid ${theme.base05};
-  border-right-color: ${theme.base01};
+  border: ${Math.floor(theme.spinnerSize / 8)}px solid ${theme.base02};
+  border-right-color: ${theme.base06};
   display: inline-block;
   position: relative;
 `;
@@ -36,7 +36,7 @@ export const ripple = (theme) => `
     top: 0;
     left: 0;
     pointer-events: none;
-    background-image: radial-gradient(circle, ${theme.base00} 10%, transparent 10.01%);
+    background-image: radial-gradient(circle, ${theme.base07} 10%, transparent 10.01%);
     background-repeat: no-repeat;
     background-position: 50%;
     transform: scale(10 ,10);

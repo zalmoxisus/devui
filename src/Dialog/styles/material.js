@@ -18,7 +18,7 @@ export const style = ({ theme, open, fullWidth }) => css`
     right: 0px;
     bottom: 0px;
     left: 0px;
-    background-color: ${theme.base02};
+    background-color: ${theme.base05};
     opacity: 0.3;
   }
 
@@ -34,7 +34,7 @@ export const style = ({ theme, open, fullWidth }) => css`
     padding: 16px;
     margin-bottom: 16px;
     border: none;
-    background-color: ${theme.base07};
+    background-color: ${theme.base00};
     box-shadow:
       0 9px 46px 8px rgba(0, 0, 0, 0.14),
       0 11px 15px -7px rgba(0, 0, 0, 0.12),

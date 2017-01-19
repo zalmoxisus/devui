@@ -12,8 +12,8 @@ export const style = ({ theme }) => css`
     overflow-x: auto;
 
     button {
-      background-color: ${theme.base06};
-      color: ${theme.base00};
+      background-color: ${theme.base02};
+      color: ${theme.base07};
       padding: 1em 2em 0.7em;
       text-transform: uppercase;
       cursor: pointer;
@@ -26,8 +26,8 @@ export const style = ({ theme }) => css`
 
       &:hover,
       &:focus {
-        border-bottom: 2px solid ${theme.base04};
-        color: ${theme.base03};
+        border-bottom: 2px solid ${theme.base03};
+        color: ${theme.base04};
       }
 
       ${ripple(theme)}
@@ -44,7 +44,7 @@ export const style = ({ theme }) => css`
     justify-content: flex-end;
     align-items: center;
     padding: 0 1em;
-    background-color: ${theme.base06};
+    background-color: ${theme.base02};
 
     button {
       margin-left: 0.2em;

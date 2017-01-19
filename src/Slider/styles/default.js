@@ -35,13 +35,13 @@ export const style = ({ theme, percent, disabled }) => css`
     border-radius: 0.75em/2.25em;
     font-size: 1em;
     cursor: pointer;
-    background: linear-gradient(${theme.base06}, ${theme.base07}) padding-box,
-      linear-gradient(rgba(231, 231, 231, 0) 0.84em, ${theme.base07} 1.275em,
-      ${theme.base07} 3.225em, rgba(231, 231, 231, 0) 3.66em, transparent 95%)
+    background: linear-gradient(${theme.base01}, ${theme.base00}) padding-box,
+      linear-gradient(rgba(231, 231, 231, 0) 0.84em, ${theme.base00} 1.275em,
+      ${theme.base00} 3.225em, rgba(231, 231, 231, 0) 3.66em, transparent 95%)
       50% 50% border-box,
-      linear-gradient(90deg, ${theme.base05} 0.025em, transparent 0.125em)
+      linear-gradient(90deg, ${theme.base02} 0.025em, transparent 0.125em)
       repeat-x 0.8em 50% border-box,
-      linear-gradient(90deg, ${theme.base06} 0.015em, transparent 0.125em)
+      linear-gradient(90deg, ${theme.base01} 0.015em, transparent 0.125em)
       repeat-x 0.2em 50% border-box;
     background-size: 100% 100%, 100% 4.5em, 6.25em 80%, 1.25em 65%;
   }
@@ -50,9 +50,9 @@ export const style = ({ theme, percent, disabled }) => css`
     position: relative;
     height: 0.8em;
     border-radius: 0.5em;
-    box-shadow: 0 0 .125em ${theme.base02};
-    background: linear-gradient(${theme.base06}, ${theme.base05} 40%, ${theme.base06})
-      no-repeat ${theme.base07};
+    box-shadow: 0 0 .125em ${theme.base05};
+    background: linear-gradient(${theme.base01}, ${theme.base02} 40%, ${theme.base01})
+      no-repeat ${theme.base00};
     background-size: ${percent}% 100%;
   }`)}
 
@@ -64,13 +64,13 @@ export const style = ({ theme, percent, disabled }) => css`
     width: 2em;
     height: 1.5em;
     margin-top: -0.4em;  
-    border: solid 1px ${theme.base05};
+    border: solid 1px ${theme.base02};
     border-radius: 0.625em;
-    box-shadow: 0 1px .125em ${theme.base04};
+    box-shadow: 0 1px .125em ${theme.base03};
     background:
-      repeating-linear-gradient(90deg, ${disabled ? theme.base07 : theme.base03},
-      ${theme.base05} 0.125em, transparent 0.125em, transparent 0.28em)
-      no-repeat ${theme.dark ? theme.base02 : theme.base07};
+      repeating-linear-gradient(90deg, ${disabled ? theme.base00 : theme.base04},
+      ${theme.base02} 0.125em, transparent 0.125em, transparent 0.28em)
+      no-repeat ${theme.dark ? theme.base06 : theme.base00};
     background-position: calc(50% + 1px) 50%;
     background-size: .75em .75em;
   }`)}

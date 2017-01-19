@@ -5,7 +5,7 @@ const Toolbar = styled.div`
   box-sizing: border-box;
   width: 100%;
   padding: 5px;
-  background-color: ${props => props.theme.base06};
+  background-color: ${props => props.theme.base02};
   text-align: center;
   
   & > div {
