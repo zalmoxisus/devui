@@ -13,7 +13,7 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
     }
 
     &.is-disabled > .Select-control {
-      background-color: ${theme.base05};
+      background-color: ${theme.base02};
 
       &:hover {
         box-shadow: none;
@@ -27,12 +27,12 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
   }
 
   .Select-control {
-    background-color: ${theme.base07};
+    background-color: ${theme.base00};
     border-color: ${theme.inputBorderColor};
     border-radius: ${theme.inputBorderRadius}px;
     border-style: solid;
     border-width: ${theme.inputBorderWidth}px;
-    color: ${theme.base00};
+    color: ${theme.base07};
     cursor: default;
     display: table;
     border-spacing: 0;
@@ -78,7 +78,7 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
   .Select-placeholder,
   &.Select--single > .Select-control .Select-value {
     bottom: 0;
-    color: ${theme.base04};
+    color: ${theme.base03};
     left: 0;
     line-height: ${theme.inputInternalHeight}px;
     padding: 0 ${theme.inputPadding}px;
@@ -94,7 +94,7 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
   &.has-value.Select--single > .Select-control .Select-value,
   &.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value {
     .Select-value-label {
-      color: ${theme.base00};
+      color: ${theme.base07};
     }
 
     a.Select-value-label {
@@ -117,7 +117,7 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
     vertical-align: middle;
 
     > input {
-      color: ${theme.base00};
+      color: ${theme.base07};
       background: none transparent;
       border: 0 none;
       box-shadow: none;
@@ -162,7 +162,7 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
 
   .Select-clear-zone {
     animation: ${fadeIn} 200ms;
-    color: ${theme.base04};
+    color: ${theme.base03};
     cursor: pointer;
     display: table-cell;
     position: relative;
@@ -210,7 +210,7 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
   }
 
   .Select-arrow {
-    border-color: ${theme.base04} transparent transparent;
+    border-color: ${theme.base03} transparent transparent;
     border-style: solid;
     border-width:
       ${theme.selectArrowWidth}px
@@ -223,11 +223,11 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
 
   .is-open .Select-arrow,
   .Select-arrow-zone:hover > .Select-arrow {
-    border-top-color: ${theme.base03};
+    border-top-color: ${theme.base04};
   }
 
   .Select-menu-outer {
-    border: 1px solid ${theme.base05};
+    border: 1px solid ${theme.base02};
     box-shadow: 0 ${openOuterUp ? '-1px' : '1px'} 0 rgba(0, 0, 0, 0.06);
     box-sizing: border-box;
     /* stylelint-disable declaration-empty-line-before */
@@ -250,33 +250,33 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
 
   .Select-option {
     box-sizing: border-box;
-    background-color: ${theme.base07};
-    color: ${theme.base00};
+    background-color: ${theme.base00};
+    color: ${theme.base07};
     cursor: pointer;
     display: block;
     padding: ${theme.inputHeight / 3}px;
     line-height: ${theme.inputInternalHeight / 2}px;
 
     &.is-selected {
-      background-color: ${theme.base06};
-      color: ${theme.base00};
+      background-color: ${theme.base01};
+      color: ${theme.base07};
     }
 
     &.is-focused {
-      background-color: ${theme.base05};
-      color: ${theme.base00};
+      background-color: ${theme.base02};
+      color: ${theme.base07};
     }
 
     &.is-disabled {
-      color: ${theme.base02};
+      color: ${theme.base05};
       cursor: default;
     }
   }
 
   .Select-noresults {
     box-sizing: border-box;
-    color: ${theme.base01};
-    background-color: ${theme.base07};
+    color: ${theme.base06};
+    background-color: ${theme.base00};
     cursor: default;
     display: block;
     padding: ${theme.inputPadding}px;
@@ -295,10 +295,10 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
     }
 
     .Select-value {
-      background-color: ${theme.base07};
+      background-color: ${theme.base00};
       border-radius: ${theme.inputBorderRadius}px;
-      border: 1px solid ${theme.base05};
-      color: ${theme.base00};
+      border: 1px solid ${theme.base02};
+      color: ${theme.base07};
       display: inline-block;
       font-size: 0.9em;
       margin-left: ${theme.inputPadding / 2}px;
@@ -320,7 +320,7 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
     }
 
     a.Select-value-label {
-      color: ${theme.base00};
+      color: ${theme.base07};
       cursor: pointer;
       text-decoration: none;
 
@@ -333,26 +333,26 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
       cursor: pointer;
       border-bottom-left-radius: ${theme.inputBorderRadius}px;
       border-top-left-radius: ${theme.inputBorderRadius}px;
-      border-right: 1px solid ${theme.base05};
+      border-right: 1px solid ${theme.base02};
       padding: ${theme.inputPadding / 4}px ${theme.inputPadding / 2}px;
 
       &:hover,
       &:focus {
-        background-color: ${theme.base04};
-        color: ${theme.base07};
+        background-color: ${theme.base03};
+        color: ${theme.base00};
       }
 
       &:active {
-        background-color: ${theme.base01};
+        background-color: ${theme.base06};
       }
     }
   }
 
   &.Select--multi.is-disabled {
     .Select-value {
-      background-color: ${theme.base07};
-      border: 1px solid ${theme.base06};
-      color: ${theme.base02};
+      background-color: ${theme.base00};
+      border: 1px solid ${theme.base01};
+      color: ${theme.base05};
     }
 
     .Select-value-icon {

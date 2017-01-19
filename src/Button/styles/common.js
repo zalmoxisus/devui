@@ -126,10 +126,10 @@ export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, mark }) => 
   &:before {
     content: "${tooltipTitle}";
     white-space: nowrap;
-    color: ${theme.base07};
+    color: ${theme.base00};
     padding: 0.5em 0.7em;
-    background: ${theme.base03};
-    box-shadow: 0 2px 2px -1px ${theme.base03}, 0 1px 0px 0px ${theme.base04};
+    background: ${theme.base04};
+    box-shadow: 0 2px 2px -1px ${theme.base04}, 0 1px 0px 0px ${theme.base03};
   }
 
   &:after,
@@ -161,7 +161,7 @@ export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, mark }) => 
     content: "";
     border-style: solid;
     border-width: 7px;
-    ${after(tooltipPosition, theme.type === 'material' ? 'transparent' : theme.base03)}
+    ${after(tooltipPosition, theme.type === 'material' ? 'transparent' : theme.base04)}
     ${getDirection(tooltipPosition)}: 8px;
   }
 

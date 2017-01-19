@@ -4,7 +4,7 @@ export const style = ({ theme }) => css`
 padding: 10px;
 line-height: 1.846;
 font-size: 14px;
-color: ${theme.base01};
+color: ${theme.base06};
 
 fieldset {
   padding: 0;
@@ -18,7 +18,7 @@ legend {
   width: 100%;
   padding: 0;
   font-size: 20px;
-  color: ${theme.base03};
+  color: ${theme.base04};
   border: 0;
 }
 
@@ -33,7 +33,7 @@ label {
   box-sizing: border-box;
   font-size: 12px;
   width: 100%;
-  color: ${theme.base02};
+  color: ${theme.base05};
   background-color: transparent;
   background-image: none;
   line-height: ${theme.inputInternalHeight}px;
@@ -187,7 +187,7 @@ input[type="radio"]:after,
 .radio-inline input[type="radio"]:after {
   position: relative;
   top: -3px;
-  border: 2px solid ${theme.base03};
+  border: 2px solid ${theme.base04};
 }
 
 input[type="radio"]:checked:before,
@@ -199,7 +199,7 @@ input[type="radio"]:checked:before,
 input[type="radio"]:disabled:checked:before,
 .radio input[type="radio"]:disabled:checked:before,
 .radio-inline input[type="radio"]:disabled:checked:before {
-  background-color: ${theme.base04};
+  background-color: ${theme.base03};
 }
 
 input[type="radio"]:checked:after,
@@ -214,7 +214,7 @@ input[type="radio"]:disabled:after,
 input[type="radio"]:disabled:checked:after,
 .radio input[type="radio"]:disabled:checked:after,
 .radio-inline input[type="radio"]:disabled:checked:after {
-  border-color: ${theme.base04};
+  border-color: ${theme.base03};
 }
 
 input[type="checkbox"],
@@ -248,7 +248,7 @@ input[type="checkbox"]:after,
   height: 18px;
   margin-top: -2px;
   margin-right: 5px;
-  border: 2px solid ${theme.base03};
+  border: 2px solid ${theme.base04};
   border-radius: 2px;
   transition: 240ms;
   box-sizing: border-box;
@@ -281,13 +281,13 @@ input[type="checkbox"]:checked:after,
 input[type="checkbox"]:disabled:after,
 .checkbox input[type="checkbox"]:disabled:after,
 .checkbox-inline input[type="checkbox"]:disabled:after {
-  border-color: ${theme.base04};
+  border-color: ${theme.base03};
 }
 
 input[type="checkbox"]:disabled:checked:after,
 .checkbox input[type="checkbox"]:disabled:checked:after,
 .checkbox-inline input[type="checkbox"]:disabled:checked:after {
-  background-color: ${theme.base04};
+  background-color: ${theme.base03};
   border-color: transparent;
 }
 
@@ -330,7 +330,7 @@ fieldset[disabled] .checkbox label {
 .panel {
   border: none;
   border-radius: 2px;
-  box-shadow: 0 1px 4px ${theme.base04};
+  box-shadow: 0 1px 4px ${theme.base03};
   margin-bottom: 23px;
 }
 
@@ -349,7 +349,7 @@ fieldset[disabled] .checkbox label {
 }
 
 .panel-danger>.panel-heading {
-  color: ${theme.base07};
+  color: ${theme.base00};
   background-color: ${theme.base08};
 }
 

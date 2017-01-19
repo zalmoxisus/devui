@@ -18,7 +18,7 @@ export const style = ({ theme, open, fullWidth }) => css`
     right: 0px;
     bottom: 0px;
     left: 0px;
-    background-color: ${theme.base02};
+    background-color: ${theme.base05};
     opacity: 0.5;
   }
 
@@ -33,9 +33,9 @@ export const style = ({ theme, open, fullWidth }) => css`
     ${fullWidth ? 'width: 99%;' : ''}
     padding: 16px;
     margin-bottom: 16px;
-    border: 1px outset ${theme.base06};
+    border: 1px outset ${theme.base01};
     border-radius: 2px;
-    background-color: ${theme.base07};
+    background-color: ${theme.base00};
     box-shadow:
       0 9px 46px 8px rgba(0, 0, 0, 0.14),
       0 11px 15px -7px rgba(0, 0, 0, 0.12),
@@ -47,8 +47,8 @@ export const style = ({ theme, open, fullWidth }) => css`
       font-weight: 600;
       margin: -17px -17px 0;
       padding: 16px;
-      color: ${theme.base07};
-      background-color: ${theme.dark ? theme.base03 : theme.base02};
+      color: ${theme.base00};
+      background-color: ${theme.light ? theme.base05 : theme.base04};
       border: none;
 
       > div:first-child {
@@ -101,7 +101,7 @@ export const style = ({ theme, open, fullWidth }) => css`
       justify-content: flex-end;
       margin: 0 -16px -16px;
       padding: 2px 10px;
-      border-top: 1px solid ${theme.base04};
+      border-top: 1px solid ${theme.base03};
     }
   }
 `;

@@ -22,7 +22,7 @@ export const style = ({ theme, percent, disabled }) => css`
     margin: 0;
     cursor: pointer;
     color: inherit;
-    background-color: ${theme.base05};
+    background-color: ${theme.base02};
     background-image:
       linear-gradient(90deg, currentcolor, currentcolor ${percent}%, transparent ${percent}%);
     background-clip: content-box;
@@ -36,8 +36,8 @@ export const style = ({ theme, percent, disabled }) => css`
     width: 1.5em;
     height: 1.5em;
     background-image: none;
-    background-color: ${percent === 0 ? theme.base07 : 'currentcolor'};
-    border: ${percent === 0 ? `5px solid ${theme.base04}` : 'none'};;
+    background-color: ${percent === 0 ? theme.base00 : 'currentcolor'};
+    border: ${percent === 0 ? `5px solid ${theme.base03}` : 'none'};;
     border-radius: 50%;
     appearance: none;
     transition: transform 0.18s ${animationCurve},

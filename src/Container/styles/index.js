@@ -5,8 +5,8 @@ export const ContainerWrapper = styled.div`
   display: flex;
   height: 100%;
   width: 100%;
-  background-color: ${props => color(props.theme.base07, 'lighten', 0.03)};
-  color: ${props => props.theme.base00};
+  background-color: ${props => color(props.theme.base00, 'lighten', 0.03)};
+  color: ${props => props.theme.base07};
   flex-flow: column nowrap;
 
   div, input, textarea, keygen, select, button {
