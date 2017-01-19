@@ -27,6 +27,7 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
   }
 
   .Select-control {
+    background-color: ${theme.base07};
     border-color: ${theme.inputBorderColor};
     border-radius: ${theme.inputBorderRadius}px;
     border-style: solid;
@@ -226,7 +227,7 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
   }
 
   .Select-menu-outer {
-    border: 1px solid ${theme.base06};
+    border: 1px solid ${theme.base05};
     box-shadow: 0 ${openOuterUp ? '-1px' : '1px'} 0 rgba(0, 0, 0, 0.06);
     box-sizing: border-box;
     /* stylelint-disable declaration-empty-line-before */
@@ -237,6 +238,7 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
     top: auto;
     bottom: ${openOuterUp ? '100%' : 'auto'};
     width: 100%;
+    min-width: 70px;
     z-index: 1000;
     -webkit-overflow-scrolling: touch;
   }
