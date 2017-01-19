@@ -108,7 +108,7 @@ const after = (tooltipPosition, color) => {
   }
 };
 
-const direction = (tooltipPosition) => {
+const getDirection = (tooltipPosition) => {
   return (tooltipPosition.indexOf('-') > 0) ?
     tooltipPosition.substring(0, tooltipPosition.indexOf('-')) : tooltipPosition;
 };
@@ -145,7 +145,7 @@ export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, toolbar }) 
 
   &:before {
     ${before(tooltipPosition)}
-    ${direction(tooltipPosition)}: 3px;
+    ${getDirection(tooltipPosition)}: 3px;
     ${theme.type === 'material' ? `animation: ${fadeIn} 500ms;` : ''}
   }
 
@@ -154,19 +154,20 @@ export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, toolbar }) 
     border-style: solid;
     border-width: 7px;
     ${after(tooltipPosition, theme.type === 'material' ? 'transparent' : theme.base03)}
-    ${direction(tooltipPosition)}: 16px;
+    ${getDirection(tooltipPosition)}: 12px;
   }
 
   &:hover:after,
   &:hover:before {
     opacity: 1;
     visibility: visible;
-    transition-delay: 100ms;
   }
   &:hover:after {
-    ${direction(tooltipPosition)}: 8px;
+    ${getDirection(tooltipPosition)}: 8px;
+    transition-delay: 400ms;
   }
   &:hover:before {
-    ${direction(tooltipPosition)}: -4px;
+    ${getDirection(tooltipPosition)}: -4px;
+    transition-delay: 100ms;
   }
 `;
