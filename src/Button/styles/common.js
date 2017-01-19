@@ -47,42 +47,23 @@ const both = (tooltipPosition) => {
 
 const before = (tooltipPosition) => {
   switch (tooltipPosition) {
-    case 'top':
-      return `
-      top: -10px;
-      `;
-    case 'bottom':
-      return `
-      bottom: -10px;'
-      `;
-    case 'left':
-      return `
-      left: -10px;
-      `;
-    case 'right':
-      return `
-      right: -10px;
-      `;
     case 'bottom-left':
       return `
-      bottom: -10px; left: calc(50% + 12px);
+      left: calc(50% + 11px);
       `;
     case 'bottom-right':
       return `
-      bottom: -10px; left: calc(50% - 12px);
+      left: calc(50% - 11px);
       `;
     case 'top-left':
       return `
-      top: -10px; left: calc(50% + 12px);
+      left: calc(50% + 11px);
       `;
     case 'top-right':
       return `
-      top: -10px; left: calc(50% - 12px);
+      left: calc(50% - 11px);
       `;
     default:
-      return `
-       top: -10px;
-      `;
   }
 };
 
@@ -90,49 +71,46 @@ const after = (tooltipPosition, color) => {
   switch (tooltipPosition) {
     case 'bottom':
       return `
-      bottom: 8px;
       border-color: transparent transparent ${color} transparent;
       `;
     case 'left':
       return `
-      left: 8px;
       border-color: transparent transparent transparent ${color};
       `;
     case 'right':
       return `
-      right: 8px;
       border-color: transparent ${color} transparent transparent;
       `;
     case 'bottom-left':
       return `
-      bottom: 8px;
       left: calc(50% + 10px);
       border-color: transparent transparent ${color} transparent;
       `;
     case 'bottom-right':
       return `
-      bottom: 8px;
       left: calc(50% - 10px);
       border-color: transparent transparent ${color} transparent;
       `;
     case 'top-left':
       return `
-      top: 8px;
       left: calc(50% + 10px);
       border-color: ${color} transparent transparent transparent;
       `;
     case 'top-right':
       return `
-      top: 8px;
       left: calc(50% - 10px);
       border-color: ${color} transparent transparent transparent;
       `;
     default:
       return `
-       top: 8px;
        border-color: ${color} transparent transparent transparent;
       `;
   }
+};
+
+const direction = (tooltipPosition) => {
+  return (tooltipPosition.indexOf('-') > 0) ?
+    tooltipPosition.substring(0, tooltipPosition.indexOf('-')) : tooltipPosition;
 };
 
 export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, toolbar }) => css`
@@ -146,17 +124,18 @@ export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, toolbar }) 
   &:before {
     content: "${tooltipTitle}";
     white-space: nowrap;
-    top: -10px;
     color: ${theme.base07};
-    padding: 0.8em 1em;
+    padding: 0.5em 0.7em;
     background: ${theme.base03};
     box-shadow: 0 2px 2px -1px ${theme.base03}, 0 1px 0px 0px ${theme.base04};
   }
 
   &:after,
   &:before {
-    display: none;
+    transition: 0.3s ease;
+    transition-delay: 0ms;
     opacity: 0;
+    visibility: hidden;
     position: absolute;
     left: 50%;
     z-index: 999;
@@ -166,19 +145,28 @@ export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, toolbar }) 
 
   &:before {
     ${before(tooltipPosition)}
+    ${direction(tooltipPosition)}: 3px;
     ${theme.type === 'material' ? `animation: ${fadeIn} 500ms;` : ''}
   }
 
   &:after {
     content: "";
     border-style: solid;
-    border-width: 10px;
+    border-width: 7px;
     ${after(tooltipPosition, theme.type === 'material' ? 'transparent' : theme.base03)}
+    ${direction(tooltipPosition)}: 16px;
   }
 
   &:hover:after,
   &:hover:before {
-    display: block;
     opacity: 1;
+    visibility: visible;
+    transition-delay: 100ms;
+  }
+  &:hover:after {
+    ${direction(tooltipPosition)}: 8px;
+  }
+  &:hover:before {
+    ${direction(tooltipPosition)}: -4px;
   }
 `;
