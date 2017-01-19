@@ -114,6 +114,7 @@ exports[`Form renders correctly 1`] = `
     }
   }>
   <Button
+    big={true}
     tooltipPosition="top"
     type="submit">
     Submit

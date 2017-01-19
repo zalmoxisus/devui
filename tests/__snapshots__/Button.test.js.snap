@@ -1,6 +1,6 @@
 exports[`Button renders correctly 1`] = `
 <button
-  class="ezmfVo">
+  class="daFAmy">
   Text
 </button>
 `;

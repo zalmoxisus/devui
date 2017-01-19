@@ -1,0 +1,17 @@
+exports[`Toolbar renders correctly 1`] = `
+<div
+  class="AIUza">
+  <button
+    class="daFAmy">
+    1
+  </button>
+  <div
+    class="frAwtu" />
+  <div
+    class="dbmnmg" />
+  <button
+    class="daFAmy">
+    2
+  </button>
+</div>
+`;

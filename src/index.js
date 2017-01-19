@@ -6,3 +6,4 @@ export { default as Form } from './Form';
 export { default as Select } from './Select';
 export { default as Slider } from './Slider';
 export { default as Tabs } from './Tabs';
+export * from './Toolbar';
