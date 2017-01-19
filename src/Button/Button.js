@@ -25,7 +25,6 @@ export default class Button extends Component {
       <ButtonWrapper
         primary={this.props.primary}
         disabled={this.props.disabled}
-        mark={mark}
         onMouseUp={this.onMouseUp}
         onClick={this.props.onClick}
         type={this.props.type}
@@ -41,6 +40,7 @@ export default class Button extends Component {
         tooltipTitle={title}
         tooltipPosition={tooltipPosition}
         toolbar={toolbar}
+        mark={mark}
       >
         {button}
       </TooltipWrapper>
@@ -58,8 +58,8 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   primary: PropTypes.bool,
   toolbar: PropTypes.bool,
-  mark: PropTypes.oneOf(['01', '02', '03', '04', '05', '06',
-    '07', '08', '09', '0A', '0B', '0C', '0D', '0E', '0F'])
+  mark: PropTypes.oneOf([false, 'base08', 'base09', 'base0A', 'base0B',
+    'base0C', 'base0D', 'base0E', 'base0F'])
 };
 
 Button.defaultProps = {

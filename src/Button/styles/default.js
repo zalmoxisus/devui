@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export const style = ({ theme, primary, disabled, toolbar, mark }) => css`
+export const style = ({ theme, primary, disabled, toolbar }) => css`
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   outline: none;
@@ -48,13 +48,4 @@ export const style = ({ theme, primary, disabled, toolbar, mark }) => css`
     font-size: 1.5em;
     overflow: visible;
   }
-
-  ${mark && `
-    & > svg {
-      color: ${theme[`base${mark}`]};
-      stroke: ${theme[`base${mark}`]};
-      stroke-width: 14px;
-      stroke-opacity: 0.3;
-    }
-  `}
 `;

@@ -64,6 +64,7 @@ const before = (tooltipPosition) => {
       left: calc(50% - 11px);
       `;
     default:
+      return '';
   }
 };
 
@@ -113,7 +114,7 @@ const getDirection = (tooltipPosition) => {
     tooltipPosition.substring(0, tooltipPosition.indexOf('-')) : tooltipPosition;
 };
 
-export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, toolbar }) => css`
+export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, toolbar, mark }) => css`
   display: inline-block;
   position: relative;
   ${toolbar ? `
@@ -182,4 +183,13 @@ export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, toolbar }) 
     ${getDirection(tooltipPosition)}: -4px;
     transition-delay: 100ms;
   }
+  
+  ${mark && `
+    & > button > svg {
+      color: ${theme[mark]};
+      stroke: ${theme[mark]};
+      stroke-width: 14px;
+      stroke-opacity: 0.3;
+    }
+  `}
 `;

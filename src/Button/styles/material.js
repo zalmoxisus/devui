@@ -7,7 +7,6 @@ export const style = ({ theme, primary, disabled, toolbar, mark }) => css`
   outline: none;
   font-family: inherit;
   font-weight: 600;
-  line-height: 16px;
   text-decoration: none;
   display: inline-block;
   border: none;
@@ -50,16 +49,10 @@ export const style = ({ theme, primary, disabled, toolbar, mark }) => css`
   }
 
   & > svg {
-    font-size: 2em;
+    vertical-align: initial !important;
+    font-size: 1.5em;
+    overflow: visible;
   }
-  ${mark && `
-    & > svg {
-      color: ${theme[`base${mark}`]};
-      stroke: ${theme[`base${mark}`]};
-      stroke-width: 10;
-      stroke-opacity: 0.5;
-    }
-  `}
 
   ${ripple(theme)}
 `;
