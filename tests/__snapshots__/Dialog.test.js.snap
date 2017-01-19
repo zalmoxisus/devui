@@ -15,11 +15,11 @@ exports[`Dialog renders correctly 1`] = `
     <div
       class="mc-dialog--footer">
       <button
-        class="itQmfd">
+        class="ezmfVo">
         Cancel
       </button>
       <button
-        class="itQmfd">
+        class="ezmfVo">
         Submit
       </button>
     </div>
@@ -41,11 +41,11 @@ exports[`Dialog renders modal 1`] = `
     <div
       class="mc-dialog--footer">
       <button
-        class="itQmfd">
+        class="ezmfVo">
         Cancel
       </button>
       <button
-        class="itQmfd">
+        class="ezmfVo">
         Submit
       </button>
     </div>
@@ -75,11 +75,11 @@ exports[`Dialog renders with props 1`] = `
     <div
       class="mc-dialog--footer">
       <button
-        class="itQmfd">
+        class="ezmfVo">
         Cancel
       </button>
       <button
-        class="itQmfd">
+        class="ezmfVo">
         Submit
       </button>
     </div>
