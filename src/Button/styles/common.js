@@ -132,8 +132,7 @@ export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, toolbar }) 
 
   &:after,
   &:before {
-    transition: 0.3s ease;
-    transition-delay: 0ms;
+    transition: 0.3s ease-in-out;
     opacity: 0;
     visibility: hidden;
     position: absolute;
@@ -141,6 +140,13 @@ export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, toolbar }) 
     z-index: 999;
     ${both(tooltipPosition)}
     user-select: none;
+  }
+
+  &:after {
+    transition-delay: 0ms;
+  }
+  &:before {
+    transition-delay: 250ms;
   }
 
   &:before {
@@ -154,7 +160,7 @@ export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, toolbar }) 
     border-style: solid;
     border-width: 7px;
     ${after(tooltipPosition, theme.type === 'material' ? 'transparent' : theme.base03)}
-    ${getDirection(tooltipPosition)}: 12px;
+    ${getDirection(tooltipPosition)}: 8px;
   }
 
   &:hover:after,
