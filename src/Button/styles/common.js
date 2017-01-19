@@ -148,7 +148,7 @@ export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, mark }) => 
     transition-delay: 0ms;
   }
   &:before {
-    transition-delay: 250ms;
+    transition-delay: 100ms;
   }
 
   &:before {
@@ -172,11 +172,11 @@ export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, mark }) => 
   }
   &:hover:after {
     ${getDirection(tooltipPosition)}: 8px;
-    transition-delay: 400ms;
+    transition-delay: 500ms;
   }
   &:hover:before {
     ${getDirection(tooltipPosition)}: -4px;
-    transition-delay: 100ms;
+    transition-delay: 200ms;
   }
   
   ${mark && `
