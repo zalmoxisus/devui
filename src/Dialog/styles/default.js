@@ -48,7 +48,7 @@ export const style = ({ theme, open, fullWidth }) => css`
       margin: -17px -17px 0;
       padding: 16px;
       color: ${theme.base00};
-      background-color: ${theme.dark ? theme.base04 : theme.base05};
+      background-color: ${theme.light ? theme.base05 : theme.base04};
       border: none;
 
       > div:first-child {

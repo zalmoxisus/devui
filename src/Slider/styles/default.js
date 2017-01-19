@@ -70,7 +70,7 @@ export const style = ({ theme, percent, disabled }) => css`
     background:
       repeating-linear-gradient(90deg, ${disabled ? theme.base00 : theme.base04},
       ${theme.base02} 0.125em, transparent 0.125em, transparent 0.28em)
-      no-repeat ${theme.dark ? theme.base06 : theme.base00};
+      no-repeat ${theme.light ? theme.base00 : theme.base06};
     background-position: calc(50% + 1px) 50%;
     background-size: .75em .75em;
   }`)}

@@ -4,7 +4,7 @@ import CodeMirror from 'codemirror';
 import { defaultStyle, themedStyle } from './styles/';
 
 const EditorContainer = styled.div('',
-  ({ theme }) => (theme.scheme === 'default' && !theme.dark ? defaultStyle : themedStyle(theme))
+  ({ theme }) => (theme.scheme === 'default' && !theme.light ? themedStyle(theme) : defaultStyle)
 );
 
 export default class Editor extends Component {
