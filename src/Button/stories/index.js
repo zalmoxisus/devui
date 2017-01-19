@@ -34,57 +34,12 @@ storiesOf('Button', module)
             select('tooltipPosition', ['top', 'bottom', 'left', 'right',
              'bottom-left', 'bottom-right', 'top-left', 'top-right'])
           }
+          big={boolean('Big', true)}
           disabled={boolean('Disabled', false)}
           onClick={action('button clicked')}
         >
           {text('Label', 'Hello Button')}
         </Button>
-      </Container>
-    )
-  )
-  .addWithInfo(
-    'toolbar',
-    '',
-    () => (
-      <Container>
-        <div className="wrapper">
-          <Button
-            toolbar
-            title={text('Title', 'Hello Tooltip')}
-            tooltipPosition={
-              select('tooltipPosition', ['top', 'bottom', 'left', 'right',
-                'bottom-left', 'bottom-right', 'top-left', 'top-right'])
-            }
-            disabled={boolean('Disabled', false)}
-            onClick={action('button clicked')}
-          >
-            {text('Label', 'Hello Button')}
-          </Button>
-          <Button
-            toolbar
-            title={text('Title', 'Hello Tooltip')}
-            tooltipPosition={
-              select('tooltipPosition', ['top', 'bottom', 'left', 'right',
-                'bottom-left', 'bottom-right', 'top-left', 'top-right'])
-            }
-            disabled={boolean('Disabled', false)}
-            onClick={action('button clicked')}
-          >
-            {text('Label', 'Hello Button')}
-          </Button>
-          <Button
-            toolbar
-            title={text('Title', 'Hello Tooltip')}
-            tooltipPosition={
-              select('tooltipPosition', ['top', 'bottom', 'left', 'right',
-                'bottom-left', 'bottom-right', 'top-left', 'top-right'])
-            }
-            disabled={boolean('Disabled', false)}
-            onClick={action('button clicked')}
-          >
-            {text('Label', 'Hello Button')}
-          </Button>
-        </div>
       </Container>
     )
   )
@@ -99,9 +54,10 @@ storiesOf('Button', module)
             select('tooltipPosition', ['top', 'bottom', 'left', 'right',
              'bottom-left', 'bottom-right', 'top-left', 'top-right'])
           }
+          big={boolean('Big', true)}
           disabled={boolean('Disabled', false)}
           onClick={action('button clicked')}
-          mark={text('mark', '08')}
+          mark={text('mark', 'base08')}
         >
           <MdFiberManualRecord />
         </Button>

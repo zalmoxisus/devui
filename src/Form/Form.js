@@ -13,7 +13,7 @@ export default class Form extends Component {
     return (
       <FormContainer {...rest} widgets={{ ...customWidgets, ...widgets }}>
         {
-          children || <Button type="submit">Submit</Button>
+          children || <Button big type="submit">Submit</Button>
         }
       </FormContainer>
     );

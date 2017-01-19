@@ -21,7 +21,7 @@ export const getTheme = ({ theme: type, scheme, invert }) => {
     dark: invert,
     fontFamily: '\'Source Sans Pro\', sans-serif',
     codeFontFamily: '\'Source Code Pro\', monospace',
-    inputHeight: 34,
+    inputHeight: 30,
     inputBorderWidth: 1,
     inputBorderRadius: 4
   };

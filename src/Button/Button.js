@@ -20,7 +20,6 @@ export default class Button extends Component {
   };
 
   render() {
-    const { title, tooltipPosition, toolbar, mark } = this.props;
     const button = (
       <ButtonWrapper
         primary={this.props.primary}
@@ -28,19 +27,18 @@ export default class Button extends Component {
         onMouseUp={this.onMouseUp}
         onClick={this.props.onClick}
         type={this.props.type}
-        toolbar={toolbar}
+        big={this.props.big}
       >
         {this.props.children}
       </ButtonWrapper>
     );
 
-    if (!title) return button;
+    if (!this.props.title) return button;
     return (
       <TooltipWrapper
-        tooltipTitle={title}
-        tooltipPosition={tooltipPosition}
-        toolbar={toolbar}
-        mark={mark}
+        tooltipTitle={this.props.title}
+        tooltipPosition={this.props.tooltipPosition}
+        mark={this.props.mark}
       >
         {button}
       </TooltipWrapper>
@@ -57,7 +55,7 @@ Button.propTypes = {
   type: PropTypes.string,
   disabled: PropTypes.bool,
   primary: PropTypes.bool,
-  toolbar: PropTypes.bool,
+  big: PropTypes.bool,
   mark: PropTypes.oneOf([false, 'base08', 'base09', 'base0A', 'base0B',
     'base0C', 'base0D', 'base0E', 'base0F'])
 };

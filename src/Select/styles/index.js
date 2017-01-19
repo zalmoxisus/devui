@@ -120,6 +120,7 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
       background: none transparent;
       border: 0 none;
       box-shadow: none;
+      width: 100%;
       cursor: default;
       display: inline-block;
       font-family: inherit;

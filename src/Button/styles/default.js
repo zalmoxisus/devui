@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export const style = ({ theme, primary, disabled, toolbar }) => css`
+export const style = ({ theme, primary, disabled, big }) => css`
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   outline: none;
@@ -8,18 +8,15 @@ export const style = ({ theme, primary, disabled, toolbar }) => css`
   text-decoration: none;
   display: inline-block;
   transition: all 0.5s;
-  ${toolbar ? `
-  width: 100%;
-  min-height: 28px;
-  padding: 2px 7px;
   margin: 0;
-  border: 1px solid ${theme.base07};
-  ` : `
-  min-height: 34px;
-  padding: 2px 12px;
-  margin: 4px 2px;
   border: 1px solid ${theme.base06};
   border-radius: 4px;
+  ${big ? `
+  min-height: 34px;
+  padding: 2px 12px;
+  ` : `
+  min-height: 30px;
+  padding: 2px 7px;
   `}
   ${disabled ? `
   cursor: not-allowed;

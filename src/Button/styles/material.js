@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import { ripple } from '../../utils/animations';
 
-export const style = ({ theme, primary, disabled, toolbar, mark }) => css`
+export const style = ({ theme, primary, disabled, big }) => css`
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   outline: none;
@@ -11,16 +11,13 @@ export const style = ({ theme, primary, disabled, toolbar, mark }) => css`
   display: inline-block;
   border: none;
   text-transform: uppercase;
-  ${toolbar ? `
-  width: 100%;
-  min-height: 28px;
-  padding: 2px 7px;
   margin: 0;
-  ` : `
+  ${big ? `
   min-height: 34px;
-  padding: 2px 12px 0;
-  margin: 4px 2px;
-  border-radius: 2px;
+  padding: 2px 12px;
+  ` : `
+  min-height: 30px;
+  padding: 2px 7px;
   `}
   ${disabled ? `
   cursor: not-allowed;
@@ -32,7 +29,7 @@ export const style = ({ theme, primary, disabled, toolbar, mark }) => css`
   color: ${primary ? theme.base01 : theme.base02};
   background-color: ${primary ? theme.base06 : theme.base07};
   `}
-  ${!toolbar && !disabled ? `
+  ${!disabled ? `
     box-shadow:
       0 2px 2px 0 ${theme.base04},
       0 3px 1px -2px ${theme.base05},
@@ -44,12 +41,7 @@ export const style = ({ theme, primary, disabled, toolbar, mark }) => css`
     box-shadow: 0 0 4px ${theme.base05}, 0 4px 8px ${theme.base03};
   }
 
-  &:hover {
-    ${toolbar ? `background-color: ${theme.base05};` : ''}
-  }
-
   & > svg {
-    vertical-align: initial !important;
     font-size: 1.5em;
     overflow: visible;
   }

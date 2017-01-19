@@ -114,14 +114,9 @@ const getDirection = (tooltipPosition) => {
     tooltipPosition.substring(0, tooltipPosition.indexOf('-')) : tooltipPosition;
 };
 
-export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, toolbar, mark }) => css`
+export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, mark }) => css`
   display: inline-block;
   position: relative;
-  ${toolbar ? `
-  flex-grow: 1;
-  padding: 0 1px;
-  width: 100%;
-  ` : ''}
 
   & > button {
     height: 100%;
