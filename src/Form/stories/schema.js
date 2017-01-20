@@ -1,103 +1,101 @@
-/* eslint-disable quotes, quote-props */
-
 module.exports = {
   schema: {
-    title: "Example form",
-    description: "A simple form example.",
-    type: "object",
-    required: ["name"],
+    title: 'Example form',
+    description: 'A simple form example.',
+    type: 'object',
+    required: ['name'],
     properties: {
       name: {
-        type: "string",
-        title: "Full name",
+        type: 'string',
+        title: 'Full name'
       },
       age: {
-        type: "integer",
-        title: "Age"
+        type: 'integer',
+        title: 'Age'
       },
       bio: {
-        type: "string",
-        title: "Bio",
+        type: 'string',
+        title: 'Bio'
       },
       password: {
-        type: "string",
-        title: "Password",
+        type: 'string',
+        title: 'Password',
         minLength: 3
       },
       multipleChoicesList: {
-        "type": "array",
-        "title": "A multiple choices list",
-        "items": {
-          "type": "string",
-          "enum": [
-            "foo",
-            "bar",
-            "fuzz"
+        type: 'array',
+        title: 'A multiple choices list',
+        items: {
+          type: 'string',
+          enum: [
+            'foo',
+            'bar',
+            'fuzz'
           ]
         },
-        "uniqueItems": true
+        uniqueItems: true
       },
-      "numberEnum": {
-        "type": "number",
-        "title": "Number enum",
-        "enum": [
+      numberEnum: {
+        type: 'number',
+        title: 'Number enum',
+        enum: [
           1,
           2,
           3
         ]
       },
-      "numberEnumRadio": {
-        "type": "number",
-        "title": "Number enum",
-        "enum": [
+      numberEnumRadio: {
+        type: 'number',
+        title: 'Number enum',
+        enum: [
           1,
           2,
           3
         ]
       },
-      "integerRange": {
-        "title": "Integer range",
-        "type": "integer",
-        "minimum": 42,
-        "maximum": 100
+      integerRange: {
+        title: 'Integer range',
+        type: 'integer',
+        minimum: 42,
+        maximum: 100
       }
     }
   },
   uiSchema: {
     name: {
-      "ui:autofocus": true
+      'ui:autofocus': true
     },
     age: {
-      "ui:widget": "updown"
+      'ui:widget': 'updown'
     },
     bio: {
-      "ui:widget": "textarea"
+      'ui:widget': 'textarea'
     },
     password: {
-      "ui:widget": "password",
-      "ui:help": "Hint: Make it strong!"
+      'ui:widget': 'password',
+      'ui:help': 'Hint: Make it strong!'
     },
     date: {
-      "ui:widget": "alt-datetime"
+      'ui:widget': 'alt-datetime'
     },
     multipleChoicesList: {
-      "ui:widget": "checkboxes"
+      'ui:widget': 'checkboxes'
     },
     numberEnumRadio: {
-      "ui:widget": "radio",
-      "ui:options": {
-        "inline": true
+      'ui:widget': 'radio',
+      'ui:options': {
+        inline: true
       }
     },
     integerRange: {
-      "ui:widget": "range"
+      'ui:widget': 'range'
     }
   },
   formData: {
-    name: "Chuck Norris",
+    name: 'Chuck Norris',
     age: 75,
-    bio: "Roundhouse kicking asses since 1940",
-    password: "noneed",
+    bio: 'Roundhouse kicking asses since 1940',
+    password: 'noneed',
     integerRange: 52
   }
 };

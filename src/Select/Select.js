@@ -7,9 +7,7 @@ const SelectContainer = getStyles(style, ReactSelect);
 
 export default class Select extends Component {
   render() {
-    return (
-      <SelectContainer {...this.props} />
-    );
+    return <SelectContainer {...this.props} />;
   }
 }
 
@@ -26,8 +24,4 @@ Select.propTypes = {
   openOuterUp: PropTypes.bool           // value to control the opening direction
 };
 
-Select.defaultProps = {
-  autosize: false,
-  clearable: false,
-  menuMaxHeight: 200
-};
+Select.defaultProps = { autosize: false, clearable: false, menuMaxHeight: 200 };

@@ -50,7 +50,7 @@ storiesOf('Button', module)
       <Container>
         <Button
           mark={select('mark', [false, 'base08', 'base09', 'base0A', 'base0B',
-            'base0C', 'base0D', 'base0E', 'base0F'])}
+            'base0C', 'base0D', 'base0E', 'base0F'], 'base08')}
           title={text('Title', 'Hello Tooltip')}
           tooltipPosition={
             select('tooltipPosition', ['top', 'bottom', 'left', 'right',

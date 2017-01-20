@@ -9,9 +9,7 @@ schemes.default = defaultScheme;
 
 export const listSchemes = () => Object.keys(schemes).slice(1);
 
-const themes = {
-  material
-};
+const themes = { material };
 
 export const listThemes = () => ['default', Object.keys(themes)];
 
@@ -19,8 +17,8 @@ export const getTheme = ({ theme: type, scheme, light }) => {
   let theme = {
     type,
     light,
-    fontFamily: '\'Source Sans Pro\', sans-serif',
-    codeFontFamily: '\'Source Code Pro\', monospace',
+    fontFamily: "'Source Sans Pro', sans-serif",
+    codeFontFamily: "'Source Code Pro', monospace",
     inputHeight: 30,
     inputBorderWidth: 1,
     inputBorderRadius: 4
@@ -28,10 +26,7 @@ export const getTheme = ({ theme: type, scheme, light }) => {
   let colors = schemes[scheme];
   if (light) colors = invertColors(colors);
   if (type !== 'default') {
-    theme = {
-      ...theme,
-      ...themes[type](colors)
-    };
+    theme = { ...theme, ...themes[type](colors) };
   }
   return {
     ...colors,
@@ -45,12 +40,11 @@ export const getTheme = ({ theme: type, scheme, light }) => {
   };
 };
 
-export const getStyles = (styles, component, multiple) => styled(component || 'div')('',
-  props => (
-    !multiple ? styles :
-      styles[props.theme.type] || styles.default
-  )(props)
-);
+export const getStyles = (styles, component, multiple) =>
+  styled(component || 'div')(
+    '',
+    props => (!multiple ? styles : styles[props.theme.type] || styles.default)(props),
+  );
 /*
  Equivalent to
  const SelectContainer = styled(ReactSelect)`

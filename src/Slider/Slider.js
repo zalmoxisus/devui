@@ -6,7 +6,6 @@ import { containerStyle } from './styles/common';
 const SliderWrapper = getStyles(styles, 'div', true);
 const ContainerWithValue = getStyles(containerStyle, 'div', false);
 
-
 export default class Slider extends Component {
   shouldComponentUpdate(nextProps) {
     return nextProps.label !== this.props.label ||
@@ -26,9 +25,7 @@ export default class Slider extends Component {
     const { value, max, min, disabled } = rest;
     const absMax = max - min;
     const percent = (value - min) / absMax * 100;
-    const slider = (
-      <input {...rest} onChange={this.onChange} type="range" />
-    );
+    const slider = <input {...rest} onChange={this.onChange} type="range" />;
 
     return (
       <SliderWrapper percent={percent} disabled={disabled || absMax === 0}>
@@ -54,8 +51,4 @@ Slider.propTypes = {
   onChange: PropTypes.func
 };
 
-Slider.defaultProps = {
-  value: 0,
-  min: 0,
-  max: 100
-};
+Slider.defaultProps = { value: 0, min: 0, max: 100 };

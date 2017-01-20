@@ -18,7 +18,7 @@ export default class Tabs extends Component {
     e.target.blur();
   };
 
-  onClick = (e) => {
+  onClick = e => {
     this.props.onClick(e.target.value);
   };
 
@@ -51,9 +51,7 @@ export default class Tabs extends Component {
     return (
       <TabsContainer>
         <TabsHeader tabs={this.tabsHeader} buttons={this.props.buttons} />
-        <div>{
-          this.SelectedComponent && <this.SelectedComponent {...this.selector()} />
-        }</div>
+        <div>{this.SelectedComponent && <this.SelectedComponent {...this.selector()} />}</div>
       </TabsContainer>
     );
   }

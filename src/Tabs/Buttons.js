@@ -6,16 +6,10 @@ export default class Buttons extends Component {
   }
 
   render() {
-    return (
-      <div>{this.props.buttons}</div>
-    );
+    return <div>{this.props.buttons}</div>;
   }
 }
 
-Buttons.propTypes = {
-  buttons: PropTypes.array
-};
+Buttons.propTypes = { buttons: PropTypes.array };
 
-Buttons.defaultProps = {
-  buttons: []
-};
+Buttons.defaultProps = { buttons: [] };

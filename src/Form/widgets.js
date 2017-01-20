@@ -3,14 +3,8 @@ import Select from '../Select';
 import Slider from '../Slider';
 
 /* eslint-disable react/prop-types */
-
 const SelectWidget = ({ options, multi, ...rest }) => (
-  <Select
-    options={options.enumOptions}
-    multiple={multi}
-    simpleValue
-    {...rest}
-  />
+  <Select options={options.enumOptions} multiple={multi} simpleValue {...rest} />
 );
 
 const RangeWidget = ({
@@ -32,7 +26,4 @@ const RangeWidget = ({
   />
 );
 
-export default {
-  SelectWidget,
-  RangeWidget
-};
+export default { SelectWidget, RangeWidget };

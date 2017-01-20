@@ -20,7 +20,4 @@ export default class TabsHeader extends Component {
   }
 }
 
-TabsHeader.propTypes = {
-  tabs: PropTypes.array.isRequired,
-  buttons: PropTypes.array
-};
+TabsHeader.propTypes = { tabs: PropTypes.array.isRequired, buttons: PropTypes.array };
