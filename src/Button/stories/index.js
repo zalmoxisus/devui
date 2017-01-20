@@ -49,6 +49,8 @@ storiesOf('Button', module)
     () => (
       <Container>
         <Button
+          mark={select('mark', [false, 'base08', 'base09', 'base0A', 'base0B',
+            'base0C', 'base0D', 'base0E', 'base0F'])}
           title={text('Title', 'Hello Tooltip')}
           tooltipPosition={
             select('tooltipPosition', ['top', 'bottom', 'left', 'right',
@@ -57,7 +59,6 @@ storiesOf('Button', module)
           big={boolean('Big', true)}
           disabled={boolean('Disabled', false)}
           onClick={action('button clicked')}
-          mark={text('mark', 'base08')}
         >
           <MdFiberManualRecord />
         </Button>
