@@ -15,10 +15,10 @@ const themes = {
 
 export const listThemes = () => ['default', Object.keys(themes)];
 
-export const getTheme = ({ theme: type, scheme, invert }) => {
+export const getTheme = ({ theme: type, scheme, light }) => {
   let theme = {
     type,
-    light: invert,
+    light,
     fontFamily: '\'Source Sans Pro\', sans-serif',
     codeFontFamily: '\'Source Code Pro\', monospace',
     inputHeight: 30,
@@ -26,7 +26,7 @@ export const getTheme = ({ theme: type, scheme, invert }) => {
     inputBorderRadius: 4
   };
   let colors = schemes[scheme];
-  if (invert) colors = invertColors(colors);
+  if (light) colors = invertColors(colors);
   if (type !== 'default') {
     theme = {
       ...theme,

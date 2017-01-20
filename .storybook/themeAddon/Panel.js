@@ -27,7 +27,7 @@ export default class Panel extends React.Component {
   }
 
   render() {
-    const { theme, scheme, invert } = this.state;
+    const { theme, scheme, light } = this.state;
     return (
       <FormWrapper>
         <Form
@@ -46,8 +46,8 @@ export default class Panel extends React.Component {
             },
             {
               type: 'boolean',
-              name: 'invert',
-              value: invert
+              name: 'light',
+              value: light
             }
           ]}
           onFieldChange={this.onChange}

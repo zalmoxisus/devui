@@ -22,7 +22,7 @@ const channel = addons.getChannel();
 export const defaultState = {
   theme: 'default',
   scheme: 'default',
-  invert: false
+  light: true
 };
 
 class Theme extends React.Component {
