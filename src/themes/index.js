@@ -39,7 +39,7 @@ export const getTheme = ({ theme: type, scheme, invert }) => {
     inputPadding: theme.inputHeight / 3,
     selectArrowWidth: Math.floor(theme.inputHeight / 7),
     inputInternalHeight: theme.inputHeight - theme.inputBorderWidth * 2,
-    inputBorderColor: colors.base05,
+    inputBorderColor: colors.base02,
     inputFocusedStyle: `border-color: ${colors.base0D}`,
     ...theme
   };
