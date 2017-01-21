@@ -34,6 +34,7 @@ storiesOf('Toolbar', module)
           >
             {text('Label', 'Hello Button')}
           </Button>
+          <Divider />
           <Button
             title={text('Title', 'Hello Tooltip')}
             tooltipPosition={

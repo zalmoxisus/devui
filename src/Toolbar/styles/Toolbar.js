@@ -5,7 +5,7 @@ const Toolbar = styled.div`
   box-sizing: border-box;
   width: 100%;
   padding: 5px;
-  background-color: ${props => props.theme.base02};
+  background-color: ${props => props.theme.base01};
   text-align: center;
   
   & > div {
@@ -15,6 +15,7 @@ const Toolbar = styled.div`
   & button {
     border-radius: 0;
     white-space: nowrap;
+    box-shadow: none !important;
   }
 
   & > .Select {
