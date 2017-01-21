@@ -3,8 +3,9 @@ import invertColors from '../utils/invertColors';
 
 import material from './material';
 
-import * as schemes from 'redux-devtools-themes';
-import defaultScheme from 'base16';
+import * as schemes from 'base16';
+import defaultScheme from './schemes/default';
+import defaultDarkScheme from 'redux-devtools-themes/lib/nicinabox';
 schemes.default = defaultScheme;
 
 export const listSchemes = () => Object.keys(schemes).slice(1);
@@ -23,8 +24,15 @@ export const getTheme = ({ theme: type, scheme, light }) => {
     inputBorderWidth: 1,
     inputBorderRadius: 4
   };
-  let colors = schemes[scheme];
-  if (light) colors = invertColors(colors);
+
+  let colors;
+  if (scheme === 'default') {
+    colors = light ? defaultScheme : defaultDarkScheme;
+  } else {
+    colors = schemes[scheme];
+    if (light) colors = invertColors(colors);
+  }
+
   if (type !== 'default') {
     theme = { ...theme, ...themes[type](colors) };
   }
