@@ -10,7 +10,7 @@ exports[`Editor renders correctly 1`] = `
   <styled.div
     innerRef={[Function]}>
     <div
-      className="lnRDBn" />
+      className="eoIyAT" />
   </styled.div>
 </Editor>
 `;
