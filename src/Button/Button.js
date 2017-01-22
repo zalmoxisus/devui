@@ -22,6 +22,7 @@ export default class Button extends Component {
   render() {
     const button = (
       <ButtonWrapper
+        aria-label={this.props.title}
         primary={this.props.primary}
         disabled={this.props.disabled}
         onMouseUp={this.onMouseUp}

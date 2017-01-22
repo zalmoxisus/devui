@@ -125,7 +125,7 @@ export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, mark }) => 
 
   &:before {
     content: "${tooltipTitle}";
-    white-space: nowrap;
+    white-space: pre;
     color: ${theme.base00};
     padding: 0.5em 0.7em;
     background: ${theme.base04};
