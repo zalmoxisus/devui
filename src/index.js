@@ -7,3 +7,6 @@ export { default as Select } from './Select';
 export { default as Slider } from './Slider';
 export { default as Tabs } from './Tabs';
 export * from './Toolbar';
+
+import color from './utils/color';
+export const effects = { color };
