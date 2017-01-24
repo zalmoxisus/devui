@@ -5,15 +5,26 @@ export const ContainerWrapper = styled.div`
   display: flex;
   height: 100%;
   width: 100%;
+  flex-flow: column nowrap;
   background-color: ${props => color(props.theme.base00, 'lighten', 0.03)};
   color: ${props => props.theme.base07};
-  flex-flow: column nowrap;
+  font-size: 12px;
 
   div, input, textarea, keygen, select, button {
    font-family: ${props => props.theme.fontFamily};
  }
 
- .CodeMirror div {
+ .CodeMirror div, pre, .monitor-LogMonitor * {
    font-family: ${props => props.theme.codeFontFamily || props.theme.fontFamily};
  }
+
+ .monitor {
+    flex-grow: 1;
+    display: flex;
+    flex-flow: column nowrap;
+
+    > div {
+      flex-grow: 1;
+    }
+  }
 `;
