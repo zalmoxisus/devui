@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { getStyles } from '../themes';
+import getStyles from '../utils/getStyles';
 import * as styles from './styles';
 import { containerStyle } from './styles/common';
 

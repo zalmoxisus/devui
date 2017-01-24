@@ -3,7 +3,7 @@ import Form from '@kadira/storybook-addon-knobs/dist/components/PropForm';
 import styled from 'styled-components';
 import { EVENT_ID_DATA } from './';
 import { defaultState } from './theme';
-import { listSchemes, listThemes } from '../../src/themes';
+import { listSchemes, listThemes } from '../../src/utils/theme';
 
 const FormWrapper = styled.div`
   width: 100%;

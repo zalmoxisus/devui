@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import { getStyles } from '../themes';
-import Buttons from './Buttons';
+import getStyles from '../utils/getStyles';
 import * as styles from './styles';
+import Buttons from './Buttons';
 
 const TabsWrapper = getStyles(styles, 'div', true);
 

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { getTheme } from '../themes';
+import { getTheme } from '../utils/theme';
 import { ContainerWrapper } from './styles';
 
 const Container = ({ themeData, className, children }) => (

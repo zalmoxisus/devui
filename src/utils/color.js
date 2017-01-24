@@ -8,3 +8,5 @@ import Color from 'color';
 */
 
 export default (color, effect, val) => new Color(color)[effect](val).string();
+
+// TODO: memoize it

@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import JSONSchemaForm from 'react-jsonschema-form';
+import getStyles from '../utils/getStyles';
+import { style } from './styles';
 import Button from '../Button';
 import customWidgets from './widgets';
-import { getStyles } from '../themes';
-import { style } from './styles';
 
 const FormContainer = getStyles(style, JSONSchemaForm);
 

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import ReactSelect from 'react-select';
-import { getStyles } from '../themes';
+import getStyles from '../utils/getStyles';
 import { style } from './styles';
 
 const SelectContainer = getStyles(style, ReactSelect);

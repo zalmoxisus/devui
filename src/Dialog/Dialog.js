@@ -1,8 +1,8 @@
 import React, { PureComponent, PropTypes, Children } from 'react';
+import getStyles from '../utils/getStyles';
+import * as styles from './styles';
 import Button from '../Button';
 import Form from '../Form';
-import { getStyles } from '../themes';
-import * as styles from './styles';
 
 const DialogWrapper = getStyles(styles, 'div', true);
 
