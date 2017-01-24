@@ -29,7 +29,7 @@ storiesOf('Button', module)
     () => (
       <Container>
         <Button
-          title={text('Title', 'Hello Tooltip! \\00000a And from new line hello!')}
+          title={text('Title', 'Hello Tooltip! \\a And from new line hello!')}
           tooltipPosition={
             select('tooltipPosition', ['top', 'bottom', 'left', 'right',
              'bottom-left', 'bottom-right', 'top-left', 'top-right'])
