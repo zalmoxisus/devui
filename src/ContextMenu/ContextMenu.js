@@ -2,48 +2,41 @@ import React, { Component, PropTypes } from 'react';
 import { getStyles } from '../themes';
 import { style } from './styles/index';
 
-const Container = getStyles(style, 'div', false);
+const ContextMenuWrapper = getStyles(style, 'div', false);
 
 export default class ContextMenu extends Component {
   constructor(props) {
     super(props);
+    this.left = this.props.x;
+    this.top = this.props.y;
     this.updateItems(props);
   }
 
-  componentDidUpdate() {
-    const {x,y} = this.props;
-    const {top, left} = this.getMenuPosition(x, y);
-    this.menu.style.top = `${top}px`;
-    this.menu.style.left = `${left}px`;
-  };
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.x !== this.props.x || nextProps.y !== this.props.y) {
+      const {scrollTop: scrollX, scrollLeft: scrollY} = document.documentElement;
+      const { innerWidth, innerHeight } = window;
+      const rect = this.menu.getBoundingClientRect();
+      this.left = nextProps.x + scrollX;
+      this.top = nextProps.y + scrollY;
 
-  getMenuPosition = (x, y) => {
-    const {scrollTop: scrollX, scrollLeft: scrollY} = document.documentElement;
-    const { innerWidth, innerHeight } = window;
-    const rect = this.menu.getBoundingClientRect();
-    const menuStyles = {
-      top: y + scrollY,
-      left: x + scrollX
-    };
+      if (nextProps.y + rect.height > innerHeight) {
+        this.top = innerHeight - rect.height;
+      }
 
-    if (y + rect.height > innerHeight) {
-      menuStyles.top = innerHeight - rect.height;
+      if (nextProps.x + rect.width > innerWidth) {
+        this.left = innerWidth - rect.width;
+      }
+
+      if (this.props.top < 0) {
+        this.top = (rect.height < innerHeight) ? (innerHeight - rect.height) / 2 : 0;
+      }
+
+      if (this.props.left < 0) {
+        this.left = (rect.width < innerWidth) ? (innerWidth - rect.width) / 2 : 0;
+      }
     }
-
-    if (x + rect.width > innerWidth) {
-      menuStyles.left = innerWidth - rect.width;
-    }
-
-    if (menuStyles.top < 0) {
-      menuStyles.top = (rect.height < innerHeight) ? (innerHeight - rect.height) / 2 : 0;
-    }
-
-    if (menuStyles.left < 0) {
-      menuStyles.left = (rect.width < innerWidth) ? (innerWidth - rect.width) / 2 : 0;
-    }
-
-    return menuStyles;
-  };
+  }
 
   onMouseUp = e => {
     e.target.blur();
@@ -75,14 +68,14 @@ export default class ContextMenu extends Component {
   };
 
   render() {
-    const style = {position: 'fixed', top: this.props.y, left: this.props.x};
     return (
-      <div
-        ref={this.menuRef}
-        style={style}
+      <ContextMenuWrapper
+        innerRef={this.menuRef}
+        left={this.left}
+        top={this.top}
       >
-        <Container>{this.items}</Container>
-      </div>
+        {this.items}
+      </ContextMenuWrapper>
     );
   }
 }
