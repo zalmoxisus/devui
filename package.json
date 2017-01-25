@@ -86,7 +86,7 @@
     "react-jsonschema-form": "^0.41.2",
     "react-select": "1.0.0-rc.1",
     "redux-devtools-themes": "^1.0.0",
-    "styled-components": "1.2.1"
+    "styled-components": "^1.4.0"
   },
   "pre-commit": [
     "lint"

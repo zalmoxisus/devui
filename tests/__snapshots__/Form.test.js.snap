@@ -1,5 +1,5 @@
 exports[`Form renders correctly 1`] = `
-<Styled(undefined)
+<Styled(Form)
   formData={
     Object {
       "age": 75,
@@ -119,5 +119,5 @@ exports[`Form renders correctly 1`] = `
     type="submit">
     Submit
   </Button>
-</Styled(undefined)>
+</Styled(Form)>
 `;
