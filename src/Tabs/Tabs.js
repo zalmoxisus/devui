@@ -50,7 +50,7 @@ export default class Tabs extends Component {
   render() {
     return (
       <TabsContainer>
-        <TabsHeader tabs={this.tabsHeader} buttons={this.props.buttons} />
+        <TabsHeader tabs={this.tabsHeader} />
         <div>{this.SelectedComponent && <this.SelectedComponent {...this.selector()} />}</div>
       </TabsContainer>
     );
@@ -60,6 +60,5 @@ export default class Tabs extends Component {
 Tabs.propTypes = {
   tabs: PropTypes.array.isRequired,
   selected: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
-  buttons: PropTypes.array
+  onClick: PropTypes.func.isRequired
 };

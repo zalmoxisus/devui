@@ -18,19 +18,4 @@ storiesOf('Tabs', module)
       />
     )
   )
-  .addWithInfo(
-    'with buttons',
-    '',
-    () => (
-      <Tabs
-        tabs={tabs}
-        selected={text('selected', 'Tab2')}
-        compact={boolean('compact', false)}
-        onClick={action('tab selected')}
-        buttons={[
-          <button key="button1" onClick={action('clicked button1')}>Button 1</button>,
-          <button key="button2" onClick={action('clicked button2')}>Button 2</button>
-        ]}
-      />
-    )
-  );
+;

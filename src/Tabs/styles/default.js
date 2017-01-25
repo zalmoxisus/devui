@@ -3,7 +3,8 @@ import { css } from 'styled-components';
 export const style = ({ theme }) => css`
   display: flex;
   flex: 0 0 3em;
-  border-top: 1px solid ${theme.base02};
+  border-top: 1px solid ${theme.base01};
+  background-color: ${theme.base01};
 
   > div:first-child {
     display: flex;
@@ -30,23 +31,9 @@ export const style = ({ theme }) => css`
     }
 
     > [data-selected] {
-      background-color: transparent;
+      background-color: ${theme.base00};
       color: ${theme.base07};
       font-weight: 600;
-    }
-  }
-
-  > div:last-child {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 0 1em;
-    background-color: ${theme.base02};
-    border-bottom: 1px solid ${theme.base01};
-
-    button {
-      margin-left: 0.2em;
     }
   }
 `;

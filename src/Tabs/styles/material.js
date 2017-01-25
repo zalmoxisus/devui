@@ -4,6 +4,7 @@ import { ripple } from '../../utils/animations';
 export const style = ({ theme }) => css`
   display: flex;
   flex: 0 0 3em;
+  background-color: ${theme.base01};
 
   > div:first-child {
     display: flex;
@@ -12,9 +13,9 @@ export const style = ({ theme }) => css`
     overflow-x: auto;
 
     button {
-      background-color: ${theme.base02};
+      background-color: ${theme.base01};
       color: ${theme.base07};
-      padding: 1em 2em 0.7em;
+      padding: 0 2em 0.9em;
       text-transform: uppercase;
       cursor: pointer;
       border: none;
@@ -35,19 +36,6 @@ export const style = ({ theme }) => css`
 
     > [data-selected] {
       border-bottom: 2px solid ${theme.base0B};
-    }
-  }
-
-  > div:last-child {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 0 1em;
-    background-color: ${theme.base02};
-
-    button {
-      margin-left: 0.2em;
     }
   }
 `;
