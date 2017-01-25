@@ -1,1 +1,1 @@
-export default from './ContextMenuTrigger';
+export default from './ContextMenu';

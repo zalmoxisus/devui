@@ -5,14 +5,10 @@ export const style = ({ theme }) => css`
   color: ${theme.base07};
   cursor: pointer;
   display: block;
-  padding: ${theme.inputHeight / 3}px;
   line-height: ${theme.inputInternalHeight / 2}px;
+  border: 1px solid ${theme.base02};
 
-  .react-contextmenu--visible {
-    border: 1px solid ${theme.base02};
-  }
-
-  .react-contextmenu-item {
+  button {
     box-sizing: border-box;
     background-color: ${theme.base00};
     color: ${theme.base07};
