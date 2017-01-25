@@ -6,7 +6,7 @@ import invertColors from '../utils/invertColors';
 
 export const schemes = { ...baseSchemes, ...additionalSchemes };
 export const listSchemes = () => Object.keys(schemes).slice(1).sort(); // remove `__esModule`
-export const listThemes = () => ['default', Object.keys(themes)];
+export const listThemes = () => Object.keys(themes);
 
 export const getTheme = ({ theme: type, scheme, light }) => {
   let colors;

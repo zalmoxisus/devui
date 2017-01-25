@@ -11,14 +11,6 @@ export const Container = styled.div`
   width: 100%;
   justify-content: center;
   align-items: center;
-
-  .wrapper {
-    display: flex;
-    width: 100%;
-    padding: 5px;
-    background-color: ${props => props.theme.base01};
-    text-align: center;
-  }
 `;
 
 storiesOf('Button', module)
