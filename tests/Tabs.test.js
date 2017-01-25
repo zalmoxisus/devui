@@ -2,7 +2,7 @@ import React from 'react';
 import { render, mount } from 'enzyme';
 import { renderToJson } from 'enzyme-to-json';
 import { Tabs } from '../src';
-import { tabs } from '../src/Tabs/stories/data';
+import { tabs, simple10Tabs } from '../src/Tabs/stories/data';
 
 describe('Tabs', function () {
   it('renders correctly', () => {
@@ -15,11 +15,18 @@ describe('Tabs', function () {
       <Tabs
         tabs={tabs}
         onClick={() => {}}
-        buttons={[
-          <button key="button1">Button 1</button>,
-          <button key="button2">Button 2</button>
-        ]}
-        compact selected="Tab2"
+        selected="Tab2"
+      />
+    );
+    expect(renderToJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('renders tabs without inner components', () => {
+    const wrapper = render(
+      <Tabs
+        tabs={simple10Tabs}
+        onClick={() => {}}
+        selected="5"
       />
     );
     expect(renderToJson(wrapper)).toMatchSnapshot();

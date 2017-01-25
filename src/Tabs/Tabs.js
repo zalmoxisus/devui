@@ -24,22 +24,25 @@ export default class Tabs extends Component {
 
   updateTabs(props) {
     const tabs = props.tabs;
-    const selected = props.selected || tabs[0].name;
+    const selected = props.selected;
 
     this.tabsHeader = tabs.map(tab => {
       let isSelected;
-      if (tab.name === selected) {
+      const value = typeof tab.value !== 'undefined' ? tab.value : tab.name;
+      if (value === selected) {
         isSelected = true;
-        this.SelectedComponent = tab.component;
-        if (tab.selector) this.selector = () => tab.selector(tab);
+        if (tab.component) {
+          this.SelectedComponent = tab.component;
+          if (tab.selector) this.selector = () => tab.selector(tab);
+        }
       }
       return (
         <button
-          key={tab.name}
+          key={value}
+          value={value}
           data-selected={isSelected}
           onMouseUp={this.onMouseUp}
           onClick={this.onClick}
-          value={tab.name}
         >
           {tab.name}
         </button>
@@ -48,10 +51,12 @@ export default class Tabs extends Component {
   }
 
   render() {
+    const tabsHeader = <TabsHeader tabs={this.tabsHeader} />;
+    if (!this.SelectedComponent) return tabsHeader;
     return (
       <TabsContainer>
-        <TabsHeader tabs={this.tabsHeader} />
-        <div>{this.SelectedComponent && <this.SelectedComponent {...this.selector()} />}</div>
+        {tabsHeader}
+        <div><this.SelectedComponent {...this.selector()} /></div>
       </TabsContainer>
     );
   }

@@ -36,3 +36,6 @@ export const tabs = [
     selector
   }
 ];
+
+export const simple10Tabs = [];
+for (let i = 1; i <= 10; i++) simple10Tabs.push({ name: `Tab${i}`, value: `${i}` });

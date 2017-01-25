@@ -7,7 +7,7 @@ export const TabsContainer = styled.div`
   height: 100%;
   overflow-y: hidden;
 
-  > div:last-child {
+  > div:nth-child(2) {
     flex: 1;
     overflow-y: auto;
     position: relative;

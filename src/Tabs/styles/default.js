@@ -3,6 +3,7 @@ import { css } from 'styled-components';
 export const style = ({ theme }) => css`
   display: flex;
   flex: 0 0 3em;
+  padding: 0 1px;
   border-top: 1px solid ${theme.base01};
   background-color: ${theme.base01};
 
