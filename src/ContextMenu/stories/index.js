@@ -1,9 +1,9 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
 import styled from 'styled-components';
-import { withKnobs, text, boolean, select } from '@kadira/storybook-addon-knobs';
+import { withKnobs, number } from '@kadira/storybook-addon-knobs';
 import MdFiberManualRecord from 'react-icons/lib/md/fiber-manual-record';
-import ContextMenuTrigger from '../';
+import ContextMenu from '../';
 import { items } from './data';
 
 export const Container = styled.div`
@@ -29,14 +29,12 @@ storiesOf('ContextMenu', module)
     '',
     () => (
       <Container>
-        <ContextMenuTrigger
+        <ContextMenu
           onClick={action('menu item clicked')}
-          leftClick={boolean('leftClick', true)}
-          rightClick={boolean('rightClick', true)}
+          x={number('x', 100)}
+          y={number('y', 100)}
           items={items}
-        >
-          {text('Label', 'ContextMenu')}
-        </ContextMenuTrigger>
+        />
       </Container>
     )
   );

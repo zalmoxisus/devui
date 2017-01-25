@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { getStyles } from '../themes';
-import { cssClasses } from './utils/helpers';
+import { style } from './styles/index';
+
+const Container = getStyles(style, 'div', false);
 
 export default class ContextMenu extends Component {
   constructor(props) {
@@ -8,11 +10,40 @@ export default class ContextMenu extends Component {
     this.updateItems(props);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.items !== this.props.items || nextProps.selected !== this.props.selected) {
-      this.updateItems(nextProps);
+  componentDidUpdate() {
+    const {x,y} = this.props;
+    const {top, left} = this.getMenuPosition(x, y);
+    this.menu.style.top = `${top}px`;
+    this.menu.style.left = `${left}px`;
+  };
+
+  getMenuPosition = (x, y) => {
+    const {scrollTop: scrollX, scrollLeft: scrollY} = document.documentElement;
+    const { innerWidth, innerHeight } = window;
+    const rect = this.menu.getBoundingClientRect();
+    const menuStyles = {
+      top: y + scrollY,
+      left: x + scrollX
+    };
+
+    if (y + rect.height > innerHeight) {
+      menuStyles.top = innerHeight - rect.height;
     }
-  }
+
+    if (x + rect.width > innerWidth) {
+      menuStyles.left = innerWidth - rect.width;
+    }
+
+    if (menuStyles.top < 0) {
+      menuStyles.top = (rect.height < innerHeight) ? (innerHeight - rect.height) / 2 : 0;
+    }
+
+    if (menuStyles.left < 0) {
+      menuStyles.left = (rect.width < innerWidth) ? (innerWidth - rect.width) / 2 : 0;
+    }
+
+    return menuStyles;
+  };
 
   onMouseUp = e => {
     e.target.blur();
@@ -20,28 +51,18 @@ export default class ContextMenu extends Component {
 
   onClick = (e) => {
     this.props.onClick(e.target.value);
-    this.props.hide();
   };
 
   updateItems(props) {
     const items = props.items;
-    const selected = props.selected || items[0].name;
 
     this.items = items.map(item => {
-      let isSelected;
-      if (item.name === selected) {
-        isSelected = true;
-        this.SelectedComponent = item.component;
-        if (item.selector) this.selector = () => item.selector(item);
-      }
       return (
         <button
           key={item.name}
           onMouseUp={this.onMouseUp}
           onClick={this.onClick}
-          data-selected={isSelected}
           value={item.name}
-          className={cssClasses.menuItem}
         >
           {item.name}
         </button>
@@ -49,10 +70,18 @@ export default class ContextMenu extends Component {
     });
   }
 
+  menuRef = (c) => {
+    this.menu = c;
+  };
+
   render() {
+    const style = {position: 'fixed', top: this.props.y, left: this.props.x};
     return (
-      <div>
-        {this.items}
+      <div
+        ref={this.menuRef}
+        style={style}
+      >
+        <Container>{this.items}</Container>
       </div>
     );
   }
@@ -61,6 +90,7 @@ export default class ContextMenu extends Component {
 ContextMenu.propTypes = {
   items: PropTypes.array.isRequired,
   selected: PropTypes.string,
-  hide: PropTypes.func,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  x: PropTypes.number.isRequired,
+  y: PropTypes.number.isRequired
 };
