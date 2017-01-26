@@ -1,9 +1,9 @@
 import { css } from 'styled-components';
 
-export const style = ({ theme }) => css`
+export const style = ({ theme, main }) => css`
   display: flex;
-  flex: 0 0 3em;
-  padding: 0 1px;
+  flex: 0 0 30px;
+  padding-left: 1px;
   border-top: 1px solid ${theme.base01};
   background-color: ${theme.base01};
 
@@ -15,9 +15,12 @@ export const style = ({ theme }) => css`
 
     button {
       background-color: ${theme.base01};
-      color: ${theme.base06};
-      padding: 1em 2em;
-      border: none;
+      color: ${theme.base05};
+      letter-spacing: 0.3px;
+      min-height: 30px;
+      padding: 2px 10px;
+      margin-right: 1px;
+      border: 2px solid transparent;
       cursor: pointer;
       text-align: center;
       overflow: hidden;
@@ -26,15 +29,17 @@ export const style = ({ theme }) => css`
 
       &:hover,
       &:focus {
-        background-color: ${theme.base00};
+        background-color: ${main ? theme.base02 : theme.base00};
         text-shadow: ${theme.base01} 0 1px;
       }
     }
 
     > [data-selected] {
-      background-color: ${theme.base00};
+      ${main ?
+      `border-bottom: 2px solid ${theme.base0B};` :
+      `background-color: ${theme.base00};`
+      }
       color: ${theme.base07};
-      font-weight: 600;
     }
   }
 `;

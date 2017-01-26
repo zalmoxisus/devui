@@ -3,7 +3,7 @@ import { ripple } from '../../utils/animations';
 
 export const style = ({ theme }) => css`
   display: flex;
-  flex: 0 0 3em;
+  flex: 0 0 30px;
   background-color: ${theme.base01};
 
   > div:first-child {
@@ -15,7 +15,8 @@ export const style = ({ theme }) => css`
     button {
       background-color: ${theme.base01};
       color: ${theme.base07};
-      padding: 0 2em 0.9em;
+      min-height: 30px;
+      padding: 0 2em;
       text-transform: uppercase;
       cursor: pointer;
       border: none;

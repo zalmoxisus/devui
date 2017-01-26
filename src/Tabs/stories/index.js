@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
-import { withKnobs, text } from '@kadira/storybook-addon-knobs';
+import { withKnobs, text, boolean } from '@kadira/storybook-addon-knobs';
 import styled from 'styled-components';
 import Tabs from '../';
 import { tabs, simple10Tabs } from './data';
@@ -22,6 +22,7 @@ storiesOf('Tabs', module)
       <Container><Tabs
         tabs={simple10Tabs}
         selected={text('selected', '2')}
+        main={boolean('main', true)}
         onClick={action('tab selected')}
       /></Container>
     )
@@ -33,6 +34,7 @@ storiesOf('Tabs', module)
       <Tabs
         tabs={tabs}
         selected={text('selected', 'Tab2')}
+        main={boolean('main', false)}
         onClick={action('tab selected')}
       />
     )

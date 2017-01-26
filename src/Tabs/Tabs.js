@@ -51,7 +51,9 @@ export default class Tabs extends Component {
   }
 
   render() {
-    const tabsHeader = <TabsHeader tabs={this.tabsHeader} />;
+    const tabsHeader = (
+      <TabsHeader tabs={this.tabsHeader} main={this.props.main} />
+    );
     if (!this.SelectedComponent) return tabsHeader;
     return (
       <TabsContainer>
@@ -65,5 +67,6 @@ export default class Tabs extends Component {
 Tabs.propTypes = {
   tabs: PropTypes.array.isRequired,
   selected: PropTypes.string,
+  main: PropTypes.bool,
   onClick: PropTypes.func.isRequired
 };
