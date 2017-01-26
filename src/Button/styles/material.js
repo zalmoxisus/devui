@@ -26,8 +26,8 @@ export const style = ({ theme, primary, disabled, big }) => css`
   opacity: 0.6;
   ` : `
   cursor: pointer;
-  color: ${primary ? theme.base06 : theme.base05};
-  background-color: ${primary ? theme.base01 : theme.base00};
+  color: ${primary ? theme.base00 : theme.base05};
+  background-color: ${primary ? theme.base04 : theme.base01};
   `}
   ${!disabled ? `
     box-shadow:

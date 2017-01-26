@@ -19,7 +19,7 @@ export const style = ({ theme, open, fullWidth }) => css`
     bottom: 0px;
     left: 0px;
     background-color: ${theme.base05};
-    opacity: 0.5;
+    opacity: 0.2;
   }
 
   > div:last-child {
@@ -47,8 +47,8 @@ export const style = ({ theme, open, fullWidth }) => css`
       font-weight: 600;
       margin: -17px -17px 0;
       padding: 16px;
-      color: ${theme.base00};
-      background-color: ${theme.light ? theme.base05 : theme.base04};
+      color: ${theme.light ? theme.base00 : theme.base07};
+      background-color: ${theme.light ? theme.base04 : theme.base02};
       border: none;
 
       > div:first-child {
@@ -102,6 +102,10 @@ export const style = ({ theme, open, fullWidth }) => css`
       margin: 0 -16px -16px;
       padding: 2px 10px;
       border-top: 1px solid ${theme.base03};
+      
+      > button {
+        margin-left: 5px;
+      }
     }
   }
 `;

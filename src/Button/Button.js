@@ -11,6 +11,7 @@ export default class Button extends Component {
     return nextProps.children !== this.props.children ||
       nextProps.disabled !== this.props.disabled ||
       nextProps.mark !== this.props.mark ||
+      nextProps.big !== this.props.big ||
       nextProps.tooltipPosition !== this.props.tooltipPosition ||
       nextProps.title !== this.props.title;
   }

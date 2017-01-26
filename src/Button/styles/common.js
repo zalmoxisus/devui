@@ -1,5 +1,6 @@
 import { css } from 'styled-components';
 import { fadeIn } from '../../utils/animations';
+import colorEffect from '../../utils/color';
 
 const both = (tooltipPosition) => {
   switch (tooltipPosition) {
@@ -181,11 +182,15 @@ export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, mark }) => 
   }
   
   ${mark && `
-    & > button > svg {
-      color: ${theme[mark]};
-      stroke: ${theme[mark]};
-      stroke-width: 14px;
-      stroke-opacity: 0.3;
+    & > button {
+      background-color: ${colorEffect(theme[mark], 'fade', theme.light ? 0.92 : 0.82)};
+    
+      > svg {
+        color: ${theme[mark]};
+        stroke: ${theme[mark]};
+        stroke-width: 14px;
+        stroke-opacity: 0.2;
+      }
     }
   `}
 `;
