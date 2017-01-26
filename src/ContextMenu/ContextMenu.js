@@ -55,12 +55,13 @@ export default class ContextMenu extends Component {
 
   updateItems(props) {
     this.items = props.items.map(item => {
+      const value = item.value || item.name;
       return (
         <button
-          key={item.name}
+          key={value}
+          value={value}
           onMouseUp={this.onMouseUp}
           onClick={this.onClick}
-          value={item.name}
         >
           {item.name}
         </button>
