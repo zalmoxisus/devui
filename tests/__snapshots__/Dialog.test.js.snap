@@ -1,6 +1,6 @@
 exports[`Dialog renders correctly 1`] = `
 <div
-  class="jLdruW">
+  class="kcnBeL">
   <div />
   <div>
     <div
@@ -15,11 +15,11 @@ exports[`Dialog renders correctly 1`] = `
     <div
       class="mc-dialog--footer">
       <button
-        class="daFAmy">
+        class="gZkAti">
         Cancel
       </button>
       <button
-        class="daFAmy">
+        class="ieFjGg">
         Submit
       </button>
     </div>
@@ -29,7 +29,7 @@ exports[`Dialog renders correctly 1`] = `
 
 exports[`Dialog renders modal 1`] = `
 <div
-  class="jLdruW">
+  class="kcnBeL">
   <div />
   <div>
     <div
@@ -41,11 +41,11 @@ exports[`Dialog renders modal 1`] = `
     <div
       class="mc-dialog--footer">
       <button
-        class="daFAmy">
+        class="gZkAti">
         Cancel
       </button>
       <button
-        class="daFAmy">
+        class="ieFjGg">
         Submit
       </button>
     </div>
@@ -55,7 +55,7 @@ exports[`Dialog renders modal 1`] = `
 
 exports[`Dialog renders with props 1`] = `
 <div
-  class="cJOwNV"
+  class="cERukp"
   open="">
   <div />
   <div>
@@ -75,11 +75,11 @@ exports[`Dialog renders with props 1`] = `
     <div
       class="mc-dialog--footer">
       <button
-        class="daFAmy">
+        class="gZkAti">
         Cancel
       </button>
       <button
-        class="daFAmy">
+        class="ieFjGg">
         Submit
       </button>
     </div>

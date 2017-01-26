@@ -1,8 +1,8 @@
 exports[`Toolbar renders correctly 1`] = `
 <div
-  class="iEEeHw">
+  class="rETGi">
   <button
-    class="daFAmy">
+    class="gZkAti">
     1
   </button>
   <div
@@ -10,7 +10,7 @@ exports[`Toolbar renders correctly 1`] = `
   <div
     class="dbmnmg" />
   <button
-    class="daFAmy">
+    class="gZkAti">
     2
   </button>
 </div>
