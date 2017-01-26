@@ -41,10 +41,5 @@ export const style = ({ theme, primary, disabled, big }) => css`
     box-shadow: 0 0 4px ${theme.base02}, 0 4px 8px ${theme.base04};
   }
 
-  & > svg {
-    font-size: 1.5em;
-    overflow: visible;
-  }
-
   ${ripple(theme)}
 `;

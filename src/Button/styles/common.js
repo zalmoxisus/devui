@@ -122,6 +122,12 @@ export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, mark }) => 
   & > button {
     height: 100%;
     width: 100%;
+
+    > svg {
+      font-size: 1.5em;
+      overflow: visible;
+      pointer-events: none;
+    }
   }
 
   &:before {
@@ -190,6 +196,7 @@ export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, mark }) => 
         stroke: ${theme[mark]};
         stroke-width: 14px;
         stroke-opacity: 0.2;
+        user-select: none;
       }
     }
   `}

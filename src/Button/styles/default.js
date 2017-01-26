@@ -42,9 +42,4 @@ export const style = ({ theme, primary, disabled, big }) => css`
     border: 1px solid ${theme.base03};
     box-shadow: 1px 1px 2px ${theme.base04};
   }
-
-  & > svg {
-    font-size: 1.5em;
-    overflow: visible;
-  }
 `;
