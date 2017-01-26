@@ -71,7 +71,7 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
     }
   }
 
-  &.is-focused:not(.is-open) > .Select-control {
+  &.is-focused > .Select-control {
     ${theme.inputFocusedStyle}
   }
 
@@ -236,6 +236,7 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
     max-height: ${menuMaxHeight}px;
     position: absolute;
     top: auto;
+    left: 0;
     bottom: ${openOuterUp ? '100%' : 'auto'};
     width: 100%;
     min-width: 70px;
