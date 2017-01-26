@@ -7,26 +7,16 @@ const ContextMenuWrapper = getStyles(style, 'div', false);
 export default class ContextMenu extends Component {
   constructor(props) {
     super(props);
-    this.left = this.props.x;
-    this.top = this.props.y;
     this.updateItems(props);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.x !== this.props.x || nextProps.y !== this.props.y) {
-      const { scrollTop: scrollX, scrollLeft: scrollY } = document.documentElement;
-      const { innerWidth, innerHeight } = window;
-      const rect = this.menu.getBoundingClientRect();
-      this.left = nextProps.x + scrollX;
-      this.top = nextProps.y + scrollY;
+  componentDidMount() {
+    this.amendPosition();
+  }
 
-      if (nextProps.y + rect.height > innerHeight) {
-        this.top = innerHeight - rect.height;
-      }
-
-      if (nextProps.x + rect.width > innerWidth) {
-        this.left = innerWidth - rect.width;
-      }
+  componentDidUpdate(prevProps) {
+    if (prevProps.x !== this.props.x || prevProps.y !== this.props.y) {
+      this.amendPosition();
     }
   }
 
@@ -37,6 +27,31 @@ export default class ContextMenu extends Component {
   onClick = (e) => {
     this.props.onClick(e.target.value);
   };
+
+  amendPosition() {
+    const { x, y } = this.props;
+    const { scrollTop, scrollLeft } = document.documentElement;
+    const { innerWidth, innerHeight } = window;
+    const rect = this.menu.getBoundingClientRect();
+    let left = x + scrollLeft;
+    let top = y + scrollTop;
+
+    if (y + rect.height > innerHeight) {
+      top = innerHeight - rect.height;
+    }
+    if (x + rect.width > innerWidth) {
+      left = innerWidth - rect.width;
+    }
+    if (top < 0) {
+      top = rect.height < innerHeight ? (innerHeight - rect.height) / 2 : 0;
+    }
+    if (left < 0) {
+      left = rect.width < innerWidth ? (innerWidth - rect.width) / 2 : 0;
+    }
+
+    this.menu.style.top = `${top}px`;
+    this.menu.style.left = `${left}px`;
+  }
 
   updateItems(props) {
     this.items = props.items.map(item => {
@@ -61,8 +76,8 @@ export default class ContextMenu extends Component {
     return (
       <ContextMenuWrapper
         innerRef={this.menuRef}
-        left={this.left}
-        top={this.top}
+        left={this.props.x}
+        top={this.props.y}
       >
         {this.items}
       </ContextMenuWrapper>

@@ -20,6 +20,7 @@ export const style = ({ theme, left, top }) => css`
     padding: ${theme.inputHeight / 3}px;
     line-height: ${theme.inputInternalHeight / 2}px;
     border: none;
+    white-space: nowrap;
 
     &:hover {
       background-color: ${theme.base02};
