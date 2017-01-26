@@ -2,8 +2,8 @@ import { css } from 'styled-components';
 
 export const style = ({ theme, left, top }) => css`
   position: fixed;
-  top: ${top + 'px'};
-  left: ${left + 'px'};
+  top: ${top}px;
+  left: ${left}px;
   font-size: 14px;
   color: ${theme.base07};
   cursor: pointer;

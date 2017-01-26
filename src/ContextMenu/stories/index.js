@@ -2,7 +2,6 @@ import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
 import styled from 'styled-components';
 import { withKnobs, number } from '@kadira/storybook-addon-knobs';
-import MdFiberManualRecord from 'react-icons/lib/md/fiber-manual-record';
 import ContextMenu from '../';
 import { items } from './data';
 
@@ -12,14 +11,6 @@ export const Container = styled.div`
   width: 100%;
   justify-content: center;
   align-items: center;
-
-  .wrapper {
-    display: flex;
-    width: 100%;
-    padding: 5px;
-    background-color: ${props => props.theme.base01};
-    text-align: center;
-  }
 `;
 
 storiesOf('ContextMenu', module)

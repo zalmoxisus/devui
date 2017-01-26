@@ -14,7 +14,7 @@ export default class ContextMenu extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.x !== this.props.x || nextProps.y !== this.props.y) {
-      const {scrollTop: scrollX, scrollLeft: scrollY} = document.documentElement;
+      const { scrollTop: scrollX, scrollLeft: scrollY } = document.documentElement;
       const { innerWidth, innerHeight } = window;
       const rect = this.menu.getBoundingClientRect();
       this.left = nextProps.x + scrollX;
@@ -26,14 +26,6 @@ export default class ContextMenu extends Component {
 
       if (nextProps.x + rect.width > innerWidth) {
         this.left = innerWidth - rect.width;
-      }
-
-      if (this.props.top < 0) {
-        this.top = (rect.height < innerHeight) ? (innerHeight - rect.height) / 2 : 0;
-      }
-
-      if (this.props.left < 0) {
-        this.left = (rect.width < innerWidth) ? (innerWidth - rect.width) / 2 : 0;
       }
     }
   }
@@ -47,9 +39,7 @@ export default class ContextMenu extends Component {
   };
 
   updateItems(props) {
-    const items = props.items;
-
-    this.items = items.map(item => {
+    this.items = props.items.map(item => {
       return (
         <button
           key={item.name}
@@ -82,7 +72,6 @@ export default class ContextMenu extends Component {
 
 ContextMenu.propTypes = {
   items: PropTypes.array.isRequired,
-  selected: PropTypes.string,
   onClick: PropTypes.func.isRequired,
   x: PropTypes.number.isRequired,
   y: PropTypes.number.isRequired
