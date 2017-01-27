@@ -2,7 +2,7 @@ exports[`Toolbar renders correctly 1`] = `
 <div
   class="rETGi">
   <button
-    class="gZkAti">
+    class="dfQtlJ">
     1
   </button>
   <div
@@ -10,7 +10,7 @@ exports[`Toolbar renders correctly 1`] = `
   <div
     class="dbmnmg" />
   <button
-    class="gZkAti">
+    class="dfQtlJ">
     2
   </button>
 </div>
