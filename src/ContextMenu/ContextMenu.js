@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { getStyles } from '../themes';
+import getStyles from '../utils/getStyles';
 import { style } from './styles/index';
 
 const ContextMenuWrapper = getStyles(style, 'div', false);
