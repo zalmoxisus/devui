@@ -1,5 +1,6 @@
 export { default as Container } from './Container';
 export { default as Button } from './Button';
+export { default as ContextMenu } from './ContextMenu';
 export { default as Dialog } from './Dialog';
 export { default as Editor } from './Editor';
 export { default as Form } from './Form';
