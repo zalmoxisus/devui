@@ -32,11 +32,15 @@ const Toolbar = styled.div`
     .Select-control {
       cursor: pointer;
       border-radius: 0 !important;
+      text-align: center;
     }
 
     .Select-menu-outer {
       margin-top: 5px;
     }
+  }
+  & > .Select.is-focused > .Select-control {
+    text-align: left;
   }
 `;
 

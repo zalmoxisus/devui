@@ -303,8 +303,8 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
       display: inline-block;
       font-size: 0.9em;
       margin-left: ${theme.inputPadding / 2}px;
-      margin-top: ${(theme.inputInternalHeight - 14) / 2 - theme.inputPadding / 4}px;
-      vertical-align: top;
+      margin-top: 0;
+      vertical-align: middle;
     }
 
     .Select-value-icon,
@@ -317,7 +317,7 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
       border-bottom-right-radius: ${theme.inputBorderRadius}px;
       border-top-right-radius: ${theme.inputBorderRadius}px;
       cursor: default;
-      padding: ${theme.inputPadding / 4}px ${theme.inputPadding / 2}px;
+      padding: ${Math.floor(theme.inputPadding / 4)}px ${Math.floor(theme.inputPadding / 2)}px;
     }
 
     a.Select-value-label {
@@ -335,7 +335,7 @@ export const style = ({ theme, openOuterUp, menuMaxHeight }) => css`
       border-bottom-left-radius: ${theme.inputBorderRadius}px;
       border-top-left-radius: ${theme.inputBorderRadius}px;
       border-right: 1px solid ${theme.base02};
-      padding: ${theme.inputPadding / 4}px ${theme.inputPadding / 2}px;
+      padding: 0px ${Math.floor(theme.inputPadding / 2)}px;
 
       &:hover,
       &:focus {
