@@ -9,6 +9,9 @@ const Toolbar = styled.div`
   background-color: ${props => props.theme.base01};
   text-align: center;
   position: relative;
+  ${({ borderPosition, theme }) =>
+    borderPosition && `border-${borderPosition}: 1px solid ${theme.base02};`
+  }
   
   & > div {
     margin: 0 1px;

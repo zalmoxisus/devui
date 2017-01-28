@@ -22,7 +22,7 @@ storiesOf('Toolbar', module)
     '',
     () => (
       <Container>
-        <Toolbar>
+        <Toolbar borderPosition={select('borderPosition', ['top', 'bottom'])}>
           <Button
             title={text('Title', 'Hello Tooltip')}
             tooltipPosition={

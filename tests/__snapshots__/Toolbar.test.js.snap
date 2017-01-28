@@ -15,3 +15,8 @@ exports[`Toolbar renders correctly 1`] = `
   </button>
 </div>
 `;
+
+exports[`Toolbar renders with props 1`] = `
+<div
+  class="cncqnq" />
+`;
