@@ -6,6 +6,7 @@ const Divider = styled.div`
   height: ${props => props.theme.inputHeight}px;
   width: 1px;
   margin: 0 3px !important;
+  flex-shrink: 0;
 `;
 
 export default Divider;

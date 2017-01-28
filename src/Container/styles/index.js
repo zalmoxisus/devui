@@ -22,6 +22,7 @@ export const ContainerWrapper = styled.div`
     flex-grow: 1;
     display: flex;
     flex-flow: column nowrap;
+    height: 100%;
 
     > div {
       flex-grow: 1;

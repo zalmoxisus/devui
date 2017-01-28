@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const Toolbar = styled.div`
   display: flex;
+  flex-shrink: 0;
   box-sizing: border-box;
   width: 100%;
   padding: 5px;
