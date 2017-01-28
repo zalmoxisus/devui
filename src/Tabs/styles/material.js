@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import { ripple } from '../../utils/animations';
 
-export const style = ({ theme }) => css`
+export const style = ({ theme, main }) => css`
   display: flex;
   flex: 0 0 30px;
   background-color: ${theme.base01};
@@ -17,7 +17,7 @@ export const style = ({ theme }) => css`
       color: ${theme.base07};
       min-height: 30px;
       padding: 0 2em;
-      text-transform: uppercase;
+      ${main && 'text-transform: uppercase;'}
       cursor: pointer;
       border: none;
       border-bottom: 2px solid transparent;
