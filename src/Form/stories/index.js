@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
-import { withKnobs, object } from '@kadira/storybook-addon-knobs';
+import { withKnobs, object, text } from '@kadira/storybook-addon-knobs';
 import Form from '../';
 import { schema, uiSchema, formData } from './schema';
 
@@ -14,6 +14,7 @@ storiesOf('Form', module)
         formData={object('formData', formData)}
         schema={object('schema', schema)}
         uiSchema={object('uiSchema', uiSchema)}
+        submitText={text('submitText', 'Submit')}
         onChange={action('form changed')}
         onSubmit={action('form submitted')}
       />

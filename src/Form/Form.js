@@ -9,10 +9,10 @@ const FormContainer = getStyles(style, JSONSchemaForm);
 
 export default class Form extends Component {
   render() {
-    const { widgets, children, ...rest } = this.props;
+    const { widgets, children, submitText, ...rest } = this.props;
     return (
       <FormContainer {...rest} widgets={{ ...customWidgets, ...widgets }}>
-        {children || <Button big type="submit">Submit</Button>}
+        {children || <Button big type="submit">{submitText || 'Submit'}</Button>}
       </FormContainer>
     );
   }
@@ -20,6 +20,7 @@ export default class Form extends Component {
 
 Form.propTypes = {
   children: PropTypes.any,
+  submitText: PropTypes.string,
   schema: PropTypes.object.isRequired,
   widgets: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object]))
 };
