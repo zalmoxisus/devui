@@ -1,6 +1,6 @@
 exports[`Select renders correctly 1`] = `
 <div
-  class="Select cyFmJA Select--single is-searchable">
+  class="Select dMBtVL Select--single is-searchable">
   <div
     class="Select-control">
     <span
@@ -33,7 +33,7 @@ exports[`Select renders correctly 1`] = `
 
 exports[`Select renders with props 1`] = `
 <div
-  class="Select gCmuaH Select--multi is-disabled is-loading has-value">
+  class="Select cQJKbX Select--multi is-disabled is-loading has-value">
   <div
     class="Select-control">
     <span
@@ -99,7 +99,8 @@ exports[`Select should select another option 1`] = `
         "value": "hundred",
       },
     ]
-  }>
+  }
+  simpleValue={true}>
   <Styled(Select)
     autosize={false}
     clearable={false}
@@ -120,13 +121,14 @@ exports[`Select should select another option 1`] = `
           "value": "hundred",
         },
       ]
-    }>
+    }
+    simpleValue={true}>
     <Select
       addLabelText="Add \"{label}\"?"
       autosize={false}
       backspaceRemoves={true}
       backspaceToRemoveMessage="Press backspace to remove {label}"
-      className="cyFmJA"
+      className="dMBtVL"
       clearAllText="Clear all"
       clearValueText="Clear value"
       clearable={false}
@@ -173,12 +175,12 @@ exports[`Select should select another option 1`] = `
       required={false}
       scrollMenuIntoView={true}
       searchable={true}
-      simpleValue={false}
+      simpleValue={true}
       tabSelectsValue={true}
       valueComponent={[Function]}
       valueKey="value">
       <div
-        className="Select cyFmJA Select--single is-open is-searchable">
+        className="Select dMBtVL Select--single is-open is-searchable">
         <div
           className="Select-control"
           onKeyDown={[Function]}
@@ -277,7 +279,8 @@ exports[`Select shouldn't find any results 1`] = `
         "value": "hundred",
       },
     ]
-  }>
+  }
+  simpleValue={true}>
   <Styled(Select)
     autosize={false}
     clearable={false}
@@ -298,13 +301,14 @@ exports[`Select shouldn't find any results 1`] = `
           "value": "hundred",
         },
       ]
-    }>
+    }
+    simpleValue={true}>
     <Select
       addLabelText="Add \"{label}\"?"
       autosize={false}
       backspaceRemoves={true}
       backspaceToRemoveMessage="Press backspace to remove {label}"
-      className="cyFmJA"
+      className="dMBtVL"
       clearAllText="Clear all"
       clearValueText="Clear value"
       clearable={false}
@@ -351,12 +355,12 @@ exports[`Select shouldn't find any results 1`] = `
       required={false}
       scrollMenuIntoView={true}
       searchable={true}
-      simpleValue={false}
+      simpleValue={true}
       tabSelectsValue={true}
       valueComponent={[Function]}
       valueKey="value">
       <div
-        className="Select cyFmJA Select--single is-open is-searchable">
+        className="Select dMBtVL Select--single is-open is-searchable">
         <div
           className="Select-control"
           onKeyDown={[Function]}

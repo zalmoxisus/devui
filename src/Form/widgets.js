@@ -4,7 +4,7 @@ import Slider from '../Slider';
 
 /* eslint-disable react/prop-types */
 const SelectWidget = ({ options, multi, ...rest }) => (
-  <Select options={options.enumOptions} multiple={multi} simpleValue {...rest} />
+  <Select options={options.enumOptions} multiple={multi} {...rest} />
 );
 
 const RangeWidget = ({

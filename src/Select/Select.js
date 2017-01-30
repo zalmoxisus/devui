@@ -19,9 +19,10 @@ Select.propTypes = {
   menuMaxHeight: PropTypes.number,      // maximum css height for the opened menu of options
   multi: PropTypes.bool,                // multi-value input
   searchable: PropTypes.bool,           // whether to enable searching feature or not
+  simpleValue: React.PropTypes.bool,    // pass the value with label to onChange
   value: PropTypes.any,                 // initial field value
   valueKey: PropTypes.string,           // path of the label value in option objects
   openOuterUp: PropTypes.bool           // value to control the opening direction
 };
 
-Select.defaultProps = { autosize: false, clearable: false, menuMaxHeight: 200 };
+Select.defaultProps = { autosize: false, clearable: false, simpleValue: true, menuMaxHeight: 200 };
