@@ -88,5 +88,6 @@ Tabs.propTypes = {
   tabs: PropTypes.array.isRequired,
   selected: PropTypes.string,
   main: PropTypes.bool,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  collapsable: PropTypes.bool
 };
