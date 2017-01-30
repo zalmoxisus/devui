@@ -1,4 +1,6 @@
 import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
+import elementResizeDetectorMaker from 'element-resize-detector';
 import TabsHeader from './TabsHeader';
 import { TabsContainer } from './styles/common';
 
@@ -6,6 +8,20 @@ export default class Tabs extends Component {
   constructor(props) {
     super(props);
     this.updateTabs(props);
+  }
+
+  componentDidMount() {
+    this.erd = elementResizeDetectorMaker();
+
+    var erdUltraFast = elementResizeDetectorMaker({
+      strategy: "scroll"
+    });
+
+    this.erd.listenTo(ReactDOM.findDOMNode(this.tabs), function(element) {
+      var width = element.offsetWidth;
+      var height = element.offsetHeight;
+      console.log("Size: " + width + "x" + height);
+    });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -50,9 +66,13 @@ export default class Tabs extends Component {
     });
   }
 
+  tabsRef = (c) => {
+    this.tabs = c;
+  };
+
   render() {
     const tabsHeader = (
-      <TabsHeader tabs={this.tabsHeader} main={this.props.main} />
+      <TabsHeader ref={this.tabsRef} tabs={this.tabsHeader} main={this.props.main} />
     );
     if (!this.SelectedComponent) return tabsHeader;
     return (
