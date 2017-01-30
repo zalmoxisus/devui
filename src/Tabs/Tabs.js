@@ -11,6 +11,14 @@ export default class Tabs extends Component {
   }
 
   componentDidMount() {
+    this.enableResizeDetector();
+  }
+
+  componentWillUnmount() {
+    this.disableResizeDetector();
+  }
+
+  enableResizeDetector() {
     this.erd = elementResizeDetectorMaker();
 
     var erdUltraFast = elementResizeDetectorMaker({
@@ -22,6 +30,9 @@ export default class Tabs extends Component {
       var height = element.offsetHeight;
       console.log("Size: " + width + "x" + height);
     });
+  }
+  disableResizeDetector() {
+    this.erd.removeListener(ReactDOM.findDOMNode(this.tabs));
   }
 
   componentWillReceiveProps(nextProps) {
