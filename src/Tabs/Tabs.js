@@ -5,9 +5,14 @@ import TabsHeader from './TabsHeader';
 import { TabsContainer } from './styles/common';
 
 export default class Tabs extends Component {
+  static getDomNodeDimensions(node) {
+    const { top, right, bottom, left, width, height } = node.getBoundingClientRect();
+    return { top, right, bottom, left, width, height }
+  }
   constructor(props) {
     super(props);
     this.updateTabs(props);
+    this.onResize = this.onResize.bind(this)
   }
 
   componentDidMount() {
@@ -19,20 +24,20 @@ export default class Tabs extends Component {
   }
 
   enableResizeDetector() {
-    this.erd = elementResizeDetectorMaker();
-
-    var erdUltraFast = elementResizeDetectorMaker({
-      strategy: "scroll"
-    });
-
-    this.erd.listenTo(ReactDOM.findDOMNode(this.tabs), function(element) {
-      var width = element.offsetWidth;
-      var height = element.offsetHeight;
-      console.log("Size: " + width + "x" + height);
-    });
+    this.parentNode = ReactDOM.findDOMNode(this).parentNode;
+    this.elementResizeDetector = elementResizeDetectorMaker({ strategy: 'scroll' });
+    this.elementResizeDetector.listenTo(this.parentNode, this.onResize);
+    this.onResize();
   }
   disableResizeDetector() {
-    this.erd.removeListener(ReactDOM.findDOMNode(this.tabs));
+    this.elementResizeDetector.removeListener(this.parentNode, this.onResize)
+  }
+  onResize() {
+    const clientRect = Tabs.getDomNodeDimensions(this.parentNode);
+    this.setState({
+      initiated: true,
+      ...clientRect
+    })
   }
 
   componentWillReceiveProps(nextProps) {
@@ -77,13 +82,9 @@ export default class Tabs extends Component {
     });
   }
 
-  tabsRef = (c) => {
-    this.tabs = c;
-  };
-
   render() {
     const tabsHeader = (
-      <TabsHeader ref={this.tabsRef} tabs={this.tabsHeader} main={this.props.main} />
+      <TabsHeader tabs={this.tabsHeader} main={this.props.main} />
     );
     if (!this.SelectedComponent) return tabsHeader;
     return (
