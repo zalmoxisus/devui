@@ -1,5 +1,5 @@
 import React from 'react';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf, action } from '@kadira/storybook';
 import { withKnobs, text, boolean } from '@kadira/storybook-addon-knobs';
 import Editor from '../';
 import WithTabs from './WithTabs';
@@ -24,6 +24,7 @@ storiesOf('Editor', module)
         lineWrapping={boolean('lineWrapping', false)}
         foldGutter={boolean('foldGutter', true)}
         readOnly={boolean('readOnly', false)}
+        onChange={action('change')}
         autofocus
       />
     )

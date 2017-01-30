@@ -22,10 +22,14 @@ export default class Editor extends Component {
         gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter']
       }
     );
+
+    if (this.props.onChange) {
+      this.cm.on('change', (doc, change) => { this.props.onChange(doc.getValue(), change); });
+    }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.value !== this.props.value) {
+    if (nextProps.value !== this.cm.getValue()) {
       this.cm.setValue(nextProps.value);
     }
     if (nextProps.readOnly !== this.props.readOnly) {
@@ -68,7 +72,8 @@ Editor.propTypes = {
   lineWrapping: PropTypes.bool,
   readOnly: PropTypes.bool,
   foldGutter: PropTypes.bool,
-  autofocus: PropTypes.bool
+  autofocus: PropTypes.bool,
+  onChange: PropTypes.func
 };
 
 Editor.defaultProps = {
