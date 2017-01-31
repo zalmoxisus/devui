@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import MdNavigateNext from 'react-icons/lib/md/navigate-next';
 import getStyles from '../utils/getStyles';
 import ReactDOM from 'react-dom';
 import * as styles from './styles';
@@ -13,7 +14,10 @@ export default class TabsHeader extends Component {
   render() {
     return (
       <TabsWrapper main={this.props.main} width={this.props.width}>
-        <div>{this.props.tabs}</div>
+        <div>
+          {this.props.tabs}
+          <MdNavigateNext/>
+        </div>
       </TabsWrapper>
     );
   }

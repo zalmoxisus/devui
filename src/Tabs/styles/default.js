@@ -11,9 +11,19 @@ export const style = ({ theme, main, width }) => css`
   `}
 
   > div:first-child {
+    position: fixed;
+    left: 0;
     width: ${width}px;
     height: 30px;
     overflow: hidden;
+
+  svg {
+      font-size: 16px;
+      padding: 7px 0 7px 0;
+      right: 0;
+      position: absolute;
+      cursor: pointer;
+    }
 
     button {
       background-color: ${theme.base01};
