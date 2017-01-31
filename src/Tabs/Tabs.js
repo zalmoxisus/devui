@@ -11,6 +11,9 @@ export default class Tabs extends Component {
   }
   constructor(props) {
     super(props);
+    this.state = {
+      clientWidth: 0
+    };
     this.updateTabs(props);
     this.onResize = this.onResize.bind(this)
   }
@@ -35,8 +38,7 @@ export default class Tabs extends Component {
   onResize() {
     const clientRect = Tabs.getDomNodeDimensions(this.parentNode);
     this.setState({
-      initiated: true,
-      ...clientRect
+      clientWidth: clientRect.width
     })
   }
 
@@ -84,7 +86,7 @@ export default class Tabs extends Component {
 
   render() {
     const tabsHeader = (
-      <TabsHeader tabs={this.tabsHeader} main={this.props.main} />
+      <TabsHeader tabs={this.tabsHeader} main={this.props.main} width={this.state.clientWidth} />
     );
     if (!this.SelectedComponent) return tabsHeader;
     return (

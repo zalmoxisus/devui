@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export const style = ({ theme, main }) => css`
+export const style = ({ theme, main, width }) => css`
   display: flex;
   flex: 0 0 30px;
   padding-left: 1px;
@@ -11,9 +11,9 @@ export const style = ({ theme, main }) => css`
   `}
 
   > div:first-child {
-    display: flex;
-    align-items: flex-end;
-    flex-wrap: nowrap;
+    width: ${width}px;
+    height: 30px;
+    overflow: hidden;
 
     button {
       background-color: ${theme.base01};
@@ -28,6 +28,7 @@ export const style = ({ theme, main }) => css`
       overflow: hidden;
       outline: 0;
       transition: all 0.5s;
+      float: left;
 
       &:hover,
       &:focus {
