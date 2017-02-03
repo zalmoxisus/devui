@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export const style = ({ theme, main, width }) => css`
+export const style = ({ theme, main }) => css`
   display: flex;
   flex: 0 0 30px;
   padding-left: 1px;
@@ -10,18 +10,17 @@ export const style = ({ theme, main, width }) => css`
   border-bottom: 1px solid ${theme.base02};
   `}
 
-  > div:first-child {
-    position: fixed;
+  > div:first-child, >div:nth-child(2) {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: nowrap;
     left: 0;
-    width: ${width}px;
-    height: 30px;
-    overflow: hidden;
+    position: fixed;
 
   svg {
       font-size: 16px;
       padding: 7px 0 7px 0;
       right: 0;
-      position: absolute;
       cursor: pointer;
     }
 
@@ -38,12 +37,14 @@ export const style = ({ theme, main, width }) => css`
       overflow: hidden;
       outline: 0;
       transition: all 0.5s;
-      float: left;
 
       &:hover,
       &:focus {
         background-color: ${main ? theme.base02 : theme.base00};
         text-shadow: ${theme.base01} 0 1px;
+      }
+      &.collapsed{
+        display: none;
       }
     }
 
@@ -59,5 +60,8 @@ export const style = ({ theme, main, width }) => css`
       }
       color: ${theme.base07};
     }
+  }
+  >div:nth-child(2) {
+    flex-direction: column;
   }
 `;

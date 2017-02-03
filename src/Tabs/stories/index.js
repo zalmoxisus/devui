@@ -37,6 +37,7 @@ storiesOf('Tabs', module)
         selected={text('selected', 'Tab2')}
         main={boolean('main', false)}
         onClick={action('tab selected')}
+        collapsable={boolean('collapsable', false)}
       />
     )
   );

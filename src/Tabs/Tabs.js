@@ -7,7 +7,7 @@ import { TabsContainer } from './styles/common';
 export default class Tabs extends Component {
   static getDomNodeDimensions(node) {
     const { top, right, bottom, left, width, height } = node.getBoundingClientRect();
-    return { top, right, bottom, left, width, height }
+    return { top, right, bottom, left, width, height };
   }
   constructor(props) {
     super(props);
@@ -15,37 +15,21 @@ export default class Tabs extends Component {
       clientWidth: 0
     };
     this.updateTabs(props);
-    this.onResize = this.onResize.bind(this)
+    this.onResize = this.onResize.bind(this);
   }
 
   componentDidMount() {
     this.enableResizeDetector();
   }
 
-  componentWillUnmount() {
-    this.disableResizeDetector();
-  }
-
-  enableResizeDetector() {
-    this.parentNode = ReactDOM.findDOMNode(this).parentNode;
-    this.elementResizeDetector = elementResizeDetectorMaker({ strategy: 'scroll' });
-    this.elementResizeDetector.listenTo(this.parentNode, this.onResize);
-    this.onResize();
-  }
-  disableResizeDetector() {
-    this.elementResizeDetector.removeListener(this.parentNode, this.onResize)
-  }
-  onResize() {
-    const clientRect = Tabs.getDomNodeDimensions(this.parentNode);
-    this.setState({
-      clientWidth: clientRect.width
-    })
-  }
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.tabs !== this.props.tabs || nextProps.selected !== this.props.selected) {
       this.updateTabs(nextProps);
     }
+  }
+
+  componentWillUnmount() {
+    this.disableResizeDetector();
   }
 
   onMouseUp = e => {
@@ -55,6 +39,23 @@ export default class Tabs extends Component {
   onClick = e => {
     this.props.onClick(e.target.value);
   };
+
+  onResize() {
+    const clientRect = Tabs.getDomNodeDimensions(this.parentNode);
+    this.setState({
+      clientWidth: clientRect.width
+    });
+  }
+
+  enableResizeDetector() {
+    this.parentNode = ReactDOM.findDOMNode(this).parentNode;
+    this.elementResizeDetector = elementResizeDetectorMaker({ strategy: 'scroll' });
+    this.elementResizeDetector.listenTo(this.parentNode, this.onResize);
+    this.onResize();
+  }
+  disableResizeDetector() {
+    this.elementResizeDetector.removeListener(this.parentNode, this.onResize);
+  }
 
   updateTabs(props) {
     const tabs = props.tabs;
@@ -86,7 +87,10 @@ export default class Tabs extends Component {
 
   render() {
     const tabsHeader = (
-      <TabsHeader tabs={this.tabsHeader} main={this.props.main} width={this.state.clientWidth} />
+      <TabsHeader
+        tabs={this.tabsHeader} main={this.props.main}
+        width={this.state.clientWidth} collapsable={this.props.collapsable}
+      />
     );
     if (!this.SelectedComponent) return tabsHeader;
     return (
