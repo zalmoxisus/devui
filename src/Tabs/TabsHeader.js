@@ -9,9 +9,9 @@ export default class TabsHeader extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      collapsed: []
+      collapsed: [],
+      expand: false
     };
-    this.width = 0;
   }
 
   componentDidMount() {
@@ -43,7 +43,6 @@ export default class TabsHeader extends Component {
         i--;
       }
       this.state.collapsed = arr;
-      this.forceUpdate();
     } else {
       arr = this.state.collapsed;
       let i = arr.length - 1;
@@ -56,11 +55,12 @@ export default class TabsHeader extends Component {
       }
       if (this.menu.offsetWidth > this.props.width - 50) {
         this.autocollapse();
-      } else {
-        this.forceUpdate();
       }
     }
-    this.width = this.menu.offsetWidth;
+  };
+  expandMenu = () => {
+    this.setState({ expand: !this.state.expand });
+    this.forceUpdate();
   };
   menuRef = (c) => {
     this.menu = c;
@@ -71,11 +71,13 @@ export default class TabsHeader extends Component {
       <TabsWrapper main={this.props.main} width={this.props.width}>
         <div ref={this.menuRef} >
           {this.props.tabs}
-          <MdNavigateNext />
+          <MdNavigateNext onClick={this.expandMenu} />
         </div>
-        <div>
-          {this.state.collapsed}
-        </div>
+        {this.state.expand &&
+          <div>
+            {this.state.collapsed}
+          </div>
+        }
       </TabsWrapper>
     );
   }
