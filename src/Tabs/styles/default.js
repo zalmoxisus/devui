@@ -14,13 +14,6 @@ export const style = ({ theme, main }) => css`
     align-items: flex-end;
     flex-wrap: nowrap;
 
-  svg {
-      font-size: 16px;
-      padding: 7px 0 7px 0;
-      right: 0;
-      cursor: pointer;
-    }
-
     button {
       background-color: ${theme.base01};
       color: ${theme.base05};

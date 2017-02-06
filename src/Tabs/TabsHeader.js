@@ -34,10 +34,7 @@ export default class TabsHeader extends Component {
   }
 
   pageClick = (e) => {
-    if(e.target.parentNode === this.submenu) return;
-    else {
-      this.submenu.style.display = 'none';
-    }
+    this.submenu.style.display = 'none';
   };
 
   autocollapse = () => {
@@ -84,7 +81,7 @@ export default class TabsHeader extends Component {
       <TabsWrapper main={this.props.main} width={this.props.width}>
         <div ref={this.menuRef} >
           {this.props.tabs}
-          <MdNavigateNext onClick={this.expandMenu} />
+          <button onClick={this.expandMenu}><MdNavigateNext /></button>
         </div>
         <div ref={this.submenuRef}>
           {this.state.collapsed}
