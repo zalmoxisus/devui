@@ -4,18 +4,15 @@ export const style = ({ theme, main }) => css`
   display: flex;
   flex: 0 0 30px;
   padding-left: 1px;
-  background-color: ${theme.base01};
   ${!main && `
   border-top: 1px solid ${theme.base01};
   border-bottom: 1px solid ${theme.base02};
   `}
 
-  > div:first-child, >div:nth-child(2) {
+  > div:first-child, > div:nth-child(2) {
     display: flex;
     align-items: flex-end;
     flex-wrap: nowrap;
-    left: 0;
-    position: fixed;
 
   svg {
       font-size: 16px;
@@ -61,7 +58,16 @@ export const style = ({ theme, main }) => css`
       color: ${theme.base07};
     }
   }
-  >div:nth-child(2) {
-    flex-direction: column;
+  > div:nth-child(2) {
+    display: none;
+    position: absolute;
+    border: 1px solid ${theme.base02};
+    right: 20px;
+
+    button {
+      display: block;
+      background: ${theme.base00};
+      width: 100%;
+    }
   }
 `;

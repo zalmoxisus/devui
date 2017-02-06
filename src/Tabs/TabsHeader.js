@@ -9,8 +9,7 @@ export default class TabsHeader extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      collapsed: [],
-      expand: false
+      collapsed: []
     };
   }
 
@@ -58,12 +57,18 @@ export default class TabsHeader extends Component {
       }
     }
   };
-  expandMenu = () => {
-    this.setState({ expand: !this.state.expand });
+  expandMenu = (e) => {
+    const rect = e.target.getBoundingClientRect();
+    this.submenu.style.top = `${rect.top + 20}px`;
+    this.submenu.style.display = this.submenu.style.display === 'block' ?
+        'none' : 'block';
     this.forceUpdate();
   };
   menuRef = (c) => {
     this.menu = c;
+  };
+  submenuRef = (c) => {
+    this.submenu = c;
   };
 
   render() {
@@ -73,11 +78,9 @@ export default class TabsHeader extends Component {
           {this.props.tabs}
           <MdNavigateNext onClick={this.expandMenu} />
         </div>
-        {this.state.expand &&
-          <div>
-            {this.state.collapsed}
-          </div>
-        }
+        <div ref={this.submenuRef}>
+          {this.state.collapsed}
+        </div>
       </TabsWrapper>
     );
   }
