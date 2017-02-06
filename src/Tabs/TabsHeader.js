@@ -14,6 +14,7 @@ export default class TabsHeader extends Component {
   }
 
   componentDidMount() {
+    window.addEventListener('mousedown', this.pageClick, false);
     if (this.props.collapsable) {
       setTimeout(() => {
         this.autocollapse();
@@ -31,6 +32,13 @@ export default class TabsHeader extends Component {
       nextProps.main !== this.props.main ||
       nextProps.width !== this.props.width;
   }
+
+  pageClick = (e) => {
+    if(e.target.parentNode === this.submenu) return;
+    else {
+      this.submenu.style.display = 'none';
+    }
+  };
 
   autocollapse = () => {
     let arr = [];
