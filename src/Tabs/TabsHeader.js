@@ -96,7 +96,9 @@ export default class TabsHeader extends Component {
       <TabsWrapper main={this.props.main} width={this.props.width}>
         <div ref={this.menuRef} >
           {this.props.tabs}
-          <button onClick={this.expandMenu}><MdNavigateNext /></button>
+          { (this.state.collapsed.length > 0) &&
+            <button onClick={this.expandMenu}><MdNavigateNext /></button>
+          }
         </div>
         <div ref={this.submenuRef}>
           {this.state.collapsed}
