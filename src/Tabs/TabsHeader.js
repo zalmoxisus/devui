@@ -14,23 +14,38 @@ export default class TabsHeader extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener('mousedown', this.pageClick, false);
-    if (this.props.collapsable) {
-      setTimeout(() => {
-        this.autocollapse();
-        let resizeId;
-        window.addEventListener('resize', () => {
-          clearTimeout(resizeId);
-          resizeId = setTimeout(this.autocollapse, 250);
-        });
-      }, 0);
-    }
+    this.amendCollapsable();
   }
 
   shouldComponentUpdate(nextProps) {
     return nextProps.tabs !== this.props.tabs ||
       nextProps.main !== this.props.main ||
-      nextProps.width !== this.props.width;
+      nextProps.width !== this.props.width ||
+      nextProps.collapsable !== this.props.collapsable
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.collapsable !== this.props.collapsable) {
+      this.amendCollapsable();
+    }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.autocollapse);
+  }
+
+  amendCollapsable() {
+    if (this.props.collapsable) {
+      window.addEventListener('mousedown', this.pageClick);
+      setTimeout(() => {
+        this.autocollapse();
+        let resizeId;
+        window.addEventListener('resize', this.autocollapse);
+      }, 0);
+    } else {
+      window.removeEventListener('resize', this.autocollapse);
+      window.removeEventListener('mousedown', this.pageClick);
+    }
   }
 
   pageClick = (e) => {
