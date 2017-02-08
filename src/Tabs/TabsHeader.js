@@ -8,18 +8,18 @@ const TabsWrapper = getStyles(styles, 'div', true);
 export default class TabsHeader extends Component {
   constructor(props) {
     super(props);
-    this.collapsed = []
+    this.collapsed = [];
   }
 
   componentDidMount() {
-    if(this.props.collapsable) {
+    if (this.props.collapsable) {
       setTimeout(() => { this.autocollapse(); }, 0);
     }
     this.amendCollapsable();
   }
 
   shouldComponentUpdate(nextProps) {
-    return nextProps.tabs !== this.props.tabs || nextProps.main !== this.props.main
+    return nextProps.tabs !== this.props.tabs || nextProps.main !== this.props.main;
   }
 
   componentDidUpdate(prevProps) {
@@ -56,7 +56,7 @@ export default class TabsHeader extends Component {
     if (this.menu.offsetWidth >= this.props.width) {
       let i = this.props.tabs.length - 1;
       while (this.menu.offsetWidth > this.props.width) {
-        if(i < 0) return;
+        if (i < 0) return;
         arr.push(this.props.tabs[i]);
         this.menu.children[i].className = 'collapsed';
         i--;

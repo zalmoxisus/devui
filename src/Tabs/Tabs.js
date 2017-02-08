@@ -41,7 +41,7 @@ export default class Tabs extends Component {
   };
 
   onResize() {
-    if(!this.props.collapsable) {
+    if (!this.props.collapsable) {
       return;
     }
     const clientRect = Tabs.getDomNodeDimensions(this.parentNode);
