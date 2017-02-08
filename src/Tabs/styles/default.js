@@ -55,7 +55,7 @@ export const style = ({ theme, main }) => css`
     display: none;
     position: absolute;
     border: 1px solid ${theme.base02};
-    right: 20px;
+    right: 10px;
 
     button {
       display: block;

@@ -19,7 +19,9 @@ export default class TabsHeader extends Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    return nextProps.tabs !== this.props.tabs || nextProps.main !== this.props.main;
+    return nextProps.tabs !== this.props.tabs ||
+      nextProps.main !== this.props.main ||
+      nextProps.width !== this.props.width;
   }
 
   componentDidUpdate(prevProps) {
@@ -80,8 +82,8 @@ export default class TabsHeader extends Component {
     }
   };
   expandMenu = (e) => {
-    const rect = e.target.getBoundingClientRect();
-    this.submenu.style.top = `${rect.top + 20}px`;
+    const rect = e.currentTarget.children[0].getBoundingClientRect();
+    this.submenu.style.top = `${rect.top + rect.height}px`;
     this.submenu.style.display = this.submenu.style.display === 'block' ?
         'none' : 'block';
   };
@@ -113,6 +115,7 @@ TabsHeader.propTypes = {
   tabs: PropTypes.array.isRequired,
   main: PropTypes.bool,
   width: PropTypes.number,
+  height: PropTypes.number,
   collapsable: PropTypes.bool,
   selected: PropTypes.string
 };
