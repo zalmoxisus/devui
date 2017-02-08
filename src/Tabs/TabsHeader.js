@@ -12,22 +12,22 @@ export default class TabsHeader extends Component {
   }
 
   componentDidMount() {
-    setTimeout(() => { this.autocollapse(); }, 0);
+    if(this.props.collapsable) {
+      setTimeout(() => { this.autocollapse(); }, 0);
+    }
     this.amendCollapsable();
   }
 
   shouldComponentUpdate(nextProps) {
-    return nextProps.tabs !== this.props.tabs ||
-      nextProps.main !== this.props.main ||
-      nextProps.width !== this.props.width ||
-      nextProps.collapsable !== this.props.collapsable
+    return nextProps.tabs !== this.props.tabs || nextProps.main !== this.props.main
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.collapsable !== this.props.collapsable) {
       this.amendCollapsable();
     }
-    if (prevProps.selected !== this.props.selected && this.props.main) {
+    if (prevProps.selected !== this.props.selected && this.props.main ||
+      prevProps.width !== this.props.width) {
       this.autocollapse();
     }
   }
@@ -39,11 +39,8 @@ export default class TabsHeader extends Component {
   amendCollapsable() {
     if (this.props.collapsable) {
       window.addEventListener('mousedown', this.pageClick);
-      setTimeout(() => {
-        this.autocollapse();
-        let resizeId;
-        window.addEventListener('resize', this.autocollapse);
-      }, 0);
+      setTimeout(() => { this.autocollapse(); }, 0);
+      window.addEventListener('resize', this.autocollapse);
     } else {
       window.removeEventListener('resize', this.autocollapse);
       window.removeEventListener('mousedown', this.pageClick);
@@ -56,29 +53,31 @@ export default class TabsHeader extends Component {
 
   autocollapse = () => {
     let arr = [];
-    if (this.menu.offsetWidth > this.props.width - 50) {
+    if (this.menu.offsetWidth >= this.props.width) {
       let i = this.props.tabs.length - 1;
-      while (this.menu.offsetWidth > this.props.width - 50) {
+      while (this.menu.offsetWidth > this.props.width) {
+        if(i < 0) return;
         arr.push(this.props.tabs[i]);
         this.menu.children[i].className = 'collapsed';
         i--;
       }
       this.collapsed = arr;
+      this.forceUpdate();
     } else {
       arr = this.collapsed;
       let i = arr.length - 1;
-      while (this.menu.offsetWidth < this.props.width - 50) {
+      while (this.menu.offsetWidth < this.props.width) {
         if (i < 0) return;
         this.menu.children[this.props.tabs.length - 1 - i].className = '';
         arr.pop();
         this.collapsed = arr;
         i--;
+        this.forceUpdate();
       }
-      if (this.menu.offsetWidth > this.props.width - 50) {
+      if (this.menu.offsetWidth > this.props.width) {
         this.autocollapse();
       }
     }
-    this.forceUpdate();
   };
   expandMenu = (e) => {
     const rect = e.target.getBoundingClientRect();
