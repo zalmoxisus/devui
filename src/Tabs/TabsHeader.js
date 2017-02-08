@@ -8,9 +8,7 @@ const TabsWrapper = getStyles(styles, 'div', true);
 export default class TabsHeader extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      collapsed: []
-    };
+    this.collapsed = []
   }
 
   componentDidMount() {
@@ -27,6 +25,9 @@ export default class TabsHeader extends Component {
   componentDidUpdate(prevProps) {
     if (prevProps.collapsable !== this.props.collapsable) {
       this.amendCollapsable();
+    }
+    if (prevProps.selected !== this.props.selected) {
+      this.autocollapse();
     }
   }
 
@@ -48,8 +49,8 @@ export default class TabsHeader extends Component {
     }
   }
 
-  pageClick = (e) => {
-    this.submenu.style.display = 'none';
+  pageClick = () => {
+    if (this.submenu) this.submenu.style.display = 'none';
   };
 
   autocollapse = () => {
@@ -61,28 +62,28 @@ export default class TabsHeader extends Component {
         this.menu.children[i].className = 'collapsed';
         i--;
       }
-      this.state.collapsed = arr;
+      this.collapsed = arr;
     } else {
-      arr = this.state.collapsed;
+      arr = this.collapsed;
       let i = arr.length - 1;
       while (this.menu.offsetWidth < this.props.width - 50) {
         if (i < 0) return;
         this.menu.children[this.props.tabs.length - 1 - i].className = '';
         arr.pop();
-        this.state.collapsed = arr;
+        this.collapsed = arr;
         i--;
       }
       if (this.menu.offsetWidth > this.props.width - 50) {
         this.autocollapse();
       }
     }
+    this.forceUpdate();
   };
   expandMenu = (e) => {
     const rect = e.target.getBoundingClientRect();
     this.submenu.style.top = `${rect.top + 20}px`;
     this.submenu.style.display = this.submenu.style.display === 'block' ?
         'none' : 'block';
-    this.forceUpdate();
   };
   menuRef = (c) => {
     this.menu = c;
@@ -96,12 +97,12 @@ export default class TabsHeader extends Component {
       <TabsWrapper main={this.props.main} width={this.props.width}>
         <div ref={this.menuRef} >
           {this.props.tabs}
-          { (this.state.collapsed.length > 0) &&
+          { (this.collapsed.length > 0) &&
             <button onClick={this.expandMenu}><MdNavigateNext /></button>
           }
         </div>
         <div ref={this.submenuRef}>
-          {this.state.collapsed}
+          {this.collapsed}
         </div>
       </TabsWrapper>
     );
@@ -112,5 +113,6 @@ TabsHeader.propTypes = {
   tabs: PropTypes.array.isRequired,
   main: PropTypes.bool,
   width: PropTypes.number,
-  collapsable: PropTypes.bool
+  collapsable: PropTypes.bool,
+  selected: PropTypes.string
 };

@@ -91,8 +91,11 @@ export default class Tabs extends Component {
   render() {
     const tabsHeader = (
       <TabsHeader
-        tabs={this.tabsHeader} main={this.props.main}
-        width={this.state.clientWidth} collapsable={this.props.collapsable}
+        tabs={this.tabsHeader}
+        main={this.props.main}
+        selected={this.props.selected}
+        width={this.state.clientWidth}
+        collapsable={this.props.collapsable}
       />
     );
     if (!this.SelectedComponent) return tabsHeader;
