@@ -14,14 +14,14 @@ export default class TabsHeader extends Component {
   componentDidMount() {
     if (this.props.collapsable) {
       setTimeout(() => { this.autocollapse(); }, 0);
+      this.amendCollapsable();
     }
-    this.amendCollapsable();
   }
 
   shouldComponentUpdate(nextProps) {
     return nextProps.tabs !== this.props.tabs ||
       nextProps.main !== this.props.main ||
-      nextProps.width !== this.props.width;
+      nextProps.parentWidth !== this.props.parentWidth;
   }
 
   componentDidUpdate(prevProps) {
@@ -29,7 +29,7 @@ export default class TabsHeader extends Component {
       this.amendCollapsable();
     }
     if (prevProps.selected !== this.props.selected && this.props.main ||
-      prevProps.width !== this.props.width) {
+      prevProps.parentWidth !== this.props.parentWidth) {
       this.autocollapse();
     }
   }
@@ -40,8 +40,8 @@ export default class TabsHeader extends Component {
 
   amendCollapsable() {
     if (this.props.collapsable) {
-      window.addEventListener('mousedown', this.pageClick);
       setTimeout(() => { this.autocollapse(); }, 0);
+      window.addEventListener('mousedown', this.pageClick);
       window.addEventListener('resize', this.autocollapse);
     } else {
       window.removeEventListener('resize', this.autocollapse);
@@ -55,9 +55,9 @@ export default class TabsHeader extends Component {
 
   autocollapse = () => {
     let arr = [];
-    if (this.menu.offsetWidth >= this.props.width) {
+    if (this.menu.offsetWidth >= this.props.parentWidth) {
       let i = this.props.tabs.length - 1;
-      while (this.menu.offsetWidth > this.props.width) {
+      while (this.menu.offsetWidth > this.props.parentWidth) {
         if (i < 0) return;
         arr.push(this.props.tabs[i]);
         this.menu.children[i].className = 'collapsed';
@@ -68,7 +68,7 @@ export default class TabsHeader extends Component {
     } else {
       arr = this.collapsed;
       let i = arr.length - 1;
-      while (this.menu.offsetWidth < this.props.width) {
+      while (this.menu.offsetWidth < this.props.parentWidth) {
         if (i < 0) return;
         this.menu.children[this.props.tabs.length - 1 - i].className = '';
         arr.pop();
@@ -76,7 +76,7 @@ export default class TabsHeader extends Component {
         i--;
         this.forceUpdate();
       }
-      if (this.menu.offsetWidth > this.props.width) {
+      if (this.menu.offsetWidth > this.props.parentWidth) {
         this.autocollapse();
       }
     }
@@ -96,7 +96,7 @@ export default class TabsHeader extends Component {
 
   render() {
     return (
-      <TabsWrapper main={this.props.main} width={this.props.width}>
+      <TabsWrapper main={this.props.main} parentWidth={this.props.parentWidth}>
         <div ref={this.menuRef} >
           {this.props.tabs}
           { (this.collapsed.length > 0) &&
@@ -114,8 +114,7 @@ export default class TabsHeader extends Component {
 TabsHeader.propTypes = {
   tabs: PropTypes.array.isRequired,
   main: PropTypes.bool,
-  width: PropTypes.number,
-  height: PropTypes.number,
+  parentWidth: PropTypes.number,
   collapsable: PropTypes.bool,
   selected: PropTypes.string
 };

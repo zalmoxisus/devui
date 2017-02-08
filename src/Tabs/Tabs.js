@@ -94,7 +94,7 @@ export default class Tabs extends Component {
         tabs={this.tabsHeader}
         main={this.props.main}
         selected={this.props.selected}
-        width={this.state.clientWidth}
+        parentWidth={this.state.clientWidth}
         collapsable={this.props.collapsable}
       />
     );
