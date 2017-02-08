@@ -12,6 +12,7 @@ export default class TabsHeader extends Component {
   }
 
   componentDidMount() {
+    setTimeout(() => { this.autocollapse(); }, 0);
     this.amendCollapsable();
   }
 
@@ -26,7 +27,7 @@ export default class TabsHeader extends Component {
     if (prevProps.collapsable !== this.props.collapsable) {
       this.amendCollapsable();
     }
-    if (prevProps.selected !== this.props.selected) {
+    if (prevProps.selected !== this.props.selected && this.props.main) {
       this.autocollapse();
     }
   }
