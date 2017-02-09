@@ -9,10 +9,13 @@ const FormContainer = getStyles(style, JSONSchemaForm);
 
 export default class Form extends Component {
   render() {
-    const { widgets, children, submitText, ...rest } = this.props;
+    const { widgets, children, submitText, primaryButton, noSubmit, ...rest } = this.props;
     return (
       <FormContainer {...rest} widgets={{ ...customWidgets, ...widgets }}>
-        {children || <Button big type="submit">{submitText || 'Submit'}</Button>}
+        {children ||
+          noSubmit ? <noscript /> :
+          <Button big primary={primaryButton} type="submit">{submitText || 'Submit'}</Button>
+        }
       </FormContainer>
     );
   }
@@ -21,6 +24,10 @@ export default class Form extends Component {
 Form.propTypes = {
   children: PropTypes.any,
   submitText: PropTypes.string,
+  primaryButton: PropTypes.bool,
+  noSubmit: PropTypes.bool,
   schema: PropTypes.object.isRequired,
+  uiSchema: PropTypes.object,
+  formData: PropTypes.any,
   widgets: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object]))
 };
