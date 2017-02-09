@@ -6,11 +6,15 @@ import { animationCurve } from '../../utils/animations';
 export const style = ({ theme, percent, disabled }) => css`
   display: block;
   width: 100%;
+  position: relative;
 
   label {
+    position: absolute;
+    display: block;
     font-weight: 600;
     padding: 0.3em 0.5em;
-    display: block;
+    top: -1.8em;
+    width: 100%;
   }
 
   input {

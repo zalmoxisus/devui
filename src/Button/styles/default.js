@@ -9,7 +9,7 @@ export const style = ({ theme, primary, disabled, big }) => css`
   text-decoration: none;
   display: inline-block;
   transition: all 0.5s;
-  margin: 0;
+  margin: auto 0;
   border: 1px solid ${theme.base02};
   border-radius: 4px;
   ${big ? `
@@ -27,7 +27,9 @@ export const style = ({ theme, primary, disabled, big }) => css`
   ` : `
   cursor: pointer;
   color: ${primary ? theme.base00 : theme.base05};
-  background-color: ${primary ? theme.base04 : theme.base01};
+  background-color: ${primary ? // eslint-disable-line
+    theme.scheme === 'default' && theme.light ? theme.base0B : theme.base04
+    : theme.base01};
   `}
 
   &:hover,

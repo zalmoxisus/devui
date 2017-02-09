@@ -12,12 +12,15 @@ import { prefixSelectors } from '../../utils/autoPrefix';
 export const style = ({ theme, percent, disabled }) => css`
   display: block;
   width: 100%;
+  position: relative;
 
   label {
+    position: absolute;
     display: block;
     font-weight: 600;
-    padding-left: 10px;
-    margin-bottom: -10px;
+    padding: 0 10px;
+    top: 0.1em;
+    width: 100%;
   }
 
   input {
@@ -36,12 +39,12 @@ export const style = ({ theme, percent, disabled }) => css`
     font-size: 1em;
     cursor: pointer;
     background: linear-gradient(${theme.base01}, ${theme.base00}) padding-box,
-      linear-gradient(rgba(231, 231, 231, 0) 0.84em, ${theme.base00} 1.275em,
-      ${theme.base00} 3.225em, rgba(231, 231, 231, 0) 3.66em, transparent 95%)
+      linear-gradient(rgba(231, 231, 231, 0) 0.84em, ${theme.base01} 2em,
+      ${theme.base01} 3em, rgba(231, 231, 231, 0) 3.66em, transparent 95%)
       50% 50% border-box,
       linear-gradient(90deg, ${theme.base02} 0.025em, transparent 0.125em)
       repeat-x 0.8em 50% border-box,
-      linear-gradient(90deg, ${theme.base01} 0.015em, transparent 0.125em)
+      linear-gradient(90deg, ${theme.base02} 0.015em, transparent 0.125em)
       repeat-x 0.2em 50% border-box;
     background-size: 100% 100%, 100% 4.5em, 6.25em 80%, 1.25em 65%;
   }
