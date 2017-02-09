@@ -57,7 +57,7 @@ export default class TabsHeader extends Component {
     let arr = [];
     if (this.menu.offsetWidth >= this.props.parentWidth) {
       let i = this.props.tabs.length - 1;
-      while (this.menu.offsetWidth > this.props.parentWidth) {
+      while (this.menu.offsetWidth >= this.props.parentWidth) {
         if (i < 0) return;
         arr.push(this.props.tabs[i]);
         this.menu.children[i].className = 'collapsed';

@@ -4,13 +4,11 @@ import { ripple } from '../../utils/animations';
 export const style = ({ theme }) => css`
   display: flex;
   flex: 0 0 30px;
-  background-color: ${theme.base01};
 
-  > div:first-child {
+  > div:first-child, > div:nth-child(2) {
     display: flex;
     align-items: flex-end;
     flex-wrap: nowrap;
-    overflow-x: auto;
 
     button {
       background-color: ${theme.base01};
@@ -31,12 +29,27 @@ export const style = ({ theme }) => css`
         border-bottom: 2px solid ${theme.base03};
         color: ${theme.base04};
       }
+      &.collapsed{
+        display: none;
+      }
 
       ${ripple(theme)}
     }
 
     > [data-selected] {
       border-bottom: 2px solid ${theme.base0B};
+    }
+  }
+  > div:nth-child(2) {
+    display: none;
+    position: absolute;
+    border: 1px solid ${theme.base02};
+    right: 10px;
+
+    button {
+      display: block;
+      background: ${theme.base00};
+      width: 100%;
     }
   }
 `;
