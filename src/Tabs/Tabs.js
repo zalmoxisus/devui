@@ -44,7 +44,7 @@ export default class Tabs extends Component {
     if (!this.props.collapsable) {
       return;
     }
-    const clientRect = Tabs.getDomNodeDimensions(this.parentNode);
+    const clientRect = Tabs.getDomNodeDimensions(this.container);
     this.setState({
       clientWidth: clientRect.width
     });
@@ -88,6 +88,10 @@ export default class Tabs extends Component {
     });
   }
 
+  containerRef = (c) => {
+    this.container = c;
+  };
+
   render() {
     const tabsHeader = (
       <TabsHeader
@@ -98,11 +102,15 @@ export default class Tabs extends Component {
         collapsable={this.props.collapsable}
       />
     );
-    if (!this.SelectedComponent) return tabsHeader;
+
     return (
-      <TabsContainer>
+      <TabsContainer innerRef={this.containerRef}>
         {tabsHeader}
-        <div><this.SelectedComponent {...this.selector()} /></div>
+        { this.SelectedComponent &&
+          <div>
+            <this.SelectedComponent {...this.selector()} />
+          </div>
+        }
       </TabsContainer>
     );
   }

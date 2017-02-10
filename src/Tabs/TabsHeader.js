@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import MdNavigateNext from 'react-icons/lib/md/navigate-next';
+import CollapseIcon from 'react-icons/lib/fa/angle-double-right';
 import getStyles from '../utils/getStyles';
 import * as styles from './styles';
 
@@ -83,9 +83,10 @@ export default class TabsHeader extends Component {
   };
   expandMenu = (e) => {
     const rect = e.currentTarget.children[0].getBoundingClientRect();
-    this.submenu.style.top = `${rect.top + rect.height}px`;
     this.submenu.style.display = this.submenu.style.display === 'block' ?
         'none' : 'block';
+    this.submenu.style.top = `${rect.top + rect.height}px`;
+    this.submenu.style.left = `${rect.left - this.submenu.getBoundingClientRect().width}px`;
   };
   menuRef = (c) => {
     this.menu = c;
@@ -97,10 +98,10 @@ export default class TabsHeader extends Component {
   render() {
     return (
       <TabsWrapper main={this.props.main} parentWidth={this.props.parentWidth}>
-        <div ref={this.menuRef} >
+        <div ref={this.menuRef}>
           {this.props.tabs}
           { (this.collapsed.length > 0) &&
-            <button onClick={this.expandMenu}><MdNavigateNext /></button>
+            <button onClick={this.expandMenu}><CollapseIcon /></button>
           }
         </div>
         <div ref={this.submenuRef}>

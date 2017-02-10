@@ -9,7 +9,7 @@ export const style = ({ theme, main }) => css`
   border-bottom: 1px solid ${theme.base02};
   `}
 
-  > div:first-child, > div:nth-child(2) {
+  > div {
     display: flex;
     align-items: flex-end;
     flex-wrap: nowrap;
@@ -53,14 +53,20 @@ export const style = ({ theme, main }) => css`
   }
   > div:nth-child(2) {
     display: none;
-    position: absolute;
+    position: fixed;
     border: 1px solid ${theme.base02};
-    right: 10px;
+    z-index: 10;
 
     button {
       display: block;
       background: ${theme.base00};
       width: 100%;
+
+      &:hover,
+      &:focus {
+        background-color: ${main ? theme.base02 : theme.base00};
+        text-shadow: ${theme.base01} 0 1px;
+      }
     }
   }
 `;

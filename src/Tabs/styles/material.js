@@ -42,9 +42,10 @@ export const style = ({ theme }) => css`
   }
   > div:nth-child(2) {
     display: none;
-    position: absolute;
+    position: fixed;
     border: 1px solid ${theme.base02};
     right: 10px;
+    z-index: 10;
 
     button {
       display: block;
