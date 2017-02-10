@@ -5,7 +5,7 @@ export const style = ({ theme }) => css`
   display: flex;
   flex: 0 0 30px;
 
-  > div:first-child, > div:nth-child(2) {
+  > div {
     display: flex;
     align-items: flex-end;
     flex-wrap: nowrap;
