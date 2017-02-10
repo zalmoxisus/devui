@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import CollapseIcon from 'react-icons/lib/fa/angle-double-right';
+import ContextMenu from '../ContextMenu';
 import getStyles from '../utils/getStyles';
 import * as styles from './styles';
 
@@ -9,6 +10,8 @@ export default class TabsHeader extends Component {
   constructor(props) {
     super(props);
     this.collapsed = [];
+    this.left = 0;
+    this.top = 0;
   }
 
   componentDidMount() {
@@ -28,10 +31,6 @@ export default class TabsHeader extends Component {
     if (prevProps.collapsable !== this.props.collapsable) {
       this.amendCollapsable();
     }
-    if (prevProps.selected !== this.props.selected && this.props.main ||
-      prevProps.parentWidth !== this.props.parentWidth) {
-      this.autocollapse();
-    }
   }
 
   componentWillUnmount() {
@@ -50,7 +49,8 @@ export default class TabsHeader extends Component {
   }
 
   pageClick = () => {
-    if (this.submenu) this.submenu.style.display = 'none';
+    this.submenu.items = [];
+    this.forceUpdate();
   };
 
   autocollapse = () => {
@@ -83,10 +83,10 @@ export default class TabsHeader extends Component {
   };
   expandMenu = (e) => {
     const rect = e.currentTarget.children[0].getBoundingClientRect();
-    this.submenu.style.display = this.submenu.style.display === 'block' ?
-        'none' : 'block';
-    this.submenu.style.top = `${rect.top + rect.height}px`;
-    this.submenu.style.left = `${rect.left - this.submenu.getBoundingClientRect().width}px`;
+    this.left = rect.left - 10;
+    this.top = rect.top + 10;
+    this.submenu.items = this.collapsed;
+    this.forceUpdate();
   };
   menuRef = (c) => {
     this.menu = c;
@@ -104,9 +104,13 @@ export default class TabsHeader extends Component {
             <button onClick={this.expandMenu}><CollapseIcon /></button>
           }
         </div>
-        <div ref={this.submenuRef}>
-          {this.collapsed}
-        </div>
+        <ContextMenu
+          ref={this.submenuRef}
+          items={this.collapsed}
+          onClick={this.props.onClick}
+          x={this.left}
+          y={this.top}
+        />
       </TabsWrapper>
     );
   }
@@ -117,5 +121,6 @@ TabsHeader.propTypes = {
   main: PropTypes.bool,
   parentWidth: PropTypes.number,
   collapsable: PropTypes.bool,
-  selected: PropTypes.string
+  selected: PropTypes.string,
+  onClick: PropTypes.func
 };

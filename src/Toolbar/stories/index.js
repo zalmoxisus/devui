@@ -71,7 +71,7 @@ storiesOf('Toolbar', module)
           >
             {text('Label', 'Hello Button')}
           </Button>
-          <Divider />
+          <Spacer/>
           <Tabs
             tabs={simple10Tabs}
             selected={text('selected', 'Tab2')}
@@ -79,7 +79,6 @@ storiesOf('Toolbar', module)
             onClick={action('tab selected')}
             collapsable={boolean('collapsable', true)}
           />
-          <Divider />
           <Button
             title={text('Title', 'Hello Tooltip')}
             tooltipPosition={

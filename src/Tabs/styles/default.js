@@ -53,8 +53,7 @@ export const style = ({ theme, main }) => css`
     }
   }
   > div:nth-child(2) {
-    display: none;
-    position: fixed;
+    display: block;
     border: 1px solid ${theme.base02};
     z-index: 10;
 

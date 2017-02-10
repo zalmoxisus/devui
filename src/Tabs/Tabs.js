@@ -100,6 +100,7 @@ export default class Tabs extends Component {
         selected={this.props.selected}
         parentWidth={this.state.clientWidth}
         collapsable={this.props.collapsable}
+        onClick={this.props.onClick}
       />
     );
 
