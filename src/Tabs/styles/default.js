@@ -4,6 +4,7 @@ export const style = ({ theme, main }) => css`
   display: flex;
   flex: 0 0 30px;
   padding-left: 1px;
+  background-color: ${theme.base01};
   ${!main && `
   border-top: 1px solid ${theme.base01};
   border-bottom: 1px solid ${theme.base02};
