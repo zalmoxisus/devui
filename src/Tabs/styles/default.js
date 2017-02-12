@@ -52,7 +52,7 @@ export const style = ({ theme, main }) => css`
       color: ${theme.base07};
     }
   }
-  > div:nth-child(2) {
+  > div:last-child {
     display: block;
     border: 1px solid ${theme.base02};
     z-index: 10;

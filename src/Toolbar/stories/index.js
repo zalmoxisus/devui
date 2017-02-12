@@ -71,13 +71,13 @@ storiesOf('Toolbar', module)
           >
             {text('Label', 'Hello Button')}
           </Button>
-          <Spacer/>
           <Tabs
             tabs={simple10Tabs}
             selected={text('selected', 'Tab2')}
             main={boolean('main', true)}
             onClick={action('tab selected')}
             collapsable={boolean('collapsable', true)}
+            align={text('align', 'right')}
           />
           <Button
             title={text('Title', 'Hello Tooltip')}

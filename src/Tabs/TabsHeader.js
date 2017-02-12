@@ -24,7 +24,8 @@ export default class TabsHeader extends Component {
   shouldComponentUpdate(nextProps) {
     return nextProps.tabs !== this.props.tabs ||
       nextProps.main !== this.props.main ||
-      nextProps.parentWidth !== this.props.parentWidth;
+      nextProps.parentWidth !== this.props.parentWidth ||
+      nextProps.align !== this.props.align
   }
 
   componentDidUpdate(prevProps) {
@@ -49,8 +50,10 @@ export default class TabsHeader extends Component {
   }
 
   pageClick = () => {
-    this.submenu.items = [];
-    this.forceUpdate();
+    if (this.submenu) {
+      this.submenu.items = [];
+      this.forceUpdate();
+    }
   };
 
   autocollapse = () => {
@@ -98,13 +101,20 @@ export default class TabsHeader extends Component {
   render() {
     return (
       <TabsWrapper main={this.props.main} parentWidth={this.props.parentWidth}>
+        { (this.props.align !== 'left') &&
+          <div style={{flexGrow: 1}}></div>
+        }
         <div ref={this.menuRef}>
           {this.props.tabs}
           { (this.collapsed.length > 0) &&
             <button onClick={this.expandMenu}><CollapseIcon /></button>
           }
         </div>
+        { (this.props.align !== 'right') &&
+          <div style={{flexGrow: 1}}></div>
+        }
         <ContextMenu
+          className="contextMenu"
           ref={this.submenuRef}
           items={this.collapsed}
           onClick={this.props.onClick}

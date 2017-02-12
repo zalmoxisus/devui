@@ -101,6 +101,7 @@ export default class Tabs extends Component {
         parentWidth={this.state.clientWidth}
         collapsable={this.props.collapsable}
         onClick={this.props.onClick}
+        align={this.props.align}
       />
     );
 
@@ -122,5 +123,6 @@ Tabs.propTypes = {
   selected: PropTypes.string,
   main: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
-  collapsable: PropTypes.bool
+  collapsable: PropTypes.bool,
+  align: PropTypes.oneOf(['left', 'right', 'center'])
 };
