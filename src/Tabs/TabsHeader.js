@@ -57,6 +57,7 @@ export default class TabsHeader extends Component {
   };
 
   autocollapse = () => {
+    this.pageClick();
     let arr = [];
     if (this.menu.offsetWidth >= this.props.parentWidth) {
       let i = this.props.tabs.length - 1;
