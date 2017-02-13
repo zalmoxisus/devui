@@ -68,7 +68,6 @@ export default class TabsHeader extends Component {
         i--;
       }
       this.collapsed = arr;
-      this.forceUpdate();
     } else {
       arr = this.collapsed;
       let i = arr.length - 1;
@@ -78,7 +77,6 @@ export default class TabsHeader extends Component {
         arr.pop();
         this.collapsed = arr;
         i--;
-        this.forceUpdate();
       }
       if (this.menu.offsetWidth > this.props.parentWidth) {
         this.autocollapse();
