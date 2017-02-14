@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export const style = ({ theme, main }) => css`
+export const style = ({ theme, main, align }) => css`
   display: flex;
   flex: 0 0 30px;
   padding-left: 1px;
@@ -14,6 +14,12 @@ export const style = ({ theme, main }) => css`
     display: flex;
     align-items: flex-end;
     flex-wrap: nowrap;
+    ${align !== 'left' && `
+      margin-left: auto;
+    `}
+    ${align === 'center' && `
+      margin-right: auto;
+    `}
 
     button {
       background-color: ${theme.base01};

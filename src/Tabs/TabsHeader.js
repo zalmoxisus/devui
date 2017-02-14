@@ -99,19 +99,16 @@ export default class TabsHeader extends Component {
 
   render() {
     return (
-      <TabsWrapper main={this.props.main} parentWidth={this.props.parentWidth}>
-        { (this.props.align !== 'left') &&
-          <div style={{ flexGrow: 1 }}></div>
-        }
+      <TabsWrapper
+        main={this.props.main}
+        align={this.props.align}
+      >
         <div ref={this.menuRef}>
           {this.props.tabs}
           { this.collapsed.length > 0 &&
             <button onClick={this.expandMenu}><CollapseIcon /></button>
           }
         </div>
-        { this.props.align !== 'right' &&
-          <div style={{ flexGrow: 1 }}></div>
-        }
         <ContextMenu
           className="contextMenu"
           ref={this.submenuRef}
