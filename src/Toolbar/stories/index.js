@@ -76,7 +76,7 @@ storiesOf('Toolbar', module)
             selected={text('selected', 'Tab2')}
             main={boolean('main', true)}
             onClick={action('tab selected')}
-            collapsable={boolean('collapsable', true)}
+            collapsible={boolean('collapsible', true)}
             align={text('align', 'right')}
           />
           <Button

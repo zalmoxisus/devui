@@ -41,7 +41,7 @@ export default class Tabs extends Component {
   };
 
   onResize() {
-    if (!this.props.collapsable) {
+    if (!this.props.collapsible) {
       return;
     }
     const clientRect = Tabs.getDomNodeDimensions(this.container);
@@ -99,7 +99,7 @@ export default class Tabs extends Component {
         main={this.props.main}
         selected={this.props.selected}
         parentWidth={this.state.clientWidth}
-        collapsable={this.props.collapsable}
+        collapsible={this.props.collapsible}
         onClick={this.props.onClick}
         align={this.props.align}
       />
@@ -123,6 +123,6 @@ Tabs.propTypes = {
   selected: PropTypes.string,
   main: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
-  collapsable: PropTypes.bool,
+  collapsible: PropTypes.bool,
   align: PropTypes.oneOf(['left', 'right', 'center'])
 };

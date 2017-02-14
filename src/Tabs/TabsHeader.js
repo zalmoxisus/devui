@@ -15,9 +15,9 @@ export default class TabsHeader extends Component {
   }
 
   componentDidMount() {
-    if (this.props.collapsable) {
+    if (this.props.collapsible) {
       setTimeout(() => { this.autocollapse(); }, 0);
-      this.amendCollapsable();
+      this.amendCollapsible();
     }
   }
 
@@ -29,8 +29,8 @@ export default class TabsHeader extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.collapsable !== this.props.collapsable) {
-      this.amendCollapsable();
+    if (prevProps.collapsible !== this.props.collapsible) {
+      this.amendCollapsible();
     }
   }
 
@@ -38,8 +38,8 @@ export default class TabsHeader extends Component {
     window.removeEventListener('resize', this.autocollapse);
   }
 
-  amendCollapsable() {
-    if (this.props.collapsable) {
+  amendCollapsible() {
+    if (this.props.collapsible) {
       setTimeout(() => { this.autocollapse(); }, 0);
       window.addEventListener('mousedown', this.pageClick);
       window.addEventListener('resize', this.autocollapse);
@@ -129,7 +129,7 @@ TabsHeader.propTypes = {
   tabs: PropTypes.array.isRequired,
   main: PropTypes.bool,
   parentWidth: PropTypes.number,
-  collapsable: PropTypes.bool,
+  collapsible: PropTypes.bool,
   selected: PropTypes.string,
   onClick: PropTypes.func,
   align: PropTypes.string

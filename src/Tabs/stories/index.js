@@ -24,7 +24,7 @@ storiesOf('Tabs', module)
         selected={text('selected', '2')}
         main={boolean('main', true)}
         onClick={action('tab selected')}
-        collapsable={boolean('collapsable', true)}
+        collapsible={boolean('collapsible', true)}
         align={text('align', 'left')}
       /></Container>
     )
@@ -38,7 +38,7 @@ storiesOf('Tabs', module)
         selected={text('selected', 'Tab2')}
         main={boolean('main', false)}
         onClick={action('tab selected')}
-        collapsable={boolean('collapsable', false)}
+        collapsible={boolean('collapsible', false)}
         align={text('align', 'left')}
       />
     )
