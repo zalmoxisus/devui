@@ -25,7 +25,7 @@ export default class TabsHeader extends Component {
     return nextProps.tabs !== this.props.tabs ||
       nextProps.main !== this.props.main ||
       nextProps.parentWidth !== this.props.parentWidth ||
-      nextProps.align !== this.props.align
+      nextProps.align !== this.props.align;
   }
 
   componentDidUpdate(prevProps) {
@@ -101,16 +101,16 @@ export default class TabsHeader extends Component {
     return (
       <TabsWrapper main={this.props.main} parentWidth={this.props.parentWidth}>
         { (this.props.align !== 'left') &&
-          <div style={{flexGrow: 1}}></div>
+          <div style={{ flexGrow: 1 }}></div>
         }
         <div ref={this.menuRef}>
           {this.props.tabs}
-          { (this.collapsed.length > 0) &&
+          { this.collapsed.length > 0 &&
             <button onClick={this.expandMenu}><CollapseIcon /></button>
           }
         </div>
-        { (this.props.align !== 'right') &&
-          <div style={{flexGrow: 1}}></div>
+        { this.props.align !== 'right' &&
+          <div style={{ flexGrow: 1 }}></div>
         }
         <ContextMenu
           className="contextMenu"
@@ -131,5 +131,6 @@ TabsHeader.propTypes = {
   parentWidth: PropTypes.number,
   collapsable: PropTypes.bool,
   selected: PropTypes.string,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  align: PropTypes.string
 };
