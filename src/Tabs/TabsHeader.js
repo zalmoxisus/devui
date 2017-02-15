@@ -90,24 +90,19 @@ export default class TabsHeader extends Component {
     this.submenu.items = this.collapsed;
     this.forceUpdate();
   };
-  tabsWrapperRef = (c) => {
-    this.tabsWrapper = c;
-  };
-  menuRef = (c) => {
-    this.menu = c;
-  };
-  submenuRef = (c) => {
-    this.submenu = c;
+
+  getRef = name => node => {
+    this[name] = node;
   };
 
   render() {
     return (
       <TabsWrapper
-        innerRef={this.tabsWrapperRef}
+        innerRef={this.getRef('tabsWrapper')}
         main={this.props.main}
         align={this.props.align}
       >
-        <div ref={this.menuRef}>
+        <div ref={this.getRef('menu')}>
           {this.props.tabs}
           { this.collapsed.length > 0 &&
             <button onClick={this.expandMenu}><CollapseIcon /></button>
@@ -115,7 +110,7 @@ export default class TabsHeader extends Component {
         </div>
         <ContextMenu
           className="contextMenu"
-          ref={this.submenuRef}
+          ref={this.getRef('submenu')}
           items={this.collapsed}
           onClick={this.props.onClick}
           x={this.left}
