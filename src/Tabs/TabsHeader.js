@@ -63,7 +63,7 @@ export default class TabsHeader extends Component {
       let i = this.props.tabs.length - 1;
       while (this.menu.offsetWidth >= this.props.parentWidth) {
         if (i < 0) return;
-        arr.push(this.props.tabs[i]);
+        arr.unshift(this.props.tabs[i]);
         this.menu.children[i].className = 'collapsed';
         i--;
       }
@@ -90,6 +90,9 @@ export default class TabsHeader extends Component {
     this.submenu.items = this.collapsed;
     this.forceUpdate();
   };
+  tabsWrapperRef = (c) => {
+    this.tabsWrapper = c;
+  };
   menuRef = (c) => {
     this.menu = c;
   };
@@ -100,6 +103,7 @@ export default class TabsHeader extends Component {
   render() {
     return (
       <TabsWrapper
+        innerRef={this.tabsWrapperRef}
         main={this.props.main}
         align={this.props.align}
       >

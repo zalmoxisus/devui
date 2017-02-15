@@ -44,20 +44,19 @@ export default class Tabs extends Component {
     if (!this.props.collapsible) {
       return;
     }
-    const clientRect = Tabs.getDomNodeDimensions(this.container);
+    const clientRect = Tabs.getDomNodeDimensions(this.header.tabsWrapper);
     this.setState({
       clientWidth: clientRect.width
     });
   }
 
   enableResizeDetector() {
-    this.parentNode = ReactDOM.findDOMNode(this).parentNode;
     this.elementResizeDetector = elementResizeDetectorMaker({ strategy: 'scroll' });
-    this.elementResizeDetector.listenTo(this.parentNode, this.onResize);
+    this.elementResizeDetector.listenTo(this.header.tabsWrapper, this.onResize);
     this.onResize();
   }
   disableResizeDetector() {
-    this.elementResizeDetector.removeListener(this.parentNode, this.onResize);
+    this.elementResizeDetector.removeListener(this.header.tabsWrapper, this.onResize);
   }
 
   updateTabs(props) {
@@ -88,13 +87,14 @@ export default class Tabs extends Component {
     });
   }
 
-  containerRef = (c) => {
-    this.container = c;
+  headerRef = (c) => {
+    this.header = c;
   };
 
   render() {
     const tabsHeader = (
       <TabsHeader
+        ref={this.headerRef}
         tabs={this.tabsHeader}
         main={this.props.main}
         selected={this.props.selected}
@@ -105,14 +105,11 @@ export default class Tabs extends Component {
       />
     );
 
+    if (!this.SelectedComponent) return tabsHeader;
+
     return (
-      <TabsContainer innerRef={this.containerRef}>
-        {tabsHeader}
-        { this.SelectedComponent &&
-          <div>
-            <this.SelectedComponent {...this.selector()} />
-          </div>
-        }
+      <TabsContainer>
+        <div><this.SelectedComponent {...this.selector()} /></div>
       </TabsContainer>
     );
   }
