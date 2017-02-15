@@ -2,11 +2,10 @@ import { css } from 'styled-components';
 
 export const style = ({ theme, main, align }) => css`
   display: flex;
-  flex: 0 0 30px;
+  flex: 0 0 1;
   padding-left: 1px;
   background-color: ${theme.base01};
   width: 100%;
-  position: absolute;
   ${!main && `
   border-top: 1px solid ${theme.base01};
   border-bottom: 1px solid ${theme.base02};
