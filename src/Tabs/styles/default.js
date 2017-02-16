@@ -6,6 +6,7 @@ export const style = ({ theme, main, align }) => css`
   padding-left: 1px;
   background-color: ${theme.base01};
   width: 100%;
+  overflow: hidden;
   ${!main && `
   border-top: 1px solid ${theme.base01};
   border-bottom: 1px solid ${theme.base02};
@@ -61,7 +62,6 @@ export const style = ({ theme, main, align }) => css`
   }
   > div:nth-child(2) {
     display: block;
-    border: 1px solid ${theme.base02};
     z-index: 10;
 
     button {
