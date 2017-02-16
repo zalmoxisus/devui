@@ -9,86 +9,53 @@ const TabsWrapper = getStyles(styles, 'div', true);
 export default class TabsHeader extends Component {
   constructor(props) {
     super(props);
-    this.collapsed = [];
+    this.state = {
+      isVisible: false
+    };
     this.left = 0;
     this.top = 0;
   }
 
   componentDidMount() {
     if (this.props.collapsible) {
-      setTimeout(() => { this.autocollapse(); }, 0);
       this.amendCollapsible();
     }
   }
 
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate(nextProps, nextState) {
     return nextProps.tabs !== this.props.tabs ||
       nextProps.main !== this.props.main ||
-      nextProps.parentWidth !== this.props.parentWidth ||
-      nextProps.align !== this.props.align;
+      nextProps.align !== this.props.align ||
+      nextProps.collapsed !== this.props.collapsed ||
+      nextState.isVisible !== this.state.isVisible
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.collapsible !== this.props.collapsible) {
       this.amendCollapsible();
     }
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.autocollapse);
+    if (prevProps.collapsed !== this.props.collapsed) {
+      this.hideSubmenu();
+    }
   }
 
   amendCollapsible() {
     if (this.props.collapsible) {
-      setTimeout(() => { this.autocollapse(); }, 0);
-      window.addEventListener('mousedown', this.pageClick);
-      window.addEventListener('resize', this.autocollapse);
+      window.addEventListener('mousedown', this.hideSubmenu);
     } else {
-      window.removeEventListener('resize', this.autocollapse);
-      window.removeEventListener('mousedown', this.pageClick);
+      window.removeEventListener('mousedown', this.hideSubmenu);
     }
   }
 
-  pageClick = () => {
-    if (this.submenu) {
-      this.submenu.items = [];
-      this.forceUpdate();
-    }
+  hideSubmenu = () => {
+    this.setState({isVisible: false});
   };
 
-  autocollapse = () => {
-    this.pageClick();
-    let arr = [];
-    if (this.menu.offsetWidth >= this.props.parentWidth) {
-      let i = this.props.tabs.length - 1;
-      while (this.menu.offsetWidth >= this.props.parentWidth) {
-        if (i < 0) return;
-        arr.unshift(this.props.tabs[i]);
-        this.menu.children[i].className = 'collapsed';
-        i--;
-      }
-      this.collapsed = arr;
-    } else {
-      arr = this.collapsed;
-      let i = arr.length - 1;
-      while (this.menu.offsetWidth < this.props.parentWidth) {
-        if (i < 0) return;
-        this.menu.children[this.props.tabs.length - 1 - i].className = '';
-        arr.pop();
-        this.collapsed = arr;
-        i--;
-      }
-      if (this.menu.offsetWidth > this.props.parentWidth) {
-        this.autocollapse();
-      }
-    }
-  };
   expandMenu = (e) => {
     const rect = e.currentTarget.children[0].getBoundingClientRect();
     this.left = rect.left - 10;
     this.top = rect.top + 10;
-    this.submenu.items = this.collapsed;
-    this.forceUpdate();
+    this.setState({isVisible: true});
   };
 
   getRef = name => node => {
@@ -104,18 +71,21 @@ export default class TabsHeader extends Component {
       >
         <div ref={this.getRef('menu')}>
           {this.props.tabs}
-          { this.collapsed.length > 0 &&
+          { this.props.collapsed.length > 0 &&
             <button onClick={this.expandMenu}><CollapseIcon /></button>
           }
         </div>
-        <ContextMenu
-          className="contextMenu"
-          ref={this.getRef('submenu')}
-          items={this.collapsed}
-          onClick={this.props.onClick}
-          x={this.left}
-          y={this.top}
-        />
+        { this.state.isVisible &&
+          this.props.collapsed.length > 0 &&
+            <ContextMenu
+              className="contextMenu"
+              ref={this.getRef('submenu')}
+              items={this.props.collapsed}
+              onClick={this.props.onClick}
+              x={this.left}
+              y={this.top}
+            />
+        }
       </TabsWrapper>
     );
   }
@@ -124,9 +94,8 @@ export default class TabsHeader extends Component {
 TabsHeader.propTypes = {
   tabs: PropTypes.array.isRequired,
   main: PropTypes.bool,
-  parentWidth: PropTypes.number,
   collapsible: PropTypes.bool,
-  selected: PropTypes.string,
   onClick: PropTypes.func,
-  align: PropTypes.string
+  align: PropTypes.string,
+  collapsed: PropTypes.array
 };

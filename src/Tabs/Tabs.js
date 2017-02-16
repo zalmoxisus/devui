@@ -12,7 +12,8 @@ export default class Tabs extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      clientWidth: 0
+      clientWidth: 0,
+      collapsed: []
     };
     this.updateTabs(props);
     this.onResize = this.onResize.bind(this);
@@ -48,7 +49,38 @@ export default class Tabs extends Component {
     this.setState({
       clientWidth: clientRect.width
     });
+    this.autocollapse();
   }
+
+  autocollapse = () => {
+    if (this.header) {
+      let arr = [];
+      if (this.header.menu.offsetWidth >= this.header.tabsWrapper.offsetWidth) {
+        let i = this.props.tabs.length - 1;
+        while (this.header.menu.offsetWidth >= this.header.tabsWrapper.offsetWidth) {
+          if (i < 0) return;
+          arr.unshift(this.props.tabs[i]);
+          //console.log(arr);
+          this.header.menu.children[i].className = 'collapsed';
+          i--;
+        }
+        this.setState({collapsed: arr});
+      } else {
+        arr = this.state.collapsed;
+        let i = arr.length - 1;
+        while (this.header.menu.offsetWidth < this.header.tabsWrapper.offsetWidth) {
+          if (i < 0) return;
+          this.header.menu.children[this.props.tabs.length - 1 - i].className = '';
+          arr.shift();
+          this.setState({collapsed: arr.length > 0 ? arr : []});
+          i--;
+        }
+        if (this.header.menu.offsetWidth > this.header.tabsWrapper.offsetWidth) {
+          this.autocollapse();
+        }
+      }
+    }
+  };
 
   enableResizeDetector() {
     this.elementResizeDetector = elementResizeDetectorMaker({ strategy: 'scroll' });
@@ -98,10 +130,10 @@ export default class Tabs extends Component {
         tabs={this.tabsHeader}
         main={this.props.main}
         selected={this.props.selected}
-        parentWidth={this.state.clientWidth}
         collapsible={this.props.collapsible}
         onClick={this.props.onClick}
         align={this.props.align}
+        collapsed={this.state.collapsed}
       />
     );
 
