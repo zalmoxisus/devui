@@ -50,6 +50,7 @@ export default class Tabs extends Component {
     this.setState({
       clientWidth: clientRect.width
     });
+    this.hideSubmenu();
     this.autocollapse();
   }
 
@@ -61,7 +62,6 @@ export default class Tabs extends Component {
         while (this.header.menu.offsetWidth >= this.header.tabsWrapper.offsetWidth) {
           if (i < 0) return;
           arr.unshift(this.props.tabs[i]);
-          //console.log(arr);
           this.header.menu.children[i].className = 'collapsed';
           i--;
         }
