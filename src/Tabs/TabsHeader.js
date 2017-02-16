@@ -9,17 +9,8 @@ const TabsWrapper = getStyles(styles, 'div', true);
 export default class TabsHeader extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isVisible: false
-    };
     this.left = 0;
     this.top = 0;
-  }
-
-  componentDidMount() {
-    if (this.props.collapsible) {
-      this.amendCollapsible();
-    }
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -27,35 +18,14 @@ export default class TabsHeader extends Component {
       nextProps.main !== this.props.main ||
       nextProps.align !== this.props.align ||
       nextProps.collapsed !== this.props.collapsed ||
-      nextState.isVisible !== this.state.isVisible
+      nextProps.isCollapsed !== this.props.isCollapsed
   }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.collapsible !== this.props.collapsible) {
-      this.amendCollapsible();
-    }
-    if (prevProps.collapsed !== this.props.collapsed) {
-      this.hideSubmenu();
-    }
-  }
-
-  amendCollapsible() {
-    if (this.props.collapsible) {
-      window.addEventListener('mousedown', this.hideSubmenu);
-    } else {
-      window.removeEventListener('mousedown', this.hideSubmenu);
-    }
-  }
-
-  hideSubmenu = () => {
-    this.setState({isVisible: false});
-  };
 
   expandMenu = (e) => {
     const rect = e.currentTarget.children[0].getBoundingClientRect();
     this.left = rect.left - 10;
     this.top = rect.top + 10;
-    this.setState({isVisible: true});
+    this.props.showSubmenu();
   };
 
   getRef = name => node => {
@@ -75,8 +45,7 @@ export default class TabsHeader extends Component {
             <button onClick={this.expandMenu}><CollapseIcon /></button>
           }
         </div>
-        { this.state.isVisible &&
-          this.props.collapsed.length > 0 &&
+        { this.props.isCollapsed &&
             <ContextMenu
               className="contextMenu"
               ref={this.getRef('submenu')}
@@ -94,8 +63,9 @@ export default class TabsHeader extends Component {
 TabsHeader.propTypes = {
   tabs: PropTypes.array.isRequired,
   main: PropTypes.bool,
-  collapsible: PropTypes.bool,
   onClick: PropTypes.func,
   align: PropTypes.string,
-  collapsed: PropTypes.array
+  collapsed: PropTypes.array,
+  isCollapsed: PropTypes.bool,
+  showSubmenu: PropTypes.func
 };

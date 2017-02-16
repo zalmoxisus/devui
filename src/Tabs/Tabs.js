@@ -13,7 +13,8 @@ export default class Tabs extends Component {
     super(props);
     this.state = {
       clientWidth: 0,
-      collapsed: []
+      collapsed: [],
+      isCollapsed: false
     };
     this.updateTabs(props);
     this.onResize = this.onResize.bind(this);
@@ -83,11 +84,13 @@ export default class Tabs extends Component {
   };
 
   enableResizeDetector() {
+    window.addEventListener('mousedown', this.hideSubmenu);
     this.elementResizeDetector = elementResizeDetectorMaker({ strategy: 'scroll' });
     this.elementResizeDetector.listenTo(this.header.tabsWrapper, this.onResize);
     this.onResize();
   }
   disableResizeDetector() {
+    window.removeEventListener('mousedown', this.hideSubmenu);
     this.elementResizeDetector.removeListener(this.header.tabsWrapper, this.onResize);
   }
 
@@ -119,6 +122,14 @@ export default class Tabs extends Component {
     });
   }
 
+  hideSubmenu = () => {
+    this.setState({isCollapsed: false});
+  };
+
+  showSubmenu = () => {
+    this.setState({isCollapsed: true});
+  };
+
   headerRef = (c) => {
     this.header = c;
   };
@@ -134,6 +145,8 @@ export default class Tabs extends Component {
         onClick={this.props.onClick}
         align={this.props.align}
         collapsed={this.state.collapsed}
+        isCollapsed={this.state.isCollapsed}
+        showSubmenu={this.showSubmenu}
       />
     );
 
