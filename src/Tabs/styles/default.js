@@ -47,6 +47,11 @@ export const style = ({ theme, main, align }) => css`
       }
     }
 
+    > button:last-child {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
     > [data-selected] {
       ${main ?
       `border-bottom: 2px solid ${theme.base0B};` :

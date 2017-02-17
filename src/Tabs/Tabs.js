@@ -60,7 +60,7 @@ export default class Tabs extends Component {
       if (this.header.menu.offsetWidth >= this.header.tabsWrapper.offsetWidth) {
         let i = this.props.tabs.length - 1;
         while (this.header.menu.offsetWidth >= this.header.tabsWrapper.offsetWidth) {
-          if (i < 0) return;
+          if (i < 0 || arr.length === this.props.tabs.length - 1) return;
           arr.unshift(this.props.tabs[i]);
           this.header.menu.children[i].className = 'collapsed';
           i--;
