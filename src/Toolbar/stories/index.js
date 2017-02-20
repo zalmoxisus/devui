@@ -73,7 +73,7 @@ storiesOf('Toolbar', module)
           </Button>
           <Tabs
             tabs={simple10Tabs}
-            selected={text('selected', 'Tab2')}
+            selected={text('selected', '2')}
             main={boolean('main', true)}
             onClick={action('tab selected')}
             collapsible={boolean('collapsible', true)}

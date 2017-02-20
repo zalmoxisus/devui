@@ -47,7 +47,6 @@ export default class TabsHeader extends Component {
         </div>
         { this.props.isCollapsed &&
             <ContextMenu
-              className="contextMenu"
               ref={this.getRef('submenu')}
               items={this.props.collapsed}
               onClick={this.props.onClick}

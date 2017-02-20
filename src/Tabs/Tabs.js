@@ -25,8 +25,11 @@ export default class Tabs extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.tabs !== this.props.tabs || nextProps.selected !== this.props.selected) {
+    if (nextProps.tabs !== this.props.tabs) {
+    }
+    if (nextProps.selected !== this.props.selected) {
       this.updateTabs(nextProps);
+      this.autocollapse(nextProps.selected);
     }
   }
 
@@ -51,33 +54,41 @@ export default class Tabs extends Component {
       clientWidth: clientRect.width
     });
     this.hideSubmenu();
-    this.autocollapse();
+    this.autocollapse(this.props.selected);
   }
 
-  autocollapse = () => {
+  autocollapse = (selected) => {
     if (this.header) {
       let arr = [];
       if (this.header.menu.offsetWidth >= this.header.tabsWrapper.offsetWidth) {
         let i = this.props.tabs.length - 1;
         while (this.header.menu.offsetWidth >= this.header.tabsWrapper.offsetWidth) {
           if (i < 0 || arr.length === this.props.tabs.length - 1) return;
-          arr.unshift(this.props.tabs[i]);
-          this.header.menu.children[i].className = 'collapsed';
+          if (this.header.menu.children[i].value !== selected) {
+            arr.unshift(this.props.tabs[i]);
+            this.header.menu.children[i].className = 'collapsed';
+          } else {
+            this.header.menu.children[i].className = '';
+          }
           i--;
         }
+
         this.setState({collapsed: arr});
       } else {
         arr = this.state.collapsed;
-        let i = arr.length - 1;
+        let i = 0;
+
         while (this.header.menu.offsetWidth < this.header.tabsWrapper.offsetWidth) {
-          if (i < 0) return;
-          this.header.menu.children[this.props.tabs.length - 1 - i].className = '';
-          arr.shift();
-          this.setState({collapsed: arr.length > 0 ? arr : []});
-          i--;
+          if (i > this.props.tabs.length - 1) return;
+          if (this.header.menu.children[i].className === 'collapsed') {
+            this.header.menu.children[i].className = '';
+            arr.shift();
+            this.setState({collapsed: arr.length > 0 ? arr : []});
+          }
+          i++;
         }
         if (this.header.menu.offsetWidth > this.header.tabsWrapper.offsetWidth) {
-          this.autocollapse();
+          this.autocollapse(selected);
         }
       }
     }
