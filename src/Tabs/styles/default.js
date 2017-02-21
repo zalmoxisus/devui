@@ -42,9 +42,6 @@ export const style = ({ theme, main, align }) => css`
         background-color: ${main ? theme.base02 : theme.base00};
         text-shadow: ${theme.base01} 0 1px;
       }
-      &.collapsed{
-        display: none;
-      }
     }
 
     > button:last-child {
