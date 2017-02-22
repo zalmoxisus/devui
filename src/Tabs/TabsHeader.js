@@ -33,7 +33,7 @@ export default class TabsHeader extends Component {
       >
         <div ref={this.getRef('menu')}>
           {this.props.tabs}
-          { this.props.collapsed.length > 0 &&
+          { this.props.collapsible && this.props.collapsed.length > 0 &&
             <button onClick={this.expandMenu}><CollapseIcon /></button>
           }
         </div>
