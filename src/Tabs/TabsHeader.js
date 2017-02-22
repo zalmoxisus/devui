@@ -13,15 +13,15 @@ export default class TabsHeader extends Component {
     this.top = 0;
   }
 
+  getRef = name => node => {
+    this[name] = node;
+  };
+
   expandMenu = (e) => {
     const rect = e.currentTarget.children[0].getBoundingClientRect();
     this.left = rect.left - 10;
     this.top = rect.top + 10;
     this.props.showSubmenu();
-  };
-
-  getRef = name => node => {
-    this[name] = node;
   };
 
   render() {

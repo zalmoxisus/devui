@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import ReactDOM from 'react-dom';
 import elementResizeDetectorMaker from 'element-resize-detector';
 import TabsHeader from './TabsHeader';
 import { TabsContainer } from './styles/common';
@@ -25,8 +24,6 @@ export default class Tabs extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.tabs !== this.props.tabs) {
-    }
     if (nextProps.selected !== this.props.selected) {
       this.updateTabs(nextProps);
       this.autocollapse(nextProps.selected);
@@ -72,7 +69,7 @@ export default class Tabs extends Component {
         i--;
       }
 
-      this.setState({collapsed: arr});
+      this.setState({ collapsed: arr });
     } else {
       arr = this.state.collapsed;
       let i = 0;
@@ -82,7 +79,7 @@ export default class Tabs extends Component {
         if (this.header.menu.children[i].style.display === 'none') {
           this.header.menu.children[i].style.display = 'block';
           arr.shift();
-          this.setState({collapsed: arr.length > 0 ? arr : []});
+          this.setState({ collapsed: arr.length > 0 ? arr : [] });
         }
         i++;
       }
@@ -132,12 +129,12 @@ export default class Tabs extends Component {
   }
 
   hideSubmenu = () => {
-    this.setState({isCollapsed: false});
+    this.setState({ isCollapsed: false });
   };
 
   showSubmenu = () => {
     this.autocollapse(this.props.selected);
-    this.setState({isCollapsed: true});
+    this.setState({ isCollapsed: true });
   };
 
   headerRef = (c) => {
