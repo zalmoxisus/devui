@@ -21,6 +21,7 @@ storiesOf('ContextMenu', module)
     () => (
       <Container>
         <ContextMenu
+          visible
           onClick={action('menu item clicked')}
           x={number('x', 100)}
           y={number('y', 100)}

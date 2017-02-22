@@ -18,6 +18,9 @@ export default class ContextMenu extends Component {
     if (prevProps.x !== this.props.x || prevProps.y !== this.props.y) {
       this.amendPosition();
     }
+    if (prevProps.items !== this.props.items) {
+      this.updateItems(this.props);
+    }
   }
 
   onMouseUp = e => {
@@ -79,6 +82,7 @@ export default class ContextMenu extends Component {
         innerRef={this.menuRef}
         left={this.props.x}
         top={this.props.y}
+        visible={this.props.visible}
       >
         {this.items}
       </ContextMenuWrapper>
@@ -90,5 +94,6 @@ ContextMenu.propTypes = {
   items: PropTypes.array.isRequired,
   onClick: PropTypes.func.isRequired,
   x: PropTypes.number.isRequired,
-  y: PropTypes.number.isRequired
+  y: PropTypes.number.isRequired,
+  visible: PropTypes.bool.isRequired
 };

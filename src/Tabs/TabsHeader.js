@@ -13,7 +13,7 @@ export default class TabsHeader extends Component {
     this.top = 0;
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextProps) {
     return nextProps.tabs !== this.props.tabs ||
       nextProps.main !== this.props.main ||
       nextProps.align !== this.props.align ||
@@ -45,15 +45,14 @@ export default class TabsHeader extends Component {
             <button onClick={this.expandMenu}><CollapseIcon /></button>
           }
         </div>
-        { this.props.isCollapsed &&
-            <ContextMenu
-              ref={this.getRef('submenu')}
-              items={this.props.collapsed}
-              onClick={this.props.onClick}
-              x={this.left}
-              y={this.top}
-            />
-        }
+        <ContextMenu
+          ref={this.getRef('submenu')}
+          items={this.props.collapsed}
+          onClick={this.props.onClick}
+          x={this.left}
+          y={this.top}
+          visible={this.props.isCollapsed}
+        />
       </TabsWrapper>
     );
   }

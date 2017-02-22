@@ -1,7 +1,16 @@
 import { css } from 'styled-components';
 
-export const style = ({ theme, left, top }) => css`
+export const style = ({ theme, left, top, visible }) => css`
   position: fixed;
+  ${visible ? `
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.2s linear;
+  ` : `
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.2s, opacity 0.2s linear;
+  `}
   top: ${top}px;
   left: ${left}px;
   font-size: 14px;
