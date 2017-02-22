@@ -13,14 +13,6 @@ export default class TabsHeader extends Component {
     this.top = 0;
   }
 
-  shouldComponentUpdate(nextProps) {
-    return nextProps.tabs !== this.props.tabs ||
-      nextProps.main !== this.props.main ||
-      nextProps.align !== this.props.align ||
-      nextProps.collapsed !== this.props.collapsed ||
-      nextProps.isCollapsed !== this.props.isCollapsed
-  }
-
   expandMenu = (e) => {
     const rect = e.currentTarget.children[0].getBoundingClientRect();
     this.left = rect.left - 10;
@@ -45,14 +37,16 @@ export default class TabsHeader extends Component {
             <button onClick={this.expandMenu}><CollapseIcon /></button>
           }
         </div>
-        <ContextMenu
-          ref={this.getRef('submenu')}
-          items={this.props.collapsed}
-          onClick={this.props.onClick}
-          x={this.left}
-          y={this.top}
-          visible={this.props.isCollapsed}
-        />
+        { this.props.collapsible &&
+          <ContextMenu
+            ref={this.getRef('submenu')}
+            items={this.props.collapsed}
+            onClick={this.props.onClick}
+            x={this.left}
+            y={this.top}
+            visible={this.props.isCollapsed}
+          />
+        }
       </TabsWrapper>
     );
   }
@@ -63,6 +57,7 @@ TabsHeader.propTypes = {
   main: PropTypes.bool,
   onClick: PropTypes.func,
   align: PropTypes.string,
+  collapsible: PropTypes.bool,
   collapsed: PropTypes.array,
   isCollapsed: PropTypes.bool,
   showSubmenu: PropTypes.func
