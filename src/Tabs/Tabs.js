@@ -50,7 +50,6 @@ export default class Tabs extends Component {
     this.setState({
       clientWidth: clientRect.width
     });
-    this.hideSubmenu();
     this.autocollapse(this.props.selected);
   }
 
@@ -66,6 +65,7 @@ export default class Tabs extends Component {
         } else {
           this.header.menu.children[i].style.display = 'block';
         }
+        this.header.menu.children[i - 1].style.display = 'block';
         i--;
       }
 
@@ -133,7 +133,6 @@ export default class Tabs extends Component {
   };
 
   showSubmenu = () => {
-    this.autocollapse(this.props.selected);
     this.setState({ isCollapsed: true });
   };
 
@@ -147,7 +146,6 @@ export default class Tabs extends Component {
         ref={this.headerRef}
         tabs={this.tabsHeader}
         main={this.props.main}
-        selected={this.props.selected}
         collapsible={this.props.collapsible}
         onClick={this.props.onClick}
         align={this.props.align}
