@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
-import { withKnobs, text, boolean } from '@kadira/storybook-addon-knobs';
+import { withKnobs, text, boolean, select } from '@kadira/storybook-addon-knobs';
 import styled from 'styled-components';
 import Tabs from '../';
 import { tabs, simple10Tabs } from './data';
@@ -25,7 +25,7 @@ storiesOf('Tabs', module)
         main={boolean('main', true)}
         onClick={action('tab selected')}
         collapsible={boolean('collapsible', true)}
-        align={text('align', 'left')}
+        align={select('align', ['left', 'right', 'center'])}
       /></Container>
     )
   )
@@ -39,7 +39,7 @@ storiesOf('Tabs', module)
         main={boolean('main', false)}
         onClick={action('tab selected')}
         collapsible={boolean('collapsible', false)}
-        align={text('align', 'left')}
+        align={select('align', ['left', 'right', 'center'])}
       />
     )
   );
