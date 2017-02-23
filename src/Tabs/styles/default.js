@@ -9,6 +9,7 @@ export const style = ({ theme, main, align }) => css`
   overflow: hidden;
   ${!main && `
   border-top: 1px solid ${theme.base01};
+  border-bottom: 1px solid ${theme.base02};
   `}
 
   > div {
@@ -27,7 +28,7 @@ export const style = ({ theme, main, align }) => css`
       color: ${theme.base05};
       letter-spacing: 0.3px;
       min-height: 30px;
-      padding: 2px 10px;
+      padding: 2px 8px;
       margin-right: 1px;
       border: ${main ? '2' : '1'}px solid transparent;
       cursor: pointer;
@@ -43,18 +44,13 @@ export const style = ({ theme, main, align }) => css`
       }
     }
 
-    > button:last-child {
-      padding-left: 0;
-      padding-right: 0;
-    }
-
     > [data-selected] {
       ${main ?
       `border-bottom: 2px solid ${theme.base0B};` :
       `
       background-color: ${theme.base00};
       border: 1px solid ${theme.base02};
-      border-bottom: 1px solid ${theme.base00};
+      border-bottom: none;
       box-shadow: 0 1px ${theme.base00};
       `
       }
