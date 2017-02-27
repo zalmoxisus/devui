@@ -37,6 +37,7 @@ export default class Tabs extends Component {
   };
 
   collapse = (el, selected = this.props.selected) => {
+    if (this.state.subMenuOpened) this.setState({ subMenuOpened: false });
 
     const tabs = this.props.tabs;
     const tabsWrapperRef = this.headerRef.tabsWrapperRef;
