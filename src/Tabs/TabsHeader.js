@@ -65,3 +65,5 @@ TabsHeader.propTypes = {
   subMenuOpened: PropTypes.bool,
   showSubmenu: PropTypes.func
 };
+
+TabsHeader.defaultProps = { align: 'left' };
