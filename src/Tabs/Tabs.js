@@ -4,34 +4,28 @@ import TabsHeader from './TabsHeader';
 import { TabsContainer } from './styles/common';
 
 export default class Tabs extends Component {
-  static getDomNodeDimensions(node) {
-    const { top, right, bottom, left, width, height } = node.getBoundingClientRect();
-    return { top, right, bottom, left, width, height };
-  }
   constructor(props) {
     super(props);
     this.state = {
-      clientWidth: 0,
       collapsed: [],
-      isCollapsed: false
+      subMenuOpened: false
     };
     this.updateTabs(props);
-    this.onResize = this.onResize.bind(this);
   }
 
   componentDidMount() {
-    this.enableResizeDetector();
+    if (this.props.collapsible) this.enableResizeDetector();
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.selected !== this.props.selected) {
       this.updateTabs(nextProps);
-      this.autocollapse(nextProps.selected);
+      if (this.elementResizeDetector) this.collapse(undefined, nextProps.selected);
     }
   }
 
   componentWillUnmount() {
-    this.disableResizeDetector();
+    if (this.elementResizeDetector) this.disableResizeDetector();
   }
 
   onMouseUp = e => {
@@ -42,49 +36,44 @@ export default class Tabs extends Component {
     this.props.onClick(e.target.value);
   };
 
-  onResize() {
-    if (!this.props.collapsible) {
-      return;
-    }
-    const clientRect = Tabs.getDomNodeDimensions(this.header.tabsWrapper);
-    this.setState({
-      clientWidth: clientRect.width
-    });
-    this.autocollapse(this.props.selected);
-  }
+  collapse = (el, selected = this.props.selected) => {
 
-  autocollapse = (selected) => {
+    const tabs = this.props.tabs;
+    const tabsWrapperRef = this.headerRef.tabsWrapperRef;
+    const tabsRef = this.headerRef.tabsRef;
+    const tabButtons = this.headerRef.tabsRef.children;
     let arr = [];
-    if (this.header.menu.offsetWidth >= this.header.tabsWrapper.offsetWidth) {
-      let i = this.props.tabs.length - 1;
-      while (this.header.menu.offsetWidth >= this.header.tabsWrapper.offsetWidth) {
-        if (i < 0 || arr.length === this.props.tabs.length - 1) return;
-        if (this.header.menu.children[i].value !== selected) {
-          arr.unshift(this.props.tabs[i]);
-          this.header.menu.children[i].style.display = 'none';
+    let i;
+    if (tabsRef.offsetWidth >= tabsWrapperRef.offsetWidth) { // hide tabs
+      i = tabs.length - 1;
+      while (tabsRef.offsetWidth >= tabsWrapperRef.offsetWidth) {
+        if (i < 0 || arr.length === tabs.length - 1) return;
+        if (tabButtons[i].value !== selected) {
+          arr.unshift(tabs[i]);
+          tabButtons[i].style.display = 'none';
         } else {
-          this.header.menu.children[i].style.display = 'block';
+          tabButtons[i].style.display = 'block';
         }
-        this.header.menu.children[i - 1].style.display = 'block';
+        tabButtons[i - 1].style.display = 'block';
         i--;
       }
 
       this.setState({ collapsed: arr });
-    } else {
+    } else { // show tabs
       arr = this.state.collapsed;
-      let i = 0;
+      i = 0;
 
-      while (this.header.menu.offsetWidth < this.header.tabsWrapper.offsetWidth) {
-        if (i > this.props.tabs.length - 1) return;
-        if (this.header.menu.children[i].style.display === 'none') {
-          this.header.menu.children[i].style.display = 'block';
+      while (tabsRef.offsetWidth < tabsWrapperRef.offsetWidth) {
+        if (i > tabs.length - 1) return;
+        if (tabButtons[i].style.display === 'none') {
+          tabButtons[i].style.display = 'block';
           arr.shift();
           this.setState({ collapsed: arr.length > 0 ? arr : [] });
         }
         i++;
       }
-      if (this.header.menu.offsetWidth > this.header.tabsWrapper.offsetWidth) {
-        this.autocollapse(selected);
+      if (tabsRef.offsetWidth > tabsWrapperRef.offsetWidth) {
+        this.collapse(el, selected);
       }
     }
   };
@@ -92,12 +81,14 @@ export default class Tabs extends Component {
   enableResizeDetector() {
     window.addEventListener('mousedown', this.hideSubmenu);
     this.elementResizeDetector = elementResizeDetectorMaker({ strategy: 'scroll' });
-    this.elementResizeDetector.listenTo(this.header.tabsWrapper, this.onResize);
-    this.onResize();
+    this.elementResizeDetector.listenTo(this.headerRef.tabsWrapperRef, this.collapse);
+    this.collapse();
   }
+
   disableResizeDetector() {
     window.removeEventListener('mousedown', this.hideSubmenu);
-    this.elementResizeDetector.removeListener(this.header.tabsWrapper, this.onResize);
+    // this.elementResizeDetector.removeListener(this.headerRef.tabsWrapperRef, this.collapse);
+    this.elementResizeDetector.uninstall(this.headerRef.tabsWrapperRef);
   }
 
   updateTabs(props) {
@@ -129,28 +120,28 @@ export default class Tabs extends Component {
   }
 
   hideSubmenu = () => {
-    this.setState({ isCollapsed: false });
+    this.setState({ subMenuOpened: false });
   };
 
   showSubmenu = () => {
-    this.setState({ isCollapsed: true });
+    this.setState({ subMenuOpened: true });
   };
 
-  headerRef = (c) => {
-    this.header = c;
+  getHeaderRef = node => {
+    this.headerRef = node;
   };
 
   render() {
     const tabsHeader = (
       <TabsHeader
-        ref={this.headerRef}
+        ref={this.getHeaderRef}
         tabs={this.tabsHeader}
         main={this.props.main}
         collapsible={this.props.collapsible}
         onClick={this.props.onClick}
         align={this.props.align}
         collapsed={this.state.collapsed}
-        isCollapsed={this.state.isCollapsed}
+        subMenuOpened={this.state.subMenuOpened}
         showSubmenu={this.showSubmenu}
       />
     );

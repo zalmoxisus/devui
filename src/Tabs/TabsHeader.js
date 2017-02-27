@@ -13,8 +13,12 @@ export default class TabsHeader extends Component {
     this.top = 0;
   }
 
-  getRef = name => node => {
-    this[name] = node;
+  getTabsWrapperRef = node => {
+    this.tabsWrapperRef = node;
+  };
+
+  getTabsRef = node => {
+    this.tabsRef = node;
   };
 
   expandMenu = (e) => {
@@ -27,24 +31,23 @@ export default class TabsHeader extends Component {
   render() {
     return (
       <TabsWrapper
-        innerRef={this.getRef('tabsWrapper')}
+        innerRef={this.getTabsWrapperRef}
         main={this.props.main}
         align={this.props.align}
       >
-        <div ref={this.getRef('menu')}>
+        <div ref={this.getTabsRef}>
           {this.props.tabs}
           { this.props.collapsible && this.props.collapsed.length > 0 &&
             <button onClick={this.expandMenu}><CollapseIcon /></button>
           }
         </div>
-        { this.props.collapsible &&
+        {this.props.collapsible &&
           <ContextMenu
-            ref={this.getRef('submenu')}
             items={this.props.collapsed}
             onClick={this.props.onClick}
             x={this.left}
             y={this.top}
-            visible={this.props.isCollapsed}
+            visible={this.props.subMenuOpened}
           />
         }
       </TabsWrapper>
@@ -59,6 +62,6 @@ TabsHeader.propTypes = {
   align: PropTypes.string,
   collapsible: PropTypes.bool,
   collapsed: PropTypes.array,
-  isCollapsed: PropTypes.bool,
+  subMenuOpened: PropTypes.bool,
   showSubmenu: PropTypes.func
 };
