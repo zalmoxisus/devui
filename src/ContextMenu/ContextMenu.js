@@ -7,7 +7,13 @@ const ContextMenuWrapper = getStyles(style, 'div', false);
 export default class ContextMenu extends Component {
   constructor(props) {
     super(props);
-    this.updateItems(props);
+    this.updateItems(props.items);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.items !== this.props.items) {
+      this.updateItems(nextProps.items);
+    }
   }
 
   componentDidMount() {
@@ -17,9 +23,6 @@ export default class ContextMenu extends Component {
   componentDidUpdate(prevProps) {
     if (prevProps.x !== this.props.x || prevProps.y !== this.props.y) {
       this.amendPosition();
-    }
-    if (prevProps.items !== this.props.items) {
-      this.updateItems(this.props);
     }
   }
 
@@ -56,8 +59,8 @@ export default class ContextMenu extends Component {
     this.menu.style.left = `${left}px`;
   }
 
-  updateItems(props) {
-    this.items = props.items.map(item => {
+  updateItems(items) {
+    this.items = items.map(item => {
       const value = item.value || item.name;
       return (
         <button
