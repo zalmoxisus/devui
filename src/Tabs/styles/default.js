@@ -50,7 +50,7 @@ export const style = ({ theme, main, align }) => css`
       `
       background-color: ${theme.base00};
       border: 1px solid ${theme.base02};
-      border-bottom: none;
+      border-bottom: 1px solid ${theme.base00};
       box-shadow: 0 1px ${theme.base00};
       `
       }
