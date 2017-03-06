@@ -1,9 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import MdClose from 'react-icons/lib/md/close';
-import getStyles from '../utils/getStyles';
-import * as styles from './styles';
-
-const NotificationWrapper = getStyles(styles, 'div', true);
+import { NotificationWrapper } from './styles';
 
 export default class Notification extends Component {
   shouldComponentUpdate(nextProps) {
