@@ -24,7 +24,7 @@ storiesOf('Notification', module)
             select('type', ['primary', 'secondary', 'default',
              'info', 'success', 'warning', 'error'])
           }
-          onClick={action('notification clicked')}
+          onClose={action('notification closed')}
         >
           {text('Message', 'Hello Notification')}
         </Notification>

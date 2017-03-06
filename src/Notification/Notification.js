@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import MdClose from 'react-icons/lib/md/close';
 import getStyles from '../utils/getStyles';
 import * as styles from './styles';
 
@@ -15,6 +16,7 @@ export default class Notification extends Component {
     return (
       <NotificationWrapper>
         {this.props.children}
+        <MdClose onClick={this.props.onClose} />
       </NotificationWrapper>
     );
   }
@@ -23,6 +25,6 @@ export default class Notification extends Component {
 Notification.propTypes = {
   children: PropTypes.any.isRequired,
   type: PropTypes.oneOf(['primary', 'secondary', 'default', 'info', 'success', 'warning', 'error']),
-  onClick: PropTypes.func
+  onClose: PropTypes.func
 };
 

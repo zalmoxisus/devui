@@ -1,22 +1,27 @@
 import { css } from 'styled-components';
-import { ripple } from '../../utils/animations';
 
 export const style = ({ theme, primary, disabled, big }) => css`
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-  outline: none;
   font-family: inherit;
   font-weight: 600;
-  text-decoration: none;
-  display: inline-block;
   border: 1px solid ${theme.base02};
   text-transform: uppercase;
-   margin: auto 10px;
+  margin: auto 10px;
   padding: 7px;
   width: 100%;
-
   color: ${primary ? theme.base00 : theme.base05};
   background-color: ${primary ? theme.base04 : theme.base01};
 
-  ${ripple(theme)}
+  & > svg {
+    cursor: pointer;
+    float: right;
+    padding: 1px;
+    border: 1px solid rgba(0, 0, 0, 0);
+    opacity: 0.8;
+  }
+  & > svg:hover {
+    opacity: 1;
+  }
+  & > svg:active {
+    border: 1px solid ${theme.base02};
+  }
 `;
