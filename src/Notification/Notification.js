@@ -28,3 +28,7 @@ Notification.propTypes = {
   onClose: PropTypes.func
 };
 
+Notification.defaultProps = {
+  type: 'info'
+};
+
