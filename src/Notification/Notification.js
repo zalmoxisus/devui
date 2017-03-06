@@ -14,7 +14,7 @@ export default class Notification extends Component {
 
   render() {
     return (
-      <NotificationWrapper>
+      <NotificationWrapper type={this.props.type}>
         {this.props.children}
         <MdClose onClick={this.props.onClose} />
       </NotificationWrapper>
@@ -24,7 +24,7 @@ export default class Notification extends Component {
 
 Notification.propTypes = {
   children: PropTypes.any.isRequired,
-  type: PropTypes.oneOf(['primary', 'secondary', 'default', 'info', 'success', 'warning', 'error']),
+  type: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
   onClose: PropTypes.func
 };
 

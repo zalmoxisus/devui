@@ -20,9 +20,8 @@ storiesOf('Notification', module)
     () => (
       <Container>
         <Notification
-          tooltipPosition={
-            select('type', ['primary', 'secondary', 'default',
-             'info', 'success', 'warning', 'error'])
+          type={
+            select('type', ['info', 'success', 'warning', 'error'])
           }
           onClose={action('notification closed')}
         >

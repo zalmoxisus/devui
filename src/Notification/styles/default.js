@@ -1,17 +1,18 @@
 import { css } from 'styled-components';
 import colorEffect from '../../utils/color';
 
-export const style = ({ theme, primary, disabled, big }) => css`
+export const style = ({ theme, type }) => css`
   font-weight: 600;
   font-size: 1.2em;
   margin: auto 10px;
   border: 1px solid ${theme.base02};
   padding: 7px;
   width: 100%;
-  color: ${primary ? theme.base00 : theme.base05};
-  background-color: ${primary ? // eslint-disable-line
-  theme.scheme === 'default' && theme.light ? theme.base0B : theme.base04
-  : theme.base01};
+  color: ${type === 'info' ? theme.base05 : theme.base01};
+  background-color: ${type === 'success' ? theme.base0B :
+    type === 'warning' ? theme.base0A :
+      type === 'error' ? theme.base08 :
+        theme.base01};
 
   & > svg {
     cursor: pointer;
