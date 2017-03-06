@@ -1,5 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import MdClose from 'react-icons/lib/md/close';
+import MdWarning from 'react-icons/lib/md/warning';
+import MdInfo from 'react-icons/lib/md/info';
+import MdError from 'react-icons/lib/md/error';
+import MdCheckCircle from 'react-icons/lib/md/check-circle';
 import { NotificationWrapper } from './styles';
 
 export default class Notification extends Component {
@@ -10,9 +14,19 @@ export default class Notification extends Component {
   }
 
   render() {
+    const icon = (this.props.type === 'warning' ?
+      <MdWarning /> :
+      this.props.type === 'error' ?
+        <MdError /> :
+        this.props.type === 'success' ?
+          <MdCheckCircle /> :
+          '');
+
+
     return (
       <NotificationWrapper type={this.props.type}>
-        {this.props.children}
+        {icon}
+        <span>{this.props.children}</span>
         <MdClose onClick={this.props.onClose} />
       </NotificationWrapper>
     );
