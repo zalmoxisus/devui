@@ -9,33 +9,26 @@ import { style } from './styles';
 const NotificationWrapper = getStyles(style, 'div');
 
 export default class Notification extends Component {
-  constructor(props) {
-    super(props);
-    this.getIcon(props);
-  }
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.type !== this.props.type) {
-      this.getIcon(nextProps);
-    }
-  }
   shouldComponentUpdate(nextProps) {
     return nextProps.children !== this.props.children ||
       nextProps.type !== this.props.type;
   }
-  getIcon = (props) => {
-    if (props.type === 'warning') {
-      this.icon = <WarningIcon />;
-    } else if (props.type === 'error') {
-      this.icon = <ErrorIcon />;
-    } else if (props.type === 'success') {
-      this.icon = <SuccessIcon />;
-    } else this.icon = '';
+  getIcon = () => {
+    let icon;
+    if (this.props.type === 'warning') {
+      icon = <WarningIcon />;
+    } else if (this.props.type === 'error') {
+      icon = <ErrorIcon />;
+    } else if (this.props.type === 'success') {
+      icon = <SuccessIcon />;
+    } else icon = '';
+    return icon;
   };
 
   render() {
     return (
       <NotificationWrapper type={this.props.type}>
-        {this.icon}
+        {this.getIcon()}
         <span>{this.props.children}</span>
         <CloseIcon onClick={this.props.onClose} />
       </NotificationWrapper>
