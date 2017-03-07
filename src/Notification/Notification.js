@@ -3,7 +3,10 @@ import CloseIcon from 'react-icons/lib/md/close';
 import WarningIcon from 'react-icons/lib/md/warning';
 import ErrorIcon from 'react-icons/lib/md/error';
 import SuccessIcon from 'react-icons/lib/md/check-circle';
-import { NotificationWrapper } from './styles';
+import getStyles from '../utils/getStyles';
+import { style } from './styles';
+
+const NotificationWrapper = getStyles(style, 'div');
 
 export default class Notification extends Component {
   constructor(props) {

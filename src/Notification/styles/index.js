@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import { css } from 'styled-components';
 
-export const NotificationWrapper = styled.div`
+export const style = ({ theme }) => css`
   display: flex;
   align-items: center;
   justify-content: center;
