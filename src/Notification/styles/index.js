@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export const style = ({ theme }) => css`
+export const style = ({ theme, type }) => css`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,11 +10,11 @@ export const style = ({ theme }) => css`
   border: 1px solid ${props => props.theme.base02};
   padding: 7px;
   width: 100%;
-  color: ${props => props.type === 'info' ? props.theme.base05 : props.theme.base01};
-  background-color: ${props => props.type === 'success' ? props.theme.base0B :
-  props.type === 'warning' ? props.theme.base0A :
-    props.type === 'error' ? props.theme.base08 :
-      props.theme.base01};
+  color: ${type === 'info' ? theme.base05 : theme.base01};
+  background-color: ${type === 'success' ? theme.base0B : // eslint-disable-line
+  type === 'warning' ? theme.base0A : // eslint-disable-line
+    type === 'error' ? theme.base08 :
+      theme.base01};
 
   & > svg:first-child {
     font-size: 1.4em;
