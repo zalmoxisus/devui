@@ -19,7 +19,7 @@ storiesOf('Notification', module)
       <Container>
         <Notification
           type={
-            select('type', ['info', 'success', 'warning', 'error'])
+            select('type', ['info', 'success', 'warning', 'error'], 'warning')
           }
           onClose={action('notification closed')}
         >

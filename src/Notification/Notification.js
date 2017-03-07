@@ -1,33 +1,40 @@
 import React, { Component, PropTypes } from 'react';
-import MdClose from 'react-icons/lib/md/close';
-import MdWarning from 'react-icons/lib/md/warning';
-import MdInfo from 'react-icons/lib/md/info';
-import MdError from 'react-icons/lib/md/error';
-import MdCheckCircle from 'react-icons/lib/md/check-circle';
+import CloseIcon from 'react-icons/lib/md/close';
+import WarningIcon from 'react-icons/lib/md/warning';
+import ErrorIcon from 'react-icons/lib/md/error';
+import SuccessIcon from 'react-icons/lib/md/check-circle';
 import { NotificationWrapper } from './styles';
 
 export default class Notification extends Component {
+  constructor(props) {
+    super(props);
+    this.getIcon(props);
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.type !== this.props.type) {
+      this.getIcon(nextProps);
+    }
+  }
   shouldComponentUpdate(nextProps) {
     return nextProps.children !== this.props.children ||
-      nextProps.message !== this.props.message ||
-      nextProps.type !== this.props.type
+      nextProps.type !== this.props.type;
   }
+  getIcon = (props) => {
+    if (props.type === 'warning') {
+      this.icon = <WarningIcon />;
+    } else if (props.type === 'error') {
+      this.icon = <ErrorIcon />;
+    } else if (props.type === 'success') {
+      this.icon = <SuccessIcon />;
+    } else this.icon = '';
+  };
 
   render() {
-    const icon = (this.props.type === 'warning' ?
-      <MdWarning /> :
-      this.props.type === 'error' ?
-        <MdError /> :
-        this.props.type === 'success' ?
-          <MdCheckCircle /> :
-          '');
-
-
     return (
       <NotificationWrapper type={this.props.type}>
-        {icon}
+        {this.icon}
         <span>{this.props.children}</span>
-        <MdClose onClick={this.props.onClose} />
+        <CloseIcon onClick={this.props.onClose} />
       </NotificationWrapper>
     );
   }

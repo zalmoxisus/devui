@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import colorEffect from '../../utils/color';
 
 export const NotificationWrapper = styled.div`
   display: flex;
