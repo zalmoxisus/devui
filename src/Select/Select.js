@@ -1,11 +1,11 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, Component, PropTypes } from 'react';
 import ReactSelect from 'react-select';
 import getStyles from '../utils/getStyles';
 import { style } from './styles';
 
 const SelectContainer = getStyles(style, ReactSelect);
 
-export default class Select extends Component {
+export default class Select extends (PureComponent || Component) {
   render() {
     return <SelectContainer {...this.props} />;
   }

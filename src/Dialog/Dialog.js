@@ -1,4 +1,4 @@
-import React, { PureComponent, PropTypes, Children } from 'react';
+import React, { PureComponent, Component, PropTypes, Children } from 'react';
 import getStyles from '../utils/getStyles';
 import * as styles from './styles';
 import Button from '../Button';
@@ -6,7 +6,7 @@ import Form from '../Form';
 
 const DialogWrapper = getStyles(styles, 'div', true);
 
-export default class Dialog extends PureComponent {
+export default class Dialog extends (PureComponent || Component) {
   onSubmit = () => {
     if (this.submitButton) this.submitButton.click();
     else this.props.onSubmit();

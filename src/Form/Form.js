@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, Component, PropTypes } from 'react';
 import JSONSchemaForm from 'react-jsonschema-form';
 import getStyles from '../utils/getStyles';
 import { style } from './styles';
@@ -7,7 +7,7 @@ import customWidgets from './widgets';
 
 const FormContainer = getStyles(style, JSONSchemaForm);
 
-export default class Form extends Component {
+export default class Form extends (PureComponent || Component) {
   render() {
     const { widgets, children, submitText, primaryButton, noSubmit, ...rest } = this.props;
     return (
