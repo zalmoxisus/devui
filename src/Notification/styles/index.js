@@ -1,9 +1,28 @@
 import { css } from 'styled-components';
 
+const getBackground = (theme, type) => {
+  switch (type) {
+    case 'success':
+      return `
+      background-color:  ${theme.base0B};
+      `;
+    case 'warning':
+      return `
+      background-color:  ${theme.base0A};
+      `;
+    case 'error':
+      return `
+      background-color:  ${theme.base08};
+      `;
+    default:
+      return `
+       background-color:  ${theme.base01};
+      `;
+  }
+};
+
 export const style = ({ theme, type }) => css`
   display: flex;
-  align-items: center;
-  justify-content: center;
   font-weight: 600;
   font-size: 1.2em;
   margin: auto 10px;
@@ -11,10 +30,7 @@ export const style = ({ theme, type }) => css`
   padding: 7px;
   width: 100%;
   color: ${type === 'info' ? theme.base05 : theme.base01};
-  background-color: ${type === 'success' ? theme.base0B : // eslint-disable-line
-  type === 'warning' ? theme.base0A : // eslint-disable-line
-    type === 'error' ? theme.base08 :
-      theme.base01};
+  ${getBackground(theme, type)}
 
   & > svg:first-child {
     font-size: 1.4em;
