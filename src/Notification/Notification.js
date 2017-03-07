@@ -13,6 +13,7 @@ export default class Notification extends Component {
     return nextProps.children !== this.props.children ||
       nextProps.type !== this.props.type;
   }
+
   getIcon = () => {
     let icon;
     if (this.props.type === 'warning') {
@@ -45,4 +46,3 @@ Notification.propTypes = {
 Notification.defaultProps = {
   type: 'info'
 };
-

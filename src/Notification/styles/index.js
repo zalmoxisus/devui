@@ -26,7 +26,7 @@ export const style = ({ theme, type }) => css`
   font-weight: 600;
   font-size: 1.2em;
   margin: auto 10px;
-  border: 1px solid ${props => props.theme.base02};
+  border: 1px solid ${theme.base02};
   padding: 7px;
   width: 100%;
   color: ${type === 'info' ? theme.base05 : theme.base01};
@@ -35,11 +35,13 @@ export const style = ({ theme, type }) => css`
   & > svg:first-child {
     font-size: 1.4em;
   }
+
   & > span {
     width: 100%;
     text-align: center;
     margin: 0 10px 0 10px;
   }
+
   & > svg:last-child {
     cursor: pointer;
     float: right;
@@ -47,10 +49,12 @@ export const style = ({ theme, type }) => css`
     border: 1px solid rgba(0, 0, 0, 0);
     opacity: 0.8;
   }
+
   & > svg:last-child:hover {
     opacity: 1;
   }
+
   & > svg:last-child:active {
-    border: 1px solid ${props => props.theme.base02};
+    border: 1px solid ${theme.base02};
   }
 `;
