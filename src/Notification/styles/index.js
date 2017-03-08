@@ -3,58 +3,56 @@ import { css } from 'styled-components';
 const getBackground = (theme, type) => {
   switch (type) {
     case 'success':
-      return `
-      background-color:  ${theme.base0B};
-      `;
+      return `background-color: ${theme.base0B};`;
     case 'warning':
-      return `
-      background-color:  ${theme.base0A};
-      `;
+      return `background-color: ${theme.base0A};`;
     case 'error':
-      return `
-      background-color:  ${theme.base08};
-      `;
+      return `background-color: ${theme.base08};`;
     default:
-      return `
-       background-color:  ${theme.base01};
-      `;
+      return `background-color: ${theme.base0D};`;
   }
 };
 
 export const style = ({ theme, type }) => css`
   display: flex;
-  font-weight: 600;
-  font-size: 1.2em;
-  margin: auto 10px;
-  border: 1px solid ${theme.base02};
+  align-items: flex-start;
+  box-sizing: border-box;
+  box-shadow: inset ${theme.base05} 0 0 1px;
+  font-size: 1.1em;
   padding: 7px;
   width: 100%;
-  color: ${type === 'info' ? theme.base05 : theme.base01};
+  color: ${theme.base01};
   ${getBackground(theme, type)}
 
   & > svg:first-child {
     font-size: 1.4em;
+    opacity: 0.5;
   }
 
   & > span {
     width: 100%;
     text-align: center;
-    margin: 0 10px 0 10px;
+    padding: 0.1em;
   }
 
-  & > svg:last-child {
+  & > button {
     cursor: pointer;
     float: right;
-    padding: 1px;
-    border: 1px solid rgba(0, 0, 0, 0);
+    font-size: 1.1em;
+    border: 1px solid transparent;
+    background: transparent;
+    padding: 0.1em;
+    line-height: 0;
+    outline: none;
+    color: inherit;
     opacity: 0.8;
   }
 
-  & > svg:last-child:hover {
+  & > button:hover, & > button:active {
     opacity: 1;
   }
 
-  & > svg:last-child:active {
-    border: 1px solid ${theme.base02};
+  & > button:focus {
+    border: 1px solid ${theme.base03};
   }
 `;

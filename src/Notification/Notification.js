@@ -15,15 +15,12 @@ export default class Notification extends Component {
   }
 
   getIcon = () => {
-    let icon;
-    if (this.props.type === 'warning') {
-      icon = <WarningIcon />;
-    } else if (this.props.type === 'error') {
-      icon = <ErrorIcon />;
-    } else if (this.props.type === 'success') {
-      icon = <SuccessIcon />;
-    } else icon = '';
-    return icon;
+    switch (this.props.type) {
+      case 'warning': return <WarningIcon />;
+      case 'error': return <ErrorIcon />;
+      case 'success': return <SuccessIcon />;
+      default: return null;
+    }
   };
 
   render() {
@@ -31,7 +28,7 @@ export default class Notification extends Component {
       <NotificationWrapper type={this.props.type}>
         {this.getIcon()}
         <span>{this.props.children}</span>
-        <CloseIcon onClick={this.props.onClose} />
+        <button onClick={this.props.onClose}><CloseIcon /></button>
       </NotificationWrapper>
     );
   }
