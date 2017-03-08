@@ -1,0 +1,59 @@
+exports[`Notification renders correctly 1`] = `
+<div
+  class="knlTsH"
+  type="info">
+  <span>
+    Message
+  </span>
+  <button>
+    <svg
+      fill="currentColor"
+      height="1em"
+      preserveaspectratio="xMidYMid meet"
+      style="vertical-align:middle;"
+      viewbox="0 0 40 40"
+      width="1em">
+      <g>
+        <path
+          d="m31.6 10.7l-9.3 9.3 9.3 9.3-2.3 2.3-9.3-9.3-9.3 9.3-2.3-2.3 9.3-9.3-9.3-9.3 2.3-2.3 9.3 9.3 9.3-9.3z" />
+      </g>
+    </svg>
+  </button>
+</div>
+`;
+
+exports[`Notification renders with props 1`] = `
+<div
+  class="knlTsH"
+  type="error">
+  <svg
+    fill="currentColor"
+    height="1em"
+    preserveaspectratio="xMidYMid meet"
+    style="vertical-align:middle;"
+    viewbox="0 0 40 40"
+    width="1em">
+    <g>
+      <path
+        d="m21.6 21.6v-10h-3.2v10h3.2z m0 6.8v-3.4h-3.2v3.4h3.2z m-1.6-25c9.2 0 16.6 7.4 16.6 16.6s-7.4 16.6-16.6 16.6-16.6-7.4-16.6-16.6 7.4-16.6 16.6-16.6z" />
+    </g>
+  </svg>
+  <span>
+    Message
+  </span>
+  <button>
+    <svg
+      fill="currentColor"
+      height="1em"
+      preserveaspectratio="xMidYMid meet"
+      style="vertical-align:middle;"
+      viewbox="0 0 40 40"
+      width="1em">
+      <g>
+        <path
+          d="m31.6 10.7l-9.3 9.3 9.3 9.3-2.3 2.3-9.3-9.3-9.3 9.3-2.3-2.3 9.3-9.3-9.3-9.3 2.3-2.3 9.3 9.3 9.3-9.3z" />
+      </g>
+    </svg>
+  </button>
+</div>
+`;
