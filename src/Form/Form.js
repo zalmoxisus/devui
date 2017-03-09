@@ -12,9 +12,10 @@ export default class Form extends (PureComponent || Component) {
     const { widgets, children, submitText, primaryButton, noSubmit, ...rest } = this.props;
     return (
       <FormContainer {...rest} widgets={{ ...customWidgets, ...widgets }}>
-        {children ||
+        {
           noSubmit ? <noscript /> :
-          <Button big primary={primaryButton} type="submit">{submitText || 'Submit'}</Button>
+            children ||
+            <Button big primary={primaryButton} type="submit">{submitText || 'Submit'}</Button>
         }
       </FormContainer>
     );

@@ -1,4 +1,4 @@
-import React, { PureComponent, Component, PropTypes, Children } from 'react';
+import React, { PureComponent, Component, PropTypes } from 'react';
 import getStyles from '../utils/getStyles';
 import * as styles from './styles';
 import Button from '../Button';
@@ -69,13 +69,23 @@ export default class Dialog extends (PureComponent || Component) {
           {
             !noFooter &&
               (actions
-                ? <div>{Children.toArray(actions)}</div>
+                ? <div className="mc-dialog--footer">
+                  {submitText ?
+                    [...actions,
+                      <Button key="default-submit" primary onClick={this.onSubmit}>
+                        {submitText}
+                      </Button>
+                    ]
+                    : actions
+                  }
+                  </div>
                 : <div className="mc-dialog--footer">
-                  <Button onClick={onDismiss}>Cancel</Button>
-                  <Button primary onClick={this.onSubmit}>
-                    {submitText || 'Submit'}
-                  </Button>
-                </div>)
+                    <Button onClick={onDismiss}>Cancel</Button>
+                    <Button primary onClick={this.onSubmit}>
+                      {submitText || 'Submit'}
+                    </Button>
+                  </div>
+              )
           }
         </div>
       </DialogWrapper>
