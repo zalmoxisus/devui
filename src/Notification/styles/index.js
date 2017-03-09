@@ -16,6 +16,7 @@ const getBackground = (theme, type) => {
 export const style = ({ theme, type }) => css`
   display: flex;
   align-items: flex-start;
+  flex-shrink: 0;
   box-sizing: border-box;
   box-shadow: inset ${theme.base05} 0 0 1px;
   font-size: 1.1em;

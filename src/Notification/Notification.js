@@ -28,7 +28,9 @@ export default class Notification extends Component {
       <NotificationWrapper type={this.props.type}>
         {this.getIcon()}
         <span>{this.props.children}</span>
-        <button onClick={this.props.onClose}><CloseIcon /></button>
+        {this.props.onClose &&
+          <button onClick={this.props.onClose}><CloseIcon /></button>
+        }
       </NotificationWrapper>
     );
   }
