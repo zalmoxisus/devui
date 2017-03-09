@@ -1,6 +1,7 @@
 import { css } from 'styled-components';
 
-export const style = ({ theme, type, disabled }) => css`
+export const style = ({ theme, type, disabled, align }) => css`
+  display: flex;
   width: 100%;
   margin: auto 0;
   border: 1px solid ${theme.base02};
@@ -13,6 +14,14 @@ export const style = ({ theme, type, disabled }) => css`
   color: ${theme.base05};
   background-color: ${theme.base02};
   `}
+  > div {
+    ${align !== 'left' && `
+      margin-left: auto;
+    `}
+    ${align === 'center' && `
+      margin-right: auto;
+    `}
+  }
   button {
     outline: none;
     box-sizing: border-box;

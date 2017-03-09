@@ -24,6 +24,7 @@ storiesOf('SegmentedControl', module)
           disabled={boolean('Disabled', false)}
           onClick={action('button clicked')}
           tabs={tabs}
+          align={select('align', ['left', 'right', 'center'])}
         />
       </Container>
     )
