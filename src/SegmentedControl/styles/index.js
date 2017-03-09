@@ -6,14 +6,8 @@ export const style = ({ theme, type, disabled, align }) => css`
   margin: auto 0;
   border: 1px solid ${theme.base02};
   padding: 5px 9px;
-  ${disabled ? `
-  color: ${theme.base04};
-  background-color: ${theme.base03};
-  opacity: 0.7;
-  ` : `
   color: ${theme.base05};
   background-color: ${theme.base02};
-  `}
   > div:first-child {
     position: absolute;
     margin: 0 5px 0 5px;
@@ -45,14 +39,16 @@ export const style = ({ theme, type, disabled, align }) => css`
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     border: 1px solid ${theme.base03};
-    color: ${theme.base05};
-    background-color: ${theme.base01};
     padding: 5px 10px;
     margin-left: -1px;
     ${disabled ? `
     cursor: not-allowed;
+    color: ${theme.base04};
+    opacity: 0.7;
     ` : `
     cursor: pointer;
+    color: ${theme.base05};
+    background-color: ${theme.base01};
     &:hover {
       background-color: ${theme.base02};
     }
