@@ -22,9 +22,10 @@ storiesOf('SegmentedControl', module)
       <Container>
         <SegmentedControl
           disabled={boolean('Disabled', false)}
-          onClick={action('button clicked')}
+          onClick={action('tab selected')}
           tabs={tabs}
-          align={select('align', ['left', 'right', 'center'])}
+          align={select('align', ['left', 'right'])}
+          selected={text('selected', 'Tab1')}
         />
       </Container>
     )
