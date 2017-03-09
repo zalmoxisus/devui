@@ -2,6 +2,7 @@ import { css } from 'styled-components';
 
 export const defaultStyle = `
   height: 100%;
+  overflow: auto;
 
   > div {
     height: 100%;
