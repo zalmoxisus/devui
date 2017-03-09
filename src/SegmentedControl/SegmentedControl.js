@@ -11,7 +11,7 @@ export default class SegmentedControl extends Component {
 
   render() {
     return (
-      <SegmentedWrapper>
+      <SegmentedWrapper disabled={this.props.disabled}>
         {this.props.tabs.map(tab =>
           <button key={tab.name}>
             {tab.name}
