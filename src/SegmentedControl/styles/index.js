@@ -1,18 +1,14 @@
 import { css } from 'styled-components';
 
-export const style = ({ theme, type, disabled, align }) => css`
+export const style = ({ theme, disabled, align }) => css`
   display: flex;
   width: 100%;
-  margin: auto 0;
-  border: 1px solid ${theme.base02};
-  padding: 5px 9px;
-  color: ${theme.base05};
+  padding: 7px 10px;
   background-color: ${theme.base02};
-  > div:first-child {
+  > span {
     position: absolute;
-    margin: 0 5px 0 5px;
+    margin: 0 10px 0 10px;
     font-size: 1.2em;
-    font-weight: 600;
     top: 50%;
     transform: translateY(-50%);
     ${align === 'left' && `
@@ -22,7 +18,7 @@ export const style = ({ theme, type, disabled, align }) => css`
       left: 0;
     `}
   }
-  > div:last-child {
+  > div {
     display: flex;
     ${align === 'right' && `
       margin-left: auto;
@@ -31,7 +27,7 @@ export const style = ({ theme, type, disabled, align }) => css`
       margin-right: auto;
     `}
   }
-  > div:last-child > [data-selected] {
+  > div > [data-selected] {
     background-color: ${theme.base03};
   }
   button {
@@ -50,7 +46,7 @@ export const style = ({ theme, type, disabled, align }) => css`
     color: ${theme.base05};
     background-color: ${theme.base01};
     &:hover {
-      background-color: ${theme.base02};
+      background-color: ${theme.base03};
     }
     `}
     &:first-child {

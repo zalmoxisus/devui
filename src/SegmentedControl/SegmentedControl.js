@@ -54,7 +54,7 @@ export default class SegmentedControl extends Component {
         disabled={this.props.disabled}
         align={this.props.align}
       >
-        <div>{this.selected}</div>
+        <span>{this.selected}</span>
         <div>
           {this.tabs}
         </div>
