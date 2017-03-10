@@ -16,6 +16,7 @@ export const style = ({ theme, disabled, align }) => css`
   }
   > div {
     display: flex;
+    overflow: hidden;
     ${align === 'right' && `
       margin-left: auto;
     `}

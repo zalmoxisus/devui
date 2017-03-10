@@ -17,7 +17,7 @@ export default class SegmentedControl extends Component {
   shouldComponentUpdate(nextProps) {
     return nextProps.disabled !== this.props.disabled ||
       nextProps.align !== this.props.align ||
-      nextProps.selected !== this.props.selected
+      nextProps.selected !== this.props.selected;
   }
 
   onClick = e => {
@@ -33,7 +33,7 @@ export default class SegmentedControl extends Component {
       const value = typeof tab.value !== 'undefined' ? tab.value : tab.name;
       if (value === selected) {
         isSelected = true;
-        this.selected = tab.name;
+        this.selectedItem = tab.name;
       }
       return (
         <button
@@ -54,7 +54,7 @@ export default class SegmentedControl extends Component {
         disabled={this.props.disabled}
         align={this.props.align}
       >
-        <span>{this.selected}</span>
+        <span>{this.selectedItem}</span>
         <div>
           {this.tabs}
         </div>
