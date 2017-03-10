@@ -2,21 +2,17 @@ import { css } from 'styled-components';
 
 export const style = ({ theme, disabled, align }) => css`
   display: flex;
+  align-items: center;
   width: 100%;
   padding: 7px 10px;
   background-color: ${theme.base02};
+  ${align === 'left' && `
+    flex-direction: row-reverse;
+  `}
+
   > span {
-    position: absolute;
     margin: 0 10px 0 10px;
     font-size: 1.2em;
-    top: 50%;
-    transform: translateY(-50%);
-    ${align === 'left' && `
-      right: 0;
-    `}
-    ${align === 'right' && `
-      left: 0;
-    `}
   }
   > div {
     display: flex;
