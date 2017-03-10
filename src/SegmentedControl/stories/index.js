@@ -2,8 +2,9 @@ import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
 import styled from 'styled-components';
 import { withKnobs, text, boolean, select } from '@kadira/storybook-addon-knobs';
+import { Toolbar, Button } from '../../';
 import SegmentedControl from '../';
-import { tabs } from './data';
+import { buttons } from './data';
 
 export const Container = styled.div`
   display: flex;
@@ -21,10 +22,10 @@ storiesOf('SegmentedControl', module)
     () => (
       <Container>
         <SegmentedControl
-          tabs={tabs}
-          selected={text('selected', 'Tab1')}
+          buttons={buttons}
+          selected={text('selected', 'Button1')}
           align={select('align', ['left', 'right'])}
-          onClick={action('tab selected')}
+          onClick={action('button selected')}
           disabled={boolean('Disabled', false)}
         />
       </Container>

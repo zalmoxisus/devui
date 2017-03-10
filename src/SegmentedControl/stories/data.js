@@ -17,25 +17,25 @@ const Component = ({ selected }) => (
 );
 /* eslint-enable react/prop-types */
 
-const selector = tab => ({ selected: tab.name });
+const selector = button => ({ selected: button.name });
 
-export const tabs = [
+export const buttons = [
   {
-    name: 'Tab1',
+    name: 'Button1',
     component: Component,
     selector
   },
   {
-    name: 'Tab2',
+    name: 'Button2',
     component: Component,
     selector
   },
   {
-    name: 'Tab3',
+    name: 'Button3',
     component: Component,
     selector
   }
 ];
 
-export const simple10Tabs = [];
-for (let i = 1; i <= 10; i++) simple10Tabs.push({ name: `Tab${i}`, value: `${i}` });
+export const simple10Buttons = [];
+for (let i = 1; i <= 10; i++) simple10Buttons.push({ name: `Button${i}`, value: `${i}` });

@@ -5,15 +5,6 @@ import { style } from './styles';
 const SegmentedWrapper = getStyles(style, 'div');
 
 export default class SegmentedControl extends Component {
-  constructor(props) {
-    super(props);
-    this.updateTabs(props);
-  }
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.tabs !== this.props.tabs || nextProps.selected !== this.props.selected) {
-      this.updateTabs(nextProps);
-    }
-  }
   shouldComponentUpdate(nextProps) {
     return nextProps.disabled !== this.props.disabled ||
       nextProps.align !== this.props.align ||
@@ -24,16 +15,15 @@ export default class SegmentedControl extends Component {
     this.props.onClick(e.target.value);
   };
 
-  updateTabs(props) {
-    const tabs = props.tabs;
-    const selected = props.selected;
+  getButtons = () => {
+    const buttons = this.props.buttons;
+    const selected = this.props.selected;
 
-    this.tabs = tabs.map(tab => {
+    return buttons.map(button => {
       let isSelected;
-      const value = typeof tab.value !== 'undefined' ? tab.value : tab.name;
+      const value = typeof button.value !== 'undefined' ? button.value : button.name;
       if (value === selected) {
         isSelected = true;
-        this.selectedItem = tab.name;
       }
       return (
         <button
@@ -42,11 +32,11 @@ export default class SegmentedControl extends Component {
           data-selected={isSelected}
           onClick={this.onClick}
         >
-          {tab.name}
+          {button.name}
         </button>
       );
     });
-  }
+  };
 
   render() {
     return (
@@ -54,9 +44,8 @@ export default class SegmentedControl extends Component {
         disabled={this.props.disabled}
         align={this.props.align}
       >
-        <span>{this.selectedItem}</span>
         <div>
-          {this.tabs}
+          {this.getButtons()}
         </div>
       </SegmentedWrapper>
     );
@@ -64,7 +53,7 @@ export default class SegmentedControl extends Component {
 }
 
 SegmentedControl.propTypes = {
-  tabs: PropTypes.array.isRequired,
+  buttons: PropTypes.array.isRequired,
   selected: PropTypes.string,
   onClick: PropTypes.func,
   disabled: PropTypes.bool,

@@ -6,17 +6,10 @@ export const style = ({ theme, disabled, align }) => css`
   width: 100%;
   padding: 7px 10px;
   background-color: ${theme.base02};
-  ${align === 'left' && `
-    flex-direction: row-reverse;
-  `}
-
-  > span {
-    margin: 0 10px 0 10px;
-    font-size: 1.2em;
-  }
   > div {
     display: flex;
     overflow: hidden;
+    padding-left: 1px;
     ${align === 'right' && `
       margin-left: auto;
     `}
