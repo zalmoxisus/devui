@@ -4,7 +4,7 @@ import * as styles from './styles';
 import { tooltipStyle } from './styles/common';
 
 const ButtonWrapper = getStyles(styles, 'button', true);
-const TooltipWrapper = getStyles(tooltipStyle, 'div', false);
+const TooltipWrapper = getStyles(tooltipStyle);
 
 export default class Button extends Component {
   shouldComponentUpdate(nextProps) {
@@ -24,6 +24,7 @@ export default class Button extends Component {
   render() {
     const button = (
       <ButtonWrapper
+        theme={this.props.theme}
         aria-label={this.props.title}
         primary={this.props.primary}
         disabled={this.props.disabled}
@@ -39,6 +40,7 @@ export default class Button extends Component {
     if (!this.props.title) return button;
     return (
       <TooltipWrapper
+        theme={this.props.theme}
         tooltipTitle={this.props.title}
         tooltipPosition={this.props.tooltipPosition}
         mark={this.props.mark}
@@ -60,7 +62,8 @@ Button.propTypes = {
   primary: PropTypes.bool,
   big: PropTypes.bool,
   mark: PropTypes.oneOf([false, 'base08', 'base09', 'base0A', 'base0B',
-    'base0C', 'base0D', 'base0E', 'base0F'])
+    'base0C', 'base0D', 'base0E', 'base0F']),
+  theme: PropTypes.object
 };
 
 Button.defaultProps = {

@@ -40,7 +40,12 @@ export default class Dialog extends (PureComponent || Component) {
     const schema = rest.schema;
 
     return (
-      <DialogWrapper open={open} fullWidth={fullWidth} onKeyDown={this.onKeyDown}>
+      <DialogWrapper
+        open={open}
+        fullWidth={fullWidth}
+        onKeyDown={this.onKeyDown}
+        theme={rest.theme}
+      >
         <div onClick={!modal && onDismiss} />
         <div>
           {!noHeader && (
@@ -104,5 +109,6 @@ Dialog.propTypes = {
   noFooter: PropTypes.bool,
   modal: PropTypes.bool,
   onDismiss: PropTypes.func,
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  theme: PropTypes.object
 };

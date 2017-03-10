@@ -6,7 +6,7 @@ import SuccessIcon from 'react-icons/lib/md/check-circle';
 import getStyles from '../utils/getStyles';
 import { style } from './styles';
 
-const NotificationWrapper = getStyles(style, 'div');
+const NotificationWrapper = getStyles(style);
 
 export default class Notification extends Component {
   shouldComponentUpdate(nextProps) {
@@ -25,7 +25,7 @@ export default class Notification extends Component {
 
   render() {
     return (
-      <NotificationWrapper type={this.props.type}>
+      <NotificationWrapper type={this.props.type} theme={this.props.theme}>
         {this.getIcon()}
         <span>{this.props.children}</span>
         {this.props.onClose &&
@@ -39,7 +39,8 @@ export default class Notification extends Component {
 Notification.propTypes = {
   children: PropTypes.any.isRequired,
   type: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
-  onClose: PropTypes.func
+  onClose: PropTypes.func,
+  theme: PropTypes.object
 };
 
 Notification.defaultProps = {
