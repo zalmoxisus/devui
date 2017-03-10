@@ -126,7 +126,7 @@ storiesOf('Toolbar', module)
             </Button>
             <SegmentedControl
               buttons={['live', '1x']}
-              selected={select('selected', ['live', '1x'])}
+              selected={select('selected', ['live', '1x'], 'live')}
               onClick={action('button selected')}
               disabled={boolean('Disabled', false)}
             />

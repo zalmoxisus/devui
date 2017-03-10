@@ -2,13 +2,12 @@ import React from 'react';
 import { render, mount } from 'enzyme';
 import { renderToJson } from 'enzyme-to-json';
 import { SegmentedControl } from '../src';
-import { buttons } from '../src/SegmentedControl/stories/data';
 
 describe('SegmentedControl', function () {
   it('renders correctly', () => {
     const wrapper = render(
       <SegmentedControl
-        buttons={buttons}
+        buttons={['Button1', 'Button2', 'Button3']}
         selected="Button1"
         disabled={false}
         onClick={() => {}}
@@ -19,7 +18,7 @@ describe('SegmentedControl', function () {
   it('should handle the click event', () => {
     const onClick = jest.fn();
     const wrapper = mount(<SegmentedControl
-      buttons={buttons}
+      buttons={['Button1', 'Button2', 'Button3']}
       selected="Button1"
       disabled={false}
       onClick={onClick}

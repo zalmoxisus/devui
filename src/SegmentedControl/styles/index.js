@@ -1,10 +1,8 @@
 import { css } from 'styled-components';
+import color from '../../utils/color';
 
 export const style = ({ theme, disabled }) => css`
   display: flex;
-  align-items: center;
-  width: auto;
-  padding: 7px 10px;
   background-color: ${theme.base02};
   > div {
     display: flex;
@@ -12,13 +10,13 @@ export const style = ({ theme, disabled }) => css`
     padding-left: 1px;
   }
   > div > [data-selected] {
-    background-color: ${theme.base03};
+    background-color: ${color(theme.base03, 'alpha', 0.2)};
   }
   > div > button {
     outline: none;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
-    border: 1px solid ${theme.base03};
+    border: 1px solid ${color(theme.base03, 'alpha', 0.5)};
     padding: 5px 10px;
     margin-left: -1px;
     ${disabled ? `
@@ -30,7 +28,7 @@ export const style = ({ theme, disabled }) => css`
     color: ${theme.base05};
     background-color: ${theme.base01};
     &:hover {
-      background-color: ${theme.base03};
+      background-color: ${color(theme.base03, 'alpha', 0.4)};
     }
     `}
     &:first-child {
