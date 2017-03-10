@@ -1,4 +1,4 @@
-import React, { PureComponent, PropTypes, Children } from 'react';
+import React, { PureComponent, Component, PropTypes } from 'react';
 import getStyles from '../utils/getStyles';
 import * as styles from './styles';
 import Button from '../Button';
@@ -6,7 +6,7 @@ import Form from '../Form';
 
 const DialogWrapper = getStyles(styles, 'div', true);
 
-export default class Dialog extends PureComponent {
+export default class Dialog extends (PureComponent || Component) {
   onSubmit = () => {
     if (this.submitButton) this.submitButton.click();
     else this.props.onSubmit();
@@ -40,7 +40,12 @@ export default class Dialog extends PureComponent {
     const schema = rest.schema;
 
     return (
-      <DialogWrapper open={open} fullWidth={fullWidth} onKeyDown={this.onKeyDown}>
+      <DialogWrapper
+        open={open}
+        fullWidth={fullWidth}
+        onKeyDown={this.onKeyDown}
+        theme={rest.theme}
+      >
         <div onClick={!modal && onDismiss} />
         <div>
           {!noHeader && (
@@ -69,13 +74,23 @@ export default class Dialog extends PureComponent {
           {
             !noFooter &&
               (actions
-                ? <div>{Children.toArray(actions)}</div>
+                ? <div className="mc-dialog--footer">
+                  {submitText ?
+                    [...actions,
+                      <Button key="default-submit" primary onClick={this.onSubmit}>
+                        {submitText}
+                      </Button>
+                    ]
+                    : actions
+                  }
+                  </div>
                 : <div className="mc-dialog--footer">
-                  <Button onClick={onDismiss}>Cancel</Button>
-                  <Button primary onClick={this.onSubmit}>
-                    {submitText || 'Submit'}
-                  </Button>
-                </div>)
+                    <Button onClick={onDismiss}>Cancel</Button>
+                    <Button primary onClick={this.onSubmit}>
+                      {submitText || 'Submit'}
+                    </Button>
+                  </div>
+              )
           }
         </div>
       </DialogWrapper>
@@ -94,5 +109,6 @@ Dialog.propTypes = {
   noFooter: PropTypes.bool,
   modal: PropTypes.bool,
   onDismiss: PropTypes.func,
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  theme: PropTypes.object
 };

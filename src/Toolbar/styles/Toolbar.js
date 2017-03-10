@@ -5,6 +5,7 @@ const Toolbar = styled.div`
   flex-shrink: 0;
   box-sizing: border-box;
   width: 100%;
+  height: 100%;
   padding: ${props => (props.compact ? '0' : '5px')} 5px;
   background-color: ${props => props.theme.base01};
   text-align: center;
@@ -20,6 +21,7 @@ const Toolbar = styled.div`
   & button {
     border-radius: 0;
     ${props => props.noBorder && 'border-color: transparent;'}
+    ${props => props.compact && 'padding: 0;'}
     white-space: nowrap;
     box-shadow: none !important;
   }

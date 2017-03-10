@@ -118,6 +118,7 @@ const getDirection = (tooltipPosition) => {
 export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, mark }) => css`
   display: inline-block;
   position: relative;
+  flex-shrink: 0;
 
   & > button {
     height: 100%;
