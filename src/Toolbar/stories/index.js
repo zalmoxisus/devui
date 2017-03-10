@@ -8,7 +8,6 @@ import LeftIcon from 'react-icons/lib/md/keyboard-arrow-left';
 import RightIcon from 'react-icons/lib/md/keyboard-arrow-right';
 import { Toolbar, Divider, Spacer, Button, Select, Slider, SegmentedControl } from '../../';
 import { options } from '../../Select/stories/options';
-import { simpleToolbarButtons } from '../../SegmentedControl/stories/data';
 
 export const Container = styled.div`
   display: flex;
@@ -126,7 +125,7 @@ storiesOf('Toolbar', module)
               <RightIcon />
             </Button>
             <SegmentedControl
-              buttons={simpleToolbarButtons}
+              buttons={['live', '1x']}
               selected={select('selected', ['live', '1x'])}
               onClick={action('button selected')}
               disabled={boolean('Disabled', false)}

@@ -3,7 +3,6 @@ import { storiesOf, action } from '@kadira/storybook';
 import styled from 'styled-components';
 import { withKnobs, text, boolean } from '@kadira/storybook-addon-knobs';
 import SegmentedControl from '../';
-import { buttons } from './data';
 
 export const Container = styled.div`
   display: flex;
@@ -21,7 +20,7 @@ storiesOf('SegmentedControl', module)
     () => (
       <Container>
         <SegmentedControl
-          buttons={buttons}
+          buttons={['Button1', 'Button2', 'Button3']}
           selected={text('selected', 'Button1')}
           onClick={action('button selected')}
           disabled={boolean('Disabled', false)}

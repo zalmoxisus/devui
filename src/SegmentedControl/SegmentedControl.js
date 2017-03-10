@@ -20,18 +20,17 @@ export default class SegmentedControl extends Component {
 
     return buttons.map(button => {
       let isSelected;
-      const value = typeof button.value !== 'undefined' ? button.value : button.name;
-      if (value === selected) {
+      if (button === selected) {
         isSelected = true;
       }
       return (
         <button
-          key={value}
-          value={value}
+          key={button}
+          value={button}
           data-selected={isSelected}
           onClick={this.onClick}
         >
-          {button.name}
+          {button}
         </button>
       );
     });
