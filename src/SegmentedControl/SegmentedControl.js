@@ -14,34 +14,25 @@ export default class SegmentedControl extends Component {
     this.props.onClick(e.target.value);
   };
 
-  getButtons = () => {
-    const buttons = this.props.buttons;
-    const selected = this.props.selected;
-
-    return buttons.map(button => {
-      let isSelected;
-      if (button === selected) {
-        isSelected = true;
-      }
-      return (
-        <button
-          key={button}
-          value={button}
-          data-selected={isSelected}
-          onClick={this.onClick}
-        >
-          {button}
-        </button>
-      );
-    });
+  onMouseUp = e => {
+    e.target.blur();
   };
 
   render() {
+    const { buttons, selected } = this.props;
     return (
-      <SegmentedWrapper disabled={this.props.disabled}>
-        <div>
-          {this.getButtons()}
-        </div>
+      <SegmentedWrapper disabled={this.props.disabled} theme={this.props.theme}>
+        {buttons.map(button => (
+          <button
+            key={button}
+            value={button}
+            data-selected={button === selected ? true : undefined}
+            onMouseUp={this.onMouseUp}
+            onClick={this.onClick}
+          >
+            {button}
+          </button>
+        ))}
       </SegmentedWrapper>
     );
   }
@@ -51,5 +42,6 @@ SegmentedControl.propTypes = {
   buttons: PropTypes.array.isRequired,
   selected: PropTypes.string,
   onClick: PropTypes.func,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
+  theme: PropTypes.object
 };

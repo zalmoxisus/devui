@@ -1,20 +1,18 @@
 exports[`SegmentedControl renders correctly 1`] = `
 <div
-  class="fUDsWs">
-  <div>
-    <button
-      data-selected="true"
-      value="Button1">
-      Button1
-    </button>
-    <button
-      value="Button2">
-      Button2
-    </button>
-    <button
-      value="Button3">
-      Button3
-    </button>
-  </div>
+  class="iAasHo">
+  <button
+    data-selected="true"
+    value="Button1">
+    Button1
+  </button>
+  <button
+    value="Button2">
+    Button2
+  </button>
+  <button
+    value="Button3">
+    Button3
+  </button>
 </div>
 `;
