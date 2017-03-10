@@ -37,5 +37,18 @@ export const buttons = [
   }
 ];
 
+export const simpleToolbarButtons = [
+  {
+    name: 'live',
+    component: Component,
+    selector
+  },
+  {
+    name: '1x',
+    component: Component,
+    selector
+  }
+];
+
 export const simple10Buttons = [];
 for (let i = 1; i <= 10; i++) simple10Buttons.push({ name: `Button${i}`, value: `${i}` });

@@ -24,7 +24,6 @@ storiesOf('SegmentedControl', module)
         <SegmentedControl
           buttons={buttons}
           selected={text('selected', 'Button1')}
-          align={select('align', ['left', 'right'])}
           onClick={action('button selected')}
           disabled={boolean('Disabled', false)}
         />

@@ -1,26 +1,20 @@
 import { css } from 'styled-components';
 
-export const style = ({ theme, disabled, align }) => css`
+export const style = ({ theme, disabled }) => css`
   display: flex;
   align-items: center;
-  width: 100%;
+  width: auto;
   padding: 7px 10px;
   background-color: ${theme.base02};
   > div {
     display: flex;
     overflow: hidden;
     padding-left: 1px;
-    ${align === 'right' && `
-      margin-left: auto;
-    `}
-    ${align === 'left' && `
-      margin-right: auto;
-    `}
   }
   > div > [data-selected] {
     background-color: ${theme.base03};
   }
-  button {
+  > div > button {
     outline: none;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;

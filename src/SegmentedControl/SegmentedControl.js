@@ -40,10 +40,7 @@ export default class SegmentedControl extends Component {
 
   render() {
     return (
-      <SegmentedWrapper
-        disabled={this.props.disabled}
-        align={this.props.align}
-      >
+      <SegmentedWrapper disabled={this.props.disabled}>
         <div>
           {this.getButtons()}
         </div>
@@ -56,8 +53,7 @@ SegmentedControl.propTypes = {
   buttons: PropTypes.array.isRequired,
   selected: PropTypes.string,
   onClick: PropTypes.func,
-  disabled: PropTypes.bool,
-  align: PropTypes.oneOf(['left', 'right'])
+  disabled: PropTypes.bool
 };
-SegmentedControl.defaultProps = { align: 'right' };
+
 
