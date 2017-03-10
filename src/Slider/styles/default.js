@@ -21,7 +21,6 @@ export const style = ({ theme, percent, disabled }) => css`
     padding: 0 10px;
     top: 0.1em;
     width: 100%;
-    text-shadow: 3px 3px ${theme.base01};
   }
 
   input {
@@ -39,12 +38,8 @@ export const style = ({ theme, percent, disabled }) => css`
     border-radius: 0.75em/2.25em;
     font-size: 1em;
     cursor: pointer;
-    background: linear-gradient(${theme.base02}, ${theme.base00}) padding-box,
-      50% 50% border-box,
-      linear-gradient(90deg, ${theme.base02} 0.015em, ${
-      theme.light ? 'rgba(231, 231, 231, 0)' : 'rgba(10, 10, 10, 0)'
-      } 0.125em) repeat-x 0.5em 50% border-box;
-    background-size: 100% 100%, 100% 4.5em, 1.25em 65%;
+    background: linear-gradient(${theme.base02}, ${theme.base00}) padding-box, 50% 50% border-box;
+    background-size: 100% 100%;
   }
 
   ${prefixSelectors('input', ['webkit-slider-runnable-track', 'moz-range-track', 'ms-track'], `{

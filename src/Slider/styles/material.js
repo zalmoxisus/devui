@@ -7,13 +7,15 @@ export const style = ({ theme, percent, disabled }) => css`
   display: block;
   width: 100%;
   position: relative;
+  padding: 2em 0;
+  z-index: 1;
 
   label {
     position: absolute;
     display: block;
     font-weight: 600;
     padding: 0.3em 0.5em;
-    top: -1.8em;
+    top: 0;
     width: 100%;
   }
 
