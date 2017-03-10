@@ -6,7 +6,7 @@ import PlayIcon from 'react-icons/lib/md/play-arrow';
 import RecordIcon from 'react-icons/lib/md/fiber-manual-record';
 import LeftIcon from 'react-icons/lib/md/keyboard-arrow-left';
 import RightIcon from 'react-icons/lib/md/keyboard-arrow-right';
-import { Toolbar, Divider, Spacer, Button, Select, Slider } from '../../';
+import { Toolbar, Divider, Spacer, Button, Select, Slider, SegmentedControl } from '../../';
 import { options } from '../../Select/stories/options';
 
 export const Container = styled.div`
@@ -122,13 +122,11 @@ storiesOf('Toolbar', module)
             >
               <RightIcon />
             </Button>
-            <Select
-              options={[
-                { value: 'live', label: 'live' }, { value: '1x', label: '1x' }
-              ]}
-              openOuterUp
-              searchable={false}
-              value="live"
+            <SegmentedControl
+              buttons={['live', '1x']}
+              selected={select('selected', ['live', '1x'], 'live')}
+              onClick={action('button selected')}
+              disabled={boolean('Disabled', false)}
             />
           </Toolbar>
         </SliderContainer>
