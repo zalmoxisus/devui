@@ -20,7 +20,6 @@ export const Container = styled.div`
 export const SliderContainer = styled.div`
   width: 90%;
   button {
-    padding: 0;
     background-color: ${props => props.theme.base01};
 
     > svg {
@@ -80,7 +79,7 @@ storiesOf('Toolbar', module)
     () => (
       <Container>
         <SliderContainer>
-          <Toolbar noBorder>
+          <Toolbar noBorder compact>
             <Button
               title={text('play title', 'Play')}
               tooltipPosition={
@@ -102,7 +101,6 @@ storiesOf('Toolbar', module)
               onChange={action('slider changed')}
             />
             <Button
-              big
               title="Previous state"
               tooltipPosition={
                 select('tooltipPosition', ['top', 'bottom', 'left', 'right',
