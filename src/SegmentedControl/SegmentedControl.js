@@ -7,7 +7,6 @@ const SegmentedWrapper = getStyles(style, 'div');
 export default class SegmentedControl extends Component {
   shouldComponentUpdate(nextProps) {
     return nextProps.disabled !== this.props.disabled ||
-      nextProps.align !== this.props.align ||
       nextProps.selected !== this.props.selected;
   }
 
@@ -55,5 +54,3 @@ SegmentedControl.propTypes = {
   onClick: PropTypes.func,
   disabled: PropTypes.bool
 };
-
-

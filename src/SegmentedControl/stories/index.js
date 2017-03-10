@@ -1,8 +1,7 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
 import styled from 'styled-components';
-import { withKnobs, text, boolean, select } from '@kadira/storybook-addon-knobs';
-import { Toolbar, Button } from '../../';
+import { withKnobs, text, boolean } from '@kadira/storybook-addon-knobs';
 import SegmentedControl from '../';
 import { buttons } from './data';
 
