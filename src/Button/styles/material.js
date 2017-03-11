@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import { ripple } from '../../utils/animations';
 
-export const style = ({ theme, primary, disabled, big }) => css`
+export const style = ({ theme, primary, disabled }) => css`
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   outline: none;
@@ -12,13 +12,6 @@ export const style = ({ theme, primary, disabled, big }) => css`
   border: none;
   text-transform: uppercase;
   margin: 0;
-  ${big ? `
-  min-height: 34px;
-  padding: 2px 12px;
-  ` : `
-  min-height: 30px;
-  padding: 2px 7px;
-  `}
   ${disabled ? `
   cursor: not-allowed;
   color: ${theme.base04};

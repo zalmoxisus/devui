@@ -21,7 +21,6 @@ const Toolbar = styled.div`
   & button {
     border-radius: 0;
     ${props => props.noBorder && 'border-color: transparent;'}
-    ${props => props.compact && 'padding: 0;'}
     white-space: nowrap;
     box-shadow: none !important;
   }

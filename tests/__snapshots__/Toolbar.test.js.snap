@@ -1,22 +1,28 @@
 exports[`Toolbar renders correctly 1`] = `
 <div
-  class="kqvAuO">
-  <button
-    class="bvfheR">
-    1
-  </button>
+  class="dliIIp">
+  <div
+    class="jstwKs">
+    <button
+      class="bEIpTZ">
+      1
+    </button>
+  </div>
   <div
     class="ePIabG" />
   <div
     class="dbmnmg" />
-  <button
-    class="bvfheR">
-    2
-  </button>
+  <div
+    class="jstwKs">
+    <button
+      class="bEIpTZ">
+      2
+    </button>
+  </div>
 </div>
 `;
 
 exports[`Toolbar renders with props 1`] = `
 <div
-  class="fYmkLJ" />
+  class="jRvQMY" />
 `;

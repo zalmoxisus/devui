@@ -115,7 +115,18 @@ const getDirection = (tooltipPosition) => {
     tooltipPosition.substring(0, tooltipPosition.indexOf('-')) : tooltipPosition;
 };
 
-export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, mark }) => css`
+const getSize = (size) => {
+  switch (size) {
+    case 'big':
+      return 'min-height: 34px; padding: 2px 12px;';
+    case 'small':
+      return '';
+    default:
+      return 'min-height: 30px; padding: 2px 7px;';
+  }
+};
+
+export const commonStyle = ({ theme, mark, size }) => css`
   display: inline-block;
   position: relative;
   flex-shrink: 0;
@@ -123,13 +134,30 @@ export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, mark }) => 
   & > button {
     height: 100%;
     width: 100%;
+    ${getSize(size)}
 
     > svg {
       font-size: 1.5em;
       overflow: visible;
       pointer-events: none;
     }
+
+    ${mark && `
+    background-color: ${colorEffect(theme[mark], 'fade', theme.light ? 0.92 : 0.82)};
+  
+    > svg {
+      color: ${theme[mark]};
+      stroke: ${theme[mark]};
+      stroke-width: 14px;
+      stroke-opacity: 0.2;
+      user-select: none;
+    }
+  `}
   }
+`;
+
+export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, mark, size }) => css`
+  ${commonStyle({ theme, mark, size })}
 
   &:before {
     content: "${tooltipTitle}";
@@ -187,18 +215,4 @@ export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, mark }) => 
     ${getDirection(tooltipPosition)}: -4px;
     transition-delay: 200ms;
   }
-  
-  ${mark && `
-    & > button {
-      background-color: ${colorEffect(theme[mark], 'fade', theme.light ? 0.92 : 0.82)};
-    
-      > svg {
-        color: ${theme[mark]};
-        stroke: ${theme[mark]};
-        stroke-width: 14px;
-        stroke-opacity: 0.2;
-        user-select: none;
-      }
-    }
-  `}
 `;

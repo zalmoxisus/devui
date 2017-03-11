@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import colorEffect from '../../utils/color';
 
-export const style = ({ theme, primary, disabled, big }) => css`
+export const style = ({ theme, primary, disabled }) => css`
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   outline: none;
@@ -12,13 +12,6 @@ export const style = ({ theme, primary, disabled, big }) => css`
   margin: auto 0;
   border: 1px solid ${theme.base02};
   border-radius: 4px;
-  ${big ? `
-  min-height: 34px;
-  padding: 2px 12px;
-  ` : `
-  min-height: 30px;
-  padding: 2px 7px;
-  `}
   ${primary ? `
   background-color: ${theme.scheme === 'default' && theme.light ? theme.base0B : theme.base04};
   color: ${theme.base00};

@@ -114,7 +114,7 @@ exports[`Form renders correctly 1`] = `
     }
   }>
   <Button
-    big={true}
+    size="big"
     tooltipPosition="top"
     type="submit">
     Submit
@@ -357,8 +357,8 @@ exports[`Form renders with primary button 1`] = `
     }
   }>
   <Button
-    big={true}
     primary={true}
+    size="big"
     tooltipPosition="top"
     type="submit">
     Custom button

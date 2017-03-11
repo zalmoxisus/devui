@@ -15,7 +15,9 @@ export default class Form extends (PureComponent || Component) {
         {
           noSubmit ? <noscript /> :
             children ||
-            <Button big primary={primaryButton} type="submit">{submitText || 'Submit'}</Button>
+            <Button size="big" primary={primaryButton} type="submit">
+              {submitText || 'Submit'}
+            </Button>
         }
       </FormContainer>
     );

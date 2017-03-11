@@ -27,7 +27,7 @@ storiesOf('Button', module)
              'bottom-left', 'bottom-right', 'top-left', 'top-right'])
           }
           primary={boolean('primary', true)}
-          big={boolean('Big', true)}
+          size={select('size', ['big', 'normal', 'small'], 'normal')}
           disabled={boolean('Disabled', false)}
           onClick={action('button clicked')}
         >
@@ -49,7 +49,7 @@ storiesOf('Button', module)
             select('tooltipPosition', ['top', 'bottom', 'left', 'right',
              'bottom-left', 'bottom-right', 'top-left', 'top-right'])
           }
-          big={boolean('Big', true)}
+          size={select('size', ['big', 'normal', 'small'], 'normal')}
           disabled={boolean('Disabled', false)}
           onClick={action('button clicked')}
         >
