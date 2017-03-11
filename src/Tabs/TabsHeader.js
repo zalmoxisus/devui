@@ -33,7 +33,7 @@ export default class TabsHeader extends Component {
       <TabsWrapper
         innerRef={this.getTabsWrapperRef}
         main={this.props.main}
-        align={this.props.align}
+        position={this.props.position}
       >
         <div ref={this.getTabsRef}>
           {this.props.tabs}
@@ -59,11 +59,11 @@ TabsHeader.propTypes = {
   tabs: PropTypes.array.isRequired,
   main: PropTypes.bool,
   onClick: PropTypes.func,
-  align: PropTypes.string,
+  position: PropTypes.string,
   collapsible: PropTypes.bool,
   collapsed: PropTypes.array,
   subMenuOpened: PropTypes.bool,
   showSubmenu: PropTypes.func
 };
 
-TabsHeader.defaultProps = { align: 'left' };
+TabsHeader.defaultProps = { position: 'left' };

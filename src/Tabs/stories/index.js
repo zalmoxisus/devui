@@ -25,7 +25,7 @@ storiesOf('Tabs', module)
         main={boolean('main', true)}
         onClick={action('tab selected')}
         collapsible={boolean('collapsible', true)}
-        align={select('align', ['left', 'right', 'center'], 'left')}
+        position={select('position', ['left', 'right', 'center'], 'left')}
       /></Container>
     )
   )
@@ -39,7 +39,7 @@ storiesOf('Tabs', module)
         main={boolean('main', false)}
         onClick={action('tab selected')}
         collapsible={boolean('collapsible', false)}
-        align={select('align', ['left', 'right', 'center'], 'left')}
+        position={select('position', ['left', 'right', 'center'], 'left')}
       />
     )
   );

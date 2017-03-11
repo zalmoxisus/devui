@@ -140,7 +140,7 @@ export default class Tabs extends Component {
         main={this.props.main}
         collapsible={this.props.collapsible}
         onClick={this.props.onClick}
-        align={this.props.align}
+        position={this.props.position}
         collapsed={this.state.collapsed}
         subMenuOpened={this.state.subMenuOpened}
         showSubmenu={this.showSubmenu}
@@ -164,5 +164,5 @@ Tabs.propTypes = {
   main: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
   collapsible: PropTypes.bool,
-  align: PropTypes.oneOf(['left', 'right', 'center'])
+  position: PropTypes.oneOf(['left', 'right', 'center'])
 };

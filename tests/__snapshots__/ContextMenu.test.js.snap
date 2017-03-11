@@ -1,6 +1,6 @@
 exports[`ContextMenu renders correctly 1`] = `
 <div
-  class="lmwhNa">
+  class="gQmOBX">
   <button
     value="Menu Item 1">
     Menu Item 1
@@ -15,4 +15,3 @@ exports[`ContextMenu renders correctly 1`] = `
   </button>
 </div>
 `;
-

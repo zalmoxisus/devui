@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export const style = ({ theme, main, align }) => css`
+export const style = ({ theme, main, position }) => css`
   display: flex;
   flex: 0 0 1;
   padding-left: 1px;
@@ -16,10 +16,10 @@ export const style = ({ theme, main, align }) => css`
     display: flex;
     align-items: flex-end;
     flex-wrap: nowrap;
-    ${align !== 'left' && `
+    ${position !== 'left' && `
       margin-left: auto;
     `}
-    ${align === 'center' && `
+    ${position === 'center' && `
       margin-right: auto;
     `}
 
