@@ -17,6 +17,9 @@ export const style = ({ theme, percent, disabled }) => css`
     padding: 0.3em 0.5em;
     top: 0;
     width: 100%;
+    color: ${theme.base07};
+
+    > span { color: ${theme.base04}; } 
   }
 
   input {

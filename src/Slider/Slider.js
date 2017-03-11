@@ -21,7 +21,7 @@ export default class Slider extends Component {
   };
 
   render() {
-    const { label, withValue, theme, ...rest } = this.props;
+    const { label, sublabel, withValue, theme, ...rest } = this.props;
     const { value, max, min, disabled } = rest;
     const absMax = max - min;
     const percent = (value - min) / absMax * 100;
@@ -29,7 +29,7 @@ export default class Slider extends Component {
 
     return (
       <SliderWrapper percent={percent} disabled={disabled || absMax === 0} theme={theme}>
-        {label && <label>{label}</label>}
+        {label && <label>{label} {sublabel && <span>{sublabel}</span>}</label>}
         {!withValue ? slider :
           <ContainerWithValue theme={theme}>
             {slider}
@@ -45,7 +45,8 @@ Slider.propTypes = {
   value: PropTypes.number,
   min: PropTypes.number,
   max: PropTypes.number,
-  label: React.PropTypes.string,
+  label: PropTypes.string,
+  sublabel: PropTypes.string,
   withValue: PropTypes.bool,
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
