@@ -19,10 +19,10 @@ export default class SegmentedControl extends Component {
   };
 
   render() {
-    const { buttons, selected } = this.props;
+    const { values, selected } = this.props;
     return (
       <SegmentedWrapper disabled={this.props.disabled} theme={this.props.theme}>
-        {buttons.map(button => (
+        {values.map(button => (
           <button
             key={button}
             value={button}
@@ -39,7 +39,7 @@ export default class SegmentedControl extends Component {
 }
 
 SegmentedControl.propTypes = {
-  buttons: PropTypes.array.isRequired,
+  values: PropTypes.array.isRequired,
   selected: PropTypes.string,
   onClick: PropTypes.func,
   disabled: PropTypes.bool,

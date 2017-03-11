@@ -123,7 +123,7 @@ storiesOf('Toolbar', module)
               <RightIcon />
             </Button>
             <SegmentedControl
-              buttons={['live', '1x']}
+              values={['live', '1x']}
               selected={select('selected', ['live', '1x'], 'live')}
               onClick={action('button selected')}
               disabled={boolean('Disabled', false)}

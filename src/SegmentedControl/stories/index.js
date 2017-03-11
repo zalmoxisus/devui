@@ -20,7 +20,7 @@ storiesOf('SegmentedControl', module)
     () => (
       <Container>
         <SegmentedControl
-          buttons={['Button1', 'Button2', 'Button3']}
+          values={['Button1', 'Button2', 'Button3']}
           selected={text('selected', 'Button1')}
           onClick={action('button selected')}
           disabled={boolean('Disabled', false)}

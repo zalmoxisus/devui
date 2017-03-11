@@ -7,7 +7,7 @@ describe('SegmentedControl', function () {
   it('renders correctly', () => {
     const wrapper = render(
       <SegmentedControl
-        buttons={['Button1', 'Button2', 'Button3']}
+        values={['Button1', 'Button2', 'Button3']}
         selected="Button1"
         disabled={false}
         onClick={() => {}}
@@ -18,7 +18,7 @@ describe('SegmentedControl', function () {
   it('should handle the click event', () => {
     const onClick = jest.fn();
     const wrapper = mount(<SegmentedControl
-      buttons={['Button1', 'Button2', 'Button3']}
+      values={['Button1', 'Button2', 'Button3']}
       selected="Button1"
       disabled={false}
       onClick={onClick}
