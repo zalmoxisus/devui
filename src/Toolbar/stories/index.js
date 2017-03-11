@@ -19,20 +19,7 @@ export const Container = styled.div`
 
 export const SliderContainer = styled.div`
   width: 90%;
-  button {
-    background-color: ${props => props.theme.base01};
-
-    > svg {
-      font-size: 3em;
-    }
-  }
-  .Select {
-    width: 75px;
-
-    .Select-control {
-      text-align: left;
-    }
-  }
+  height: 80px;
 `;
 
 storiesOf('Toolbar', module)
@@ -79,14 +66,13 @@ storiesOf('Toolbar', module)
     () => (
       <Container>
         <SliderContainer>
-          <Toolbar noBorder compact>
+          <Toolbar noBorder fullHeight compact>
             <Button
               title={text('play title', 'Play')}
               tooltipPosition={
                 select('tooltipPosition', ['top', 'bottom', 'left', 'right',
                   'bottom-left', 'bottom-right', 'top-left', 'top-right'])
               }
-              disabled={boolean('Disabled', false)}
               onClick={action('button clicked')}
             >
               <PlayIcon />
@@ -97,7 +83,6 @@ storiesOf('Toolbar', module)
               max={number('max', 100)}
               label={text('label', 'Slider label')}
               withValue={boolean('withValue', false)}
-              disabled={boolean('disabled', false)}
               onChange={action('slider changed')}
             />
             <Button
@@ -106,7 +91,7 @@ storiesOf('Toolbar', module)
                 select('tooltipPosition', ['top', 'bottom', 'left', 'right',
                   'bottom-left', 'bottom-right', 'top-left', 'top-right'])
               }
-              disabled={boolean('Disabled', true)}
+              disabled
               onClick={action('previous state clicked')}
             >
               <LeftIcon />
@@ -117,7 +102,6 @@ storiesOf('Toolbar', module)
                 select('tooltipPosition', ['top', 'bottom', 'left', 'right',
                   'bottom-left', 'bottom-right', 'top-left', 'top-right'])
               }
-              disabled={boolean('Disabled', false)}
               onClick={action('next state clicked')}
             >
               <RightIcon />
@@ -126,7 +110,6 @@ storiesOf('Toolbar', module)
               values={['live', '1x']}
               selected={select('selected', ['live', '1x'], 'live')}
               onClick={action('button selected')}
-              disabled={boolean('Disabled', false)}
             />
           </Toolbar>
         </SliderContainer>

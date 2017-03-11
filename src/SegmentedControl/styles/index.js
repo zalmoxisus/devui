@@ -15,6 +15,7 @@ export const style = ({ theme, disabled }) => css`
     box-sizing: border-box;
     flex-shrink: 0;
     -webkit-font-smoothing: antialiased;
+    min-height: 30px;
     border: 1px solid ${color(theme.base03, 'alpha', 0.4)};
     border-left-width: 0;
     padding: 5px 10px;
