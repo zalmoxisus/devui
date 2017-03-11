@@ -20,7 +20,7 @@ export const style = ({ theme, primary, disabled }) => css`
   ` : `
   cursor: pointer;
   color: ${primary ? theme.base00 : theme.base05};
-  background-color: ${primary ? theme.base04 : theme.base01};
+  background-color: ${primary ? theme.base05 : theme.base01};
   `}
   ${!disabled ? `
     box-shadow:

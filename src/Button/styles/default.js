@@ -1,5 +1,4 @@
 import { css } from 'styled-components';
-import colorEffect from '../../utils/color';
 
 export const style = ({ theme, primary, disabled }) => css`
   box-sizing: border-box;
@@ -13,7 +12,7 @@ export const style = ({ theme, primary, disabled }) => css`
   border: 1px solid ${theme.base02};
   border-radius: 4px;
   ${primary ? `
-  background-color: ${theme.scheme === 'default' && theme.light ? theme.base0B : theme.base04};
+  background-color: ${theme.base05};
   color: ${theme.base00};
   ` : `
   background-color: ${theme.base01};
@@ -29,7 +28,7 @@ export const style = ({ theme, primary, disabled }) => css`
   ${!disabled && `
   &:hover,
   &:focus {
-    background-color: ${primary ? colorEffect(theme.base0B, 'darken', 0.2) : theme.base02};
+    background-color: ${primary ? theme.base07 : theme.base02};
     box-shadow: 1px 1px 2px ${theme.base03};
   }
  `}
