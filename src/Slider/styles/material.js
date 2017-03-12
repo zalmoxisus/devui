@@ -13,11 +13,11 @@ export const style = ({ theme, percent, disabled }) => css`
   label {
     position: absolute;
     display: block;
-    font-weight: 600;
+    font-size: 11px;
     padding: 0.3em 0.5em;
     top: 0;
     width: 100%;
-    color: ${theme.base07};
+    color: ${theme.base06};
 
     > span { color: ${theme.base04}; } 
   }
