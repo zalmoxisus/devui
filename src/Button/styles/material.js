@@ -15,7 +15,6 @@ export const style = ({ theme, primary, disabled }) => css`
   ${disabled ? `
   cursor: not-allowed;
   color: ${theme.base04};
-  background-color: ${theme.base02};
   opacity: 0.6;
   ` : `
   cursor: pointer;
@@ -28,6 +27,11 @@ export const style = ({ theme, primary, disabled }) => css`
       0 3px 1px -2px ${theme.base02},
       0 1px 5px 0 ${theme.base02};
   ` : ''}
+
+
+  &:hover, &:focus:not(:active) {
+    background-color: ${theme.base02};
+  }
 
   &:focus:not(:active) {
     background-color: ${theme.base02};
