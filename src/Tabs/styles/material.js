@@ -1,9 +1,17 @@
 import { css } from 'styled-components';
 import { ripple } from '../../utils/animations';
 
-export const style = ({ theme }) => css`
+export const style = ({ theme, main }) => css`
   display: flex;
-  flex: 0 0 30px;
+  flex: 0 0 1;
+  padding-left: 1px;
+  background-color: ${theme.base01};
+  width: 100%;
+  overflow: hidden;
+  ${!main && `
+  border-top: 1px solid ${theme.base01};
+  border-bottom: 1px solid ${theme.base02};
+  `}
 
   > div {
     display: flex;
@@ -41,10 +49,7 @@ export const style = ({ theme }) => css`
     }
   }
   > div:nth-child(2) {
-    display: none;
-    position: fixed;
-    border: 1px solid ${theme.base02};
-    right: 10px;
+    display: block;
     z-index: 10;
 
     button {
