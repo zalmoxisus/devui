@@ -5,6 +5,9 @@ const Toolbar = styled.div`
   flex-shrink: 0;
   box-sizing: border-box;
   width: 100%;
+  font-family: ${props => props.theme.fontFamily || 'monospace'};
+  font-size: 12px;
+  line-height: 16px;
   ${props => props.fullHeight && 'height: 100%;'}
   padding: ${props => (props.compact ? '0' : '5px')} 5px;
   background-color: ${props => props.theme.base01};

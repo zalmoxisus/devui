@@ -120,7 +120,7 @@ const getSize = (size) => {
     case 'big':
       return 'min-height: 34px; padding: 2px 12px;';
     case 'small':
-      return '';
+      return 'padding: 0;';
     default:
       return 'min-height: 30px; padding: 2px 7px;';
   }
@@ -132,8 +132,8 @@ export const commonStyle = ({ theme, mark, size }) => css`
   flex-shrink: 0;
 
   & > button {
-    height: 100%;
     width: 100%;
+    line-height: 0;
     ${getSize(size)}
 
     > svg {
