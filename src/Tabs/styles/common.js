@@ -9,6 +9,15 @@ export const TabsContainer = styled.div`
   overflow-x: hidden;
   height: 100%;
 
+  > div > div:first-child {
+    ${props => props.position !== 'left' && `
+      margin-left: auto !important;
+    `}
+    ${props => props.position === 'center' && `
+      margin-right: auto !important;
+    `}
+  }
+
   > div:nth-child(2) {
     flex: 1;
     overflow-y: auto;

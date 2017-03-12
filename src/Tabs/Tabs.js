@@ -140,7 +140,6 @@ export default class Tabs extends Component {
         main={this.props.main}
         collapsible={this.props.collapsible}
         onClick={this.props.onClick}
-        position={this.props.position}
         collapsed={this.state.collapsed}
         subMenuOpened={this.state.subMenuOpened}
         showSubmenu={this.showSubmenu}
@@ -150,7 +149,7 @@ export default class Tabs extends Component {
     if (!this.SelectedComponent) return tabsHeader;
 
     return (
-      <TabsContainer>
+      <TabsContainer position={this.props.position}>
         {tabsHeader}
         <div><this.SelectedComponent {...this.selector()} /></div>
       </TabsContainer>
