@@ -11,15 +11,18 @@ exports[`Select renders correctly 1`] = `
         Select...
       </div>
       <div
-        class="Select-input">
+        class="Select-input"
+        style="display:inline-block;">
         <input
           aria-activedescendant="react-select-2--value"
           aria-expanded="false"
           aria-haspopup="false"
           aria-owns=""
-          class="Select-input"
           role="combobox"
+          style="width:5px;box-sizing:content-box;"
           value="" />
+        <div
+          style="position:absolute;top:0;left:0;visibility:hidden;height:0;overflow:scroll;white-space:pre;" />
       </div>
     </span>
     <span
@@ -80,7 +83,7 @@ exports[`Select renders with props 1`] = `
 
 exports[`Select should select another option 1`] = `
 <Select
-  autosize={false}
+  autosize={true}
   clearable={false}
   menuMaxHeight={200}
   onChange={[Function]}
@@ -102,7 +105,7 @@ exports[`Select should select another option 1`] = `
   }
   simpleValue={true}>
   <Styled(Select)
-    autosize={false}
+    autosize={true}
     clearable={false}
     menuMaxHeight={200}
     onChange={[Function]}
@@ -125,13 +128,16 @@ exports[`Select should select another option 1`] = `
     simpleValue={true}>
     <Select
       addLabelText="Add \"{label}\"?"
-      autosize={false}
+      arrowRenderer={[Function]}
+      autosize={true}
       backspaceRemoves={true}
       backspaceToRemoveMessage="Press backspace to remove {label}"
       className="hvMIaD"
       clearAllText="Clear all"
+      clearRenderer={[Function]}
       clearValueText="Clear value"
       clearable={false}
+      deleteRemoves={true}
       delimiter=","
       disabled={false}
       escapeClearsValue={true}
@@ -191,21 +197,59 @@ exports[`Select should select another option 1`] = `
           <span
             className="Select-multi-value-wrapper"
             id="react-select-4--value">
-            <div
-              className="Select-input">
-              <input
-                aria-activedescendant="react-select-4--option-0"
-                aria-expanded="true"
-                aria-haspopup="true"
-                aria-owns="react-select-4--list"
+            <AutosizeInput
+              aria-activedescendant="react-select-4--option-0"
+              aria-expanded="true"
+              aria-haspopup="true"
+              aria-owns="react-select-4--list"
+              className="Select-input"
+              minWidth="5"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              role="combobox"
+              value="two">
+              <div
                 className="Select-input"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                required={false}
-                role="combobox"
-                value="two" />
-            </div>
+                style={
+                  Object {
+                    "display": "inline-block",
+                  }
+                }>
+                <input
+                  aria-activedescendant="react-select-4--option-0"
+                  aria-expanded="true"
+                  aria-haspopup="true"
+                  aria-owns="react-select-4--list"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  required={false}
+                  role="combobox"
+                  style={
+                    Object {
+                      "boxSizing": "content-box",
+                      "width": "5px",
+                    }
+                  }
+                  value="two" />
+                <div
+                  style={
+                    Object {
+                      "height": 0,
+                      "left": 0,
+                      "overflow": "scroll",
+                      "position": "absolute",
+                      "top": 0,
+                      "visibility": "hidden",
+                      "whiteSpace": "pre",
+                    }
+                  }>
+                  two
+                </div>
+              </div>
+            </AutosizeInput>
           </span>
           <span
             className="Select-arrow-zone"
@@ -260,7 +304,7 @@ exports[`Select should select another option 1`] = `
 
 exports[`Select shouldn't find any results 1`] = `
 <Select
-  autosize={false}
+  autosize={true}
   clearable={false}
   menuMaxHeight={200}
   onChange={[Function]}
@@ -282,7 +326,7 @@ exports[`Select shouldn't find any results 1`] = `
   }
   simpleValue={true}>
   <Styled(Select)
-    autosize={false}
+    autosize={true}
     clearable={false}
     menuMaxHeight={200}
     onChange={[Function]}
@@ -305,13 +349,16 @@ exports[`Select shouldn't find any results 1`] = `
     simpleValue={true}>
     <Select
       addLabelText="Add \"{label}\"?"
-      autosize={false}
+      arrowRenderer={[Function]}
+      autosize={true}
       backspaceRemoves={true}
       backspaceToRemoveMessage="Press backspace to remove {label}"
       className="hvMIaD"
       clearAllText="Clear all"
+      clearRenderer={[Function]}
       clearValueText="Clear value"
       clearable={false}
+      deleteRemoves={true}
       delimiter=","
       disabled={false}
       escapeClearsValue={true}
@@ -371,21 +418,59 @@ exports[`Select shouldn't find any results 1`] = `
           <span
             className="Select-multi-value-wrapper"
             id="react-select-5--value">
-            <div
-              className="Select-input">
-              <input
-                aria-activedescendant="react-select-5--option-null"
-                aria-expanded="true"
-                aria-haspopup="true"
-                aria-owns="react-select-5--list"
+            <AutosizeInput
+              aria-activedescendant="react-select-5--option-null"
+              aria-expanded="true"
+              aria-haspopup="true"
+              aria-owns="react-select-5--list"
+              className="Select-input"
+              minWidth="5"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              role="combobox"
+              value="text">
+              <div
                 className="Select-input"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                required={false}
-                role="combobox"
-                value="text" />
-            </div>
+                style={
+                  Object {
+                    "display": "inline-block",
+                  }
+                }>
+                <input
+                  aria-activedescendant="react-select-5--option-null"
+                  aria-expanded="true"
+                  aria-haspopup="true"
+                  aria-owns="react-select-5--list"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  required={false}
+                  role="combobox"
+                  style={
+                    Object {
+                      "boxSizing": "content-box",
+                      "width": "5px",
+                    }
+                  }
+                  value="text" />
+                <div
+                  style={
+                    Object {
+                      "height": 0,
+                      "left": 0,
+                      "overflow": "scroll",
+                      "position": "absolute",
+                      "top": 0,
+                      "visibility": "hidden",
+                      "whiteSpace": "pre",
+                    }
+                  }>
+                  text
+                </div>
+              </div>
+            </AutosizeInput>
           </span>
           <span
             className="Select-arrow-zone"

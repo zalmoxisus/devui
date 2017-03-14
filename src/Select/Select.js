@@ -25,4 +25,4 @@ Select.propTypes = {
   openOuterUp: PropTypes.bool           // value to control the opening direction
 };
 
-Select.defaultProps = { autosize: false, clearable: false, simpleValue: true, menuMaxHeight: 200 };
+Select.defaultProps = { autosize: true, clearable: false, simpleValue: true, menuMaxHeight: 200 };
