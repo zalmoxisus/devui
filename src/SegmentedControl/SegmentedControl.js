@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import getStyles from '../utils/getStyles';
-import { style } from './styles';
+import styles from './styles';
 
-const SegmentedWrapper = getStyles(style, 'div');
+const SegmentedWrapper = getStyles(styles);
 
 export default class SegmentedControl extends Component {
   shouldComponentUpdate(nextProps) {

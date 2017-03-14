@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import color from '../../utils/color';
 
-export const style = ({ theme, disabled }) => css`
+export default ({ theme, disabled }) => css`
   display: flex;
   flex-shrink: 0;
 

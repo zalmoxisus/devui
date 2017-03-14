@@ -1,11 +1,11 @@
 import React, { PureComponent, Component, PropTypes } from 'react';
 import JSONSchemaForm from 'react-jsonschema-form';
 import getStyles from '../utils/getStyles';
-import { style } from './styles';
+import styles from './styles';
 import Button from '../Button';
 import customWidgets from './widgets';
 
-const FormContainer = getStyles(style, JSONSchemaForm);
+const FormContainer = getStyles(styles, JSONSchemaForm);
 
 export default class Form extends (PureComponent || Component) {
   render() {
@@ -15,7 +15,7 @@ export default class Form extends (PureComponent || Component) {
         {
           noSubmit ? <noscript /> :
             children ||
-            <Button size="big" primary={primaryButton} type="submit">
+            <Button size="big" primary={primaryButton} theme={rest.theme} type="submit">
               {submitText || 'Submit'}
             </Button>
         }

@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import getStyles from '../utils/getStyles';
 import * as styles from './styles';
 
-const TabsWrapper = getStyles(styles, 'div', true);
+const TabsWrapper = getStyles(styles);
 
 export default class TabsHeader extends Component {
   shouldComponentUpdate(nextProps) {

@@ -4,7 +4,7 @@ import * as styles from './styles';
 import Button from '../Button';
 import Form from '../Form';
 
-const DialogWrapper = getStyles(styles, 'div', true);
+const DialogWrapper = getStyles(styles);
 
 export default class Dialog extends (PureComponent || Component) {
   onSubmit = () => {

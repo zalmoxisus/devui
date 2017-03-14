@@ -3,10 +3,10 @@ import { ThemeProvider } from 'styled-components';
 import { getTheme } from '../utils/theme';
 import { MainContainerWrapper, ContainerWrapper } from './styles';
 
-const Container = ({ themeData, className, children }) => {
+const Container = ({ themeData, className, theme, children }) => {
   if (!themeData) {
     return (
-      <ContainerWrapper className={className}>
+      <ContainerWrapper className={className} theme={theme}>
         {children}
       </ContainerWrapper>
     );
@@ -24,6 +24,7 @@ const Container = ({ themeData, className, children }) => {
 Container.propTypes = {
   children: PropTypes.node,
   themeData: PropTypes.object,
+  theme: PropTypes.object,
   className: PropTypes.string
 };
 

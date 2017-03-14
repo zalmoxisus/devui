@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export const style = ({ theme, left, top }) => css`
+export default ({ theme, left, top }) => css`
   position: fixed;
   top: ${top}px;
   left: ${left}px;

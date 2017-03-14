@@ -1,6 +1,6 @@
 exports[`Select renders correctly 1`] = `
 <div
-  class="Select dMBtVL Select--single is-searchable">
+  class="Select hvMIaD Select--single is-searchable">
   <div
     class="Select-control">
     <span
@@ -33,7 +33,7 @@ exports[`Select renders correctly 1`] = `
 
 exports[`Select renders with props 1`] = `
 <div
-  class="Select cQJKbX Select--multi is-disabled is-loading has-value">
+  class="Select YLlAe Select--multi is-disabled is-loading has-value">
   <div
     class="Select-control">
     <span
@@ -128,7 +128,7 @@ exports[`Select should select another option 1`] = `
       autosize={false}
       backspaceRemoves={true}
       backspaceToRemoveMessage="Press backspace to remove {label}"
-      className="dMBtVL"
+      className="hvMIaD"
       clearAllText="Clear all"
       clearValueText="Clear value"
       clearable={false}
@@ -180,7 +180,7 @@ exports[`Select should select another option 1`] = `
       valueComponent={[Function]}
       valueKey="value">
       <div
-        className="Select dMBtVL Select--single is-open is-searchable">
+        className="Select hvMIaD Select--single is-open is-searchable">
         <div
           className="Select-control"
           onKeyDown={[Function]}
@@ -308,7 +308,7 @@ exports[`Select shouldn't find any results 1`] = `
       autosize={false}
       backspaceRemoves={true}
       backspaceToRemoveMessage="Press backspace to remove {label}"
-      className="dMBtVL"
+      className="hvMIaD"
       clearAllText="Clear all"
       clearValueText="Clear value"
       clearable={false}
@@ -360,7 +360,7 @@ exports[`Select shouldn't find any results 1`] = `
       valueComponent={[Function]}
       valueKey="value">
       <div
-        className="Select dMBtVL Select--single is-open is-searchable">
+        className="Select hvMIaD Select--single is-open is-searchable">
         <div
           className="Select-control"
           onKeyDown={[Function]}

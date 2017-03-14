@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export const style = ({ theme }) => css`
+export default ({ theme }) => css`
 padding: 10px;
 line-height: 1.846;
 font-size: 14px;

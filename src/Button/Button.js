@@ -3,7 +3,7 @@ import getStyles from '../utils/getStyles';
 import * as styles from './styles';
 import { commonStyle, tooltipStyle } from './styles/common';
 
-const ButtonWrapper = getStyles(styles, 'button', true);
+const ButtonWrapper = getStyles(styles, 'button');
 const TooltipWrapper = getStyles(tooltipStyle);
 const CommonWrapper = getStyles(commonStyle);
 

@@ -17,21 +17,14 @@ export const getTheme = ({ theme: type, scheme, light }) => {
     if (light) colors = invertColors(colors);
   }
 
-  let theme = themes.default();
+  let theme = {
+    type,
+    light,
+    ...themes.default(colors)
+  };
   if (type !== 'default') {
     theme = { ...theme, ...themes[type](colors) };
   }
 
-  return {
-    type,
-    light,
-    ...colors,
-    spinnerSize: Math.floor(theme.inputHeight / 2) - 2,
-    inputPadding: theme.inputHeight / 3,
-    selectArrowWidth: Math.floor(theme.inputHeight / 7),
-    inputInternalHeight: theme.inputHeight - theme.inputBorderWidth * 2,
-    inputBorderColor: colors.base02,
-    inputFocusedStyle: `border-color: ${colors.base0D}`,
-    ...theme
-  };
+  return theme;
 };

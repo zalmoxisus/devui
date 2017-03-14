@@ -11,11 +11,11 @@ export const MainContainerWrapper = styled.div`
   font-size: 12px;
 
   div, input, textarea, keygen, select, button {
-   font-family: ${props => props.theme.fontFamily};
+   font-family: ${props => props.theme.fontFamily || 'monaco, monospace'};
  }
 
  .CodeMirror div, pre, .monitor-LogMonitor * {
-   font-family: ${props => props.theme.codeFontFamily || props.theme.fontFamily};
+   font-family: ${props => props.theme.codeFontFamily || props.theme.fontFamily || 'monospace'};
  }
 
  .monitor {

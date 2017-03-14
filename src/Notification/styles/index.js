@@ -13,7 +13,7 @@ const getBackground = (theme, type) => {
   }
 };
 
-export const style = ({ theme, type }) => css`
+export default ({ theme, type }) => css`
   display: flex;
   align-items: flex-start;
   flex-shrink: 0;

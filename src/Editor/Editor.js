@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import styled from 'styled-components';
 import CodeMirror from 'codemirror';
-import { defaultStyle, themedStyle } from './styles/';
+import { defaultStyle, themedStyle } from './styles';
 
 const EditorContainer = styled.div('',
   ({ theme }) => (theme.scheme === 'default' && theme.light ? defaultStyle : themedStyle(theme))
@@ -61,7 +61,7 @@ export default class Editor extends Component {
   };
 
   render() {
-    return <EditorContainer innerRef={this.getRef} />;
+    return <EditorContainer innerRef={this.getRef} theme={this.props.theme} />;
   }
 }
 
@@ -71,6 +71,7 @@ Editor.propTypes = {
   lineNumbers: PropTypes.bool,
   lineWrapping: PropTypes.bool,
   readOnly: PropTypes.bool,
+  theme: PropTypes.object,
   foldGutter: PropTypes.bool,
   autofocus: PropTypes.bool,
   onChange: PropTypes.func

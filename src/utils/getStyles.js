@@ -1,16 +1,17 @@
 import styled from 'styled-components';
+import getDefaultTheme from '../themes/default';
 
-export default (styles, component, multiple) =>
+const getStyle = (styles, type) => (
+  typeof styles === 'object' ? styles[type] || styles.default : styles
+);
+
+export default (styles, component) =>
   styled(component || 'div')`${
-    !multiple ? styles :
-      props => (styles[props.theme.type] || styles.default)
+    props => (
+      props.theme.type ? getStyle(styles, props.theme.type) :
+        // used outside of container (theme provider)
+        getStyle(styles, 'default')({ ...props, theme: getDefaultTheme(props.theme) })
+    )
   }`;
 
-/*
- Equivalent to
- const SelectContainer = styled(ReactSelect)`
- ${props => styles[props.theme.type](props)}
- `;
- */
-
-// TODO: memoize it
+// TODO: memoize it?
