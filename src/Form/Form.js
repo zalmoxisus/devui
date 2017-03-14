@@ -1,11 +1,11 @@
 import React, { PureComponent, Component, PropTypes } from 'react';
 import JSONSchemaForm from 'react-jsonschema-form';
-import getStyles from '../utils/getStyles';
+import createStyledComponent from '../utils/createStyledComponent';
 import styles from './styles';
 import Button from '../Button';
 import customWidgets from './widgets';
 
-const FormContainer = getStyles(styles, JSONSchemaForm);
+const FormContainer = createStyledComponent(styles, JSONSchemaForm);
 
 export default class Form extends (PureComponent || Component) {
   render() {

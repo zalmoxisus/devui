@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import getStyles from '../utils/getStyles';
+import createStyledComponent from '../utils/createStyledComponent';
 import * as styles from './styles';
 
-const TabsWrapper = getStyles(styles);
+const TabsWrapper = createStyledComponent(styles);
 
 export default class TabsHeader extends Component {
   shouldComponentUpdate(nextProps) {

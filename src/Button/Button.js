@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react';
-import getStyles from '../utils/getStyles';
+import createStyledComponent from '../utils/createStyledComponent';
 import * as styles from './styles';
 import { commonStyle, tooltipStyle } from './styles/common';
 
-const ButtonWrapper = getStyles(styles, 'button');
-const TooltipWrapper = getStyles(tooltipStyle);
-const CommonWrapper = getStyles(commonStyle);
+const ButtonWrapper = createStyledComponent(styles, 'button');
+const TooltipWrapper = createStyledComponent(tooltipStyle);
+const CommonWrapper = createStyledComponent(commonStyle);
 
 export default class Button extends Component {
   shouldComponentUpdate(nextProps) {

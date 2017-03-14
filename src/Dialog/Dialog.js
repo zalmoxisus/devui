@@ -1,10 +1,10 @@
 import React, { PureComponent, Component, PropTypes } from 'react';
-import getStyles from '../utils/getStyles';
+import createStyledComponent from '../utils/createStyledComponent';
 import * as styles from './styles';
 import Button from '../Button';
 import Form from '../Form';
 
-const DialogWrapper = getStyles(styles);
+const DialogWrapper = createStyledComponent(styles);
 
 export default class Dialog extends (PureComponent || Component) {
   onSubmit = () => {

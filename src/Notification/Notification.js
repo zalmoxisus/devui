@@ -3,10 +3,10 @@ import CloseIcon from 'react-icons/lib/md/close';
 import WarningIcon from 'react-icons/lib/md/warning';
 import ErrorIcon from 'react-icons/lib/md/error';
 import SuccessIcon from 'react-icons/lib/md/check-circle';
-import getStyles from '../utils/getStyles';
+import createStyledComponent from '../utils/createStyledComponent';
 import styles from './styles';
 
-const NotificationWrapper = getStyles(styles);
+const NotificationWrapper = createStyledComponent(styles);
 
 export default class Notification extends Component {
   shouldComponentUpdate(nextProps) {

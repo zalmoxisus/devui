@@ -1,9 +1,9 @@
 import React, { PureComponent, Component, PropTypes } from 'react';
 import ReactSelect from 'react-select';
-import getStyles from '../utils/getStyles';
+import createStyledComponent from '../utils/createStyledComponent';
 import styles from './styles';
 
-const SelectContainer = getStyles(styles, ReactSelect);
+const SelectContainer = createStyledComponent(styles, ReactSelect);
 
 export default class Select extends (PureComponent || Component) {
   render() {

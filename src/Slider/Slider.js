@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-import getStyles from '../utils/getStyles';
+import createStyledComponent from '../utils/createStyledComponent';
 import * as styles from './styles';
 import { containerStyle } from './styles/common';
 
-const SliderWrapper = getStyles(styles);
-const ContainerWithValue = getStyles(containerStyle);
+const SliderWrapper = createStyledComponent(styles);
+const ContainerWithValue = createStyledComponent(containerStyle);
 
 export default class Slider extends Component {
   shouldComponentUpdate(nextProps) {
