@@ -130,6 +130,7 @@ export const commonStyle = ({ theme, mark, size }) => css`
   display: inline-block;
   position: relative;
   flex-shrink: 0;
+  line-height: 0;
 
   & > button {
     width: 100%;
@@ -163,7 +164,8 @@ export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, mark, size 
     content: "${tooltipTitle}";
     white-space: pre;
     color: ${theme.base06};
-    padding: 0.5em 0.7em;
+    line-height: 16px;
+    padding: 4px 8px;
     border-radius: 3px;
     background: ${theme.base01};
     border: 1px solid ${theme.base02};
@@ -204,7 +206,7 @@ export const tooltipStyle = ({ theme, tooltipTitle, tooltipPosition, mark, size 
 
   &:hover:after,
   &:hover:before {
-    opacity: 1;
+    opacity: 0.9;
     visibility: visible;
   }
   &:hover:after {
