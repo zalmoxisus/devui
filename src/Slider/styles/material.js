@@ -3,12 +3,12 @@ import { prefixSelectors } from '../../utils/autoPrefix';
 import color from '../../utils/color';
 import { animationCurve } from '../../utils/animations';
 
-export const style = ({ theme, percent, disabled }) => css`
+export const style = ({ theme, percent, disabled, withLabel }) => css`
   display: block;
   width: 100%;
   position: relative;
-  padding: 2em 0;
   z-index: 1;
+  padding: ${withLabel ? '2em 0' : '0'};
 
   label {
     position: absolute;

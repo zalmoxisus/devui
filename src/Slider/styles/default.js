@@ -9,17 +9,18 @@ Based on:
 import { css } from 'styled-components';
 import { prefixSelectors } from '../../utils/autoPrefix';
 
-export const style = ({ theme, percent, disabled }) => css`
+export const style = ({ theme, percent, disabled, withLabel }) => css`
   display: block;
   width: 100%;
   position: relative;
+  padding: ${withLabel ? '1.2em 0' : '0'};
 
   label {
     position: absolute;
     display: block;
     font-size: 11px;
     padding: 0 10px;
-    top: 0.1em;
+    top: 0.3em;
     width: 100%;
     color: ${theme.base06};
 
@@ -33,12 +34,12 @@ export const style = ({ theme, percent, disabled }) => css`
     box-sizing: border-box;
     display: block;
     appearance: none;
-    border-top: solid 1.5em transparent;
-    border-bottom: solid 1.5em transparent;
+    border-top: solid 0.5em transparent;
+    border-bottom: solid 0.5em transparent;
     padding: 0.5em;
     width: 100%;
-    height: 4.5em;
-    border-radius: 0.75em/2.25em;
+    height: 2.5em;
+    border-radius: 0.8em/1.1em;
     font-size: 1em;
     cursor: pointer;
     background: linear-gradient(${theme.base02}, ${theme.base00}) padding-box, 50% 50% border-box;

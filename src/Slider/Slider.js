@@ -28,7 +28,12 @@ export default class Slider extends Component {
     const slider = <input {...rest} onChange={this.onChange} type="range" />;
 
     return (
-      <SliderWrapper percent={percent} disabled={disabled || absMax === 0} theme={theme}>
+      <SliderWrapper
+        percent={percent}
+        disabled={disabled || absMax === 0}
+        withLabel={!!label}
+        theme={theme}
+      >
         {label && <label>{label} {sublabel && <span>{sublabel}</span>}</label>}
         {!withValue ? slider :
           <ContainerWithValue theme={theme}>
