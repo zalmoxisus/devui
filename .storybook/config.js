@@ -7,8 +7,8 @@ import '../src/presets.js';
 
 setAddon(infoAddon);
 setOptions({
-  name: 'Monitor Components',
-  url: 'https://github.com/zalmoxisus/remotedev-monitor-components',
+  name: 'DevUI',
+  url: 'https://github.com/zalmoxisus/devui',
   goFullScreen: false,
   showLeftPanel: true,
   showDownPanel: true,
