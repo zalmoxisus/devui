@@ -10,7 +10,8 @@ export default class TabsHeader extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      collapsed: [],
+      visibleTabs: [],
+      hiddenTabs: [],
       subMenuOpened: false
     };
     this.left = 0;
@@ -28,6 +29,7 @@ export default class TabsHeader extends Component {
       this.collapse();
       this.amendCollapsible();
     }
+    this.setState({visibleTabs: this.props.tabs});
   }
 
   componentDidUpdate(prevProps) {
@@ -47,44 +49,44 @@ export default class TabsHeader extends Component {
     }
   }
 
+  updatedTab = (tab, isSelected = null) => {
+    return (
+      <button
+        key={tab.value}
+        value={tab.value}
+        onClick={this.props.onClick}
+        data-selected={isSelected}
+      >
+        {tab.name}
+      </button>
+    );
+  };
+
   collapse = (el, selected = this.props.selected) => {
     if (this.state.subMenuOpened) this.setState({ subMenuOpened: false });
     const tabs = this.props.items;
     const tabsWrapperRef = this.tabsWrapperRef;
     const tabsRef = this.tabsRef;
-    const tabButtons = this.tabsRef.children;
-    let arr = [];
+    let visibleTabs = this.state.visibleTabs;
     let i;
     if (tabsRef.offsetWidth >= tabsWrapperRef.offsetWidth) { // hide tabs
-      i = tabs.length - 1;
-      while (tabsRef.offsetWidth >= tabsWrapperRef.offsetWidth) {
-        if (i < 0 || arr.length === tabs.length - 1) return;
-        if (tabButtons[i].value !== selected) {
-          arr.unshift(tabs[i]);
-          tabButtons[i].style.display = 'none';
-        } else {
-          tabButtons[i].style.display = 'block';
+      for (i = tabs.length - 1; i > 0; i--) {
+        if (tabsRef.offsetWidth < tabsWrapperRef.offsetWidth) return;
+        visibleTabs.pop();
+        if (tabs[i].value === selected) {
+          visibleTabs.push(this.updatedTab(tabs[i], true));
         }
-        tabButtons[i - 1].style.display = 'block';
-        i--;
-      }
 
-      this.setState({ collapsed: arr });
+        this.setState({ visibleTabs: visibleTabs });
+      }
     } else { // show tabs
-      arr = this.state.collapsed;
-      i = 0;
-
-      while (tabsRef.offsetWidth < tabsWrapperRef.offsetWidth) {
-        if (i > tabs.length - 1) return;
-        if (tabButtons[i].style.display === 'none') {
-          tabButtons[i].style.display = 'block';
-          arr.shift();
-          this.setState({ collapsed: arr.length > 0 ? arr : [] });
+      for (i = visibleTabs.length; i < tabs.length; i++) {
+        visibleTabs.push(this.updatedTab(tabs[i], null));
+        this.setState({ visibleTabs: visibleTabs });
+        if (tabsRef.offsetWidth > tabsWrapperRef.offsetWidth) {
+          this.collapse(el, selected);
+          return;
         }
-        i++;
-      }
-      if (tabsRef.offsetWidth > tabsWrapperRef.offsetWidth) {
-        this.collapse(el, selected);
       }
     }
   };
@@ -106,6 +108,11 @@ export default class TabsHeader extends Component {
   };
 
   expandMenu = (e) => {
+    let hiddenTabs = [];
+    for (let i = this.state.visibleTabs.length; i < this.props.items.length; i++) {
+      hiddenTabs.push(this.props.items[i]);
+    }
+    this.setState({ hiddenTabs: hiddenTabs });
     const rect = e.currentTarget.children[0].getBoundingClientRect();
     this.left = rect.left - 10;
     this.top = rect.top + 10;
@@ -120,14 +127,15 @@ export default class TabsHeader extends Component {
         position={this.props.position}
       >
         <div ref={this.getTabsRef}>
-          {this.props.tabs}
-          { this.props.collapsible && this.state.collapsed.length > 0 &&
+          {this.state.visibleTabs}
+          { this.props.collapsible &&
+            this.state.visibleTabs.length < this.props.items.length &&
             <button onClick={this.expandMenu}><CollapseIcon /></button>
           }
         </div>
         {this.props.collapsible &&
           <ContextMenu
-            items={this.state.collapsed}
+            items={this.state.hiddenTabs}
             onClick={this.props.onClick}
             x={this.left}
             y={this.top}
