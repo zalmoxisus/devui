@@ -36,7 +36,7 @@ export const style = ({ theme, main }) => css`
     }
 
     > [data-selected] {
-      border-bottom: 2px solid ${theme.base0B};
+      border-bottom: 2px solid ${theme.base0D};
     }
   }
 `;
