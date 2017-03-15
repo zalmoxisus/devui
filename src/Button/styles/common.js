@@ -131,6 +131,7 @@ export const commonStyle = ({ theme, mark, size }) => css`
   position: relative;
   flex-shrink: 0;
   line-height: 0;
+  margin: 0 1px;
 
   & > button {
     width: 100%;
