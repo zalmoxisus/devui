@@ -16,6 +16,7 @@ export default class TabsHeader extends Component {
     };
     this.left = 0;
     this.top = 0;
+    this.collapsed = [];
   }
 
   componentWillReceiveProps(nextProps) {
@@ -49,18 +50,6 @@ export default class TabsHeader extends Component {
     }
   }
 
-  updatedTab = (tab) => {
-    return (
-      <button
-        key={tab.value}
-        value={tab.value}
-        onClick={this.props.onClick}
-      >
-        {tab.name}
-      </button>
-    );
-  };
-
   collapse = (el, selected = this.props.selected) => {
     if (this.state.subMenuOpened) this.setState({ subMenuOpened: false });
     const tabs = this.props.items;
@@ -68,15 +57,16 @@ export default class TabsHeader extends Component {
     const tabsRef = this.tabsRef;
     let visibleTabs = this.state.visibleTabs;
     let i;
+
     if (tabsRef.offsetWidth >= tabsWrapperRef.offsetWidth) { // hide tabs
       for (i = tabs.length - 1; i > 0; i--) {
         if (tabsRef.offsetWidth < tabsWrapperRef.offsetWidth) return;
-        visibleTabs.pop();
+        this.collapsed.push(visibleTabs.pop());
         this.setState({ visibleTabs: visibleTabs });
       }
     } else { // show tabs
       for (i = visibleTabs.length; i < tabs.length; i++) {
-        visibleTabs.push(this.updatedTab(tabs[i]));
+        visibleTabs.push(this.collapsed.pop());
         this.setState({ visibleTabs: visibleTabs });
         if (tabsRef.offsetWidth > tabsWrapperRef.offsetWidth) {
           this.collapse(el, selected);
