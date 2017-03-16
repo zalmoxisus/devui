@@ -20,8 +20,8 @@ export default class TabsHeader extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.selected !== this.props.selected) {
-      this.collapse(undefined, nextProps.selected);
+    if (nextProps.tabs !== this.props.tabs) {
+      this.setState({ visibleTabs: nextProps.tabs });
     }
   }
 
@@ -57,7 +57,7 @@ export default class TabsHeader extends Component {
     const tabsRef = this.tabsRef;
     let visibleTabs = this.state.visibleTabs;
     let i;
-
+    if (!tabsRef || !tabsWrapperRef) return;
     if (tabsRef.offsetWidth >= tabsWrapperRef.offsetWidth) { // hide tabs
       for (i = tabs.length - 1; i > 0; i--) {
         if (tabsRef.offsetWidth < tabsWrapperRef.offsetWidth) return;
