@@ -21,7 +21,7 @@ export default class TabsHeader extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.tabs !== this.props.tabs) {
-      this.setState({ visibleTabs: nextProps.tabs });
+      this.setState({ visibleTabs: nextProps.tabs.slice() });
     }
   }
 
@@ -29,8 +29,8 @@ export default class TabsHeader extends Component {
     if (this.props.collapsible) {
       this.collapse();
       this.amendCollapsible();
+      this.setState({ visibleTabs: this.props.tabs.slice() });
     }
-    this.setState({visibleTabs: this.props.tabs});
   }
 
   componentDidUpdate(prevProps) {
@@ -55,29 +55,34 @@ export default class TabsHeader extends Component {
     const tabs = this.props.items;
     const tabsWrapperRef = this.tabsWrapperRef;
     const tabsRef = this.tabsRef;
-    let visibleTabs = this.state.visibleTabs;
+    const tabButtons = this.tabsRef.children;
+    const visibleTabs = this.state.visibleTabs;
+    const tabsWrapperRight = tabsWrapperRef.getBoundingClientRect().right;
+    const tabsRefRight = tabsRef.getBoundingClientRect().right;
     let i;
-    if (!tabsRef || !tabsWrapperRef) return;
-    if (tabsRef.offsetWidth >= tabsWrapperRef.offsetWidth) { // hide tabs
-      for (i = tabs.length - 1; i > 0; i--) {
-        if (tabsRef.offsetWidth < tabsWrapperRef.offsetWidth) return;
-        this.collapsed.push(visibleTabs.pop());
-        this.setState({ visibleTabs: visibleTabs });
+
+    if (tabsRefRight >= tabsWrapperRight) {
+      for (i = visibleTabs.length - 1; i > 0; i--) {
+        if (tabButtons[i] && tabButtons[i].getBoundingClientRect().right >= tabsWrapperRight) {
+          this.collapsed.unshift(visibleTabs.pop());
+        } else {
+          break;
+        }
       }
-    } else { // show tabs
-      for (i = visibleTabs.length; i < tabs.length; i++) {
-        visibleTabs.push(this.collapsed.pop());
-        this.setState({ visibleTabs: visibleTabs });
-        if (tabsRef.offsetWidth > tabsWrapperRef.offsetWidth) {
-          this.collapse(el, selected);
-          return;
+    } else {
+      for (i = visibleTabs.length - 1; i < tabs.length - 1; i++) {
+        if (tabButtons[i] && tabButtons[i].getBoundingClientRect().right < tabsWrapperRight) {
+          visibleTabs.push(this.collapsed.shift());
+        } else {
+          break;
         }
       }
     }
+    this.setState({ visibleTabs });
   };
 
   hideSubmenu = () => {
-   this.setState({ subMenuOpened: false });
+    this.setState({ subMenuOpened: false });
   };
 
   showSubmenu = () => {
@@ -93,11 +98,11 @@ export default class TabsHeader extends Component {
   };
 
   expandMenu = (e) => {
-    let hiddenTabs = [];
+    const hiddenTabs = [];
     for (let i = this.state.visibleTabs.length; i < this.props.items.length; i++) {
       hiddenTabs.push(this.props.items[i]);
     }
-    this.setState({ hiddenTabs: hiddenTabs });
+    this.setState({ hiddenTabs });
     const rect = e.currentTarget.children[0].getBoundingClientRect();
     this.left = rect.left - 10;
     this.top = rect.top + 10;
