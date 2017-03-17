@@ -25,11 +25,14 @@ export default class TabsHeader extends Component {
     }
   }
 
+  componentWillMount() {
+    this.setState({ visibleTabs: this.props.tabs.slice() });
+  }
+
   componentDidMount() {
     if (this.props.collapsible) {
       this.collapse();
       this.amendCollapsible();
-      this.setState({ visibleTabs: this.props.tabs.slice() });
     }
   }
 
@@ -66,12 +69,14 @@ export default class TabsHeader extends Component {
     }
 
     if (tabsRefRight >= tabsWrapperRight + expandIconWidth) {
-      while (i > 0 && tabButtons[i] && tabButtons[i].getBoundingClientRect().right >= tabsWrapperRight) {
+      while (i > 0 && tabButtons[i] &&
+        tabButtons[i].getBoundingClientRect().right >= tabsWrapperRight) {
         this.collapsed.unshift(visibleTabs.pop());
         i--;
       }
     } else {
-      while (i < tabs.length - 1 && tabButtons[i] && tabButtons[i].getBoundingClientRect().right < tabsWrapperRight) {
+      while (i < tabs.length - 1 && tabButtons[i] &&
+        tabButtons[i].getBoundingClientRect().right < tabsWrapperRight) {
         visibleTabs.push(this.collapsed.shift());
         i++;
       }
