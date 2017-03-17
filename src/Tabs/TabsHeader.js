@@ -60,8 +60,12 @@ export default class TabsHeader extends Component {
     const tabsWrapperRight = tabsWrapperRef.getBoundingClientRect().right;
     const tabsRefRight = tabsRef.getBoundingClientRect().right;
     let i = visibleTabs.length - 1;
+    let expandIconWidth = 0;
+    if (this.state.visibleTabs.length < this.props.items.length) {
+      expandIconWidth = tabButtons[tabButtons.length - 1].getBoundingClientRect().width;
+    }
 
-    if (tabsRefRight >= tabsWrapperRight) {
+    if (tabsRefRight >= tabsWrapperRight + expandIconWidth) {
       while (i > 0 && tabButtons[i] && tabButtons[i].getBoundingClientRect().right >= tabsWrapperRight) {
         this.collapsed.unshift(visibleTabs.pop());
         i--;
