@@ -21,12 +21,8 @@ export default class TabsHeader extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.tabs !== this.props.tabs) {
-      this.setState({ visibleTabs: nextProps.tabs.slice() });
+      this.addTabs(nextProps.tabs);
     }
-  }
-
-  componentWillMount() {
-    this.setState({ visibleTabs: this.props.tabs.slice() });
   }
 
   componentDidMount() {
@@ -34,12 +30,17 @@ export default class TabsHeader extends Component {
       this.collapse();
       this.amendCollapsible();
     }
+    this.addTabs(this.props.tabs);
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.collapsible !== this.props.collapsible) {
       this.amendCollapsible();
     }
+  }
+
+  addTabs(tabs) {
+    this.setState({ visibleTabs: tabs.slice() });
   }
 
   amendCollapsible() {
@@ -60,7 +61,7 @@ export default class TabsHeader extends Component {
     const tabsRef = this.tabsRef;
     const tabButtons = this.tabsRef.children;
     const visibleTabs = this.state.visibleTabs;
-    const tabsWrapperRight = tabsWrapperRef.getBoundingClientRect().right;
+    let tabsWrapperRight = tabsWrapperRef.getBoundingClientRect().right;
     const tabsRefRight = tabsRef.getBoundingClientRect().right;
     let i = visibleTabs.length - 1;
     let expandIconWidth = 0;
@@ -71,7 +72,11 @@ export default class TabsHeader extends Component {
     if (tabsRefRight >= tabsWrapperRight + expandIconWidth) {
       while (i > 0 && tabButtons[i] &&
         tabButtons[i].getBoundingClientRect().right >= tabsWrapperRight) {
-        this.collapsed.unshift(visibleTabs.pop());
+        if (tabButtons[i].value !== selected) {
+          this.collapsed.unshift(visibleTabs.splice(i, 1));
+        } else {
+          tabsWrapperRight -= tabButtons[i].getBoundingClientRect().width;
+        }
         i--;
       }
     } else {
@@ -103,7 +108,9 @@ export default class TabsHeader extends Component {
   expandMenu = (e) => {
     const hiddenTabs = [];
     for (let i = this.state.visibleTabs.length; i < this.props.items.length; i++) {
-      hiddenTabs.push(this.props.items[i]);
+      if (this.props.items[i].value !== this.props.selected) {
+        hiddenTabs.push(this.props.items[i]);
+      }
     }
     this.setState({ hiddenTabs });
     const rect = e.currentTarget.children[0].getBoundingClientRect();
