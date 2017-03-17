@@ -12,7 +12,8 @@ export default class TabsHeader extends Component {
     this.state = {
       visibleTabs: [],
       hiddenTabs: [],
-      subMenuOpened: false
+      subMenuOpened: false,
+      contextMenu: undefined
     };
     this.left = 0;
     this.top = 0;
@@ -55,7 +56,7 @@ export default class TabsHeader extends Component {
   }
 
   collapse = (el, selected = this.props.selected) => {
-    if (this.state.subMenuOpened) this.setState({ subMenuOpened: false });
+    if (this.state.contextMenu) this.hideSubmenu();
     const tabs = this.props.items;
     const tabsWrapperRef = this.tabsWrapperRef;
     const tabsRef = this.tabsRef;
@@ -90,11 +91,7 @@ export default class TabsHeader extends Component {
   };
 
   hideSubmenu = () => {
-    this.setState({ subMenuOpened: false });
-  };
-
-  showSubmenu = () => {
-    this.setState({ subMenuOpened: true });
+    this.setState({ contextMenu: undefined });
   };
 
   getTabsWrapperRef = node => {
@@ -114,9 +111,14 @@ export default class TabsHeader extends Component {
     }
     this.setState({ hiddenTabs });
     const rect = e.currentTarget.children[0].getBoundingClientRect();
-    this.left = rect.left - 10;
-    this.top = rect.top + 10;
-    this.showSubmenu();
+
+    this.setState({
+      contextMenu: {
+        top: rect.top + 10,
+        left: rect.left + 10
+      }
+    })
+
   };
 
   render() {
@@ -133,13 +135,12 @@ export default class TabsHeader extends Component {
             <button onClick={this.expandMenu}><CollapseIcon /></button>
           }
         </div>
-        {this.props.collapsible &&
+        {this.props.collapsible && this.state.contextMenu &&
           <ContextMenu
             items={this.state.hiddenTabs}
             onClick={this.props.onClick}
-            x={this.left}
-            y={this.top}
-            visible={this.state.subMenuOpened}
+            x={this.state.contextMenu.left}
+            y={this.state.contextMenu.top}
           />
         }
       </TabsWrapper>
