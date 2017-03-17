@@ -59,23 +59,17 @@ export default class TabsHeader extends Component {
     const visibleTabs = this.state.visibleTabs;
     const tabsWrapperRight = tabsWrapperRef.getBoundingClientRect().right;
     const tabsRefRight = tabsRef.getBoundingClientRect().right;
-    let i;
+    let i = visibleTabs.length - 1;
 
     if (tabsRefRight >= tabsWrapperRight) {
-      for (i = visibleTabs.length - 1; i > 0; i--) {
-        if (tabButtons[i] && tabButtons[i].getBoundingClientRect().right >= tabsWrapperRight) {
-          this.collapsed.unshift(visibleTabs.pop());
-        } else {
-          break;
-        }
+      while (i > 0 && tabButtons[i] && tabButtons[i].getBoundingClientRect().right >= tabsWrapperRight) {
+        this.collapsed.unshift(visibleTabs.pop());
+        i--;
       }
     } else {
-      for (i = visibleTabs.length - 1; i < tabs.length - 1; i++) {
-        if (tabButtons[i] && tabButtons[i].getBoundingClientRect().right < tabsWrapperRight) {
-          visibleTabs.push(this.collapsed.shift());
-        } else {
-          break;
-        }
+      while (i < tabs.length - 1 && tabButtons[i] && tabButtons[i].getBoundingClientRect().right < tabsWrapperRight) {
+        visibleTabs.push(this.collapsed.shift());
+        i++;
       }
     }
     this.setState({ visibleTabs });
