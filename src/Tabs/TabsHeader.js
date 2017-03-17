@@ -68,9 +68,10 @@ export default class TabsHeader extends Component {
     let expandIconWidth = 0;
     if (this.state.visibleTabs.length < this.props.items.length) {
       expandIconWidth = tabButtons[tabButtons.length - 1].getBoundingClientRect().width;
+      tabsWrapperRight -= expandIconWidth;
     }
 
-    if (tabsRefRight >= tabsWrapperRight + expandIconWidth) {
+    if (tabsRefRight >= tabsWrapperRight) {
       while (i > 0 && tabButtons[i] &&
         tabButtons[i].getBoundingClientRect().right >= tabsWrapperRight) {
         if (tabButtons[i].value !== selected) {
@@ -82,7 +83,8 @@ export default class TabsHeader extends Component {
       }
     } else {
       while (i < tabs.length - 1 && tabButtons[i] &&
-        tabButtons[i].getBoundingClientRect().right < tabsWrapperRight) {
+        tabButtons[i].getBoundingClientRect().right +
+        tabButtons[i].getBoundingClientRect().width < tabsWrapperRight) {
         visibleTabs.push(this.collapsed.shift());
         i++;
       }
@@ -103,16 +105,15 @@ export default class TabsHeader extends Component {
   };
 
   expandMenu = (e) => {
+    const rect = e.currentTarget.children[0].getBoundingClientRect();
     const hiddenTabs = [];
     for (let i = this.state.visibleTabs.length; i < this.props.items.length; i++) {
       if (this.props.items[i].value !== this.props.selected) {
         hiddenTabs.push(this.props.items[i]);
       }
     }
-    this.setState({ hiddenTabs });
-    const rect = e.currentTarget.children[0].getBoundingClientRect();
-
     this.setState({
+      hiddenTabs,
       contextMenu: {
         top: rect.top + 10,
         left: rect.left + 10
