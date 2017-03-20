@@ -11,7 +11,8 @@ export default class ContextMenu extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.items !== this.props.items) {
+    if (nextProps.items !== this.props.items ||
+      nextProps.visible !== this.props.visible) {
       this.updateItems(nextProps.items);
     }
   }
@@ -62,16 +63,19 @@ export default class ContextMenu extends Component {
   updateItems(items) {
     this.items = items.map(item => {
       const value = item.value || item.name;
-      return (
-        <button
-          key={value}
-          value={value}
-          onMouseUp={this.onMouseUp}
-          onClick={this.onClick}
-        >
-          {item.name}
-        </button>
-      );
+      if (item.type === 'button') return item;
+      else {
+        return (
+          <button
+            key={value}
+            value={value}
+            onMouseUp={this.onMouseUp}
+            onClick={this.onClick}
+          >
+            {item.name}
+          </button>
+        );
+      }
     });
   }
 
@@ -85,6 +89,7 @@ export default class ContextMenu extends Component {
         innerRef={this.menuRef}
         left={this.props.x}
         top={this.props.y}
+        visible={this.props.visible}
       >
         {this.items}
       </ContextMenuWrapper>
@@ -96,5 +101,6 @@ ContextMenu.propTypes = {
   items: PropTypes.array.isRequired,
   onClick: PropTypes.func.isRequired,
   x: PropTypes.number.isRequired,
-  y: PropTypes.number.isRequired
+  y: PropTypes.number.isRequired,
+  visible: PropTypes.bool.isRequired
 };

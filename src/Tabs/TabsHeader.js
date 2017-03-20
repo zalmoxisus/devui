@@ -46,7 +46,6 @@ export default class TabsHeader extends Component {
 
   amendCollapsible() {
     if (this.props.collapsible) {
-      this.collapse();
       window.addEventListener('mousedown', this.hideSubmenu);
       window.addEventListener('resize', this.collapse);
     } else {
@@ -56,7 +55,7 @@ export default class TabsHeader extends Component {
   }
 
   collapse = (el, selected = this.props.selected) => {
-    if (this.state.contextMenu) this.hideSubmenu();
+    if (!this.state.subMenuOpened) this.hideSubmenu();
     const tabs = this.props.items;
     const tabsWrapperRef = this.tabsWrapperRef;
     const tabsRef = this.tabsRef;
@@ -89,11 +88,13 @@ export default class TabsHeader extends Component {
         i++;
       }
     }
-    this.setState({ visibleTabs });
+    this.setState({ visibleTabs, hiddenTabs: this.collapsed });
+    //console.log(this.collapsed);
+    //console.log(this.state.hiddenTabs);
   };
 
   hideSubmenu = () => {
-    this.setState({ contextMenu: undefined });
+    this.setState({ subMenuOpened: false });
   };
 
   getTabsWrapperRef = node => {
@@ -106,18 +107,12 @@ export default class TabsHeader extends Component {
 
   expandMenu = (e) => {
     const rect = e.currentTarget.children[0].getBoundingClientRect();
-    const hiddenTabs = [];
-    for (let i = this.state.visibleTabs.length; i < this.props.items.length; i++) {
-      if (this.props.items[i].value !== this.props.selected) {
-        hiddenTabs.push(this.props.items[i]);
-      }
-    }
     this.setState({
-      hiddenTabs,
       contextMenu: {
         top: rect.top + 10,
         left: rect.left + 10
-      }
+      },
+      subMenuOpened: true
     })
 
   };
@@ -142,6 +137,7 @@ export default class TabsHeader extends Component {
             onClick={this.props.onClick}
             x={this.state.contextMenu.left}
             y={this.state.contextMenu.top}
+            visible={this.state.subMenuOpened}
           />
         }
       </TabsWrapper>
