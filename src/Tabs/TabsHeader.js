@@ -75,7 +75,7 @@ export default class TabsHeader extends Component {
       while (i > 0 && tabButtons[i] &&
         tabButtons[i].getBoundingClientRect().right >= tabsWrapperRight) {
         if (tabButtons[i].value !== selected) {
-          this.collapsed.unshift(visibleTabs.splice(i, 1));
+          this.collapsed.unshift.apply(this.collapsed, visibleTabs.splice(i, 1));
         } else {
           tabsWrapperRight -= tabButtons[i].getBoundingClientRect().width;
         }
@@ -85,7 +85,7 @@ export default class TabsHeader extends Component {
       while (i < tabs.length - 1 && tabButtons[i] &&
         tabButtons[i].getBoundingClientRect().right +
         tabButtons[i].getBoundingClientRect().width < tabsWrapperRight) {
-        visibleTabs.push(this.collapsed.shift());
+        visibleTabs.splice(Number(this.collapsed[0].key), 0, this.collapsed.shift());
         i++;
       }
     }

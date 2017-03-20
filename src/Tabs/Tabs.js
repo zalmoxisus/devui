@@ -43,7 +43,7 @@ export default class Tabs extends Component {
     const tabs = props.tabs;
     const selected = props.selected;
 
-    this.tabsHeader = tabs.map(tab => {
+    this.tabsHeader = tabs.map((tab, i) => {
       let isSelected;
       const value = typeof tab.value !== 'undefined' ? tab.value : tab.name;
       if (value === selected) {
@@ -55,7 +55,7 @@ export default class Tabs extends Component {
       }
       return (
         <button
-          key={value}
+          key={i}
           value={value}
           data-selected={isSelected}
           onMouseUp={this.onMouseUp}
