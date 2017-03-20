@@ -28,7 +28,6 @@ export default class TabsHeader extends Component {
 
   componentDidMount() {
     if (this.props.collapsible) {
-      this.collapse();
       this.amendCollapsible();
     }
     this.addTabs(this.props.tabs);
@@ -46,6 +45,7 @@ export default class TabsHeader extends Component {
 
   amendCollapsible() {
     if (this.props.collapsible) {
+      this.collapse();
       window.addEventListener('mousedown', this.hideSubmenu);
       window.addEventListener('resize', this.collapse);
     } else {
@@ -61,14 +61,10 @@ export default class TabsHeader extends Component {
     const tabsRef = this.tabsRef;
     const tabButtons = this.tabsRef.children;
     const visibleTabs = this.state.visibleTabs;
-    let tabsWrapperRight = tabsWrapperRef.getBoundingClientRect().right;
+    let tabsWrapperRight = tabsWrapperRef.getBoundingClientRect().right -
+      tabButtons[tabButtons.length - 1].getBoundingClientRect().width;
     const tabsRefRight = tabsRef.getBoundingClientRect().right;
     let i = visibleTabs.length - 1;
-    let expandIconWidth = 0;
-    if (this.state.visibleTabs.length < this.props.items.length) {
-      expandIconWidth = tabButtons[tabButtons.length - 1].getBoundingClientRect().width;
-      tabsWrapperRight -= expandIconWidth;
-    }
 
     if (tabsRefRight >= tabsWrapperRight) {
       while (i > 0 && tabButtons[i] &&
@@ -89,8 +85,6 @@ export default class TabsHeader extends Component {
       }
     }
     this.setState({ visibleTabs, hiddenTabs: this.collapsed });
-    //console.log(this.collapsed);
-    //console.log(this.state.hiddenTabs);
   };
 
   hideSubmenu = () => {
