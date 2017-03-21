@@ -79,7 +79,11 @@ export default class Tabs extends Component {
       />
     );
 
-    if (!this.SelectedComponent) return tabsHeader;
+    if (!this.SelectedComponent) return (
+      <TabsContainer position={this.props.position}>
+        { tabsHeader }
+      </TabsContainer>
+    );
 
     return (
       <TabsContainer position={this.props.position}>

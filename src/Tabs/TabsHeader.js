@@ -45,9 +45,15 @@ export default class TabsHeader extends Component {
 
   amendCollapsible() {
     if (this.props.collapsible) {
-      this.collapse();
+      setTimeout(() => {
+        this.collapse();
+        let resizeId;
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeId);
+          resizeId = setTimeout(this.collapse, 0);
+        });
+      }, 0);
       window.addEventListener('mousedown', this.hideSubmenu);
-      window.addEventListener('resize', this.collapse);
     } else {
       window.removeEventListener('resize', this.collapse);
       window.removeEventListener('mousedown', this.hideSubmenu);
