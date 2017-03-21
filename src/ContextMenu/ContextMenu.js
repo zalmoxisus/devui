@@ -64,18 +64,16 @@ export default class ContextMenu extends Component {
     this.items = items.map(item => {
       const value = item.value || item.name;
       if (item.type === 'button') return item;
-      else {
-        return (
-          <button
-            key={value}
-            value={value}
-            onMouseUp={this.onMouseUp}
-            onClick={this.onClick}
-          >
-            {item.name}
-          </button>
-        );
-      }
+      return (
+        <button
+          key={value}
+          value={value}
+          onMouseUp={this.onMouseUp}
+          onClick={this.onClick}
+        >
+          {item.name}
+        </button>
+      );
     });
   }
 

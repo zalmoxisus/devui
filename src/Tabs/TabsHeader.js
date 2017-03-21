@@ -69,7 +69,7 @@ export default class TabsHeader extends Component {
     const tabsRef = this.tabsRef;
     const tabButtons = this.tabsRef.children;
     const visibleTabs = this.state.visibleTabs;
-    let hiddenTabs = this.state.hiddenTabs;
+    const hiddenTabs = this.state.hiddenTabs;
     let tabsWrapperRight = tabsWrapperRef.getBoundingClientRect().right -
       tabButtons[tabButtons.length - 1].getBoundingClientRect().width;
     const tabsRefRight = tabsRef.getBoundingClientRect().right;
@@ -116,8 +116,7 @@ export default class TabsHeader extends Component {
         left: rect.left + 10
       },
       subMenuOpened: true
-    })
-
+    });
   };
 
   render() {
