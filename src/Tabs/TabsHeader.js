@@ -45,20 +45,36 @@ export default class TabsHeader extends Component {
   componentDidUpdate(prevProps) {
     if (prevProps.collapsible !== this.props.collapsible) {
       this.amendCollapsible();
+      this.addTabs(this.props.tabs);
     }
+  }
+
+  componentWillUnmount() {
+    this.disableResizeEvents();
   }
 
   addTabs(tabs) {
     this.setState({ visibleTabs: tabs.slice() });
   }
 
+  disableResizeEvents() {
+    window.removeEventListener('resize', this.collapse);
+    window.removeEventListener('mousedown', this.hideSubmenu);
+  }
+
   amendCollapsible() {
     if (this.props.collapsible) {
-      window.addEventListener('resize', this.collapse);
+      setTimeout(() => {
+        this.collapse();
+        let resizeId;
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeId);
+          resizeId = setTimeout(this.collapse, 0);
+        });
+      }, 0);
       window.addEventListener('mousedown', this.hideSubmenu);
     } else {
-      window.removeEventListener('resize', this.collapse);
-      window.removeEventListener('mousedown', this.hideSubmenu);
+      this.disableResizeEvents();
     }
   }
 
