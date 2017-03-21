@@ -21,8 +21,13 @@ export default class TabsHeader extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.tabs !== this.props.tabs) {
+    if (nextProps.tabs !== this.props.tabs ||
+      nextProps.selected !== this.props.selected) {
+      this.setState({ hiddenTabs: [] });
       this.addTabs(nextProps.tabs);
+      setTimeout(() => {
+        this.collapse(undefined, nextProps.selected);
+      }, 0);
     }
   }
 
@@ -61,12 +66,13 @@ export default class TabsHeader extends Component {
   }
 
   collapse = (el, selected = this.props.selected) => {
-    if (!this.state.subMenuOpened) this.hideSubmenu();
+    if (this.state.subMenuOpened) this.hideSubmenu();
     const tabs = this.props.items;
     const tabsWrapperRef = this.tabsWrapperRef;
     const tabsRef = this.tabsRef;
     const tabButtons = this.tabsRef.children;
     const visibleTabs = this.state.visibleTabs;
+    let hiddenTabs = this.state.hiddenTabs;
     let tabsWrapperRight = tabsWrapperRef.getBoundingClientRect().right -
       tabButtons[tabButtons.length - 1].getBoundingClientRect().width;
     const tabsRefRight = tabsRef.getBoundingClientRect().right;
@@ -76,7 +82,7 @@ export default class TabsHeader extends Component {
       while (i > 0 && tabButtons[i] &&
         tabButtons[i].getBoundingClientRect().right >= tabsWrapperRight) {
         if (tabButtons[i].value !== selected) {
-          this.collapsed.unshift.apply(this.collapsed, visibleTabs.splice(i, 1));
+          hiddenTabs.unshift.apply(hiddenTabs, visibleTabs.splice(i, 1));
         } else {
           tabsWrapperRight -= tabButtons[i].getBoundingClientRect().width;
         }
@@ -86,11 +92,11 @@ export default class TabsHeader extends Component {
       while (i < tabs.length - 1 && tabButtons[i] &&
         tabButtons[i].getBoundingClientRect().right +
         tabButtons[i].getBoundingClientRect().width < tabsWrapperRight) {
-        visibleTabs.splice(Number(this.collapsed[0].key), 0, this.collapsed.shift());
+        visibleTabs.splice(Number(hiddenTabs[0].key), 0, hiddenTabs.shift());
         i++;
       }
     }
-    this.setState({ visibleTabs, hiddenTabs: this.collapsed });
+    this.setState({ visibleTabs, hiddenTabs });
   };
 
   hideSubmenu = () => {
