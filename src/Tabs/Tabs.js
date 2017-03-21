@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import elementResizeDetectorMaker from 'element-resize-detector';
 import TabsHeader from './TabsHeader';
 import { TabsContainer } from './styles/common';
 
@@ -9,18 +8,10 @@ export default class Tabs extends Component {
     this.updateTabs(props);
   }
 
-  componentDidMount() {
-    if (this.props.collapsible) this.enableResizeDetector();
-  }
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.selected !== this.props.selected) {
       this.updateTabs(nextProps);
     }
-  }
-
-  componentWillUnmount() {
-    if (this.elementResizeDetector) this.disableResizeDetector();
   }
 
   onMouseUp = e => {
@@ -30,14 +21,6 @@ export default class Tabs extends Component {
   onClick = e => {
     this.props.onClick(e.target.value);
   };
-
-  enableResizeDetector() {
-    this.elementResizeDetector = elementResizeDetectorMaker({ strategy: 'scroll' });
-  }
-
-  disableResizeDetector() {
-    this.elementResizeDetector.uninstall();
-  }
 
   updateTabs(props) {
     const tabs = props.tabs;
