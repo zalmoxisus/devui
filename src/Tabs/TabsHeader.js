@@ -15,9 +15,6 @@ export default class TabsHeader extends Component {
       subMenuOpened: false,
       contextMenu: undefined
     };
-    this.left = 0;
-    this.top = 0;
-    this.collapsed = [];
   }
 
   componentWillReceiveProps(nextProps) {
@@ -44,6 +41,7 @@ export default class TabsHeader extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.collapsible !== this.props.collapsible) {
+      this.setState({ hiddenTabs: [] });
       this.amendCollapsible();
       this.addTabs(this.props.tabs);
     }
