@@ -59,6 +59,7 @@ export default class Tabs extends Component {
         collapsible={this.props.collapsible}
         onClick={this.props.onClick}
         selected={this.props.selected}
+        position={this.props.position}
       />
     );
 
@@ -87,3 +88,5 @@ Tabs.propTypes = {
   collapsible: PropTypes.bool,
   position: PropTypes.oneOf(['left', 'right', 'center'])
 };
+
+Tabs.defaultProps = { position: 'left' };

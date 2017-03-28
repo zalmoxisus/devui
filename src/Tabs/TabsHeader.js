@@ -84,20 +84,29 @@ export default class TabsHeader extends Component {
     const tabButtons = this.tabsRef.children;
     const visibleTabs = this.state.visibleTabs;
     const hiddenTabs = this.state.hiddenTabs;
-    let tabsWrapperRight = tabsWrapperRef.getBoundingClientRect().right -
-      tabButtons[tabButtons.length - 1].getBoundingClientRect().width;
+    const iconWidth = tabButtons[tabButtons.length - 1].getBoundingClientRect().width;
+    let tabsWrapperRight = tabsWrapperRef.getBoundingClientRect().right - iconWidth;
     const tabsRefRight = tabsRef.getBoundingClientRect().right;
     let i = visibleTabs.length - 1;
 
     if (tabsRefRight >= tabsWrapperRight) {
-      while (i > 0 && tabButtons[i] &&
-        tabButtons[i].getBoundingClientRect().right >= tabsWrapperRight) {
-        if (tabButtons[i].value !== selected) {
-          hiddenTabs.unshift.apply(hiddenTabs, visibleTabs.splice(i, 1));
-        } else {
-          tabsWrapperRight -= tabButtons[i].getBoundingClientRect().width;
+      if (tabsRef.getBoundingClientRect().left > tabButtons[i].getBoundingClientRect().width) {
+        while (i < tabs.length - 1 && tabButtons[i] &&
+        tabsRef.getBoundingClientRect().left > tabButtons[i].getBoundingClientRect().width
+        + iconWidth) {
+          visibleTabs.splice(Number(hiddenTabs[0].key), 0, hiddenTabs.shift());
+          i++;
         }
-        i--;
+      } else {
+        while (i > 0 && tabButtons[i] &&
+        tabButtons[i].getBoundingClientRect().right >= tabsWrapperRight) {
+          if (tabButtons[i].value !== selected) {
+            hiddenTabs.unshift.apply(hiddenTabs, visibleTabs.splice(i, 1));
+          } else {
+            tabsWrapperRight -= tabButtons[i].getBoundingClientRect().width;
+          }
+          i--;
+        }
       }
     } else {
       while (i < tabs.length - 1 && tabButtons[i] &&
@@ -171,4 +180,3 @@ TabsHeader.propTypes = {
   selected: PropTypes.string
 };
 
-TabsHeader.defaultProps = { position: 'left' };
