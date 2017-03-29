@@ -85,15 +85,15 @@ export default class TabsHeader extends Component {
     const visibleTabs = this.state.visibleTabs;
     const hiddenTabs = this.state.hiddenTabs;
     const iconWidth = tabButtons[tabButtons.length - 1].getBoundingClientRect().width;
-    let tabsWrapperRight = tabsWrapperRef.getBoundingClientRect().right - iconWidth;
+    let tabsWrapperRight = tabsWrapperRef.getBoundingClientRect().right;
     const tabsRefRight = tabsRef.getBoundingClientRect().right;
     let i = visibleTabs.length - 1;
 
-    if (tabsRefRight >= tabsWrapperRight) {
+    if (tabsRefRight >= tabsWrapperRight - iconWidth) {
       if (this.props.position === 'right' && this.state.hiddenTabs.length > 0 &&
         tabsRef.getBoundingClientRect().left > this.state.hiddenTabs[0].props.width) {
         while (i < tabs.length - 1 &&
-          tabsRef.getBoundingClientRect().left > hiddenTabs[0].props.width + iconWidth) {
+          tabsRef.getBoundingClientRect().left > this.state.hiddenTabs[0].props.width) {
           visibleTabs.splice(Number(hiddenTabs[0].key), 0, hiddenTabs.shift());
           i++;
         }
@@ -113,7 +113,7 @@ export default class TabsHeader extends Component {
     } else {
       while (i < tabs.length - 1 && tabButtons[i] &&
         tabButtons[i].getBoundingClientRect().right +
-        this.state.hiddenTabs[0].props.width < tabsWrapperRight) {
+        this.state.hiddenTabs[0].props.width < tabsWrapperRight - iconWidth) {
         visibleTabs.splice(Number(hiddenTabs[0].key), 0, hiddenTabs.shift());
         i++;
       }
