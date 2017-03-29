@@ -90,9 +90,10 @@ export default class TabsHeader extends Component {
     let i = visibleTabs.length - 1;
 
     if (tabsRefRight >= tabsWrapperRight) {
-      if (tabsRef.getBoundingClientRect().left > tabButtons[i].getBoundingClientRect().width) {
-        while (i < tabs.length - 1 && tabButtons[i] &&
-        tabsRef.getBoundingClientRect().left > hiddenTabs[0].props.width + iconWidth) {
+      if (this.props.position === 'right' && this.state.hiddenTabs.length > 0 &&
+        tabsRef.getBoundingClientRect().left > this.state.hiddenTabs[0].props.width) {
+        while (i < tabs.length - 1 &&
+          tabsRef.getBoundingClientRect().left > hiddenTabs[0].props.width + iconWidth) {
           visibleTabs.splice(Number(hiddenTabs[0].key), 0, hiddenTabs.shift());
           i++;
         }
@@ -101,7 +102,8 @@ export default class TabsHeader extends Component {
         tabButtons[i].getBoundingClientRect().right >= tabsWrapperRight) {
           if (tabButtons[i].value !== selected) {
             hiddenTabs.unshift.apply(hiddenTabs, visibleTabs.splice(i, 1));
-            hiddenTabs[0] = React.cloneElement(hiddenTabs[0], { width: tabButtons[i].getBoundingClientRect().width });
+            hiddenTabs[0] = React.cloneElement(hiddenTabs[0],
+              { width: tabButtons[i].getBoundingClientRect().width });
           } else {
             tabsWrapperRight -= tabButtons[i].getBoundingClientRect().width;
           }
@@ -110,7 +112,8 @@ export default class TabsHeader extends Component {
       }
     } else {
       while (i < tabs.length - 1 && tabButtons[i] &&
-        tabButtons[i].getBoundingClientRect().right + hiddenTabs[0].props.width < tabsWrapperRight) {
+        tabButtons[i].getBoundingClientRect().right +
+        this.state.hiddenTabs[0].props.width < tabsWrapperRight) {
         visibleTabs.splice(Number(hiddenTabs[0].key), 0, hiddenTabs.shift());
         i++;
       }
