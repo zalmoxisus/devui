@@ -19,18 +19,16 @@ export default class TabsHeader extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.tabs !== this.props.tabs ||
-      nextProps.selected !== this.props.selected) {
+      nextProps.selected !== this.props.selected ||
+      nextProps.collapsible !== this.props.collapsible) {
       this.setState({ hiddenTabs: [] });
       this.addTabs(nextProps.tabs);
       setTimeout(() => {
-        this.collapse(undefined, nextProps.selected);
+        this.amendCollapsible(nextProps.collapsible);
+        if (nextProps.collapsible) {
+          this.collapse(undefined, nextProps.selected);
+        }
       }, 0);
-    }
-    if (nextProps.collapsible !== this.props.collapsible) {
-      this.setState({ hiddenTabs: [] });
-      this.addTabs(nextProps.tabs);
-      this.amendCollapsible(nextProps.collapsible);
-      if (nextProps.collapsible) this.collapse(undefined, nextProps.selected);
     }
   }
 
@@ -39,9 +37,9 @@ export default class TabsHeader extends Component {
   }
 
   componentDidMount() {
-    this.collapse();
+    this.amendCollapsible(this.props.collapsible);
     if (this.props.collapsible) {
-      this.amendCollapsible(this.props.collapsible);
+      this.collapse();
     }
   }
 
@@ -60,13 +58,12 @@ export default class TabsHeader extends Component {
 
   amendCollapsible(collapsible) {
     if (collapsible) {
-      setTimeout(() => {
-        this.collapse();
-        window.addEventListener('resize', this.collapse);
-      }, 0);
+      this.collapse();
+      window.addEventListener('resize', this.collapse);
       window.addEventListener('mousedown', this.hideSubmenu);
     } else {
       this.disableResizeEvents();
+      this.setState({ contextMenu: undefined });
     }
   }
 
@@ -133,7 +130,7 @@ export default class TabsHeader extends Component {
     this.setState({
       contextMenu: {
         top: rect.top + 10,
-        left: rect.left + 10
+        left: rect.left
       },
       subMenuOpened: true
     });
