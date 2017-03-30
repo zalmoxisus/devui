@@ -63,7 +63,6 @@ export default class TabsHeader extends Component {
       window.addEventListener('mousedown', this.hideSubmenu);
     } else {
       this.disableResizeEvents();
-      this.setState({ contextMenu: undefined });
     }
   }
 
@@ -114,7 +113,7 @@ export default class TabsHeader extends Component {
   };
 
   hideSubmenu = () => {
-    this.setState({ subMenuOpened: false });
+    this.setState({ subMenuOpened: false, contextMenu: undefined });
   };
 
   getTabsWrapperRef = node => {
