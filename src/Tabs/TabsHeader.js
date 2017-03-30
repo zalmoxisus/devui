@@ -84,7 +84,8 @@ export default class TabsHeader extends Component {
     const tabButtons = this.tabsRef.children;
     const visibleTabs = this.state.visibleTabs;
     const hiddenTabs = this.state.hiddenTabs;
-    const iconWidth = tabButtons[tabButtons.length - 1].getBoundingClientRect().width;
+    const iconWidth = tabButtons[tabButtons.length - 1].value === 'expandIcon' ?
+      tabButtons[tabButtons.length - 1].getBoundingClientRect().width : 0;
     let tabsWrapperRight = tabsWrapperRef.getBoundingClientRect().right;
     const tabsRefRight = tabsRef.getBoundingClientRect().right;
     let i = visibleTabs.length - 1;
@@ -99,7 +100,7 @@ export default class TabsHeader extends Component {
         }
       } else {
         while (i > 0 && tabButtons[i] &&
-        tabButtons[i].getBoundingClientRect().right >= tabsWrapperRight) {
+        tabButtons[i].getBoundingClientRect().right >= tabsWrapperRight - iconWidth) {
           if (tabButtons[i].value !== selected) {
             hiddenTabs.unshift.apply(hiddenTabs, visibleTabs.splice(i, 1));
             hiddenTabs[0] = React.cloneElement(hiddenTabs[0],
@@ -155,7 +156,7 @@ export default class TabsHeader extends Component {
           {this.state.visibleTabs}
           { this.props.collapsible &&
             this.state.visibleTabs.length < this.props.items.length &&
-            <button onClick={this.expandMenu}><CollapseIcon /></button>
+            <button onClick={this.expandMenu} value="expandIcon"><CollapseIcon /></button>
           }
         </div>
         {this.props.collapsible && this.state.contextMenu &&
