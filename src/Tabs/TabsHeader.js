@@ -15,6 +15,7 @@ export default class TabsHeader extends Component {
       subMenuOpened: false,
       contextMenu: undefined
     };
+    this.iconWidth = 0;
   }
 
   componentWillReceiveProps(nextProps) {
@@ -40,6 +41,16 @@ export default class TabsHeader extends Component {
     this.amendCollapsible(this.props.collapsible);
     if (this.props.collapsible) {
       this.collapse();
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.iconWidth === 0) {
+      const tabButtons = this.tabsRef.children;
+      if (this.tabsRef.children[tabButtons.length - 1].value === 'expandIcon') {
+        this.iconWidth = tabButtons[tabButtons.length - 1].getBoundingClientRect().width;
+        this.collapse();
+      }
     }
   }
 
@@ -74,13 +85,11 @@ export default class TabsHeader extends Component {
     const tabButtons = this.tabsRef.children;
     const visibleTabs = this.state.visibleTabs;
     const hiddenTabs = this.state.hiddenTabs;
-    const iconWidth = tabButtons[tabButtons.length - 1].value === 'expandIcon' ?
-      tabButtons[tabButtons.length - 1].getBoundingClientRect().width : 0;
     let tabsWrapperRight = tabsWrapperRef.getBoundingClientRect().right;
     const tabsRefRight = tabsRef.getBoundingClientRect().right;
     let i = visibleTabs.length - 1;
 
-    if (tabsRefRight >= tabsWrapperRight - iconWidth) {
+    if (tabsRefRight >= tabsWrapperRight - this.iconWidth) {
       if (this.props.position === 'right' && this.state.hiddenTabs.length > 0 &&
         tabsRef.getBoundingClientRect().left > this.state.hiddenTabs[0].props.width) {
         while (i < tabs.length - 1 &&
@@ -90,7 +99,7 @@ export default class TabsHeader extends Component {
         }
       } else {
         while (i > 0 && tabButtons[i] &&
-        tabButtons[i].getBoundingClientRect().right >= tabsWrapperRight - iconWidth) {
+        tabButtons[i].getBoundingClientRect().right >= tabsWrapperRight - this.iconWidth) {
           if (tabButtons[i].value !== selected) {
             hiddenTabs.unshift.apply(hiddenTabs, visibleTabs.splice(i, 1));
             hiddenTabs[0] = React.cloneElement(hiddenTabs[0],
@@ -104,7 +113,7 @@ export default class TabsHeader extends Component {
     } else {
       while (i < tabs.length - 1 && tabButtons[i] &&
         tabButtons[i].getBoundingClientRect().right +
-        this.state.hiddenTabs[0].props.width < tabsWrapperRight - iconWidth) {
+        this.state.hiddenTabs[0].props.width < tabsWrapperRight - this.iconWidth) {
         visibleTabs.splice(Number(hiddenTabs[0].key), 0, hiddenTabs.shift());
         i++;
       }
