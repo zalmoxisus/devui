@@ -77,7 +77,7 @@ storiesOf('Toolbar', module)
             main={boolean('main', true)}
             onClick={action('tab selected')}
             collapsible={boolean('collapsible', true)}
-            align={select('align', ['left', 'right', 'center'], 'center')}
+            position={select('position', ['left', 'right', 'center'], 'center')}
           />
           <Button
             title={text('Title', 'Hello Tooltip')}

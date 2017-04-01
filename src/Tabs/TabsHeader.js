@@ -51,6 +51,8 @@ export default class TabsHeader extends Component {
         this.iconWidth = tabButtons[tabButtons.length - 1].getBoundingClientRect().width;
         this.collapse();
       }
+    } else if (this.state.hiddenTabs.length === 0) {
+      this.iconWidth = 0;
     }
   }
 
@@ -91,9 +93,11 @@ export default class TabsHeader extends Component {
 
     if (tabsRefRight >= tabsWrapperRight - this.iconWidth) {
       if (this.props.position === 'right' && this.state.hiddenTabs.length > 0 &&
-        tabsRef.getBoundingClientRect().left > this.state.hiddenTabs[0].props.width) {
+        tabsRef.getBoundingClientRect().width + this.state.hiddenTabs[0].props.width <
+        tabsWrapperRef.getBoundingClientRect().width) {
         while (i < tabs.length - 1 &&
-          tabsRef.getBoundingClientRect().left > this.state.hiddenTabs[0].props.width) {
+        tabsRef.getBoundingClientRect().width + this.state.hiddenTabs[0].props.width <
+        tabsWrapperRef.getBoundingClientRect().width) {
           visibleTabs.splice(Number(hiddenTabs[0].key), 0, hiddenTabs.shift());
           i++;
         }
