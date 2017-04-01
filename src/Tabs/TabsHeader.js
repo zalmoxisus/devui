@@ -16,6 +16,7 @@ export default class TabsHeader extends Component {
       contextMenu: undefined
     };
     this.iconWidth = 0;
+    this.nextTab = [];
   }
 
   componentWillReceiveProps(nextProps) {
@@ -93,10 +94,10 @@ export default class TabsHeader extends Component {
 
     if (tabsRefRight >= tabsWrapperRight - this.iconWidth) {
       if (this.props.position === 'right' && this.state.hiddenTabs.length > 0 &&
-        tabsRef.getBoundingClientRect().width + this.state.hiddenTabs[0].props.width <
+        tabsRef.getBoundingClientRect().width + this.nextTab[0] <
         tabsWrapperRef.getBoundingClientRect().width) {
         while (i < tabs.length - 1 &&
-        tabsRef.getBoundingClientRect().width + this.state.hiddenTabs[0].props.width <
+        tabsRef.getBoundingClientRect().width + this.nextTab[0] <
         tabsWrapperRef.getBoundingClientRect().width) {
           visibleTabs.splice(Number(hiddenTabs[0].key), 0, hiddenTabs.shift());
           i++;
@@ -106,8 +107,7 @@ export default class TabsHeader extends Component {
         tabButtons[i].getBoundingClientRect().right >= tabsWrapperRight - this.iconWidth) {
           if (tabButtons[i].value !== selected) {
             hiddenTabs.unshift.apply(hiddenTabs, visibleTabs.splice(i, 1));
-            hiddenTabs[0] = React.cloneElement(hiddenTabs[0],
-              { width: tabButtons[i].getBoundingClientRect().width });
+            this.nextTab.unshift(tabButtons[i].getBoundingClientRect().width);
           } else {
             tabsWrapperRight -= tabButtons[i].getBoundingClientRect().width;
           }
@@ -117,8 +117,9 @@ export default class TabsHeader extends Component {
     } else {
       while (i < tabs.length - 1 && tabButtons[i] &&
         tabButtons[i].getBoundingClientRect().right +
-        this.state.hiddenTabs[0].props.width < tabsWrapperRight - this.iconWidth) {
+        this.nextTab[0] < tabsWrapperRight - this.iconWidth) {
         visibleTabs.splice(Number(hiddenTabs[0].key), 0, hiddenTabs.shift());
+        this.nextTab.shift();
         i++;
       }
     }
