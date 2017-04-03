@@ -25,12 +25,6 @@ export default class TabsHeader extends Component {
       nextProps.collapsible !== this.props.collapsible) {
       this.setState({ hiddenTabs: [] });
       this.addTabs(nextProps.tabs);
-      setTimeout(() => {
-        this.amendCollapsible(nextProps.collapsible);
-        if (nextProps.collapsible) {
-          this.collapse(undefined, nextProps.selected);
-        }
-      }, 0);
     }
   }
 
@@ -45,7 +39,15 @@ export default class TabsHeader extends Component {
     }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
+    if(this.props.selected !== prevProps.selected) {
+      if (this.props.collapsible) {
+        this.collapse(undefined, this.props.selected);
+      }
+    }
+    if (prevProps.collapsible !== this.props.collapsible) {
+      this.amendCollapsible(this.props.collapsible);
+    }
     if (this.iconWidth === 0) {
       const tabButtons = this.tabsRef.children;
       if (this.tabsRef.children[tabButtons.length - 1].value === 'expandIcon') {
