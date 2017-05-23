@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 import { getTheme } from '../utils/theme';
 import { MainContainerWrapper, ContainerWrapper } from './styles';

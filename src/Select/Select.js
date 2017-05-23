@@ -1,4 +1,5 @@
-import React, { PureComponent, Component, PropTypes } from 'react';
+import React, { PureComponent, Component } from 'react';
+import PropTypes from 'prop-types';
 import ReactSelect from 'react-select';
 import createStyledComponent from '../utils/createStyledComponent';
 import styles from './styles';

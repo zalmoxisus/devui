@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import createStyledComponent from '../utils/createStyledComponent';
 import * as styles from './styles';
 import { commonStyle, tooltipStyle } from './styles/common';

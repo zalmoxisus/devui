@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import CloseIcon from 'react-icons/lib/md/close';
 import WarningIcon from 'react-icons/lib/md/warning';
 import ErrorIcon from 'react-icons/lib/md/error';
