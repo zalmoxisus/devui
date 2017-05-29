@@ -1,6 +1,6 @@
 exports[`Tabs renders correctly 1`] = `
 <div
-  class="gjVDgp">
+  class="dZDFeE">
   <div>
     <button
       value="Tab1">
@@ -20,7 +20,7 @@ exports[`Tabs renders correctly 1`] = `
 
 exports[`Tabs renders tabs without inner components 1`] = `
 <div
-  class="gjVDgp">
+  class="dZDFeE">
   <div>
     <button
       value="1">
@@ -69,9 +69,9 @@ exports[`Tabs renders tabs without inner components 1`] = `
 
 exports[`Tabs renders with props 1`] = `
 <div
-  class="hTyYWv">
+  class="kmcIfA">
   <div
-    class="gjVDgp">
+    class="dZDFeE">
     <div>
       <button
         value="Tab1">
