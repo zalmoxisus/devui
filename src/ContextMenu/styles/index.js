@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export const style = ({ theme, left, top, visible }) => css`
+export default ({ theme, left, top, visible }) => css`
   ${visible ? `
     visibility: visible;
     opacity: 1;

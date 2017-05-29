@@ -1,19 +1,30 @@
 import React, { PropTypes } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { getTheme } from '../utils/theme';
-import { ContainerWrapper } from './styles';
+import { MainContainerWrapper, ContainerWrapper } from './styles';
 
-const Container = ({ themeData, className, children }) => (
-  <ThemeProvider theme={getTheme(themeData)}>
-    <ContainerWrapper className={className}>
-      {children}
-    </ContainerWrapper>
-  </ThemeProvider>
-);
+const Container = ({ themeData, className, theme, children }) => {
+  if (!themeData) {
+    return (
+      <ContainerWrapper className={className} theme={theme}>
+        {children}
+      </ContainerWrapper>
+    );
+  }
+
+  return (
+    <ThemeProvider theme={getTheme(themeData)}>
+      <MainContainerWrapper className={className}>
+        {children}
+      </MainContainerWrapper>
+    </ThemeProvider>
+  );
+};
 
 Container.propTypes = {
-  children: PropTypes.node.isRequired,
-  themeData: PropTypes.object.isRequired,
+  children: PropTypes.node,
+  themeData: PropTypes.object,
+  theme: PropTypes.object,
   className: PropTypes.string
 };
 

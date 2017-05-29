@@ -15,4 +15,11 @@ describe('Toolbar', function () {
     );
     expect(renderToJson(wrapper)).toMatchSnapshot();
   });
+
+  it('renders with props', () => {
+    const wrapper = render(
+      <Toolbar borderPosition="top" />
+    );
+    expect(renderToJson(wrapper)).toMatchSnapshot();
+  });
 });

@@ -1,7 +1,6 @@
 import { css } from 'styled-components';
-import colorEffect from '../../utils/color';
 
-export const style = ({ theme, primary, disabled, big }) => css`
+export const style = ({ theme, primary, disabled }) => css`
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   outline: none;
@@ -9,32 +8,30 @@ export const style = ({ theme, primary, disabled, big }) => css`
   text-decoration: none;
   display: inline-block;
   transition: all 0.5s;
-  margin: 0;
+  margin: auto 0;
   border: 1px solid ${theme.base02};
   border-radius: 4px;
-  ${big ? `
-  min-height: 34px;
-  padding: 2px 12px;
+  ${primary ? `
+  background-color: ${theme.base05};
+  color: ${theme.base00};
   ` : `
-  min-height: 30px;
-  padding: 2px 7px;
-  `}
+  background-color: ${theme.base01};
+  color: ${theme.base05};
+ `}
   ${disabled ? `
   cursor: not-allowed;
-  color: ${theme.base04};
-  background-color: ${theme.base02};
-  opacity: 0.7;
+  opacity: 0.6;
   ` : `
   cursor: pointer;
-  color: ${primary ? theme.base00 : theme.base05};
-  background-color: ${primary ? theme.base04 : theme.base01};
   `}
 
+  ${!disabled && `
   &:hover,
   &:focus {
-    background-color: ${primary ? colorEffect(theme.base0B, 'darken', 0.2) : theme.base02};
+    background-color: ${primary ? theme.base07 : theme.base02};
     box-shadow: 1px 1px 2px ${theme.base03};
   }
+ `}
   &:focus {
     border: 1px solid ${theme.base0D};
   }

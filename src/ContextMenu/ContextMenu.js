@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import getStyles from '../utils/getStyles';
-import { style } from './styles/index';
+import createStyledComponent from '../utils/createStyledComponent';
+import styles from './styles/index';
 
-const ContextMenuWrapper = getStyles(style, 'div', false);
+const ContextMenuWrapper = createStyledComponent(styles);
 
 export default class ContextMenu extends Component {
   constructor(props) {

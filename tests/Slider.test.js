@@ -30,5 +30,6 @@ describe('Slider', function () {
 
     wrapper.find('input').simulate('change');
     expect(onChange).toBeCalled();
+    expect(onChange).toBeCalledWith(1);
   });
 });

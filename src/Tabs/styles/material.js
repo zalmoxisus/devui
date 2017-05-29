@@ -23,7 +23,7 @@ export const style = ({ theme, main }) => css`
       color: ${theme.base07};
       min-height: 30px;
       padding: 0 2em;
-      text-transform: uppercase;
+      ${main && 'text-transform: uppercase;'}
       cursor: pointer;
       border: none;
       border-bottom: 2px solid transparent;
@@ -45,7 +45,7 @@ export const style = ({ theme, main }) => css`
     }
 
     > [data-selected] {
-      border-bottom: 2px solid ${theme.base0B};
+      border-bottom: 2px solid ${theme.base0D};
     }
   }
   > div:nth-child(2) {

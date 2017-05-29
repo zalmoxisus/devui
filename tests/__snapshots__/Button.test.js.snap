@@ -1,6 +1,9 @@
 exports[`Button renders correctly 1`] = `
-<button
-  class="dfQtlJ">
-  Text
-</button>
+<div
+  class="fDOgEY">
+  <button
+    class="bEIpTZ">
+    Text
+  </button>
+</div>
 `;

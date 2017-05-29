@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import styled from 'styled-components';
 import CodeMirror from 'codemirror';
-import { defaultStyle, themedStyle } from './styles/';
+import { defaultStyle, themedStyle } from './styles';
 
 const EditorContainer = styled.div('',
   ({ theme }) => (theme.scheme === 'default' && theme.light ? defaultStyle : themedStyle(theme))
@@ -22,10 +22,14 @@ export default class Editor extends Component {
         gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter']
       }
     );
+
+    if (this.props.onChange) {
+      this.cm.on('change', (doc, change) => { this.props.onChange(doc.getValue(), change); });
+    }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.value !== this.props.value) {
+    if (nextProps.value !== this.cm.getValue()) {
       this.cm.setValue(nextProps.value);
     }
     if (nextProps.readOnly !== this.props.readOnly) {
@@ -57,7 +61,7 @@ export default class Editor extends Component {
   };
 
   render() {
-    return <EditorContainer innerRef={this.getRef} />;
+    return <EditorContainer innerRef={this.getRef} theme={this.props.theme} />;
   }
 }
 
@@ -67,8 +71,10 @@ Editor.propTypes = {
   lineNumbers: PropTypes.bool,
   lineWrapping: PropTypes.bool,
   readOnly: PropTypes.bool,
+  theme: PropTypes.object,
   foldGutter: PropTypes.bool,
-  autofocus: PropTypes.bool
+  autofocus: PropTypes.bool,
+  onChange: PropTypes.func
 };
 
 Editor.defaultProps = {

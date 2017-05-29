@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export const style = ({ theme }) => css`
+export default ({ theme }) => css`
 padding: 10px;
 line-height: 1.846;
 font-size: 14px;
@@ -67,7 +67,7 @@ textarea.form-control {
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 .radio,
@@ -166,8 +166,6 @@ input[type="radio"]:after,
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  -webkit-transition: 240ms;
-  -o-transition: 240ms;
   transition: 240ms;
   box-sizing: border-box;
 }
@@ -187,7 +185,7 @@ input[type="radio"]:after,
 .radio-inline input[type="radio"]:after {
   position: relative;
   top: -3px;
-  border: 2px solid ${theme.base04};
+  border: 2px solid ${theme.base03};
 }
 
 input[type="radio"]:checked:before,
@@ -248,8 +246,8 @@ input[type="checkbox"]:after,
   height: 18px;
   margin-top: -2px;
   margin-right: 5px;
-  border: 2px solid ${theme.base04};
-  border-radius: 2px;
+  border: 2px solid ${theme.base03};
+  border-radius: 4px;
   transition: 240ms;
   box-sizing: border-box;
 }

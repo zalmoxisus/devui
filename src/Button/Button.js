@@ -1,17 +1,19 @@
 import React, { Component, PropTypes } from 'react';
-import getStyles from '../utils/getStyles';
+import createStyledComponent from '../utils/createStyledComponent';
 import * as styles from './styles';
-import { tooltipStyle } from './styles/common';
+import { commonStyle, tooltipStyle } from './styles/common';
 
-const ButtonWrapper = getStyles(styles, 'button', true);
-const TooltipWrapper = getStyles(tooltipStyle, 'div', false);
+const ButtonWrapper = createStyledComponent(styles, 'button');
+const TooltipWrapper = createStyledComponent(tooltipStyle);
+const CommonWrapper = createStyledComponent(commonStyle);
 
 export default class Button extends Component {
   shouldComponentUpdate(nextProps) {
     return nextProps.children !== this.props.children ||
       nextProps.disabled !== this.props.disabled ||
       nextProps.mark !== this.props.mark ||
-      nextProps.big !== this.props.big ||
+      nextProps.size !== this.props.size ||
+      nextProps.primary !== this.props.primary ||
       nextProps.tooltipPosition !== this.props.tooltipPosition ||
       nextProps.title !== this.props.title;
   }
@@ -23,27 +25,29 @@ export default class Button extends Component {
   render() {
     const button = (
       <ButtonWrapper
+        theme={this.props.theme}
         aria-label={this.props.title}
         primary={this.props.primary}
         disabled={this.props.disabled}
         onMouseUp={this.onMouseUp}
         onClick={this.props.onClick}
         type={this.props.type}
-        big={this.props.big}
       >
         {this.props.children}
       </ButtonWrapper>
     );
 
-    if (!this.props.title) return button;
+    const Wrapper = this.props.title ? TooltipWrapper : CommonWrapper;
     return (
-      <TooltipWrapper
+      <Wrapper
+        theme={this.props.theme}
         tooltipTitle={this.props.title}
         tooltipPosition={this.props.tooltipPosition}
+        size={this.props.size}
         mark={this.props.mark}
       >
         {button}
-      </TooltipWrapper>
+      </Wrapper>
     );
   }
 }
@@ -57,9 +61,10 @@ Button.propTypes = {
   type: PropTypes.string,
   disabled: PropTypes.bool,
   primary: PropTypes.bool,
-  big: PropTypes.bool,
+  size: PropTypes.oneOf(['big', 'normal', 'small']),
   mark: PropTypes.oneOf([false, 'base08', 'base09', 'base0A', 'base0B',
-    'base0C', 'base0D', 'base0E', 'base0F'])
+    'base0C', 'base0D', 'base0E', 'base0F']),
+  theme: PropTypes.object
 };
 
 Button.defaultProps = {

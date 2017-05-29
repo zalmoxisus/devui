@@ -1,18 +1,24 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, Component, PropTypes } from 'react';
 import JSONSchemaForm from 'react-jsonschema-form';
-import getStyles from '../utils/getStyles';
-import { style } from './styles';
+import createStyledComponent from '../utils/createStyledComponent';
+import styles from './styles';
 import Button from '../Button';
 import customWidgets from './widgets';
 
-const FormContainer = getStyles(style, JSONSchemaForm);
+const FormContainer = createStyledComponent(styles, JSONSchemaForm);
 
-export default class Form extends Component {
+export default class Form extends (PureComponent || Component) {
   render() {
-    const { widgets, children, ...rest } = this.props;
+    const { widgets, children, submitText, primaryButton, noSubmit, ...rest } = this.props;
     return (
       <FormContainer {...rest} widgets={{ ...customWidgets, ...widgets }}>
-        {children || <Button big type="submit">Submit</Button>}
+        {
+          noSubmit ? <noscript /> :
+            children ||
+            <Button size="big" primary={primaryButton} theme={rest.theme} type="submit">
+              {submitText || 'Submit'}
+            </Button>
+        }
       </FormContainer>
     );
   }
@@ -20,6 +26,11 @@ export default class Form extends Component {
 
 Form.propTypes = {
   children: PropTypes.any,
+  submitText: PropTypes.string,
+  primaryButton: PropTypes.bool,
+  noSubmit: PropTypes.bool,
   schema: PropTypes.object.isRequired,
+  uiSchema: PropTypes.object,
+  formData: PropTypes.any,
   widgets: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object]))
 };

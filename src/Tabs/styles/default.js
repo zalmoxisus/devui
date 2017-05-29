@@ -40,7 +40,7 @@ export const style = ({ theme, main }) => css`
 
     > [data-selected] {
       ${main ?
-      `border-bottom: 2px solid ${theme.base0B};` :
+      `border-bottom: 2px solid ${theme.base0D};` :
       `
       background-color: ${theme.base00};
       border: 1px solid ${theme.base02};

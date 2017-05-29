@@ -1,11 +1,11 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, Component, PropTypes } from 'react';
 import ReactSelect from 'react-select';
-import getStyles from '../utils/getStyles';
-import { style } from './styles';
+import createStyledComponent from '../utils/createStyledComponent';
+import styles from './styles';
 
-const SelectContainer = getStyles(style, ReactSelect);
+const SelectContainer = createStyledComponent(styles, ReactSelect);
 
-export default class Select extends Component {
+export default class Select extends (PureComponent || Component) {
   render() {
     return <SelectContainer {...this.props} />;
   }
@@ -19,9 +19,10 @@ Select.propTypes = {
   menuMaxHeight: PropTypes.number,      // maximum css height for the opened menu of options
   multi: PropTypes.bool,                // multi-value input
   searchable: PropTypes.bool,           // whether to enable searching feature or not
+  simpleValue: React.PropTypes.bool,    // pass the value with label to onChange
   value: PropTypes.any,                 // initial field value
   valueKey: PropTypes.string,           // path of the label value in option objects
   openOuterUp: PropTypes.bool           // value to control the opening direction
 };
 
-Select.defaultProps = { autosize: false, clearable: false, menuMaxHeight: 200 };
+Select.defaultProps = { autosize: true, clearable: false, simpleValue: true, menuMaxHeight: 200 };

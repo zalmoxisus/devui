@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-import getStyles from '../utils/getStyles';
+import createStyledComponent from '../utils/createStyledComponent';
 import * as styles from './styles';
 import { containerStyle } from './styles/common';
 
-const SliderWrapper = getStyles(styles, 'div', true);
-const ContainerWithValue = getStyles(containerStyle, 'div', false);
+const SliderWrapper = createStyledComponent(styles);
+const ContainerWithValue = createStyledComponent(containerStyle);
 
 export default class Slider extends Component {
   shouldComponentUpdate(nextProps) {
@@ -17,21 +17,26 @@ export default class Slider extends Component {
   }
 
   onChange = e => {
-    this.props.onChange(e.target.value);
+    this.props.onChange(parseFloat(e.target.value));
   };
 
   render() {
-    const { label, withValue, ...rest } = this.props;
+    const { label, sublabel, withValue, theme, ...rest } = this.props;
     const { value, max, min, disabled } = rest;
     const absMax = max - min;
     const percent = (value - min) / absMax * 100;
     const slider = <input {...rest} onChange={this.onChange} type="range" />;
 
     return (
-      <SliderWrapper percent={percent} disabled={disabled || absMax === 0}>
-        {label && <label>{label}</label>}
+      <SliderWrapper
+        percent={percent}
+        disabled={disabled || absMax === 0}
+        withLabel={!!label}
+        theme={theme}
+      >
+        {label && <label>{label} {sublabel && <span>{sublabel}</span>}</label>}
         {!withValue ? slider :
-          <ContainerWithValue>
+          <ContainerWithValue theme={theme}>
             {slider}
             <div>{value}</div>
           </ContainerWithValue>
@@ -45,10 +50,12 @@ Slider.propTypes = {
   value: PropTypes.number,
   min: PropTypes.number,
   max: PropTypes.number,
-  label: React.PropTypes.string,
+  label: PropTypes.string,
+  sublabel: PropTypes.string,
   withValue: PropTypes.bool,
   disabled: PropTypes.bool,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  theme: PropTypes.object
 };
 
 Slider.defaultProps = { value: 0, min: 0, max: 100 };

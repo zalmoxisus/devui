@@ -2,9 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import CollapseIcon from 'react-icons/lib/fa/angle-double-right';
 import ContextMenu from '../ContextMenu';
 import getStyles from '../utils/getStyles';
+import createStyledComponent from '../utils/createStyledComponent';
 import * as styles from './styles';
 
-const TabsWrapper = getStyles(styles, 'div', true);
+const TabsWrapper = createStyledComponent(styles);
 
 export default class TabsHeader extends Component {
   constructor(props) {

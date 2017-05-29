@@ -3,14 +3,23 @@ import { prefixSelectors } from '../../utils/autoPrefix';
 import color from '../../utils/color';
 import { animationCurve } from '../../utils/animations';
 
-export const style = ({ theme, percent, disabled }) => css`
+export const style = ({ theme, percent, disabled, withLabel }) => css`
   display: block;
   width: 100%;
+  position: relative;
+  z-index: 1;
+  padding: ${withLabel ? '2em 0' : '0'};
 
   label {
-    font-weight: 600;
-    padding: 0.3em 0.5em;
+    position: absolute;
     display: block;
+    font-size: 11px;
+    padding: 0.3em 0.5em;
+    top: 0;
+    width: 100%;
+    color: ${theme.base06};
+
+    > span { color: ${theme.base04}; } 
   }
 
   input {
