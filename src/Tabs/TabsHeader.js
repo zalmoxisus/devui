@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import CollapseIcon from 'react-icons/lib/fa/angle-double-right';
 import ContextMenu from '../ContextMenu';
-import getStyles from '../utils/getStyles';
 import createStyledComponent from '../utils/createStyledComponent';
 import * as styles from './styles';
 
@@ -11,52 +10,55 @@ export default class TabsHeader extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      visibleTabs: [],
+      visibleTabs: props.tabs.slice(),
       hiddenTabs: [],
       subMenuOpened: false,
       contextMenu: undefined
     };
     this.iconWidth = 0;
-    this.nextTab = [];
+    this.hiddenTabsWidth = [];
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.tabs !== this.props.tabs ||
       nextProps.selected !== this.props.selected ||
       nextProps.collapsible !== this.props.collapsible) {
-      this.setState({ hiddenTabs: [] });
-      this.addTabs(nextProps.tabs);
+      this.setState({ hiddenTabs: [], visibleTabs: nextProps.tabs.slice() });
     }
   }
 
-  componentWillMount() {
-    this.addTabs(this.props.tabs);
-  }
-
   componentDidMount() {
-    this.amendCollapsible(this.props.collapsible);
     if (this.props.collapsible) {
       this.collapse();
+      this.enableResizeEvents();
     }
   }
 
   componentDidUpdate(prevProps) {
-    if(this.props.selected !== prevProps.selected) {
-      if (this.props.collapsible) {
-        this.collapse(undefined, this.props.selected);
-      }
+    const { collapsible } = this.props;
+    if (!collapsible) {
+      if (prevProps.collapsible !== collapsible) this.disableResizeEvents();
+      return;
     }
-    if (prevProps.collapsible !== this.props.collapsible) {
-      this.amendCollapsible(this.props.collapsible);
-    }
+
+    let shouldCollapse = false;
     if (this.iconWidth === 0) {
       const tabButtons = this.tabsRef.children;
       if (this.tabsRef.children[tabButtons.length - 1].value === 'expandIcon') {
         this.iconWidth = tabButtons[tabButtons.length - 1].getBoundingClientRect().width;
-        this.collapse();
+        shouldCollapse = true;
       }
     } else if (this.state.hiddenTabs.length === 0) {
       this.iconWidth = 0;
+    }
+
+    if (prevProps.collapsible !== collapsible) {
+      this.enableResizeEvents();
+      shouldCollapse = true;
+    }
+
+    if (shouldCollapse || this.props.selected !== prevProps.selected) {
+      this.collapse();
     }
   }
 
@@ -64,8 +66,9 @@ export default class TabsHeader extends Component {
     this.disableResizeEvents();
   }
 
-  addTabs(tabs) {
-    this.setState({ visibleTabs: tabs.slice() });
+  enableResizeEvents() {
+    window.addEventListener('resize', this.collapse);
+    window.addEventListener('mousedown', this.hideSubmenu);
   }
 
   disableResizeEvents() {
@@ -73,19 +76,10 @@ export default class TabsHeader extends Component {
     window.removeEventListener('mousedown', this.hideSubmenu);
   }
 
-  amendCollapsible(collapsible) {
-    if (collapsible) {
-      this.collapse();
-      window.addEventListener('resize', this.collapse);
-      window.addEventListener('mousedown', this.hideSubmenu);
-    } else {
-      this.disableResizeEvents();
-    }
-  }
-
-  collapse = (el, selected = this.props.selected) => {
+  collapse = () => {
     if (this.state.subMenuOpened) this.hideSubmenu();
-    const tabs = this.props.items;
+
+    const { selected, tabs } = this.props;
     const tabsWrapperRef = this.tabsWrapperRef;
     const tabsRef = this.tabsRef;
     const tabButtons = this.tabsRef.children;
@@ -94,23 +88,31 @@ export default class TabsHeader extends Component {
     let tabsWrapperRight = tabsWrapperRef.getBoundingClientRect().right;
     const tabsRefRight = tabsRef.getBoundingClientRect().right;
     let i = visibleTabs.length - 1;
+    let hiddenTab;
 
     if (tabsRefRight >= tabsWrapperRight - this.iconWidth) {
-      if (this.props.position === 'right' && this.state.hiddenTabs.length > 0 &&
-        tabsRef.getBoundingClientRect().width + this.nextTab[0] <
-        tabsWrapperRef.getBoundingClientRect().width) {
-        while (i < tabs.length - 1 &&
-        tabsRef.getBoundingClientRect().width + this.nextTab[0] <
-        tabsWrapperRef.getBoundingClientRect().width) {
-          visibleTabs.splice(Number(hiddenTabs[0].key), 0, hiddenTabs.shift());
+      if (
+        this.props.position === 'right' && hiddenTabs.length > 0 &&
+        tabsRef.getBoundingClientRect().width + this.hiddenTabsWidth[0] <
+        tabsWrapperRef.getBoundingClientRect().width
+      ) {
+        while (
+          i < tabs.length - 1 &&
+          tabsRef.getBoundingClientRect().width + this.hiddenTabsWidth[0] <
+          tabsWrapperRef.getBoundingClientRect().width
+        ) {
+          hiddenTab = hiddenTabs.shift();
+          visibleTabs.splice(Number(hiddenTab.key), 0, hiddenTab);
           i++;
         }
       } else {
-        while (i > 0 && tabButtons[i] &&
-        tabButtons[i].getBoundingClientRect().right >= tabsWrapperRight - this.iconWidth) {
+        while (
+          i > 0 && tabButtons[i] &&
+          tabButtons[i].getBoundingClientRect().right >= tabsWrapperRight - this.iconWidth
+        ) {
           if (tabButtons[i].value !== selected) {
-            hiddenTabs.unshift.apply(hiddenTabs, visibleTabs.splice(i, 1));
-            this.nextTab.unshift(tabButtons[i].getBoundingClientRect().width);
+            hiddenTabs.unshift(...visibleTabs.splice(i, 1));
+            this.hiddenTabsWidth.unshift(tabButtons[i].getBoundingClientRect().width);
           } else {
             tabsWrapperRight -= tabButtons[i].getBoundingClientRect().width;
           }
@@ -118,11 +120,14 @@ export default class TabsHeader extends Component {
         }
       }
     } else {
-      while (i < tabs.length - 1 && tabButtons[i] &&
+      while (
+        i < tabs.length - 1 && tabButtons[i] &&
         tabButtons[i].getBoundingClientRect().right +
-        this.nextTab[0] < tabsWrapperRight - this.iconWidth) {
-        visibleTabs.splice(Number(hiddenTabs[0].key), 0, hiddenTabs.shift());
-        this.nextTab.shift();
+        this.hiddenTabsWidth[0] < tabsWrapperRight - this.iconWidth
+      ) {
+        hiddenTab = hiddenTabs.shift();
+        visibleTabs.splice(Number(hiddenTab.key), 0, hiddenTab);
+        this.hiddenTabsWidth.shift();
         i++;
       }
     }
@@ -153,6 +158,7 @@ export default class TabsHeader extends Component {
   };
 
   render() {
+    const { visibleTabs, hiddenTabs, contextMenu } = this.state;
     return (
       <TabsWrapper
         innerRef={this.getTabsWrapperRef}
@@ -160,18 +166,17 @@ export default class TabsHeader extends Component {
         position={this.props.position}
       >
         <div ref={this.getTabsRef}>
-          {this.state.visibleTabs}
-          { this.props.collapsible &&
-            this.state.visibleTabs.length < this.props.items.length &&
+          {visibleTabs}
+          {this.props.collapsible && visibleTabs.length < this.props.items.length &&
             <button onClick={this.expandMenu} value="expandIcon"><CollapseIcon /></button>
           }
         </div>
-        {this.props.collapsible && this.state.contextMenu &&
+        {this.props.collapsible && contextMenu &&
           <ContextMenu
-            items={this.state.hiddenTabs}
+            items={hiddenTabs}
             onClick={this.props.onClick}
-            x={this.state.contextMenu.left}
-            y={this.state.contextMenu.top}
+            x={contextMenu.left}
+            y={contextMenu.top}
             visible={this.state.subMenuOpened}
           />
         }

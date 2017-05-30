@@ -1,77 +1,83 @@
 exports[`Tabs renders correctly 1`] = `
 <div
-  class="dZDFeE">
-  <div>
-    <button
-      value="Tab1">
-      Tab1
-    </button>
-    <button
-      value="Tab2">
-      Tab2
-    </button>
-    <button
-      value="Tab3">
-      Tab3
-    </button>
+  class="eVAMJT">
+  <div
+    class="eCsEaZ">
+    <div>
+      <button
+        value="Tab1">
+        Tab1
+      </button>
+      <button
+        value="Tab2">
+        Tab2
+      </button>
+      <button
+        value="Tab3">
+        Tab3
+      </button>
+    </div>
   </div>
 </div>
 `;
 
 exports[`Tabs renders tabs without inner components 1`] = `
 <div
-  class="dZDFeE">
-  <div>
-    <button
-      value="1">
-      Tab1
-    </button>
-    <button
-      value="2">
-      Tab2
-    </button>
-    <button
-      value="3">
-      Tab3
-    </button>
-    <button
-      value="4">
-      Tab4
-    </button>
-    <button
-      data-selected="true"
-      value="5">
-      Tab5
-    </button>
-    <button
-      value="6">
-      Tab6
-    </button>
-    <button
-      value="7">
-      Tab7
-    </button>
-    <button
-      value="8">
-      Tab8
-    </button>
-    <button
-      value="9">
-      Tab9
-    </button>
-    <button
-      value="10">
-      Tab10
-    </button>
+  class="eVAMJT">
+  <div
+    class="eCsEaZ">
+    <div>
+      <button
+        value="1">
+        Tab1
+      </button>
+      <button
+        value="2">
+        Tab2
+      </button>
+      <button
+        value="3">
+        Tab3
+      </button>
+      <button
+        value="4">
+        Tab4
+      </button>
+      <button
+        data-selected="true"
+        value="5">
+        Tab5
+      </button>
+      <button
+        value="6">
+        Tab6
+      </button>
+      <button
+        value="7">
+        Tab7
+      </button>
+      <button
+        value="8">
+        Tab8
+      </button>
+      <button
+        value="9">
+        Tab9
+      </button>
+      <button
+        value="10">
+        Tab10
+      </button>
+    </div>
   </div>
 </div>
 `;
 
 exports[`Tabs renders with props 1`] = `
 <div
-  class="kmcIfA">
+  class="eVAMJT">
   <div
-    class="dZDFeE">
+    class="eCsEaZ">
     <div>
       <button
         value="Tab1">

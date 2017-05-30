@@ -100,5 +100,5 @@ ContextMenu.propTypes = {
   onClick: PropTypes.func.isRequired,
   x: PropTypes.number.isRequired,
   y: PropTypes.number.isRequired,
-  visible: PropTypes.bool.isRequired
+  visible: PropTypes.bool
 };

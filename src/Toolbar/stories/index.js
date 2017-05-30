@@ -98,6 +98,8 @@ storiesOf('Toolbar', module)
             {text('Label', 'Hello Button')}
           </Button>
         </Toolbar>
+      </Container>
+    )
   )
   .addWithInfo(
     'with slider',
