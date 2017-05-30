@@ -1,7 +1,7 @@
-import { configure, setAddon, addDecorator } from '@kadira/storybook';
-import { setOptions } from '@kadira/storybook-addon-options';
-import infoAddon from '@kadira/react-storybook-addon-info';
-import { withKnobs } from '@kadira/storybook-addon-knobs';
+import { configure, setAddon, addDecorator } from '@storybook/react';
+import { setOptions } from '@storybook/addon-options';
+import infoAddon from '@storybook/addon-info';
+import { withKnobs } from '@storybook/addon-knobs';
 import { withTheme } from './themeAddon';
 import '../src/presets.js';
 

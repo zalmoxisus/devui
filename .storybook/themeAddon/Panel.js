@@ -1,5 +1,5 @@
 import React from 'react';
-import Form from '@kadira/storybook-addon-knobs/dist/components/PropForm';
+import Form from '@storybook/addon-knobs/dist/components/PropForm';
 import styled from 'styled-components';
 import { EVENT_ID_DATA } from './';
 import { defaultState } from './theme';

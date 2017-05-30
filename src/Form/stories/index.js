@@ -1,6 +1,7 @@
 import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
-import { withKnobs, object, text } from '@kadira/storybook-addon-knobs';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
+import { withKnobs, object, text } from '@storybook/addon-knobs';
 import Form from '../';
 import { schema, uiSchema, formData } from './schema';
 

@@ -1,28 +1,20 @@
-// IMPORTANT
-// ---------
-// This is an auto generated file with React CDK.
-// Do not modify this file.
-// Use `.storybook/user/modify_webpack_config.js instead`.
-
 const path = require('path');
 const updateConfig = require('./user/modify_webpack_config');
 
 const config = {
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.css?$/,
-        loaders: ['style', 'raw'],
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'raw-loader' }
+        ],
         include: path.resolve(__dirname, '../'),
       },
       {
-        test: /\.scss$/,
-        exclude: /node_modules/,
-        loaders: ['raw', 'sass']
-      },
-      {
         test: /\.json?$/,
-        loaders: ['json'],
+        loader: 'json',
         include: path.resolve(__dirname, '../'),
       },
       {

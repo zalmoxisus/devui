@@ -1,7 +1,8 @@
 import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import styled from 'styled-components';
-import { withKnobs, text, select } from '@kadira/storybook-addon-knobs';
+import { withKnobs, text, select } from '@storybook/addon-knobs';
 import Notification from '../';
 
 export const Container = styled.div`

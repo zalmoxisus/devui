@@ -1,7 +1,8 @@
 import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import styled from 'styled-components';
-import { withKnobs, text, number, boolean, select } from '@kadira/storybook-addon-knobs';
+import { withKnobs, text, number, boolean, select } from '@storybook/addon-knobs';
 import PlayIcon from 'react-icons/lib/md/play-arrow';
 import RecordIcon from 'react-icons/lib/md/fiber-manual-record';
 import LeftIcon from 'react-icons/lib/md/keyboard-arrow-left';

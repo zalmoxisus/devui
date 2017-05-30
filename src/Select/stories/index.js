@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { storiesOf, action } from '@kadira/storybook';
-import { withKnobs, text, number, boolean } from '@kadira/storybook-addon-knobs';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
+import { withKnobs, text, number, boolean } from '@storybook/addon-knobs';
 import Select from '../';
 import { options } from './options';
 

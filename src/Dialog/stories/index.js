@@ -1,6 +1,7 @@
 import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
-import { withKnobs, text, boolean, object } from '@kadira/storybook-addon-knobs';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
+import { withKnobs, text, boolean, object } from '@storybook/addon-knobs';
 import Dialog from '../';
 import { schema, uiSchema, formData } from '../../Form/stories/schema';
 

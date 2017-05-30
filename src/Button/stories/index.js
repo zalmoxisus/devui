@@ -1,7 +1,8 @@
 import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
 import styled from 'styled-components';
-import { withKnobs, text, boolean, select } from '@kadira/storybook-addon-knobs';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
+import { withKnobs, text, boolean, select } from '@storybook/addon-knobs';
 import MdFiberManualRecord from 'react-icons/lib/md/fiber-manual-record';
 import Button from '../';
 

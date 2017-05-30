@@ -1,11 +1,5 @@
-import '@kadira/storybook-addon-knobs/register';
-import '@kadira/storybook/addons';
-import '@kadira/storybook-addon-options/register';
-/*
-import 'storybook-addon-specifications/register';
-import '@kadira/storybook-database-cloud/register';
-import '@kadira/storybook-addon-comments/register';
-*/
+import '@storybook/addon-knobs/register';
+import '@storybook/addon-actions/register';
+import '@storybook/addon-options/register';
 
 import './themeAddon';
-import './customizations';

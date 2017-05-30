@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { select } from '@kadira/storybook-addon-knobs';
+import { select } from '@storybook/addon-knobs';
 import Editor from '../';
 import Tabs from '../../Tabs';
 

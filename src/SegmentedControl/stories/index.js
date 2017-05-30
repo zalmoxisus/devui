@@ -1,7 +1,8 @@
 import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import styled from 'styled-components';
-import { withKnobs, text, boolean } from '@kadira/storybook-addon-knobs';
+import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import SegmentedControl from '../';
 
 export const Container = styled.div`

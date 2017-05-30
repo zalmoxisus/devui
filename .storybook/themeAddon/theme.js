@@ -1,5 +1,5 @@
 import React from 'react';
-import addons from '@kadira/storybook-addons';
+import addons from '@storybook/addons';
 import styled from 'styled-components';
 import { EVENT_ID_DATA } from './';
 import { Container } from '../../src';
