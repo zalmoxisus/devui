@@ -82,11 +82,11 @@
     "color": "^1.0.1",
     "element-resize-detector": "^1.1.10",
     "prop-types": "^15.5.10",
-    "react-icons": "^2.2.0",
-    "react-jsonschema-form": "^0.43.0",
-    "react-select": "1.0.0-rc.3",
+    "react-icons": "^2.2.5",
+    "react-jsonschema-form": "^0.48.2",
+    "react-select": "^1.0.0-rc.5",
     "redux-devtools-themes": "^1.0.0",
-    "styled-components": "^1.4.0"
+    "styled-components": "^2.0.0"
   },
   "pre-commit": [
     "lint"
