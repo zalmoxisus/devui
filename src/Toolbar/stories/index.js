@@ -6,8 +6,9 @@ import PlayIcon from 'react-icons/lib/md/play-arrow';
 import RecordIcon from 'react-icons/lib/md/fiber-manual-record';
 import LeftIcon from 'react-icons/lib/md/keyboard-arrow-left';
 import RightIcon from 'react-icons/lib/md/keyboard-arrow-right';
-import { Toolbar, Divider, Spacer, Button, Select, Slider, SegmentedControl } from '../../';
+import { Toolbar, Divider, Spacer, Button, Select, Slider, SegmentedControl, Tabs } from '../../';
 import { options } from '../../Select/stories/options';
+import { simple10Tabs } from '../../Tabs/stories/data';
 
 export const Container = styled.div`
   display: flex;
@@ -56,6 +57,46 @@ storiesOf('Toolbar', module)
           <Divider />
           <Spacer />
           <Select options={options} />
+        </Toolbar>
+      </Container>
+    )
+  )
+  .addWithInfo(
+    'tabs',
+    '',
+    () => (
+      <Container>
+        <Toolbar>
+          <Button
+            title={text('Title', 'Hello Tooltip')}
+            tooltipPosition={
+              select('tooltipPosition', ['top', 'bottom', 'left', 'right',
+                'bottom-left', 'bottom-right', 'top-left', 'top-right'])
+            }
+            disabled={boolean('Disabled', false)}
+            onClick={action('button clicked')}
+          >
+            {text('Label', 'Hello Button')}
+          </Button>
+          <Tabs
+            tabs={simple10Tabs}
+            selected={text('selected', '2')}
+            main={boolean('main', true)}
+            onClick={action('tab selected')}
+            collapsible={boolean('collapsible', true)}
+            position={select('position', ['left', 'right', 'center'], 'center')}
+          />
+          <Button
+            title={text('Title', 'Hello Tooltip')}
+            tooltipPosition={
+              select('tooltipPosition', ['top', 'bottom', 'left', 'right',
+                'bottom-left', 'bottom-right', 'top-left', 'top-right'])
+            }
+            disabled={boolean('Disabled', false)}
+            onClick={action('button clicked')}
+          >
+            {text('Label', 'Hello Button')}
+          </Button>
         </Toolbar>
       </Container>
     )

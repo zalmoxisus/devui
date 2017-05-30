@@ -8,7 +8,14 @@ const ContextMenuWrapper = createStyledComponent(styles);
 export default class ContextMenu extends Component {
   constructor(props) {
     super(props);
-    this.updateItems(props);
+    this.updateItems(props.items);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.items !== this.props.items ||
+      nextProps.visible !== this.props.visible) {
+      this.updateItems(nextProps.items);
+    }
   }
 
   componentDidMount() {
@@ -54,9 +61,10 @@ export default class ContextMenu extends Component {
     this.menu.style.left = `${left}px`;
   }
 
-  updateItems(props) {
-    this.items = props.items.map(item => {
+  updateItems(items) {
+    this.items = items.map(item => {
       const value = item.value || item.name;
+      if (item.type === 'button') return item;
       return (
         <button
           key={value}
@@ -80,6 +88,7 @@ export default class ContextMenu extends Component {
         innerRef={this.menuRef}
         left={this.props.x}
         top={this.props.y}
+        visible={this.props.visible}
       >
         {this.items}
       </ContextMenuWrapper>
@@ -91,5 +100,6 @@ ContextMenu.propTypes = {
   items: PropTypes.array.isRequired,
   onClick: PropTypes.func.isRequired,
   x: PropTypes.number.isRequired,
-  y: PropTypes.number.isRequired
+  y: PropTypes.number.isRequired,
+  visible: PropTypes.bool
 };
