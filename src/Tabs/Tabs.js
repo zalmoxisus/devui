@@ -9,7 +9,7 @@ export default class Tabs extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.tabs !== this.props.tabs || nextProps.selected !== this.props.selected) {
+    if (nextProps.selected !== this.props.selected) {
       this.updateTabs(nextProps);
     }
   }
@@ -26,7 +26,7 @@ export default class Tabs extends Component {
     const tabs = props.tabs;
     const selected = props.selected;
 
-    this.tabsHeader = tabs.map(tab => {
+    this.tabsHeader = tabs.map((tab, i) => {
       let isSelected;
       const value = typeof tab.value !== 'undefined' ? tab.value : tab.name;
       if (value === selected) {
@@ -38,7 +38,7 @@ export default class Tabs extends Component {
       }
       return (
         <button
-          key={value}
+          key={i}
           value={value}
           data-selected={isSelected}
           onMouseUp={this.onMouseUp}
@@ -52,11 +52,27 @@ export default class Tabs extends Component {
 
   render() {
     const tabsHeader = (
-      <TabsHeader tabs={this.tabsHeader} main={this.props.main} />
+      <TabsHeader
+        tabs={this.tabsHeader}
+        items={this.props.tabs}
+        main={this.props.main}
+        collapsible={this.props.collapsible}
+        onClick={this.props.onClick}
+        selected={this.props.selected}
+        position={this.props.position}
+      />
     );
-    if (!this.SelectedComponent) return tabsHeader;
+
+    if (!this.SelectedComponent) {
+      return (
+        <TabsContainer position={this.props.position}>
+          { tabsHeader }
+        </TabsContainer>
+      );
+    }
+
     return (
-      <TabsContainer>
+      <TabsContainer position={this.props.position}>
         {tabsHeader}
         <div><this.SelectedComponent {...(this.selector && this.selector())} /></div>
       </TabsContainer>
@@ -68,5 +84,9 @@ Tabs.propTypes = {
   tabs: PropTypes.array.isRequired,
   selected: PropTypes.string,
   main: PropTypes.bool,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  collapsible: PropTypes.bool,
+  position: PropTypes.oneOf(['left', 'right', 'center'])
 };
+
+Tabs.defaultProps = { position: 'left' };

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { select } from '@kadira/storybook-addon-knobs';
 import Editor from '../';
 import Tabs from '../../Tabs';
 
@@ -34,6 +35,7 @@ export default class WithTabs extends Component {
         ]}
         selected={this.state.selected}
         onClick={selected => { this.setState({ selected }); }}
+        align={select('align', ['left', 'right', 'center'], 'left')}
       />
     );
   }
