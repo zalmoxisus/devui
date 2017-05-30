@@ -1,6 +1,6 @@
 exports[`Dialog renders correctly 1`] = `
 <div
-  class="kcnBeL">
+  class="sc-iwsKbI fOBkrR">
   <div />
   <div>
     <div
@@ -15,16 +15,16 @@ exports[`Dialog renders correctly 1`] = `
     <div
       class="mc-dialog--footer">
       <div
-        class="fDOgEY">
+        class="sc-ifAKCX jTewnV">
         <button
-          class="bEIpTZ">
+          class="sc-htpNat fWcQZ">
           Cancel
         </button>
       </div>
       <div
-        class="fDOgEY">
+        class="sc-ifAKCX jTewnV">
         <button
-          class="ksGMkg">
+          class="sc-htpNat iMkoYt">
           Submit
         </button>
       </div>
@@ -35,7 +35,7 @@ exports[`Dialog renders correctly 1`] = `
 
 exports[`Dialog renders modal 1`] = `
 <div
-  class="kcnBeL">
+  class="sc-iwsKbI fOBkrR">
   <div />
   <div>
     <div
@@ -47,16 +47,16 @@ exports[`Dialog renders modal 1`] = `
     <div
       class="mc-dialog--footer">
       <div
-        class="fDOgEY">
+        class="sc-ifAKCX jTewnV">
         <button
-          class="bEIpTZ">
+          class="sc-htpNat fWcQZ">
           Cancel
         </button>
       </div>
       <div
-        class="fDOgEY">
+        class="sc-ifAKCX jTewnV">
         <button
-          class="ksGMkg">
+          class="sc-htpNat iMkoYt">
           Submit
         </button>
       </div>
@@ -67,7 +67,7 @@ exports[`Dialog renders modal 1`] = `
 
 exports[`Dialog renders with props 1`] = `
 <div
-  class="cERukp"
+  class="sc-iwsKbI fpUYbC"
   open="">
   <div />
   <div>
@@ -87,16 +87,16 @@ exports[`Dialog renders with props 1`] = `
     <div
       class="mc-dialog--footer">
       <div
-        class="fDOgEY">
+        class="sc-ifAKCX jTewnV">
         <button
-          class="bEIpTZ">
+          class="sc-htpNat fWcQZ">
           Cancel
         </button>
       </div>
       <div
-        class="fDOgEY">
+        class="sc-ifAKCX jTewnV">
         <button
-          class="ksGMkg">
+          class="sc-htpNat iMkoYt">
           Submit
         </button>
       </div>

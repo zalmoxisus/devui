@@ -1,6 +1,6 @@
 exports[`Notification renders correctly 1`] = `
 <div
-  class="feQYat"
+  class="sc-fjdhpX fmuodm"
   type="info">
   <span>
     Message
@@ -10,7 +10,7 @@ exports[`Notification renders correctly 1`] = `
 
 exports[`Notification renders with props 1`] = `
 <div
-  class="feQYat"
+  class="sc-fjdhpX fmuodm"
   type="error">
   <svg
     fill="currentColor"

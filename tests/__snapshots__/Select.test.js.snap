@@ -1,6 +1,6 @@
 exports[`Select renders correctly 1`] = `
 <div
-  class="Select hvMIaD Select--single is-searchable">
+  class="Select sc-bZQynM lpCNM Select--single is-searchable">
   <div
     class="Select-control">
     <span
@@ -36,7 +36,7 @@ exports[`Select renders correctly 1`] = `
 
 exports[`Select renders with props 1`] = `
 <div
-  class="Select YLlAe Select--multi is-disabled is-loading has-value">
+  class="Select sc-bZQynM dVPEwd Select--multi is-clearable is-disabled is-loading has-value">
   <div
     class="Select-control">
     <span
@@ -59,7 +59,7 @@ exports[`Select renders with props 1`] = `
       <div
         aria-activedescendant="react-select-3--value"
         aria-expanded="false"
-        aria-owns="react-select-3--value"
+        aria-owns=""
         aria-readonly="true"
         class="Select-input"
         role="combobox"
@@ -132,7 +132,7 @@ exports[`Select should select another option 1`] = `
       autosize={true}
       backspaceRemoves={true}
       backspaceToRemoveMessage="Press backspace to remove {label}"
-      className="hvMIaD"
+      className="sc-bZQynM lpCNM"
       clearAllText="Clear all"
       clearRenderer={[Function]}
       clearValueText="Clear value"
@@ -158,7 +158,6 @@ exports[`Select should select another option 1`] = `
       onBlurResetsInput={true}
       onChange={[Function]}
       onCloseResetsInput={true}
-      openAfterFocus={false}
       optionComponent={[Function]}
       options={
         Array [
@@ -186,7 +185,7 @@ exports[`Select should select another option 1`] = `
       valueComponent={[Function]}
       valueKey="value">
       <div
-        className="Select hvMIaD Select--single is-open is-searchable">
+        className="Select sc-bZQynM lpCNM Select--single is-open is-searchable">
         <div
           className="Select-control"
           onKeyDown={[Function]}
@@ -197,7 +196,7 @@ exports[`Select should select another option 1`] = `
           <span
             className="Select-multi-value-wrapper"
             id="react-select-4--value">
-            <AutosizeInput
+            <Component
               aria-activedescendant="react-select-4--option-0"
               aria-expanded="true"
               aria-haspopup="true"
@@ -249,7 +248,7 @@ exports[`Select should select another option 1`] = `
                   two
                 </div>
               </div>
-            </AutosizeInput>
+            </Component>
           </span>
           <span
             className="Select-arrow-zone"
@@ -267,7 +266,7 @@ exports[`Select should select another option 1`] = `
             onMouseDown={[Function]}
             onScroll={[Function]}
             role="listbox">
-            <Option
+            <Component
               className="Select-option is-focused"
               instancePrefix="react-select-4-"
               isFocused={true}
@@ -293,7 +292,7 @@ exports[`Select should select another option 1`] = `
                 role="option">
                 Two
               </div>
-            </Option>
+            </Component>
           </div>
         </div>
       </div>
@@ -353,7 +352,7 @@ exports[`Select shouldn't find any results 1`] = `
       autosize={true}
       backspaceRemoves={true}
       backspaceToRemoveMessage="Press backspace to remove {label}"
-      className="hvMIaD"
+      className="sc-bZQynM lpCNM"
       clearAllText="Clear all"
       clearRenderer={[Function]}
       clearValueText="Clear value"
@@ -379,7 +378,6 @@ exports[`Select shouldn't find any results 1`] = `
       onBlurResetsInput={true}
       onChange={[Function]}
       onCloseResetsInput={true}
-      openAfterFocus={false}
       optionComponent={[Function]}
       options={
         Array [
@@ -407,7 +405,7 @@ exports[`Select shouldn't find any results 1`] = `
       valueComponent={[Function]}
       valueKey="value">
       <div
-        className="Select hvMIaD Select--single is-open is-searchable">
+        className="Select sc-bZQynM lpCNM Select--single is-open is-searchable">
         <div
           className="Select-control"
           onKeyDown={[Function]}
@@ -418,7 +416,7 @@ exports[`Select shouldn't find any results 1`] = `
           <span
             className="Select-multi-value-wrapper"
             id="react-select-5--value">
-            <AutosizeInput
+            <Component
               aria-activedescendant="react-select-5--option-null"
               aria-expanded="true"
               aria-haspopup="true"
@@ -470,7 +468,7 @@ exports[`Select shouldn't find any results 1`] = `
                   text
                 </div>
               </div>
-            </AutosizeInput>
+            </Component>
           </span>
           <span
             className="Select-arrow-zone"
