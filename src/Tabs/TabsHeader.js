@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import CollapseIcon from 'react-icons/lib/fa/angle-double-right';
 import ContextMenu from '../ContextMenu';
 import createStyledComponent from '../utils/createStyledComponent';
