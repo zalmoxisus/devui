@@ -87,6 +87,8 @@ export default class TabsHeader extends Component {
     const visibleTabs = this.state.visibleTabs;
     const hiddenTabs = this.state.hiddenTabs;
     let tabsWrapperRight = tabsWrapperRef.getBoundingClientRect().right;
+    if (!tabsWrapperRight) return; // tabs are hidden
+
     const tabsRefRight = tabsRef.getBoundingClientRect().right;
     let i = visibleTabs.length - 1;
     let hiddenTab;
