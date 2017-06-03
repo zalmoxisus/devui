@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import observeResize from 'simple-element-resize-detector';
 import CollapseIcon from 'react-icons/lib/fa/angle-double-right';
 import ContextMenu from '../ContextMenu';
 import createStyledComponent from '../utils/createStyledComponent';
@@ -68,12 +69,12 @@ export default class TabsHeader extends Component {
   }
 
   enableResizeEvents() {
-    window.addEventListener('resize', this.collapse);
+    this.resizeDetector = observeResize(this.tabsWrapperRef, this.collapse);
     window.addEventListener('mousedown', this.hideSubmenu);
   }
 
   disableResizeEvents() {
-    window.removeEventListener('resize', this.collapse);
+    this.resizeDetector.remove();
     window.removeEventListener('mousedown', this.hideSubmenu);
   }
 

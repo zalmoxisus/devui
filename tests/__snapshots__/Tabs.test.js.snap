@@ -1,6 +1,6 @@
 exports[`Tabs renders correctly 1`] = `
 <div
-  class="sc-VigVT cTMaxp">
+  class="sc-VigVT fmiisu">
   <div
     class="sc-gqjmRU gEvsQs">
     <div>
@@ -23,7 +23,7 @@ exports[`Tabs renders correctly 1`] = `
 
 exports[`Tabs renders tabs without inner components 1`] = `
 <div
-  class="sc-VigVT cTMaxp">
+  class="sc-VigVT fmiisu">
   <div
     class="sc-gqjmRU gEvsQs">
     <div>
@@ -75,7 +75,7 @@ exports[`Tabs renders tabs without inner components 1`] = `
 
 exports[`Tabs renders with props 1`] = `
 <div
-  class="sc-VigVT cTMaxp">
+  class="sc-VigVT fmiisu">
   <div
     class="sc-gqjmRU gEvsQs">
     <div>
