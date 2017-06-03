@@ -1,6 +1,6 @@
 {
   "name": "devui",
-  "version": "1.0.0-1",
+  "version": "1.0.0-2",
   "description": "Reusable React components for building DevTools monitors and apps.",
   "files": [
     "lib",
