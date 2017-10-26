@@ -1,30 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Dialog renders correctly 1`] = `
 <div
-  class="sc-iwsKbI fOBkrR">
+  class="sc-iwsKbI fOBkrR"
+>
   <div />
   <div>
     <div
-      class="mc-dialog--header">
+      class="mc-dialog--header"
+    >
       <div />
       <button>
         ×
       </button>
     </div>
     <div
-      class="mc-dialog--body" />
+      class="mc-dialog--body"
+    />
     <div
-      class="mc-dialog--footer">
+      class="mc-dialog--footer"
+    >
       <div
-        class="sc-ifAKCX jTewnV">
+        class="sc-ifAKCX jTewnV"
+      >
         <button
-          class="sc-htpNat fWcQZ">
+          class="sc-htpNat fWcQZ"
+        >
           Cancel
         </button>
       </div>
       <div
-        class="sc-ifAKCX jTewnV">
+        class="sc-ifAKCX jTewnV"
+      >
         <button
-          class="sc-htpNat iMkoYt">
+          class="sc-htpNat iMkoYt"
+        >
           Submit
         </button>
       </div>
@@ -35,28 +45,36 @@ exports[`Dialog renders correctly 1`] = `
 
 exports[`Dialog renders modal 1`] = `
 <div
-  class="sc-iwsKbI fOBkrR">
+  class="sc-iwsKbI fOBkrR"
+>
   <div />
   <div>
     <div
-      class="mc-dialog--header">
+      class="mc-dialog--header"
+    >
       <div />
     </div>
     <div
-      class="mc-dialog--body" />
+      class="mc-dialog--body"
+    />
     <div
-      class="mc-dialog--footer">
+      class="mc-dialog--footer"
+    >
       <div
-        class="sc-ifAKCX jTewnV">
+        class="sc-ifAKCX jTewnV"
+      >
         <button
-          class="sc-htpNat fWcQZ">
+          class="sc-htpNat fWcQZ"
+        >
           Cancel
         </button>
       </div>
       <div
-        class="sc-ifAKCX jTewnV">
+        class="sc-ifAKCX jTewnV"
+      >
         <button
-          class="sc-htpNat iMkoYt">
+          class="sc-htpNat iMkoYt"
+        >
           Submit
         </button>
       </div>
@@ -68,11 +86,13 @@ exports[`Dialog renders modal 1`] = `
 exports[`Dialog renders with props 1`] = `
 <div
   class="sc-iwsKbI fpUYbC"
-  open="">
+  open=""
+>
   <div />
   <div>
     <div
-      class="mc-dialog--header">
+      class="mc-dialog--header"
+    >
       <div>
         Dialog Title
       </div>
@@ -81,22 +101,28 @@ exports[`Dialog renders with props 1`] = `
       </button>
     </div>
     <div
-      class="mc-dialog--body">
+      class="mc-dialog--body"
+    >
       Hello Dialog!
     </div>
     <div
-      class="mc-dialog--footer">
+      class="mc-dialog--footer"
+    >
       <div
-        class="sc-ifAKCX jTewnV">
+        class="sc-ifAKCX jTewnV"
+      >
         <button
-          class="sc-htpNat fWcQZ">
+          class="sc-htpNat fWcQZ"
+        >
           Cancel
         </button>
       </div>
       <div
-        class="sc-ifAKCX jTewnV">
+        class="sc-ifAKCX jTewnV"
+      >
         <button
-          class="sc-htpNat iMkoYt">
+          class="sc-htpNat iMkoYt"
+        >
           Submit
         </button>
       </div>

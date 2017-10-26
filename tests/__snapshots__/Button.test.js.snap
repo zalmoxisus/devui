@@ -1,8 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Button renders correctly 1`] = `
 <div
-  class="sc-ifAKCX jTewnV">
+  class="sc-ifAKCX jTewnV"
+>
   <button
-    class="sc-htpNat fWcQZ">
+    class="sc-htpNat fWcQZ"
+  >
     Text
   </button>
 </div>

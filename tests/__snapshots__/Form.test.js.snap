@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Form renders correctly 1`] = `
 <Styled(Form)
   formData={
@@ -112,11 +114,13 @@ exports[`Form renders correctly 1`] = `
       "RangeWidget": [Function],
       "SelectWidget": [Function],
     }
-  }>
+  }
+>
   <Button
     size="big"
     tooltipPosition="top"
-    type="submit">
+    type="submit"
+  >
     Submit
   </Button>
 </Styled(Form)>
@@ -236,7 +240,8 @@ exports[`Form renders with no button 1`] = `
       "RangeWidget": [Function],
       "SelectWidget": [Function],
     }
-  }>
+  }
+>
   <noscript />
 </Styled(Form)>
 `;
@@ -355,12 +360,14 @@ exports[`Form renders with primary button 1`] = `
       "RangeWidget": [Function],
       "SelectWidget": [Function],
     }
-  }>
+  }
+>
   <Button
     primary={true}
     size="big"
     tooltipPosition="top"
-    type="submit">
+    type="submit"
+  >
     Custom button
   </Button>
 </Styled(Form)>
