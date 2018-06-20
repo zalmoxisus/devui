@@ -2,7 +2,7 @@ import { configure, setAddon, addDecorator } from '@storybook/react';
 import { setOptions } from '@storybook/addon-options';
 import infoAddon from '@storybook/addon-info';
 import { withKnobs } from '@storybook/addon-knobs';
-import { withTheme } from './themeAddon';
+import { withTheme } from './themeAddon/theme';
 import '../src/presets.js';
 
 setAddon(infoAddon);
@@ -19,10 +19,10 @@ setOptions({
 addDecorator(withTheme);
 addDecorator(withKnobs);
 
-const req = require.context('../src/', true, /stories\/index\.js$/)
+const req = require.context('../src/', true, /stories\/index\.js$/);
 
 function loadStories() {
-  req.keys().forEach((filename) => req(filename))
+  req.keys().forEach(filename => req(filename));
 }
 
 configure(loadStories, module);

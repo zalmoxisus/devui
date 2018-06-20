@@ -33,19 +33,19 @@ describe('Select', function () {
     const wrapper = mount(<Select options={options} onChange={onChange} />);
 
     const input = wrapper.find('input');
-    input.get(0).value = 'two';
+    input.at(0).instance().value = 'two';
     input.first().simulate('change');
     expect(mountToJson(wrapper)).toMatchSnapshot();
     input.first().simulate('keyDown', { keyCode: 13 });
     expect(onChange).toBeCalled();
   });
 
-  it('shouldn\'t find any results', () => {
+  it("shouldn't find any results", () => {
     const onChange = jest.fn();
     const wrapper = mount(<Select options={options} onChange={onChange} />);
 
     const input = wrapper.find('input');
-    input.get(0).value = 'text';
+    input.at(0).instance().value = 'text';
     input.first().simulate('change');
     expect(mountToJson(wrapper)).toMatchSnapshot(); // 'No results found'
     input.first().simulate('keyDown', { keyCode: 13 });

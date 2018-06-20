@@ -6,22 +6,19 @@ const config = {
     rules: [
       {
         test: /\.css?$/,
-        use: [
-          { loader: 'style-loader' },
-          { loader: 'raw-loader' }
-        ],
-        include: path.resolve(__dirname, '../'),
+        use: [{ loader: 'style-loader' }, { loader: 'raw-loader' }],
+        include: path.resolve(__dirname, '../')
       },
       {
         test: /\.json?$/,
-        loader: 'json',
-        include: path.resolve(__dirname, '../'),
+        loader: 'json-loader',
+        include: path.resolve(__dirname, '../')
       },
       {
         test: /\.woff2?(\?\S*)?$/,
         loader: 'url?limit=65000&mimetype=application/font-woff'
       }
-    ],
+    ]
   }
 };
 

@@ -1,14 +1,14 @@
 import React from 'react';
 import addons from '@storybook/addons';
 import styled from 'styled-components';
-import { EVENT_ID_DATA } from './';
+import { EVENT_ID_DATA, DEFAULT_THEME_STATE } from './constant';
 import { Container } from '../../src';
 
 const ContainerStyled = styled(Container)`
   > div {
     height: 100%;
     width: 100%;
-      
+
     > div {
       height: 100%;
       width: 100%;
@@ -19,14 +19,8 @@ const ContainerStyled = styled(Container)`
 
 const channel = addons.getChannel();
 
-export const defaultState = {
-  theme: 'default',
-  scheme: 'default',
-  light: true
-};
-
 class Theme extends React.Component {
-  state = defaultState;
+  state = DEFAULT_THEME_STATE;
 
   componentDidMount() {
     channel.on(EVENT_ID_DATA, this.onChannel);
@@ -39,18 +33,10 @@ class Theme extends React.Component {
   onChannel = state => {
     this.setState(state);
   };
-  
+
   render() {
-    return (
-      <ContainerStyled themeData={this.state}>
-        {this.props.children}
-      </ContainerStyled>
-    );
+    return <ContainerStyled themeData={this.state}>{this.props.children}</ContainerStyled>;
   }
 }
 
-export const withTheme = story => (
-  <Theme>
-    {story()}
-  </Theme>
-);
+export const withTheme = story => <Theme>{story()}</Theme>;

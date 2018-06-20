@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Editor renders correctly 1`] = `
 <Editor
   autofocus={false}
@@ -6,11 +8,15 @@ exports[`Editor renders correctly 1`] = `
   lineWrapping={false}
   mode="javascript"
   readOnly={false}
-  value="var a = 1;">
+  value="var a = 1;"
+>
   <styled.div
-    innerRef={[Function]}>
+    innerRef={[Function]}
+    theme={undefined}
+  >
     <div
-      className="sc-gZMcBi eROHUl" />
+      className="sc-gZMcBi eROHUl"
+    />
   </styled.div>
 </Editor>
 `;
